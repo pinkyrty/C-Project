@@ -28,7 +28,7 @@ namespace C_Project
             {
                 using (OleDbConnection conn = new OleDbConnection(connStr))
                 {
-                    string sql = "SELECT COUNT(*) FROM Users WHERE Username=? AND [Password]=? AND Active=True";
+                    string sql = "SELECT COUNT(*) FROM [User] WHERE Username=? AND [Password]=? AND Active=True";
                     OleDbCommand cmd = new OleDbCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@Username", username);
                     cmd.Parameters.AddWithValue("@Password", password);

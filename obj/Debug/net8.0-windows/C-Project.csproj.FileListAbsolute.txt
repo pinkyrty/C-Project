@@ -16,3 +16,14 @@ C:\Users\HayesPC\Documents\C-Project\obj\Debug\net8.0-windows\refint\C-Project.d
 C:\Users\HayesPC\Documents\C-Project\obj\Debug\net8.0-windows\C-Project.pdb
 C:\Users\HayesPC\Documents\C-Project\obj\Debug\net8.0-windows\C-Project.genruntimeconfig.cache
 C:\Users\HayesPC\Documents\C-Project\obj\Debug\net8.0-windows\ref\C-Project.dll
+C:\Users\HayesPC\Documents\C-Project\bin\Debug\net8.0-windows\System.Configuration.ConfigurationManager.dll
+C:\Users\HayesPC\Documents\C-Project\bin\Debug\net8.0-windows\System.Data.OleDb.dll
+C:\Users\HayesPC\Documents\C-Project\bin\Debug\net8.0-windows\System.Diagnostics.EventLog.dll
+C:\Users\HayesPC\Documents\C-Project\bin\Debug\net8.0-windows\System.Diagnostics.PerformanceCounter.dll
+C:\Users\HayesPC\Documents\C-Project\bin\Debug\net8.0-windows\System.Security.Cryptography.ProtectedData.dll
+C:\Users\HayesPC\Documents\C-Project\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Data.OleDb.dll
+C:\Users\HayesPC\Documents\C-Project\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.Messages.dll
+C:\Users\HayesPC\Documents\C-Project\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.dll
+C:\Users\HayesPC\Documents\C-Project\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Diagnostics.PerformanceCounter.dll
+C:\Users\HayesPC\Documents\C-Project\obj\Debug\net8.0-windows\C-Project.csproj.AssemblyReference.cache
+C:\Users\HayesPC\Documents\C-Project\obj\Debug\net8.0-windows\C-Project.csproj.Up2Date

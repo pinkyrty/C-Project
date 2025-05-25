@@ -1,8 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "BkOva5ofVGU=",
+  "dgSpecHash": "+Rwn7t7biWM=",
   "success": true,
   "projectFilePath": "C:\\Users\\HayesPC\\Documents\\C-Project\\C-Project.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\HayesPC\\.nuget\\packages\\system.configuration.configurationmanager\\9.0.5\\system.configuration.configurationmanager.9.0.5.nupkg.sha512",
+    "C:\\Users\\HayesPC\\.nuget\\packages\\system.data.oledb\\9.0.5\\system.data.oledb.9.0.5.nupkg.sha512",
+    "C:\\Users\\HayesPC\\.nuget\\packages\\system.diagnostics.eventlog\\9.0.5\\system.diagnostics.eventlog.9.0.5.nupkg.sha512",
+    "C:\\Users\\HayesPC\\.nuget\\packages\\system.diagnostics.performancecounter\\9.0.5\\system.diagnostics.performancecounter.9.0.5.nupkg.sha512",
+    "C:\\Users\\HayesPC\\.nuget\\packages\\system.security.cryptography.protecteddata\\9.0.5\\system.security.cryptography.protecteddata.9.0.5.nupkg.sha512"
+  ],
   "logs": []
 }

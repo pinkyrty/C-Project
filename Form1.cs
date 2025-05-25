@@ -6,17 +6,11 @@ namespace C_Project
 {
     public partial class Form1 : Form
     {
-        private string connStr = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\HayesPC\Documents\C-Project\ToySystem.accdb";
+        private string connStr = $@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ToySystem.accdb")};";
 
         public Form1()
         {
             InitializeComponent();
-        }
-
-        // 如果 Designer.cs 有 Load += Form1_Load; 就要有呢個方法
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            // 可以留空
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -60,5 +54,9 @@ namespace C_Project
 
         }
 
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

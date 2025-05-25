@@ -13,6 +13,10 @@ namespace C_Project
             InitializeComponent();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+        }
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string username = txtUsername.Text.Trim();
@@ -21,6 +25,7 @@ namespace C_Project
             if (username == "" || password == "")
             {
                 MessageBox.Show("Please enter your username and password!");
+                MessageBox.Show("’à›î»ÅE√ëÙ√˚∑Q∫Õ√‹¥a£°");
                 return;
             }
 
@@ -39,7 +44,8 @@ namespace C_Project
                     if (count > 0)
                     {
                         MessageBox.Show("Login successful!");
-                        // Jump to the main screen
+
+                        MessageBox.Show("µ«»ÅE…π¶£°");
                     }
                     else
                     {

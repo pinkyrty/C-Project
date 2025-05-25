@@ -25,7 +25,6 @@ namespace C_Project
             if (username == "" || password == "")
             {
                 MessageBox.Show("Please enter your username and password!");
-                MessageBox.Show("’à›î»ÅE√ëÙ√˚∑Q∫Õ√‹¥a£°");
                 return;
             }
 
@@ -44,8 +43,6 @@ namespace C_Project
                     if (count > 0)
                     {
                         MessageBox.Show("Login successful!");
-
-                        MessageBox.Show("µ«»ÅE…π¶£°");
                     }
                     else
                     {

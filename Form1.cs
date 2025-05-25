@@ -6,12 +6,17 @@ namespace C_Project
 {
     public partial class Form1 : Form
     {
-        // 請將路徑改成你自己 Access 資料庫的實際路徑
         private string connStr = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\HayesPC\Documents\C-Project\ToySystem.accdb";
 
         public Form1()
         {
             InitializeComponent();
+        }
+
+        // 如果 Designer.cs 有 Load += Form1_Load; 就要有呢個方法
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // 可以留空
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -40,7 +45,7 @@ namespace C_Project
                     if (count > 0)
                     {
                         MessageBox.Show("登入成功！");
-                        // 你可以喺度打開主畫面
+                        // 可跳轉主畫面
                     }
                     else
                     {
@@ -52,11 +57,8 @@ namespace C_Project
             {
                 MessageBox.Show("連接資料庫出錯！\n" + ex.Message);
             }
-            private void btnLogin_Click(object sender, EventArgs e)
-        {
-            // 你登入用的 code
-            MessageBox.Show("Login Clicked");
+
         }
-    }
+
     }
 }

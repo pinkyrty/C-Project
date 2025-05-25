@@ -10,83 +10,21 @@
         "dependencies": {
           "System.Diagnostics.EventLog": "9.0.5",
           "System.Security.Cryptography.ProtectedData": "9.0.5"
-        },
-        "runtime": {
-          "lib/net8.0/System.Configuration.ConfigurationManager.dll": {
-            "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.525.21509"
-          }
         }
       },
       "System.Data.OleDb/9.0.5": {
         "dependencies": {
           "System.Configuration.ConfigurationManager": "9.0.5",
           "System.Diagnostics.PerformanceCounter": "9.0.5"
-        },
-        "runtime": {
-          "lib/net8.0/System.Data.OleDb.dll": {
-            "assemblyVersion": "9.0.0.5",
-            "fileVersion": "9.0.525.21509"
-          }
-        },
-        "runtimeTargets": {
-          "runtimes/win/lib/net8.0/System.Data.OleDb.dll": {
-            "rid": "win",
-            "assetType": "runtime",
-            "assemblyVersion": "9.0.0.5",
-            "fileVersion": "9.0.525.21509"
-          }
         }
       },
-      "System.Diagnostics.EventLog/9.0.5": {
-        "runtime": {
-          "lib/net8.0/System.Diagnostics.EventLog.dll": {
-            "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.525.21509"
-          }
-        },
-        "runtimeTargets": {
-          "runtimes/win/lib/net8.0/System.Diagnostics.EventLog.Messages.dll": {
-            "rid": "win",
-            "assetType": "runtime",
-            "assemblyVersion": "9.0.0.0",
-            "fileVersion": "0.0.0.0"
-          },
-          "runtimes/win/lib/net8.0/System.Diagnostics.EventLog.dll": {
-            "rid": "win",
-            "assetType": "runtime",
-            "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.525.21509"
-          }
-        }
-      },
+      "System.Diagnostics.EventLog/9.0.5": {},
       "System.Diagnostics.PerformanceCounter/9.0.5": {
         "dependencies": {
           "System.Configuration.ConfigurationManager": "9.0.5"
-        },
-        "runtime": {
-          "lib/net8.0/System.Diagnostics.PerformanceCounter.dll": {
-            "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.525.21509"
-          }
-        },
-        "runtimeTargets": {
-          "runtimes/win/lib/net8.0/System.Diagnostics.PerformanceCounter.dll": {
-            "rid": "win",
-            "assetType": "runtime",
-            "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.525.21509"
-          }
         }
       },
-      "System.Security.Cryptography.ProtectedData/9.0.5": {
-        "runtime": {
-          "lib/net8.0/System.Security.Cryptography.ProtectedData.dll": {
-            "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.525.21509"
-          }
-        }
-      }
+      "System.Security.Cryptography.ProtectedData/9.0.5": {}
     }
   },
   "libraries": {

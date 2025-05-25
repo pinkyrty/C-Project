@@ -20,7 +20,7 @@ namespace C_Project
 
             if (username == "" || password == "")
             {
-                MessageBox.Show("請輸入用戶名稱和密碼！");
+                MessageBox.Show("Please enter your username and password!");
                 return;
             }
 
@@ -38,23 +38,28 @@ namespace C_Project
 
                     if (count > 0)
                     {
-                        MessageBox.Show("登入成功！");
-                        // 可跳轉主畫面
+                        MessageBox.Show("Login successful!");
+                        // Jump to the main screen
                     }
                     else
                     {
-                        MessageBox.Show("用戶名稱或密碼錯誤！");
+                        MessageBox.Show("Wrong username or password!");
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("連接資料庫出錯！\n" + ex.Message);
+                MessageBox.Show("Error connecting to database!\n" + ex.Message);
             }
 
         }
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtUsername_TextChanged(object sender, EventArgs e)
         {
 
         }

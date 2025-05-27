@@ -185,6 +185,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.SlateGray;
             ClientSize = new Size(474, 429);
             Controls.Add(pictureBox1);
             Controls.Add(lblDepartment);

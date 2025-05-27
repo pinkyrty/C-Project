@@ -34,7 +34,7 @@
             pictureBox1 = new PictureBox();
             checkBox1 = new CheckBox();
             checkBox2 = new CheckBox();
-            textBox1 = new TextBox();
+            SearchBox = new TextBox();
             SearchButton = new Button();
             label2 = new Label();
             label3 = new Label();
@@ -78,6 +78,8 @@
             Department = new Label();
             SubmitButton = new Button();
             ResetButton = new Button();
+            DeleteProductBox = new CheckBox();
+            ProductCodeDisplay = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -98,6 +100,7 @@
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(121, 23);
             comboBox1.TabIndex = 3;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // pictureBox1
             // 
@@ -112,7 +115,7 @@
             // checkBox1
             // 
             checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(12, 106);
+            checkBox1.Location = new Point(15, 354);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(97, 19);
             checkBox1.TabIndex = 5;
@@ -122,23 +125,24 @@
             // checkBox2
             // 
             checkBox2.AutoSize = true;
-            checkBox2.Location = new Point(115, 106);
+            checkBox2.Location = new Point(118, 354);
             checkBox2.Name = "checkBox2";
             checkBox2.Size = new Size(95, 19);
             checkBox2.TabIndex = 6;
             checkBox2.Text = "Edit Product";
             checkBox2.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // SearchBox
             // 
-            textBox1.Location = new Point(216, 102);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 7;
+            SearchBox.Location = new Point(161, 101);
+            SearchBox.Name = "SearchBox";
+            SearchBox.Size = new Size(220, 23);
+            SearchBox.TabIndex = 7;
+            SearchBox.TextChanged += textBox1_TextChanged;
             // 
             // SearchButton
             // 
-            SearchButton.Location = new Point(321, 102);
+            SearchButton.Location = new Point(387, 101);
             SearchButton.Name = "SearchButton";
             SearchButton.Size = new Size(75, 23);
             SearchButton.TabIndex = 8;
@@ -215,6 +219,7 @@
             ProductNameBox.Name = "ProductNameBox";
             ProductNameBox.Size = new Size(113, 23);
             ProductNameBox.TabIndex = 16;
+            ProductNameBox.TextChanged += ProductNameBox_TextChanged;
             // 
             // ColorSchemeBox
             // 
@@ -518,12 +523,33 @@
             ResetButton.Text = "Reset";
             ResetButton.UseVisualStyleBackColor = true;
             // 
+            // DeleteProductBox
+            // 
+            DeleteProductBox.AutoSize = true;
+            DeleteProductBox.Location = new Point(15, 379);
+            DeleteProductBox.Name = "DeleteProductBox";
+            DeleteProductBox.Size = new Size(110, 19);
+            DeleteProductBox.TabIndex = 51;
+            DeleteProductBox.Text = "Delete Product";
+            DeleteProductBox.UseVisualStyleBackColor = true;
+            DeleteProductBox.CheckedChanged += checkBox3_CheckedChanged;
+            // 
+            // ProductCodeDisplay
+            // 
+            ProductCodeDisplay.AutoSize = true;
+            ProductCodeDisplay.Location = new Point(153, 139);
+            ProductCodeDisplay.Name = "ProductCodeDisplay";
+            ProductCodeDisplay.Size = new Size(0, 15);
+            ProductCodeDisplay.TabIndex = 52;
+            // 
             // Main_Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SlateGray;
             ClientSize = new Size(799, 651);
+            Controls.Add(ProductCodeDisplay);
+            Controls.Add(DeleteProductBox);
             Controls.Add(ResetButton);
             Controls.Add(SubmitButton);
             Controls.Add(Department);
@@ -567,7 +593,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(SearchButton);
-            Controls.Add(textBox1);
+            Controls.Add(SearchBox);
             Controls.Add(checkBox2);
             Controls.Add(checkBox1);
             Controls.Add(pictureBox1);
@@ -587,7 +613,7 @@
         private PictureBox pictureBox1;
         private CheckBox checkBox1;
         private CheckBox checkBox2;
-        private TextBox textBox1;
+        private TextBox SearchBox;
         private Button SearchButton;
         private Label label2;
         private Label label3;
@@ -631,5 +657,7 @@
         private Label Department;
         private Button SubmitButton;
         private Button ResetButton;
+        private CheckBox DeleteProductBox;
+        private Label ProductCodeDisplay;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace C_Project
 {
-    partial class Form1
+    partial class Login
     {
         /// <summary>
         ///  Required designer variable.
@@ -34,6 +34,7 @@
             btnLogin = new Button();
             label1 = new Label();
             label2 = new Label();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -41,7 +42,7 @@
             // 
             pictureBox1.Image = Properties.Resources.SmilesunToy;
             pictureBox1.Location = new Point(135, 120);
-            pictureBox1.Margin = new Padding(2, 2, 2, 2);
+            pictureBox1.Margin = new Padding(2);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(131, 119);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -51,7 +52,7 @@
             // txtUsername
             // 
             txtUsername.Location = new Point(345, 146);
-            txtUsername.Margin = new Padding(2, 2, 2, 2);
+            txtUsername.Margin = new Padding(2);
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(98, 23);
             txtUsername.TabIndex = 1;
@@ -60,7 +61,7 @@
             // txtPassword
             // 
             txtPassword.Location = new Point(345, 181);
-            txtPassword.Margin = new Padding(2, 2, 2, 2);
+            txtPassword.Margin = new Padding(2);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(98, 23);
             txtPassword.TabIndex = 2;
@@ -70,7 +71,7 @@
             // btnLogin
             // 
             btnLogin.Location = new Point(396, 216);
-            btnLogin.Margin = new Padding(2, 2, 2, 2);
+            btnLogin.Margin = new Padding(2);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(73, 23);
             btnLogin.TabIndex = 3;
@@ -99,21 +100,33 @@
             label2.TabIndex = 5;
             label2.Text = "Password";
             // 
-            // Form1
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Mistral", 26.25F, FontStyle.Italic | FontStyle.Underline, GraphicsUnit.Point, 0);
+            label3.Location = new Point(150, 60);
+            label3.Name = "label3";
+            label3.Size = new Size(319, 42);
+            label3.TabIndex = 6;
+            label3.Text = "SMILE SUNSHINE TOY CO.";
+            label3.Click += label3_Click;
+            // 
+            // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SlateGray;
             ClientSize = new Size(622, 355);
+            Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(btnLogin);
             Controls.Add(txtPassword);
             Controls.Add(txtUsername);
             Controls.Add(pictureBox1);
-            Margin = new Padding(2, 2, 2, 2);
-            Name = "Form1";
-            Text = "Form1";
+            Margin = new Padding(2);
+            Name = "Login";
+            Text = "Login";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -127,5 +140,6 @@
         private Button btnLogin;
         private Label label1;
         private Label label2;
+        private Label label3;
     }
 }

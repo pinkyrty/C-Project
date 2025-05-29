@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace C_Project
 {
-    public partial class Main_Form : Form
+    public partial class RaD_Form : Form
     {
-        public Main_Form()
+        public RaD_Form()
         {
             InitializeComponent();
         }

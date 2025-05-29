@@ -28,7 +28,7 @@ namespace C_Project
             {
                 using (OleDbConnection conn = new OleDbConnection(connStr))
                 {
-                    // 改成查Department
+                    // Change to check Department
                     string sql = "SELECT Department FROM [User] WHERE Username=? AND [Password]=? AND Active=True";
                     OleDbCommand cmd = new OleDbCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@Username", username);
@@ -42,7 +42,7 @@ namespace C_Project
                         string department = result.ToString();
                         MessageBox.Show($"Login successful! Department: {department}");
 
-                        // 根據部門開啟對應Form
+                        // Open the corresponding Form according to the department
                         OpenDepartmentForm(department);
                         this.Hide();
                     }
@@ -58,7 +58,7 @@ namespace C_Project
             }
         }
 
-        // 根據部門開啟相應Form
+        // Open the corresponding form according to the department
         private void OpenDepartmentForm(string department)
         {
             Form deptForm = null;
@@ -80,7 +80,7 @@ namespace C_Project
             deptForm.Show();
         }
 
-        // 剩返其他控件事件handler可以keep住
+        // The remaining control event handlers can be kept
         private void txtPassword_TextChanged(object sender, EventArgs e) { }
         private void txtUsername_TextChanged(object sender, EventArgs e) { }
         private void Form1_Load(object sender, EventArgs e) { }

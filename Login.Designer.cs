@@ -104,11 +104,11 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Mistral", 26.25F, FontStyle.Italic | FontStyle.Underline, GraphicsUnit.Point, 0);
-            label3.Location = new Point(150, 60);
+            label3.Location = new Point(121, 60);
             label3.Name = "label3";
-            label3.Size = new Size(319, 42);
+            label3.Size = new Size(366, 42);
             label3.TabIndex = 6;
-            label3.Text = "SMILE SUNSHINE TOY CO.";
+            label3.Text = "SMILE SUNSHINE TOY CO, LTD";
             label3.Click += label3_Click;
             // 
             // Login

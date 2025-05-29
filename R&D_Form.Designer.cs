@@ -1,6 +1,6 @@
 ﻿namespace C_Project
 {
-    partial class Main_Form
+    partial class RaD_Form
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RaD_Form));
             label1 = new Label();
-            comboBox1 = new ComboBox();
             pictureBox1 = new PictureBox();
             checkBox1 = new CheckBox();
             checkBox2 = new CheckBox();
@@ -93,15 +92,6 @@
             label1.Text = "Department :";
             label1.Click += label1_Click;
             // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(104, 68);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 3;
-            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
-            // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
@@ -134,7 +124,7 @@
             // 
             // SearchBox
             // 
-            SearchBox.Location = new Point(161, 101);
+            SearchBox.Location = new Point(12, 102);
             SearchBox.Name = "SearchBox";
             SearchBox.Size = new Size(220, 23);
             SearchBox.TabIndex = 7;
@@ -142,7 +132,7 @@
             // 
             // SearchButton
             // 
-            SearchButton.Location = new Point(387, 101);
+            SearchButton.Location = new Point(238, 103);
             SearchButton.Name = "SearchButton";
             SearchButton.Size = new Size(75, 23);
             SearchButton.TabIndex = 8;
@@ -542,7 +532,7 @@
             ProductCodeDisplay.Size = new Size(0, 15);
             ProductCodeDisplay.TabIndex = 52;
             // 
-            // Main_Form
+            // RaD_Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -597,10 +587,9 @@
             Controls.Add(checkBox2);
             Controls.Add(checkBox1);
             Controls.Add(pictureBox1);
-            Controls.Add(comboBox1);
             Controls.Add(label1);
-            Name = "Main_Form";
-            Text = "Main_Form";
+            Name = "RaD_Form";
+            Text = "R&D_Form";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -609,7 +598,6 @@
         #endregion
 
         private Label label1;
-        private ComboBox comboBox1;
         private PictureBox pictureBox1;
         private CheckBox checkBox1;
         private CheckBox checkBox2;

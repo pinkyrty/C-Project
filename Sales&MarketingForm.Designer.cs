@@ -34,6 +34,8 @@
             UserName = new Label();
             label2 = new Label();
             Department = new Label();
+            comboBox1 = new ComboBox();
+            comboBox2 = new ComboBox();
             checkBox1 = new CheckBox();
             checkBox2 = new CheckBox();
             SearchBox = new TextBox();
@@ -62,7 +64,6 @@
             SaveButton = new Button();
             SubmitButton = new Button();
             ResetButton = new Button();
-            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -110,10 +111,26 @@
             Department.Size = new Size(0, 15);
             Department.TabIndex = 4;
             // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(105, 72);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(195, 23);
+            comboBox1.TabIndex = 5;
+            // 
+            // comboBox2
+            // 
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Location = new Point(12, 101);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(138, 23);
+            comboBox2.TabIndex = 6;
+            // 
             // checkBox1
             // 
             checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(8, 107);
+            checkBox1.Location = new Point(12, 139);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(111, 19);
             checkBox1.TabIndex = 7;
@@ -123,7 +140,7 @@
             // checkBox2
             // 
             checkBox2.AutoSize = true;
-            checkBox2.Location = new Point(125, 107);
+            checkBox2.Location = new Point(129, 139);
             checkBox2.Name = "checkBox2";
             checkBox2.Size = new Size(109, 19);
             checkBox2.TabIndex = 8;
@@ -132,14 +149,14 @@
             // 
             // SearchBox
             // 
-            SearchBox.Location = new Point(240, 105);
+            SearchBox.Location = new Point(244, 137);
             SearchBox.Name = "SearchBox";
             SearchBox.Size = new Size(100, 23);
             SearchBox.TabIndex = 9;
             // 
             // SearchButton
             // 
-            SearchButton.Location = new Point(346, 105);
+            SearchButton.Location = new Point(350, 137);
             SearchButton.Name = "SearchButton";
             SearchButton.Size = new Size(75, 23);
             SearchButton.TabIndex = 10;
@@ -149,7 +166,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(8, 139);
+            label3.Location = new Point(12, 171);
             label3.Name = "label3";
             label3.Size = new Size(122, 15);
             label3.TabIndex = 11;
@@ -158,7 +175,7 @@
             // QuotationNameber
             // 
             QuotationNameber.AutoSize = true;
-            QuotationNameber.Location = new Point(161, 139);
+            QuotationNameber.Location = new Point(165, 171);
             QuotationNameber.Name = "QuotationNameber";
             QuotationNameber.Size = new Size(0, 15);
             QuotationNameber.TabIndex = 12;
@@ -166,7 +183,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(8, 170);
+            label4.Location = new Point(12, 202);
             label4.Name = "label4";
             label4.Size = new Size(99, 15);
             label4.TabIndex = 13;
@@ -174,7 +191,7 @@
             // 
             // QuotationNameberBox
             // 
-            QuotationNameberBox.Location = new Point(134, 167);
+            QuotationNameberBox.Location = new Point(138, 199);
             QuotationNameberBox.Name = "QuotationNameberBox";
             QuotationNameberBox.Size = new Size(100, 23);
             QuotationNameberBox.TabIndex = 14;
@@ -182,7 +199,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(8, 208);
+            label5.Location = new Point(12, 240);
             label5.Name = "label5";
             label5.Size = new Size(108, 15);
             label5.TabIndex = 15;
@@ -190,7 +207,7 @@
             // 
             // CustomerContactBox
             // 
-            CustomerContactBox.Location = new Point(134, 205);
+            CustomerContactBox.Location = new Point(138, 237);
             CustomerContactBox.Name = "CustomerContactBox";
             CustomerContactBox.Size = new Size(100, 23);
             CustomerContactBox.TabIndex = 16;
@@ -198,7 +215,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(8, 244);
+            label6.Location = new Point(12, 276);
             label6.Name = "label6";
             label6.Size = new Size(109, 15);
             label6.TabIndex = 17;
@@ -206,7 +223,7 @@
             // 
             // CustomerAddressButton
             // 
-            CustomerAddressButton.Location = new Point(134, 240);
+            CustomerAddressButton.Location = new Point(138, 272);
             CustomerAddressButton.Name = "CustomerAddressButton";
             CustomerAddressButton.Size = new Size(84, 23);
             CustomerAddressButton.TabIndex = 18;
@@ -216,7 +233,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(8, 277);
+            label7.Location = new Point(12, 309);
             label7.Name = "label7";
             label7.Size = new Size(97, 15);
             label7.TabIndex = 19;
@@ -224,7 +241,7 @@
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(134, 271);
+            dateTimePicker1.Location = new Point(138, 303);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(100, 23);
             dateTimePicker1.TabIndex = 20;
@@ -232,7 +249,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(8, 306);
+            label8.Location = new Point(12, 338);
             label8.Name = "label8";
             label8.Size = new Size(74, 15);
             label8.TabIndex = 21;
@@ -241,7 +258,7 @@
             // PONumber
             // 
             PONumber.AutoSize = true;
-            PONumber.Location = new Point(134, 306);
+            PONumber.Location = new Point(138, 338);
             PONumber.Name = "PONumber";
             PONumber.Size = new Size(0, 15);
             PONumber.TabIndex = 22;
@@ -249,7 +266,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(295, 139);
+            label9.Location = new Point(299, 171);
             label9.Name = "label9";
             label9.Size = new Size(85, 15);
             label9.TabIndex = 23;
@@ -257,7 +274,7 @@
             // 
             // ProductCodeBox
             // 
-            ProductCodeBox.Location = new Point(418, 136);
+            ProductCodeBox.Location = new Point(422, 168);
             ProductCodeBox.Name = "ProductCodeBox";
             ProductCodeBox.Size = new Size(100, 23);
             ProductCodeBox.TabIndex = 24;
@@ -265,7 +282,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(295, 170);
+            label10.Location = new Point(299, 202);
             label10.Name = "label10";
             label10.Size = new Size(89, 15);
             label10.TabIndex = 25;
@@ -274,7 +291,7 @@
             // ProductName
             // 
             ProductName.AutoSize = true;
-            ProductName.Location = new Point(418, 170);
+            ProductName.Location = new Point(422, 202);
             ProductName.Name = "ProductName";
             ProductName.Size = new Size(0, 15);
             ProductName.TabIndex = 26;
@@ -282,7 +299,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(295, 208);
+            label11.Location = new Point(299, 240);
             label11.Name = "label11";
             label11.Size = new Size(34, 15);
             label11.TabIndex = 27;
@@ -290,7 +307,7 @@
             // 
             // PriceBox
             // 
-            PriceBox.Location = new Point(418, 205);
+            PriceBox.Location = new Point(422, 237);
             PriceBox.Name = "PriceBox";
             PriceBox.Size = new Size(100, 23);
             PriceBox.TabIndex = 28;
@@ -298,7 +315,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(295, 244);
+            label12.Location = new Point(299, 276);
             label12.Name = "label12";
             label12.Size = new Size(49, 15);
             label12.TabIndex = 29;
@@ -335,7 +352,7 @@
             // 
             // SubmitButton
             // 
-            SubmitButton.Location = new Point(7, 348);
+            SubmitButton.Location = new Point(11, 380);
             SubmitButton.Name = "SubmitButton";
             SubmitButton.Size = new Size(87, 26);
             SubmitButton.TabIndex = 33;
@@ -344,22 +361,12 @@
             // 
             // ResetButton
             // 
-            ResetButton.Location = new Point(101, 348);
+            ResetButton.Location = new Point(105, 380);
             ResetButton.Name = "ResetButton";
             ResetButton.Size = new Size(87, 26);
             ResetButton.TabIndex = 34;
             ResetButton.Text = "Reset";
             ResetButton.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            button2.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
-            button2.Location = new Point(727, 12);
-            button2.Name = "button2";
-            button2.Size = new Size(59, 38);
-            button2.TabIndex = 35;
-            button2.Text = "User Prifile";
-            button2.UseVisualStyleBackColor = true;
             // 
             // Sales_MarketingForm
             // 
@@ -367,7 +374,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SlateGray;
             ClientSize = new Size(798, 526);
-            Controls.Add(button2);
             Controls.Add(ResetButton);
             Controls.Add(SubmitButton);
             Controls.Add(SaveButton);
@@ -396,6 +402,8 @@
             Controls.Add(SearchBox);
             Controls.Add(checkBox2);
             Controls.Add(checkBox1);
+            Controls.Add(comboBox2);
+            Controls.Add(comboBox1);
             Controls.Add(Department);
             Controls.Add(label2);
             Controls.Add(UserName);
@@ -415,6 +423,8 @@
         private Label UserName;
         private Label label2;
         private Label Department;
+        private ComboBox comboBox1;
+        private ComboBox comboBox2;
         private CheckBox checkBox1;
         private CheckBox checkBox2;
         private TextBox SearchBox;
@@ -443,6 +453,5 @@
         private Button SaveButton;
         private Button SubmitButton;
         private Button ResetButton;
-        private Button button2;
     }
 }

@@ -12,6 +12,27 @@ namespace C_Project
 {
     public partial class RaD_Form : Form
     {
+        private BindingList<Product> productList = new BindingList<Product>();
+        private Dictionary<string, ProjectInfo> projects;
+
+        // Product data structure
+        public class Product
+        {
+            public string ProductName { get; set; }
+            public string ProductCode { get; set; }
+            public string ProjectKey { get; set; }
+            // ... Other data fields can be added with the control name
+        }
+
+        // Project Data Structure
+        public class ProjectInfo
+        {
+            public string ProjectName { get; set; }
+            public string CustomerName { get; set; }
+            public string Requirement { get; set; }
+            public string Status { get; set; }
+        }
+
         public RaD_Form()
         {
             InitializeComponent();
@@ -93,6 +114,16 @@ namespace C_Project
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void UserNamelabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RaDUserPrifileButton_Click(object sender, EventArgs e)
         {
 
         }

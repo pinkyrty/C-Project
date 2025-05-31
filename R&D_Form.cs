@@ -127,5 +127,20 @@ namespace C_Project
         {
 
         }
+
+        private void RequirementTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvMaterials_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

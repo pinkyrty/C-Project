@@ -41,17 +41,17 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.SmilesunToy;
-            pictureBox1.Location = new Point(135, 120);
+            pictureBox1.Location = new Point(28, 69);
             pictureBox1.Margin = new Padding(2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(131, 119);
+            pictureBox1.Size = new Size(186, 178);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
             // txtUsername
             // 
-            txtUsername.Location = new Point(345, 146);
+            txtUsername.Location = new Point(343, 131);
             txtUsername.Margin = new Padding(2);
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(98, 23);
@@ -60,7 +60,7 @@
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(345, 181);
+            txtPassword.Location = new Point(343, 166);
             txtPassword.Margin = new Padding(2);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(98, 23);
@@ -70,7 +70,7 @@
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(396, 216);
+            btnLogin.Location = new Point(394, 201);
             btnLogin.Margin = new Padding(2);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(73, 23);
@@ -83,7 +83,7 @@
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.SlateGray;
-            label1.Location = new Point(270, 146);
+            label1.Location = new Point(268, 131);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(64, 15);
@@ -93,7 +93,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(270, 183);
+            label2.Location = new Point(268, 168);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
             label2.Size = new Size(60, 15);
@@ -103,10 +103,10 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Mistral", 26.25F, FontStyle.Italic | FontStyle.Underline, GraphicsUnit.Point, 0);
-            label3.Location = new Point(121, 60);
+            label3.Font = new Font("Arial Narrow", 20.25F, FontStyle.Italic | FontStyle.Underline, GraphicsUnit.Point, 0);
+            label3.Location = new Point(219, 69);
             label3.Name = "label3";
-            label3.Size = new Size(366, 42);
+            label3.Size = new Size(346, 31);
             label3.TabIndex = 6;
             label3.Text = "SMILE SUNSHINE TOY CO, LTD";
             label3.Click += label3_Click;

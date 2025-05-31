@@ -104,6 +104,20 @@
             btnSave = new Button();
             btnReset = new Button();
             btnClose = new Button();
+            label2 = new Label();
+            panel2 = new Panel();
+            label1 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            label5 = new Label();
+            label6 = new Label();
+            label7 = new Label();
+            SizeTextBox = new TextBox();
+            ColorTextBox = new TextBox();
+            FunctionalDescriptionTextBox = new TextBox();
+            ComplianceStandardsTextBox = new TextBox();
+            UserGuideTextBox = new TextBox();
+            WarrantySupportTextBox = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProductList).BeginInit();
             tabProductDetail.SuspendLayout();
@@ -119,6 +133,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvTesting).BeginInit();
             ImageAttachmentsTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ProductPictureBox).BeginInit();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // pictureBox1
@@ -224,19 +239,19 @@
             tabProductDetail.Controls.Add(PackagingInformationTabPage);
             tabProductDetail.Controls.Add(TestingACertificationTabPage);
             tabProductDetail.Controls.Add(ImageAttachmentsTabPage);
-            tabProductDetail.Location = new Point(348, 125);
+            tabProductDetail.Location = new Point(348, 306);
             tabProductDetail.Name = "tabProductDetail";
             tabProductDetail.SelectedIndex = 0;
-            tabProductDetail.Size = new Size(802, 680);
+            tabProductDetail.Size = new Size(798, 499);
             tabProductDetail.TabIndex = 51;
             // 
             // ProductSpecificationsTabPage
             // 
-            ProductSpecificationsTabPage.Controls.Add(panel1);
+            ProductSpecificationsTabPage.Controls.Add(panel2);
             ProductSpecificationsTabPage.Location = new Point(4, 24);
             ProductSpecificationsTabPage.Name = "ProductSpecificationsTabPage";
             ProductSpecificationsTabPage.Padding = new Padding(3);
-            ProductSpecificationsTabPage.Size = new Size(794, 652);
+            ProductSpecificationsTabPage.Size = new Size(790, 471);
             ProductSpecificationsTabPage.TabIndex = 0;
             ProductSpecificationsTabPage.Text = "Product Specifications";
             ProductSpecificationsTabPage.UseVisualStyleBackColor = true;
@@ -261,9 +276,9 @@
             panel1.Controls.Add(Projectlabel);
             panel1.Controls.Add(Statuslabel);
             panel1.Controls.Add(MOQlabel);
-            panel1.Location = new Point(0, 3);
+            panel1.Location = new Point(348, 12);
             panel1.Name = "panel1";
-            panel1.Size = new Size(794, 649);
+            panel1.Size = new Size(737, 288);
             panel1.TabIndex = 62;
             panel1.Paint += panel1_Paint;
             // 
@@ -333,6 +348,7 @@
             RequirementTextBox.Name = "RequirementTextBox";
             RequirementTextBox.Size = new Size(100, 23);
             RequirementTextBox.TabIndex = 4;
+            RequirementTextBox.TextChanged += RequirementTextBox_TextChanged;
             // 
             // Requirementlabel
             // 
@@ -424,7 +440,7 @@
             BillofMaterialsTabPage.Location = new Point(4, 24);
             BillofMaterialsTabPage.Name = "BillofMaterialsTabPage";
             BillofMaterialsTabPage.Padding = new Padding(3);
-            BillofMaterialsTabPage.Size = new Size(794, 652);
+            BillofMaterialsTabPage.Size = new Size(790, 471);
             BillofMaterialsTabPage.TabIndex = 1;
             BillofMaterialsTabPage.Text = "Bill of Materials";
             BillofMaterialsTabPage.UseVisualStyleBackColor = true;
@@ -444,8 +460,9 @@
             dgvMaterials.Columns.AddRange(new DataGridViewColumn[] { MaterialType, MaterialName, Description, Quantity, BillofMaterialsDelete });
             dgvMaterials.Location = new Point(0, 0);
             dgvMaterials.Name = "dgvMaterials";
-            dgvMaterials.Size = new Size(794, 652);
+            dgvMaterials.Size = new Size(794, 471);
             dgvMaterials.TabIndex = 0;
+            dgvMaterials.CellContentClick += dgvMaterials_CellContentClick;
             // 
             // MaterialType
             // 
@@ -479,7 +496,7 @@
             ManufacturingInstructionsTabPage.Location = new Point(4, 24);
             ManufacturingInstructionsTabPage.Name = "ManufacturingInstructionsTabPage";
             ManufacturingInstructionsTabPage.Padding = new Padding(3);
-            ManufacturingInstructionsTabPage.Size = new Size(794, 652);
+            ManufacturingInstructionsTabPage.Size = new Size(790, 471);
             ManufacturingInstructionsTabPage.TabIndex = 2;
             ManufacturingInstructionsTabPage.Text = "Manufacturing Instructions";
             ManufacturingInstructionsTabPage.UseVisualStyleBackColor = true;
@@ -499,7 +516,7 @@
             dgvManufacturing.Columns.AddRange(new DataGridViewColumn[] { StepNumber, Content, Equipment, WorkingHours, Personnel, ManufacturingInstructionsDelete });
             dgvManufacturing.Location = new Point(0, 0);
             dgvManufacturing.Name = "dgvManufacturing";
-            dgvManufacturing.Size = new Size(795, 652);
+            dgvManufacturing.Size = new Size(794, 471);
             dgvManufacturing.TabIndex = 0;
             // 
             // StepNumber
@@ -543,7 +560,7 @@
             PackagingInformationTabPage.Location = new Point(4, 24);
             PackagingInformationTabPage.Name = "PackagingInformationTabPage";
             PackagingInformationTabPage.Padding = new Padding(3);
-            PackagingInformationTabPage.Size = new Size(794, 652);
+            PackagingInformationTabPage.Size = new Size(790, 471);
             PackagingInformationTabPage.TabIndex = 3;
             PackagingInformationTabPage.Text = "Packaging Information";
             PackagingInformationTabPage.UseVisualStyleBackColor = true;
@@ -606,14 +623,14 @@
             TestingACertificationTabPage.Location = new Point(4, 24);
             TestingACertificationTabPage.Name = "TestingACertificationTabPage";
             TestingACertificationTabPage.Padding = new Padding(3);
-            TestingACertificationTabPage.Size = new Size(794, 652);
+            TestingACertificationTabPage.Size = new Size(790, 471);
             TestingACertificationTabPage.TabIndex = 4;
             TestingACertificationTabPage.Text = "Testing/Certification";
             TestingACertificationTabPage.UseVisualStyleBackColor = true;
             // 
             // NewCertificationButton
             // 
-            NewCertificationButton.Location = new Point(3, 538);
+            NewCertificationButton.Location = new Point(0, 377);
             NewCertificationButton.Name = "NewCertificationButton";
             NewCertificationButton.Size = new Size(133, 46);
             NewCertificationButton.TabIndex = 54;
@@ -624,9 +641,9 @@
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { CertificationName, dgvCertsContent, dgvCertsDeletion });
-            dataGridView1.Location = new Point(6, 290);
+            dataGridView1.Location = new Point(3, 196);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(788, 242);
+            dataGridView1.Size = new Size(785, 175);
             dataGridView1.TabIndex = 53;
             // 
             // CertificationName
@@ -646,7 +663,7 @@
             // 
             // AddedTestsButton
             // 
-            AddedTestsButton.Location = new Point(3, 231);
+            AddedTestsButton.Location = new Point(3, 144);
             AddedTestsButton.Name = "AddedTestsButton";
             AddedTestsButton.Size = new Size(133, 46);
             AddedTestsButton.TabIndex = 52;
@@ -659,7 +676,7 @@
             dgvTesting.Columns.AddRange(new DataGridViewColumn[] { Testtype, condition, standard, dgvTestingdelete });
             dgvTesting.Location = new Point(0, 0);
             dgvTesting.Name = "dgvTesting";
-            dgvTesting.Size = new Size(794, 225);
+            dgvTesting.Size = new Size(794, 138);
             dgvTesting.TabIndex = 0;
             // 
             // Testtype
@@ -690,7 +707,7 @@
             ImageAttachmentsTabPage.Location = new Point(4, 24);
             ImageAttachmentsTabPage.Name = "ImageAttachmentsTabPage";
             ImageAttachmentsTabPage.Padding = new Padding(3);
-            ImageAttachmentsTabPage.Size = new Size(794, 652);
+            ImageAttachmentsTabPage.Size = new Size(790, 471);
             ImageAttachmentsTabPage.TabIndex = 5;
             ImageAttachmentsTabPage.Text = "Image Attachments";
             ImageAttachmentsTabPage.UseVisualStyleBackColor = true;
@@ -748,12 +765,140 @@
             btnClose.Text = "Close";
             btnClose.UseVisualStyleBackColor = true;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(104, 53);
+            label2.Name = "label2";
+            label2.Size = new Size(81, 15);
+            label2.TabIndex = 63;
+            label2.Text = "Department :";
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(WarrantySupportTextBox);
+            panel2.Controls.Add(UserGuideTextBox);
+            panel2.Controls.Add(ComplianceStandardsTextBox);
+            panel2.Controls.Add(FunctionalDescriptionTextBox);
+            panel2.Controls.Add(ColorTextBox);
+            panel2.Controls.Add(SizeTextBox);
+            panel2.Controls.Add(label7);
+            panel2.Controls.Add(label6);
+            panel2.Controls.Add(label5);
+            panel2.Controls.Add(label4);
+            panel2.Controls.Add(label3);
+            panel2.Controls.Add(label1);
+            panel2.Location = new Point(0, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(788, 471);
+            panel2.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(9, 14);
+            label1.Name = "label1";
+            label1.Size = new Size(33, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Size:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(156, 14);
+            label3.Name = "label3";
+            label3.Size = new Size(41, 15);
+            label3.TabIndex = 1;
+            label3.Text = "Color:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.ImageAlign = ContentAlignment.MiddleRight;
+            label4.Location = new Point(9, 55);
+            label4.Name = "label4";
+            label4.Size = new Size(135, 15);
+            label4.TabIndex = 2;
+            label4.Text = "Functional Description:";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(9, 110);
+            label5.Name = "label5";
+            label5.Size = new Size(138, 15);
+            label5.TabIndex = 3;
+            label5.Text = "Compliance Standards:";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(9, 155);
+            label6.Name = "label6";
+            label6.Size = new Size(72, 15);
+            label6.TabIndex = 4;
+            label6.Text = "User Guide:";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(9, 199);
+            label7.Name = "label7";
+            label7.Size = new Size(110, 15);
+            label7.TabIndex = 5;
+            label7.Text = "Warranty Support:";
+            // 
+            // SizeTextBox
+            // 
+            SizeTextBox.Location = new Point(46, 11);
+            SizeTextBox.Name = "SizeTextBox";
+            SizeTextBox.Size = new Size(76, 23);
+            SizeTextBox.TabIndex = 6;
+            SizeTextBox.TextChanged += textBox1_TextChanged_1;
+            // 
+            // ColorTextBox
+            // 
+            ColorTextBox.Location = new Point(200, 9);
+            ColorTextBox.Name = "ColorTextBox";
+            ColorTextBox.Size = new Size(100, 23);
+            ColorTextBox.TabIndex = 7;
+            // 
+            // FunctionalDescriptionTextBox
+            // 
+            FunctionalDescriptionTextBox.Location = new Point(148, 52);
+            FunctionalDescriptionTextBox.Name = "FunctionalDescriptionTextBox";
+            FunctionalDescriptionTextBox.Size = new Size(459, 23);
+            FunctionalDescriptionTextBox.TabIndex = 8;
+            // 
+            // ComplianceStandardsTextBox
+            // 
+            ComplianceStandardsTextBox.Location = new Point(147, 106);
+            ComplianceStandardsTextBox.Name = "ComplianceStandardsTextBox";
+            ComplianceStandardsTextBox.Size = new Size(460, 23);
+            ComplianceStandardsTextBox.TabIndex = 9;
+            // 
+            // UserGuideTextBox
+            // 
+            UserGuideTextBox.Location = new Point(88, 151);
+            UserGuideTextBox.Name = "UserGuideTextBox";
+            UserGuideTextBox.Size = new Size(426, 23);
+            UserGuideTextBox.TabIndex = 10;
+            // 
+            // WarrantySupportTextBox
+            // 
+            WarrantySupportTextBox.Location = new Point(125, 196);
+            WarrantySupportTextBox.Name = "WarrantySupportTextBox";
+            WarrantySupportTextBox.Size = new Size(389, 23);
+            WarrantySupportTextBox.TabIndex = 11;
+            // 
             // RaD_Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SlateGray;
-            ClientSize = new Size(1161, 865);
+            ClientSize = new Size(1153, 858);
+            Controls.Add(label2);
+            Controls.Add(panel1);
             Controls.Add(btnClose);
             Controls.Add(btnReset);
             Controls.Add(btnSave);
@@ -785,6 +930,8 @@
             ((System.ComponentModel.ISupportInitialize)dgvTesting).EndInit();
             ImageAttachmentsTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)ProductPictureBox).EndInit();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -865,5 +1012,19 @@
         private Button btnSave;
         private Button btnReset;
         private Button btnClose;
+        private Label label2;
+        private Panel panel2;
+        private Label label4;
+        private Label label3;
+        private Label label1;
+        private Label label5;
+        private TextBox SizeTextBox;
+        private Label label7;
+        private Label label6;
+        private TextBox ColorTextBox;
+        private TextBox WarrantySupportTextBox;
+        private TextBox UserGuideTextBox;
+        private TextBox ComplianceStandardsTextBox;
+        private TextBox FunctionalDescriptionTextBox;
     }
 }

@@ -92,22 +92,9 @@
             dataGridView3 = new DataGridView();
             label23 = new Label();
             NewMaterialsButton = new Button();
-            tabControl1 = new TabControl();
-            ProcessAllocationTabPage = new TabPage();
-            ProductionPlanningTabPage = new TabPage();
             button2 = new Button();
             button3 = new Button();
             button4 = new Button();
-            DocumentManagementTabPage = new TabPage();
-            dataGridView1 = new DataGridView();
-            label24 = new Label();
-            label25 = new Label();
-            dateTimePicker3 = new DateTimePicker();
-            dateTimePicker4 = new DateTimePicker();
-            label26 = new Label();
-            WorkInstructionsTextBox = new TextBox();
-            dataGridView4 = new DataGridView();
-            FileUploadButton = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl.SuspendLayout();
             QuotationTabPage.SuspendLayout();
@@ -126,12 +113,6 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
-            tabControl1.SuspendLayout();
-            ProcessAllocationTabPage.SuspendLayout();
-            ProductionPlanningTabPage.SuspendLayout();
-            DocumentManagementTabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView4).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
@@ -195,7 +176,7 @@
             tabControl.Location = new Point(12, 106);
             tabControl.Name = "tabControl";
             tabControl.SelectedIndex = 0;
-            tabControl.Size = new Size(991, 606);
+            tabControl.Size = new Size(979, 496);
             tabControl.TabIndex = 35;
             // 
             // QuotationTabPage
@@ -204,7 +185,7 @@
             QuotationTabPage.Location = new Point(4, 24);
             QuotationTabPage.Name = "QuotationTabPage";
             QuotationTabPage.Padding = new Padding(3);
-            QuotationTabPage.Size = new Size(983, 578);
+            QuotationTabPage.Size = new Size(971, 468);
             QuotationTabPage.TabIndex = 0;
             QuotationTabPage.Text = "Quotation";
             QuotationTabPage.UseVisualStyleBackColor = true;
@@ -242,8 +223,8 @@
             splitContainer1.Panel2.Controls.Add(label11);
             splitContainer1.Panel2.Controls.Add(dataGridView2);
             splitContainer1.Panel2.Controls.Add(groupBox1);
-            splitContainer1.Size = new Size(977, 572);
-            splitContainer1.SplitterDistance = 325;
+            splitContainer1.Size = new Size(965, 462);
+            splitContainer1.SplitterDistance = 321;
             splitContainer1.TabIndex = 0;
             // 
             // dgvQuoteList
@@ -278,7 +259,7 @@
             ProductionorderTabPage.Location = new Point(4, 24);
             ProductionorderTabPage.Name = "ProductionorderTabPage";
             ProductionorderTabPage.Padding = new Padding(3);
-            ProductionorderTabPage.Size = new Size(983, 578);
+            ProductionorderTabPage.Size = new Size(971, 468);
             ProductionorderTabPage.TabIndex = 1;
             ProductionorderTabPage.Text = "Production order";
             ProductionorderTabPage.UseVisualStyleBackColor = true;
@@ -300,13 +281,12 @@
             splitContainer2.Panel2.Controls.Add(button2);
             splitContainer2.Panel2.Controls.Add(button3);
             splitContainer2.Panel2.Controls.Add(button4);
-            splitContainer2.Panel2.Controls.Add(tabControl1);
             splitContainer2.Panel2.Controls.Add(NewMaterialsButton);
             splitContainer2.Panel2.Controls.Add(label23);
             splitContainer2.Panel2.Controls.Add(dataGridView3);
             splitContainer2.Panel2.Controls.Add(groupBox2);
-            splitContainer2.Size = new Size(977, 572);
-            splitContainer2.SplitterDistance = 325;
+            splitContainer2.Size = new Size(965, 462);
+            splitContainer2.SplitterDistance = 321;
             splitContainer2.TabIndex = 0;
             // 
             // dgvProdOrderList
@@ -316,6 +296,7 @@
             dgvProdOrderList.Name = "dgvProdOrderList";
             dgvProdOrderList.Size = new Size(298, 138);
             dgvProdOrderList.TabIndex = 5;
+            dgvProdOrderList.CellContentClick += dgvProdOrderList_CellContentClick;
             // 
             // button1
             // 
@@ -578,7 +559,7 @@
             // 
             // ResetButton
             // 
-            ResetButton.Location = new Point(480, 545);
+            ResetButton.Location = new Point(469, 425);
             ResetButton.Name = "ResetButton";
             ResetButton.Size = new Size(75, 23);
             ResetButton.TabIndex = 5;
@@ -587,7 +568,7 @@
             // 
             // SaveButton
             // 
-            SaveButton.Location = new Point(387, 545);
+            SaveButton.Location = new Point(376, 425);
             SaveButton.Name = "SaveButton";
             SaveButton.Size = new Size(75, 23);
             SaveButton.TabIndex = 6;
@@ -596,7 +577,7 @@
             // 
             // CloseButton
             // 
-            CloseButton.Location = new Point(570, 545);
+            CloseButton.Location = new Point(559, 425);
             CloseButton.Name = "CloseButton";
             CloseButton.Size = new Size(75, 23);
             CloseButton.TabIndex = 7;
@@ -742,47 +723,9 @@
             NewMaterialsButton.Text = "+ New materials";
             NewMaterialsButton.UseVisualStyleBackColor = true;
             // 
-            // tabControl1
-            // 
-            tabControl1.Controls.Add(ProcessAllocationTabPage);
-            tabControl1.Controls.Add(ProductionPlanningTabPage);
-            tabControl1.Controls.Add(DocumentManagementTabPage);
-            tabControl1.Location = new Point(4, 361);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(641, 178);
-            tabControl1.TabIndex = 4;
-            // 
-            // ProcessAllocationTabPage
-            // 
-            ProcessAllocationTabPage.Controls.Add(dataGridView1);
-            ProcessAllocationTabPage.Location = new Point(4, 24);
-            ProcessAllocationTabPage.Name = "ProcessAllocationTabPage";
-            ProcessAllocationTabPage.Padding = new Padding(3);
-            ProcessAllocationTabPage.Size = new Size(633, 150);
-            ProcessAllocationTabPage.TabIndex = 0;
-            ProcessAllocationTabPage.Text = "Process allocation";
-            ProcessAllocationTabPage.UseVisualStyleBackColor = true;
-            // 
-            // ProductionPlanningTabPage
-            // 
-            ProductionPlanningTabPage.Controls.Add(WorkInstructionsTextBox);
-            ProductionPlanningTabPage.Controls.Add(label26);
-            ProductionPlanningTabPage.Controls.Add(dateTimePicker4);
-            ProductionPlanningTabPage.Controls.Add(dateTimePicker3);
-            ProductionPlanningTabPage.Controls.Add(label25);
-            ProductionPlanningTabPage.Controls.Add(label24);
-            ProductionPlanningTabPage.Location = new Point(4, 24);
-            ProductionPlanningTabPage.Name = "ProductionPlanningTabPage";
-            ProductionPlanningTabPage.Padding = new Padding(3);
-            ProductionPlanningTabPage.Size = new Size(633, 150);
-            ProductionPlanningTabPage.TabIndex = 1;
-            ProductionPlanningTabPage.Text = "Production planning";
-            ProductionPlanningTabPage.UseVisualStyleBackColor = true;
-            // 
             // button2
             // 
-            button2.Location = new Point(568, 545);
+            button2.Location = new Point(561, 432);
             button2.Name = "button2";
             button2.Size = new Size(75, 23);
             button2.TabIndex = 10;
@@ -791,7 +734,7 @@
             // 
             // button3
             // 
-            button3.Location = new Point(385, 545);
+            button3.Location = new Point(378, 432);
             button3.Name = "button3";
             button3.Size = new Size(75, 23);
             button3.TabIndex = 9;
@@ -800,104 +743,19 @@
             // 
             // button4
             // 
-            button4.Location = new Point(478, 545);
+            button4.Location = new Point(471, 432);
             button4.Name = "button4";
             button4.Size = new Size(75, 23);
             button4.TabIndex = 8;
             button4.Text = "Reset";
             button4.UseVisualStyleBackColor = true;
             // 
-            // DocumentManagementTabPage
-            // 
-            DocumentManagementTabPage.Controls.Add(FileUploadButton);
-            DocumentManagementTabPage.Controls.Add(dataGridView4);
-            DocumentManagementTabPage.Location = new Point(4, 24);
-            DocumentManagementTabPage.Name = "DocumentManagementTabPage";
-            DocumentManagementTabPage.Size = new Size(633, 150);
-            DocumentManagementTabPage.TabIndex = 2;
-            DocumentManagementTabPage.Text = "Document management";
-            DocumentManagementTabPage.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(2, 2);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(630, 150);
-            dataGridView1.TabIndex = 0;
-            // 
-            // label24
-            // 
-            label24.AutoSize = true;
-            label24.Location = new Point(3, 13);
-            label24.Name = "label24";
-            label24.Size = new Size(87, 15);
-            label24.TabIndex = 0;
-            label24.Text = "Expected start";
-            label24.Click += label24_Click;
-            // 
-            // label25
-            // 
-            label25.AutoSize = true;
-            label25.Location = new Point(220, 12);
-            label25.Name = "label25";
-            label25.Size = new Size(128, 15);
-            label25.TabIndex = 1;
-            label25.Text = "Expected completion";
-            // 
-            // dateTimePicker3
-            // 
-            dateTimePicker3.Location = new Point(96, 7);
-            dateTimePicker3.Name = "dateTimePicker3";
-            dateTimePicker3.Size = new Size(112, 23);
-            dateTimePicker3.TabIndex = 2;
-            // 
-            // dateTimePicker4
-            // 
-            dateTimePicker4.Location = new Point(356, 7);
-            dateTimePicker4.Name = "dateTimePicker4";
-            dateTimePicker4.Size = new Size(131, 23);
-            dateTimePicker4.TabIndex = 3;
-            // 
-            // label26
-            // 
-            label26.AutoSize = true;
-            label26.Location = new Point(3, 46);
-            label26.Name = "label26";
-            label26.Size = new Size(103, 15);
-            label26.TabIndex = 4;
-            label26.Text = "Work instructions";
-            // 
-            // WorkInstructionsTextBox
-            // 
-            WorkInstructionsTextBox.Location = new Point(114, 45);
-            WorkInstructionsTextBox.Name = "WorkInstructionsTextBox";
-            WorkInstructionsTextBox.Size = new Size(411, 23);
-            WorkInstructionsTextBox.TabIndex = 5;
-            // 
-            // dataGridView4
-            // 
-            dataGridView4.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView4.Location = new Point(2, 4);
-            dataGridView4.Name = "dataGridView4";
-            dataGridView4.Size = new Size(629, 118);
-            dataGridView4.TabIndex = 0;
-            // 
-            // FileUploadButton
-            // 
-            FileUploadButton.Location = new Point(3, 124);
-            FileUploadButton.Name = "FileUploadButton";
-            FileUploadButton.Size = new Size(98, 23);
-            FileUploadButton.TabIndex = 1;
-            FileUploadButton.Text = "+ File Upload";
-            FileUploadButton.UseVisualStyleBackColor = true;
-            // 
             // Sales_MarketingForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SlateGray;
-            ClientSize = new Size(1004, 713);
+            ClientSize = new Size(992, 600);
             Controls.Add(tabControl);
             Controls.Add(RaDUserPrifileButton);
             Controls.Add(Department);
@@ -931,13 +789,6 @@
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
-            tabControl1.ResumeLayout(false);
-            ProcessAllocationTabPage.ResumeLayout(false);
-            ProductionPlanningTabPage.ResumeLayout(false);
-            ProductionPlanningTabPage.PerformLayout();
-            DocumentManagementTabPage.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView4).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1007,21 +858,8 @@
         private Label label21;
         private Button NewMaterialsButton;
         private Label label23;
-        private TabControl tabControl1;
-        private TabPage ProcessAllocationTabPage;
-        private TabPage ProductionPlanningTabPage;
         private Button button2;
         private Button button3;
         private Button button4;
-        private DataGridView dataGridView1;
-        private Label label25;
-        private Label label24;
-        private TabPage DocumentManagementTabPage;
-        private Label label26;
-        private DateTimePicker dateTimePicker4;
-        private DateTimePicker dateTimePicker3;
-        private TextBox WorkInstructionsTextBox;
-        private Button FileUploadButton;
-        private DataGridView dataGridView4;
     }
 }

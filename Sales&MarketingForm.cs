@@ -46,5 +46,10 @@ namespace C_Project
         {
 
         }
+
+        private void dgvProdOrderList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

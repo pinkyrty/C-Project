@@ -38,6 +38,10 @@
             SupplyChainManagementButton = new Button();
             ProductionButton = new Button();
             SalesAMarketingButton = new Button();
+            Department = new Label();
+            label2 = new Label();
+            UserName = new Label();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -124,12 +128,50 @@
             SalesAMarketingButton.Text = "Sales and Marketing";
             SalesAMarketingButton.UseVisualStyleBackColor = true;
             // 
+            // Department
+            // 
+            Department.AutoSize = true;
+            Department.Location = new Point(204, 52);
+            Department.Name = "Department";
+            Department.Size = new Size(0, 15);
+            Department.TabIndex = 12;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(123, 52);
+            label2.Name = "label2";
+            label2.Size = new Size(81, 15);
+            label2.TabIndex = 11;
+            label2.Text = "Department :";
+            // 
+            // UserName
+            // 
+            UserName.AutoSize = true;
+            UserName.Location = new Point(195, 26);
+            UserName.Name = "UserName";
+            UserName.Size = new Size(0, 15);
+            UserName.TabIndex = 10;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(123, 26);
+            label1.Name = "label1";
+            label1.Size = new Size(76, 15);
+            label1.TabIndex = 9;
+            label1.Text = "User Name :";
+            // 
             // IT_Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SlateGray;
             ClientSize = new Size(419, 432);
+            Controls.Add(Department);
+            Controls.Add(label2);
+            Controls.Add(UserName);
+            Controls.Add(label1);
             Controls.Add(SalesAMarketingButton);
             Controls.Add(ProductionButton);
             Controls.Add(SupplyChainManagementButton);
@@ -143,6 +185,7 @@
             Text = "IT_Form";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -156,5 +199,9 @@
         private Button SupplyChainManagementButton;
         private Button ProductionButton;
         private Button SalesAMarketingButton;
+        private Label Department;
+        private Label label2;
+        private Label UserName;
+        private Label label1;
     }
 }

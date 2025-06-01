@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace C_Project
 {
-    public partial class RaD_Form : Form
+    public partial class RnD_Form : Form
     {
         private BindingList<Product> productList = new BindingList<Product>();
         private Dictionary<string, ProjectInfo> projects;
@@ -33,7 +33,8 @@ namespace C_Project
             public string Status { get; set; }
         }
 
-        public RaD_Form()
+
+        public RnD_Form()
         {
             InitializeComponent();
         }

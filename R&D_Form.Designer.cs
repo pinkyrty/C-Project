@@ -1,6 +1,6 @@
 ﻿namespace C_Project
 {
-    partial class RaD_Form
+    partial class RnD_Form
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RaD_Form));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RnD_Form));
             pictureBox1 = new PictureBox();
             RaDUserPrifileButton = new Button();
             UserNamelabel = new Label();
@@ -42,25 +42,19 @@
             NewProductsButton = new Button();
             tabProductDetail = new TabControl();
             ProductSpecificationsTabPage = new TabPage();
-            panel1 = new Panel();
-            txtProductName = new TextBox();
-            ViewProjectButton = new Button();
-            ProductNamelabel = new Label();
-            cmbStatus = new ComboBox();
-            StatusTextBox = new TextBox();
-            RaDStatuslabel = new Label();
-            ProductNumberlabel = new Label();
-            RequirementTextBox = new TextBox();
-            Requirementlabel = new Label();
-            cmbProject = new ComboBox();
-            CustomerTextBox = new TextBox();
-            Customerlabel = new Label();
-            txtProductCode = new TextBox();
-            ProjectNamelabel = new Label();
-            txtMOQ = new TextBox();
-            Projectlabel = new Label();
-            Statuslabel = new Label();
-            MOQlabel = new Label();
+            panel2 = new Panel();
+            WarrantySupportTextBox = new TextBox();
+            UserGuideTextBox = new TextBox();
+            ComplianceStandardsTextBox = new TextBox();
+            FunctionalDescriptionTextBox = new TextBox();
+            ColorTextBox = new TextBox();
+            SizeTextBox = new TextBox();
+            label7 = new Label();
+            label6 = new Label();
+            label5 = new Label();
+            label4 = new Label();
+            label3 = new Label();
+            label1 = new Label();
             BillofMaterialsTabPage = new TabPage();
             AddMaterialButton = new Button();
             dgvMaterials = new DataGridView();
@@ -101,28 +95,34 @@
             ViewAllButton = new Button();
             UploadImageButton = new Button();
             ProductPictureBox = new PictureBox();
+            panel1 = new Panel();
+            txtProductName = new TextBox();
+            ViewProjectButton = new Button();
+            ProductNamelabel = new Label();
+            cmbStatus = new ComboBox();
+            StatusTextBox = new TextBox();
+            RaDStatuslabel = new Label();
+            ProductNumberlabel = new Label();
+            RequirementTextBox = new TextBox();
+            Requirementlabel = new Label();
+            cmbProject = new ComboBox();
+            CustomerTextBox = new TextBox();
+            Customerlabel = new Label();
+            txtProductCode = new TextBox();
+            ProjectNamelabel = new Label();
+            txtMOQ = new TextBox();
+            Projectlabel = new Label();
+            Statuslabel = new Label();
+            MOQlabel = new Label();
             btnSave = new Button();
             btnReset = new Button();
             btnClose = new Button();
             label2 = new Label();
-            panel2 = new Panel();
-            label1 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            label6 = new Label();
-            label7 = new Label();
-            SizeTextBox = new TextBox();
-            ColorTextBox = new TextBox();
-            FunctionalDescriptionTextBox = new TextBox();
-            ComplianceStandardsTextBox = new TextBox();
-            UserGuideTextBox = new TextBox();
-            WarrantySupportTextBox = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProductList).BeginInit();
             tabProductDetail.SuspendLayout();
             ProductSpecificationsTabPage.SuspendLayout();
-            panel1.SuspendLayout();
+            panel2.SuspendLayout();
             BillofMaterialsTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMaterials).BeginInit();
             ManufacturingInstructionsTabPage.SuspendLayout();
@@ -133,7 +133,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvTesting).BeginInit();
             ImageAttachmentsTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ProductPictureBox).BeginInit();
-            panel2.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // pictureBox1
@@ -187,9 +187,9 @@
             // 
             dgvProductList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvProductList.Columns.AddRange(new DataGridViewColumn[] { ProductCode, ProductName, Edit, Delete });
-            dgvProductList.Location = new Point(12, 125);
+            dgvProductList.Location = new Point(12, 126);
             dgvProductList.Name = "dgvProductList";
-            dgvProductList.Size = new Size(330, 710);
+            dgvProductList.Size = new Size(330, 679);
             dgvProductList.TabIndex = 49;
             dgvProductList.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -256,182 +256,122 @@
             ProductSpecificationsTabPage.Text = "Product Specifications";
             ProductSpecificationsTabPage.UseVisualStyleBackColor = true;
             // 
-            // panel1
+            // panel2
             // 
-            panel1.Controls.Add(txtProductName);
-            panel1.Controls.Add(ViewProjectButton);
-            panel1.Controls.Add(ProductNamelabel);
-            panel1.Controls.Add(cmbStatus);
-            panel1.Controls.Add(StatusTextBox);
-            panel1.Controls.Add(RaDStatuslabel);
-            panel1.Controls.Add(ProductNumberlabel);
-            panel1.Controls.Add(RequirementTextBox);
-            panel1.Controls.Add(Requirementlabel);
-            panel1.Controls.Add(cmbProject);
-            panel1.Controls.Add(CustomerTextBox);
-            panel1.Controls.Add(Customerlabel);
-            panel1.Controls.Add(txtProductCode);
-            panel1.Controls.Add(ProjectNamelabel);
-            panel1.Controls.Add(txtMOQ);
-            panel1.Controls.Add(Projectlabel);
-            panel1.Controls.Add(Statuslabel);
-            panel1.Controls.Add(MOQlabel);
-            panel1.Location = new Point(348, 12);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(737, 288);
-            panel1.TabIndex = 62;
-            panel1.Paint += panel1_Paint;
+            panel2.Controls.Add(WarrantySupportTextBox);
+            panel2.Controls.Add(UserGuideTextBox);
+            panel2.Controls.Add(ComplianceStandardsTextBox);
+            panel2.Controls.Add(FunctionalDescriptionTextBox);
+            panel2.Controls.Add(ColorTextBox);
+            panel2.Controls.Add(SizeTextBox);
+            panel2.Controls.Add(label7);
+            panel2.Controls.Add(label6);
+            panel2.Controls.Add(label5);
+            panel2.Controls.Add(label4);
+            panel2.Controls.Add(label3);
+            panel2.Controls.Add(label1);
+            panel2.Location = new Point(0, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(788, 471);
+            panel2.TabIndex = 0;
             // 
-            // txtProductName
+            // WarrantySupportTextBox
             // 
-            txtProductName.Location = new Point(9, 33);
-            txtProductName.Name = "txtProductName";
-            txtProductName.Size = new Size(157, 23);
-            txtProductName.TabIndex = 53;
+            WarrantySupportTextBox.Location = new Point(125, 196);
+            WarrantySupportTextBox.Name = "WarrantySupportTextBox";
+            WarrantySupportTextBox.Size = new Size(389, 23);
+            WarrantySupportTextBox.TabIndex = 11;
             // 
-            // ViewProjectButton
+            // UserGuideTextBox
             // 
-            ViewProjectButton.Location = new Point(13, 238);
-            ViewProjectButton.Name = "ViewProjectButton";
-            ViewProjectButton.Size = new Size(128, 33);
-            ViewProjectButton.TabIndex = 7;
-            ViewProjectButton.Text = "View Project";
-            ViewProjectButton.UseVisualStyleBackColor = true;
+            UserGuideTextBox.Location = new Point(88, 151);
+            UserGuideTextBox.Name = "UserGuideTextBox";
+            UserGuideTextBox.Size = new Size(426, 23);
+            UserGuideTextBox.TabIndex = 10;
             // 
-            // ProductNamelabel
+            // ComplianceStandardsTextBox
             // 
-            ProductNamelabel.AutoSize = true;
-            ProductNamelabel.Location = new Point(9, 12);
-            ProductNamelabel.Name = "ProductNamelabel";
-            ProductNamelabel.Size = new Size(89, 15);
-            ProductNamelabel.TabIndex = 52;
-            ProductNamelabel.Text = "Product Name";
+            ComplianceStandardsTextBox.Location = new Point(147, 106);
+            ComplianceStandardsTextBox.Name = "ComplianceStandardsTextBox";
+            ComplianceStandardsTextBox.Size = new Size(460, 23);
+            ComplianceStandardsTextBox.TabIndex = 9;
             // 
-            // cmbStatus
+            // FunctionalDescriptionTextBox
             // 
-            cmbStatus.FormattingEnabled = true;
-            cmbStatus.Items.AddRange(new object[] { "Under development", "", "In mass production", "", "Discontinued" });
-            cmbStatus.Location = new Point(521, 30);
-            cmbStatus.Name = "cmbStatus";
-            cmbStatus.Size = new Size(168, 23);
-            cmbStatus.TabIndex = 54;
-            cmbStatus.SelectedIndexChanged += cmbStatus_SelectedIndexChanged;
+            FunctionalDescriptionTextBox.Location = new Point(148, 52);
+            FunctionalDescriptionTextBox.Name = "FunctionalDescriptionTextBox";
+            FunctionalDescriptionTextBox.Size = new Size(459, 23);
+            FunctionalDescriptionTextBox.TabIndex = 8;
             // 
-            // StatusTextBox
+            // ColorTextBox
             // 
-            StatusTextBox.Location = new Point(102, 197);
-            StatusTextBox.Name = "StatusTextBox";
-            StatusTextBox.Size = new Size(100, 23);
-            StatusTextBox.TabIndex = 6;
+            ColorTextBox.Location = new Point(200, 9);
+            ColorTextBox.Name = "ColorTextBox";
+            ColorTextBox.Size = new Size(100, 23);
+            ColorTextBox.TabIndex = 7;
             // 
-            // RaDStatuslabel
+            // SizeTextBox
             // 
-            RaDStatuslabel.AutoSize = true;
-            RaDStatuslabel.Location = new Point(16, 197);
-            RaDStatuslabel.Name = "RaDStatuslabel";
-            RaDStatuslabel.Size = new Size(41, 15);
-            RaDStatuslabel.TabIndex = 5;
-            RaDStatuslabel.Text = "Status";
+            SizeTextBox.Location = new Point(46, 11);
+            SizeTextBox.Name = "SizeTextBox";
+            SizeTextBox.Size = new Size(76, 23);
+            SizeTextBox.TabIndex = 6;
+            SizeTextBox.TextChanged += textBox1_TextChanged_1;
             // 
-            // ProductNumberlabel
+            // label7
             // 
-            ProductNumberlabel.AutoSize = true;
-            ProductNumberlabel.Location = new Point(198, 12);
-            ProductNumberlabel.Name = "ProductNumberlabel";
-            ProductNumberlabel.Size = new Size(101, 15);
-            ProductNumberlabel.TabIndex = 55;
-            ProductNumberlabel.Text = "Product Number";
+            label7.AutoSize = true;
+            label7.Location = new Point(9, 199);
+            label7.Name = "label7";
+            label7.Size = new Size(110, 15);
+            label7.TabIndex = 5;
+            label7.Text = "Warranty Support:";
             // 
-            // RequirementTextBox
+            // label6
             // 
-            RequirementTextBox.Location = new Point(102, 163);
-            RequirementTextBox.Name = "RequirementTextBox";
-            RequirementTextBox.Size = new Size(100, 23);
-            RequirementTextBox.TabIndex = 4;
-            RequirementTextBox.TextChanged += RequirementTextBox_TextChanged;
+            label6.AutoSize = true;
+            label6.Location = new Point(9, 155);
+            label6.Name = "label6";
+            label6.Size = new Size(72, 15);
+            label6.TabIndex = 4;
+            label6.Text = "User Guide:";
             // 
-            // Requirementlabel
+            // label5
             // 
-            Requirementlabel.AutoSize = true;
-            Requirementlabel.Location = new Point(16, 166);
-            Requirementlabel.Name = "Requirementlabel";
-            Requirementlabel.Size = new Size(80, 15);
-            Requirementlabel.TabIndex = 3;
-            Requirementlabel.Text = "Requirement";
+            label5.AutoSize = true;
+            label5.Location = new Point(9, 110);
+            label5.Name = "label5";
+            label5.Size = new Size(138, 15);
+            label5.TabIndex = 3;
+            label5.Text = "Compliance Standards:";
             // 
-            // cmbProject
+            // label4
             // 
-            cmbProject.FormattingEnabled = true;
-            cmbProject.Location = new Point(9, 85);
-            cmbProject.Name = "cmbProject";
-            cmbProject.Size = new Size(680, 23);
-            cmbProject.TabIndex = 61;
+            label4.AutoSize = true;
+            label4.ImageAlign = ContentAlignment.MiddleRight;
+            label4.Location = new Point(9, 55);
+            label4.Name = "label4";
+            label4.Size = new Size(135, 15);
+            label4.TabIndex = 2;
+            label4.Text = "Functional Description:";
             // 
-            // CustomerTextBox
+            // label3
             // 
-            CustomerTextBox.Location = new Point(275, 131);
-            CustomerTextBox.Name = "CustomerTextBox";
-            CustomerTextBox.Size = new Size(100, 23);
-            CustomerTextBox.TabIndex = 2;
+            label3.AutoSize = true;
+            label3.Location = new Point(156, 14);
+            label3.Name = "label3";
+            label3.Size = new Size(41, 15);
+            label3.TabIndex = 1;
+            label3.Text = "Color:";
             // 
-            // Customerlabel
+            // label1
             // 
-            Customerlabel.AutoSize = true;
-            Customerlabel.Location = new Point(208, 134);
-            Customerlabel.Name = "Customerlabel";
-            Customerlabel.Size = new Size(61, 15);
-            Customerlabel.TabIndex = 1;
-            Customerlabel.Text = "Customer";
-            // 
-            // txtProductCode
-            // 
-            txtProductCode.Location = new Point(202, 30);
-            txtProductCode.Name = "txtProductCode";
-            txtProductCode.Size = new Size(131, 23);
-            txtProductCode.TabIndex = 56;
-            // 
-            // ProjectNamelabel
-            // 
-            ProjectNamelabel.AutoSize = true;
-            ProjectNamelabel.Location = new Point(16, 134);
-            ProjectNamelabel.Name = "ProjectNamelabel";
-            ProjectNamelabel.Size = new Size(84, 15);
-            ProjectNamelabel.TabIndex = 0;
-            ProjectNamelabel.Text = "Project Name";
-            // 
-            // txtMOQ
-            // 
-            txtMOQ.Location = new Point(375, 30);
-            txtMOQ.Name = "txtMOQ";
-            txtMOQ.Size = new Size(97, 23);
-            txtMOQ.TabIndex = 58;
-            // 
-            // Projectlabel
-            // 
-            Projectlabel.AutoSize = true;
-            Projectlabel.Location = new Point(6, 67);
-            Projectlabel.Name = "Projectlabel";
-            Projectlabel.Size = new Size(46, 15);
-            Projectlabel.TabIndex = 60;
-            Projectlabel.Text = "Project";
-            // 
-            // Statuslabel
-            // 
-            Statuslabel.AutoSize = true;
-            Statuslabel.Location = new Point(518, 12);
-            Statuslabel.Name = "Statuslabel";
-            Statuslabel.Size = new Size(41, 15);
-            Statuslabel.TabIndex = 59;
-            Statuslabel.Text = "Status";
-            // 
-            // MOQlabel
-            // 
-            MOQlabel.AutoSize = true;
-            MOQlabel.Location = new Point(372, 12);
-            MOQlabel.Name = "MOQlabel";
-            MOQlabel.Size = new Size(39, 15);
-            MOQlabel.TabIndex = 57;
-            MOQlabel.Text = "MOQ";
+            label1.AutoSize = true;
+            label1.Location = new Point(9, 14);
+            label1.Name = "label1";
+            label1.Size = new Size(33, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Size:";
             // 
             // BillofMaterialsTabPage
             // 
@@ -738,6 +678,183 @@
             ProductPictureBox.TabIndex = 0;
             ProductPictureBox.TabStop = false;
             // 
+            // panel1
+            // 
+            panel1.Controls.Add(txtProductName);
+            panel1.Controls.Add(ViewProjectButton);
+            panel1.Controls.Add(ProductNamelabel);
+            panel1.Controls.Add(cmbStatus);
+            panel1.Controls.Add(StatusTextBox);
+            panel1.Controls.Add(RaDStatuslabel);
+            panel1.Controls.Add(ProductNumberlabel);
+            panel1.Controls.Add(RequirementTextBox);
+            panel1.Controls.Add(Requirementlabel);
+            panel1.Controls.Add(cmbProject);
+            panel1.Controls.Add(CustomerTextBox);
+            panel1.Controls.Add(Customerlabel);
+            panel1.Controls.Add(txtProductCode);
+            panel1.Controls.Add(ProjectNamelabel);
+            panel1.Controls.Add(txtMOQ);
+            panel1.Controls.Add(Projectlabel);
+            panel1.Controls.Add(Statuslabel);
+            panel1.Controls.Add(MOQlabel);
+            panel1.Location = new Point(348, 12);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(737, 288);
+            panel1.TabIndex = 62;
+            panel1.Paint += panel1_Paint;
+            // 
+            // txtProductName
+            // 
+            txtProductName.Location = new Point(9, 33);
+            txtProductName.Name = "txtProductName";
+            txtProductName.Size = new Size(157, 23);
+            txtProductName.TabIndex = 53;
+            // 
+            // ViewProjectButton
+            // 
+            ViewProjectButton.Location = new Point(13, 238);
+            ViewProjectButton.Name = "ViewProjectButton";
+            ViewProjectButton.Size = new Size(128, 33);
+            ViewProjectButton.TabIndex = 7;
+            ViewProjectButton.Text = "View Project";
+            ViewProjectButton.UseVisualStyleBackColor = true;
+            // 
+            // ProductNamelabel
+            // 
+            ProductNamelabel.AutoSize = true;
+            ProductNamelabel.Location = new Point(9, 12);
+            ProductNamelabel.Name = "ProductNamelabel";
+            ProductNamelabel.Size = new Size(89, 15);
+            ProductNamelabel.TabIndex = 52;
+            ProductNamelabel.Text = "Product Name";
+            // 
+            // cmbStatus
+            // 
+            cmbStatus.FormattingEnabled = true;
+            cmbStatus.Items.AddRange(new object[] { "Under development", "", "In mass production", "", "Discontinued" });
+            cmbStatus.Location = new Point(521, 30);
+            cmbStatus.Name = "cmbStatus";
+            cmbStatus.Size = new Size(168, 23);
+            cmbStatus.TabIndex = 54;
+            cmbStatus.SelectedIndexChanged += cmbStatus_SelectedIndexChanged;
+            // 
+            // StatusTextBox
+            // 
+            StatusTextBox.Location = new Point(102, 197);
+            StatusTextBox.Name = "StatusTextBox";
+            StatusTextBox.Size = new Size(100, 23);
+            StatusTextBox.TabIndex = 6;
+            // 
+            // RaDStatuslabel
+            // 
+            RaDStatuslabel.AutoSize = true;
+            RaDStatuslabel.Location = new Point(16, 197);
+            RaDStatuslabel.Name = "RaDStatuslabel";
+            RaDStatuslabel.Size = new Size(41, 15);
+            RaDStatuslabel.TabIndex = 5;
+            RaDStatuslabel.Text = "Status";
+            // 
+            // ProductNumberlabel
+            // 
+            ProductNumberlabel.AutoSize = true;
+            ProductNumberlabel.Location = new Point(198, 12);
+            ProductNumberlabel.Name = "ProductNumberlabel";
+            ProductNumberlabel.Size = new Size(101, 15);
+            ProductNumberlabel.TabIndex = 55;
+            ProductNumberlabel.Text = "Product Number";
+            // 
+            // RequirementTextBox
+            // 
+            RequirementTextBox.Location = new Point(102, 163);
+            RequirementTextBox.Name = "RequirementTextBox";
+            RequirementTextBox.Size = new Size(100, 23);
+            RequirementTextBox.TabIndex = 4;
+            RequirementTextBox.TextChanged += RequirementTextBox_TextChanged;
+            // 
+            // Requirementlabel
+            // 
+            Requirementlabel.AutoSize = true;
+            Requirementlabel.Location = new Point(16, 166);
+            Requirementlabel.Name = "Requirementlabel";
+            Requirementlabel.Size = new Size(80, 15);
+            Requirementlabel.TabIndex = 3;
+            Requirementlabel.Text = "Requirement";
+            // 
+            // cmbProject
+            // 
+            cmbProject.FormattingEnabled = true;
+            cmbProject.Location = new Point(9, 85);
+            cmbProject.Name = "cmbProject";
+            cmbProject.Size = new Size(680, 23);
+            cmbProject.TabIndex = 61;
+            // 
+            // CustomerTextBox
+            // 
+            CustomerTextBox.Location = new Point(275, 131);
+            CustomerTextBox.Name = "CustomerTextBox";
+            CustomerTextBox.Size = new Size(100, 23);
+            CustomerTextBox.TabIndex = 2;
+            // 
+            // Customerlabel
+            // 
+            Customerlabel.AutoSize = true;
+            Customerlabel.Location = new Point(208, 134);
+            Customerlabel.Name = "Customerlabel";
+            Customerlabel.Size = new Size(61, 15);
+            Customerlabel.TabIndex = 1;
+            Customerlabel.Text = "Customer";
+            // 
+            // txtProductCode
+            // 
+            txtProductCode.Location = new Point(202, 30);
+            txtProductCode.Name = "txtProductCode";
+            txtProductCode.Size = new Size(131, 23);
+            txtProductCode.TabIndex = 56;
+            // 
+            // ProjectNamelabel
+            // 
+            ProjectNamelabel.AutoSize = true;
+            ProjectNamelabel.Location = new Point(16, 134);
+            ProjectNamelabel.Name = "ProjectNamelabel";
+            ProjectNamelabel.Size = new Size(84, 15);
+            ProjectNamelabel.TabIndex = 0;
+            ProjectNamelabel.Text = "Project Name";
+            // 
+            // txtMOQ
+            // 
+            txtMOQ.Location = new Point(375, 30);
+            txtMOQ.Name = "txtMOQ";
+            txtMOQ.Size = new Size(97, 23);
+            txtMOQ.TabIndex = 58;
+            // 
+            // Projectlabel
+            // 
+            Projectlabel.AutoSize = true;
+            Projectlabel.Location = new Point(6, 67);
+            Projectlabel.Name = "Projectlabel";
+            Projectlabel.Size = new Size(46, 15);
+            Projectlabel.TabIndex = 60;
+            Projectlabel.Text = "Project";
+            // 
+            // Statuslabel
+            // 
+            Statuslabel.AutoSize = true;
+            Statuslabel.Location = new Point(518, 12);
+            Statuslabel.Name = "Statuslabel";
+            Statuslabel.Size = new Size(41, 15);
+            Statuslabel.TabIndex = 59;
+            Statuslabel.Text = "Status";
+            // 
+            // MOQlabel
+            // 
+            MOQlabel.AutoSize = true;
+            MOQlabel.Location = new Point(372, 12);
+            MOQlabel.Name = "MOQlabel";
+            MOQlabel.Size = new Size(39, 15);
+            MOQlabel.TabIndex = 57;
+            MOQlabel.Text = "MOQ";
+            // 
             // btnSave
             // 
             btnSave.Location = new Point(797, 811);
@@ -774,124 +891,7 @@
             label2.TabIndex = 63;
             label2.Text = "Department :";
             // 
-            // panel2
-            // 
-            panel2.Controls.Add(WarrantySupportTextBox);
-            panel2.Controls.Add(UserGuideTextBox);
-            panel2.Controls.Add(ComplianceStandardsTextBox);
-            panel2.Controls.Add(FunctionalDescriptionTextBox);
-            panel2.Controls.Add(ColorTextBox);
-            panel2.Controls.Add(SizeTextBox);
-            panel2.Controls.Add(label7);
-            panel2.Controls.Add(label6);
-            panel2.Controls.Add(label5);
-            panel2.Controls.Add(label4);
-            panel2.Controls.Add(label3);
-            panel2.Controls.Add(label1);
-            panel2.Location = new Point(0, 0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(788, 471);
-            panel2.TabIndex = 0;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(9, 14);
-            label1.Name = "label1";
-            label1.Size = new Size(33, 15);
-            label1.TabIndex = 0;
-            label1.Text = "Size:";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(156, 14);
-            label3.Name = "label3";
-            label3.Size = new Size(41, 15);
-            label3.TabIndex = 1;
-            label3.Text = "Color:";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.ImageAlign = ContentAlignment.MiddleRight;
-            label4.Location = new Point(9, 55);
-            label4.Name = "label4";
-            label4.Size = new Size(135, 15);
-            label4.TabIndex = 2;
-            label4.Text = "Functional Description:";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(9, 110);
-            label5.Name = "label5";
-            label5.Size = new Size(138, 15);
-            label5.TabIndex = 3;
-            label5.Text = "Compliance Standards:";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(9, 155);
-            label6.Name = "label6";
-            label6.Size = new Size(72, 15);
-            label6.TabIndex = 4;
-            label6.Text = "User Guide:";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(9, 199);
-            label7.Name = "label7";
-            label7.Size = new Size(110, 15);
-            label7.TabIndex = 5;
-            label7.Text = "Warranty Support:";
-            // 
-            // SizeTextBox
-            // 
-            SizeTextBox.Location = new Point(46, 11);
-            SizeTextBox.Name = "SizeTextBox";
-            SizeTextBox.Size = new Size(76, 23);
-            SizeTextBox.TabIndex = 6;
-            SizeTextBox.TextChanged += textBox1_TextChanged_1;
-            // 
-            // ColorTextBox
-            // 
-            ColorTextBox.Location = new Point(200, 9);
-            ColorTextBox.Name = "ColorTextBox";
-            ColorTextBox.Size = new Size(100, 23);
-            ColorTextBox.TabIndex = 7;
-            // 
-            // FunctionalDescriptionTextBox
-            // 
-            FunctionalDescriptionTextBox.Location = new Point(148, 52);
-            FunctionalDescriptionTextBox.Name = "FunctionalDescriptionTextBox";
-            FunctionalDescriptionTextBox.Size = new Size(459, 23);
-            FunctionalDescriptionTextBox.TabIndex = 8;
-            // 
-            // ComplianceStandardsTextBox
-            // 
-            ComplianceStandardsTextBox.Location = new Point(147, 106);
-            ComplianceStandardsTextBox.Name = "ComplianceStandardsTextBox";
-            ComplianceStandardsTextBox.Size = new Size(460, 23);
-            ComplianceStandardsTextBox.TabIndex = 9;
-            // 
-            // UserGuideTextBox
-            // 
-            UserGuideTextBox.Location = new Point(88, 151);
-            UserGuideTextBox.Name = "UserGuideTextBox";
-            UserGuideTextBox.Size = new Size(426, 23);
-            UserGuideTextBox.TabIndex = 10;
-            // 
-            // WarrantySupportTextBox
-            // 
-            WarrantySupportTextBox.Location = new Point(125, 196);
-            WarrantySupportTextBox.Name = "WarrantySupportTextBox";
-            WarrantySupportTextBox.Size = new Size(389, 23);
-            WarrantySupportTextBox.TabIndex = 11;
-            // 
-            // RaD_Form
+            // RnD_Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -910,15 +910,15 @@
             Controls.Add(UserNamelabel);
             Controls.Add(RaDUserPrifileButton);
             Controls.Add(pictureBox1);
-            Name = "RaD_Form";
-            Text = "RaD_Form";
+            Name = "RnD_Form";
+            Text = "RnD_Form";
             Load += RaD_Form_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvProductList).EndInit();
             tabProductDetail.ResumeLayout(false);
             ProductSpecificationsTabPage.ResumeLayout(false);
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             BillofMaterialsTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvMaterials).EndInit();
             ManufacturingInstructionsTabPage.ResumeLayout(false);
@@ -930,8 +930,8 @@
             ((System.ComponentModel.ISupportInitialize)dgvTesting).EndInit();
             ImageAttachmentsTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)ProductPictureBox).EndInit();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }

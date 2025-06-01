@@ -58,8 +58,16 @@ namespace C_Project
             // 定義檔案路徑
             string baseDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", ".."));
             string excelFilePath = Path.Combine(baseDirectory, "QuotationTemplate.xlsx"); // 替換為你的 Excel 檔案路徑
-            string excelPdfPath = Path.Combine(baseDirectory, "QuotationTemplateExcel.pdf"); // Excel 轉換後的 PDF 路徑
+            //string excelPdfPath = Path.Combine(baseDirectory, "QuotationTemplateExcel.pdf"); // Excel 轉換後的 PDF 路徑
 
+            string excelPdfPath = GetSaveFilePath("Save PDF", CustomerNameTextBox.Text + " - Quotation.pdf");
+            if (string.IsNullOrEmpty(excelPdfPath))
+            {
+                MessageBox.Show("Please Select PDF export location");
+                return;
+            }
+
+            Directory.CreateDirectory(Path.GetDirectoryName(excelPdfPath));
             // 轉換 Excel 檔案為 PDF
             ConvertExcelToPdf(excelFilePath, excelPdfPath);
         }
@@ -86,6 +94,10 @@ namespace C_Project
                 workbook.Close();
                 excelApp.Quit();
 
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(worksheet);
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(workbook);
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(excelApp);
+
                 MessageBox.Show($"Excel 檔案已轉換為 PDF: {pdfPath}", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
@@ -109,6 +121,20 @@ namespace C_Project
             worksheet.Cells[10, 6].Value = date;
             worksheet.Cells[12, 3].Value = contactPerson;
 
+        }
+
+        private string GetSaveFilePath(string title, string defaultFileName)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Title = title;
+                saveFileDialog.Filter = "PDF Files|*.pdf";
+                saveFileDialog.DefaultExt = "pdf";
+                saveFileDialog.FileName = defaultFileName;
+                saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); // 預設開啟我的文件
+
+                return saveFileDialog.ShowDialog() == DialogResult.OK ? saveFileDialog.FileName : null;
+            }
         }
     }
 }

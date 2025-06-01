@@ -372,6 +372,7 @@
             GenPDFButton.TabIndex = 4;
             GenPDFButton.Text = "Gen PDF";
             GenPDFButton.UseVisualStyleBackColor = true;
+            GenPDFButton.Click += this.genPDF_Click;
             // 
             // NewProductsButton
             // 

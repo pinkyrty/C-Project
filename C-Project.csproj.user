@@ -41,17 +41,5 @@
     <Compile Update="Sales&amp;MarketingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Sales&amp;MarketingForm.Designer_BACKUP_806.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Sales&amp;MarketingForm.Designer_BASE_806.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Sales&amp;MarketingForm.Designer_LOCAL_806.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Sales&amp;MarketingForm.Designer_REMOTE_806.cs">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
 </Project>

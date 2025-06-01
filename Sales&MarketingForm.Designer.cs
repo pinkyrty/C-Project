@@ -97,15 +97,6 @@
             label12 = new Label();
             label24 = new Label();
             dataGridView1 = new DataGridView();
-            label25 = new Label();
-            dateTimePicker3 = new DateTimePicker();
-            dateTimePicker4 = new DateTimePicker();
-            label26 = new Label();
-            WorkInstructionsTextBox = new TextBox();
-            dataGridView4 = new DataGridView();
-            FileUploadButton = new Button();
-            checkBox3 = new CheckBox();
-
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl.SuspendLayout();
             QuotationTabPage.SuspendLayout();
@@ -672,212 +663,6 @@
             NotesOrInstructionsTextBox.Name = "NotesOrInstructionsTextBox";
             NotesOrInstructionsTextBox.Size = new Size(111, 23);
             NotesOrInstructionsTextBox.TabIndex = 11;
-            label12.AutoSize = true;
-            label12.Location = new Point(6, 22);
-            label12.Name = "label12";
-            label12.Size = new Size(64, 15);
-            label12.TabIndex = 0;
-            label12.Text = "Order No.";
-            // 
-            // OrderNoTextBox
-            // 
-            OrderNoTextBox.Location = new Point(76, 18);
-            OrderNoTextBox.Name = "OrderNoTextBox";
-            OrderNoTextBox.Size = new Size(100, 23);
-            OrderNoTextBox.TabIndex = 1;
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Location = new Point(235, 22);
-            label13.Name = "label13";
-            label13.Size = new Size(34, 15);
-            label13.TabIndex = 2;
-            label13.Text = "Date";
-            // 
-            // dateTimePicker2
-            // 
-            dateTimePicker2.Location = new Point(352, 16);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(111, 23);
-            dateTimePicker2.TabIndex = 3;
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Location = new Point(6, 59);
-            label14.Name = "label14";
-            label14.Size = new Size(51, 15);
-            label14.TabIndex = 4;
-            label14.Text = "Product";
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(76, 58);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(100, 23);
-            comboBox1.TabIndex = 5;
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.Location = new Point(8, 98);
-            label15.Name = "label15";
-            label15.Size = new Size(55, 15);
-            label15.TabIndex = 6;
-            label15.Text = "Quantity";
-            // 
-            // comboBox2
-            // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(76, 98);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(100, 23);
-            comboBox2.TabIndex = 7;
-            // 
-            // NewProductsButton
-            // 
-            NewProductsButton.Location = new Point(8, 274);
-            NewProductsButton.Name = "NewProductsButton";
-            NewProductsButton.Size = new Size(118, 23);
-            NewProductsButton.TabIndex = 3;
-            NewProductsButton.Text = "＋New products";
-            NewProductsButton.UseVisualStyleBackColor = true;
-            // 
-            // GenPDFButton
-            // 
-            GenPDFButton.Location = new Point(132, 274);
-            GenPDFButton.Name = "GenPDFButton";
-            GenPDFButton.Size = new Size(75, 23);
-            GenPDFButton.TabIndex = 4;
-            GenPDFButton.Text = "Gen PDF";
-            GenPDFButton.UseVisualStyleBackColor = true;
-            GenPDFButton.Click += new System.EventHandler(this.genPDF_Click);
-            // 
-            // ResetButton
-            // 
-            ResetButton.Location = new Point(480, 545);
-            ResetButton.Name = "ResetButton";
-            ResetButton.Size = new Size(75, 23);
-            ResetButton.TabIndex = 5;
-            ResetButton.Text = "Reset";
-            ResetButton.UseVisualStyleBackColor = true;
-            // 
-            // SaveButton
-            // 
-            SaveButton.Location = new Point(387, 545);
-            SaveButton.Name = "SaveButton";
-            SaveButton.Size = new Size(75, 23);
-            SaveButton.TabIndex = 6;
-            SaveButton.Text = "Save";
-            SaveButton.UseVisualStyleBackColor = true;
-            // 
-            // CloseButton
-            // 
-            CloseButton.Location = new Point(570, 545);
-            CloseButton.Name = "CloseButton";
-            CloseButton.Size = new Size(75, 23);
-            CloseButton.TabIndex = 7;
-            CloseButton.Text = "Close";
-            CloseButton.UseVisualStyleBackColor = true;
-            // 
-            // label16
-            // 
-            label16.AutoSize = true;
-            label16.Location = new Point(8, 312);
-            label16.Name = "label16";
-            label16.Size = new Size(80, 15);
-            label16.TabIndex = 8;
-            label16.Text = "Delivery time";
-            // 
-            // DeliveryTimeTextBox
-            // 
-            DeliveryTimeTextBox.Location = new Point(103, 309);
-            DeliveryTimeTextBox.Name = "DeliveryTimeTextBox";
-            DeliveryTimeTextBox.Size = new Size(119, 23);
-            DeliveryTimeTextBox.TabIndex = 9;
-            // 
-            // label17
-            // 
-            label17.AutoSize = true;
-            label17.Location = new Point(270, 312);
-            label17.Name = "label17";
-            label17.Size = new Size(138, 15);
-            label17.TabIndex = 10;
-            label17.Text = "Transportation method";
-            // 
-            // TransportationMethodTextBox
-            // 
-            TransportationMethodTextBox.Location = new Point(414, 309);
-            TransportationMethodTextBox.Name = "TransportationMethodTextBox";
-            TransportationMethodTextBox.Size = new Size(141, 23);
-            TransportationMethodTextBox.TabIndex = 11;
-            // 
-            // label18
-            // 
-            label18.AutoSize = true;
-            label18.Location = new Point(6, 347);
-            label18.Name = "label18";
-            label18.Size = new Size(90, 15);
-            label18.TabIndex = 12;
-            label18.Text = "Payment terms";
-            // 
-            // PaymentTermsTextBox
-            // 
-            PaymentTermsTextBox.Location = new Point(103, 344);
-            PaymentTermsTextBox.Name = "PaymentTermsTextBox";
-            PaymentTermsTextBox.Size = new Size(119, 23);
-            PaymentTermsTextBox.TabIndex = 13;
-            // 
-            // label19
-            // 
-            label19.AutoSize = true;
-            label19.Location = new Point(270, 347);
-            label19.Name = "label19";
-            label19.Size = new Size(98, 15);
-            label19.TabIndex = 14;
-            label19.Text = "Discounts/offers";
-            // 
-            // DiscountsOrOffersTextBox
-            // 
-            DiscountsOrOffersTextBox.Location = new Point(414, 347);
-            DiscountsOrOffersTextBox.Name = "DiscountsOrOffersTextBox";
-            DiscountsOrOffersTextBox.Size = new Size(141, 23);
-            DiscountsOrOffersTextBox.TabIndex = 15;
-            // 
-            // label20
-            // 
-            label20.AutoSize = true;
-            label20.Location = new Point(8, 387);
-            label20.Name = "label20";
-            label20.Size = new Size(77, 15);
-            label20.TabIndex = 16;
-            label20.Text = "Notes/terms";
-            label20.Click += label20_Click;
-            // 
-            // NotesOrtermsTextBox
-            // 
-            NotesOrtermsTextBox.Location = new Point(102, 383);
-            NotesOrtermsTextBox.Name = "NotesOrtermsTextBox";
-            NotesOrtermsTextBox.Size = new Size(119, 23);
-            NotesOrtermsTextBox.TabIndex = 17;
-            // 
-            // label21
-            // 
-            label21.AutoSize = true;
-            label21.Location = new Point(235, 59);
-            label21.Name = "label21";
-            label21.Size = new Size(103, 15);
-            label21.TabIndex = 8;
-            label21.Text = "Reference Quote";
-            // 
-            // ReferenceQuoteTextBox
-            // 
-            ReferenceQuoteTextBox.Location = new Point(352, 56);
-            ReferenceQuoteTextBox.Name = "ReferenceQuoteTextBox";
-            ReferenceQuoteTextBox.Size = new Size(111, 23);
-            ReferenceQuoteTextBox.TabIndex = 9;
             // 
             // label22
             // 
@@ -981,76 +766,11 @@
             // 
             // dataGridView1
             // 
-
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(3, 371);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(683, 142);
             dataGridView1.TabIndex = 13;
-
-            label25.AutoSize = true;
-            label25.Location = new Point(220, 12);
-            label25.Name = "label25";
-            label25.Size = new Size(128, 15);
-            label25.TabIndex = 1;
-            label25.Text = "Expected completion";
-            // 
-            // dateTimePicker3
-            // 
-            dateTimePicker3.Location = new Point(96, 7);
-            dateTimePicker3.Name = "dateTimePicker3";
-            dateTimePicker3.Size = new Size(112, 23);
-            dateTimePicker3.TabIndex = 2;
-            // 
-            // dateTimePicker4
-            // 
-            dateTimePicker4.Location = new Point(356, 7);
-            dateTimePicker4.Name = "dateTimePicker4";
-            dateTimePicker4.Size = new Size(131, 23);
-            dateTimePicker4.TabIndex = 3;
-            // 
-            // label26
-            // 
-            label26.AutoSize = true;
-            label26.Location = new Point(3, 46);
-            label26.Name = "label26";
-            label26.Size = new Size(103, 15);
-            label26.TabIndex = 4;
-            label26.Text = "Work instructions";
-            // 
-            // WorkInstructionsTextBox
-            // 
-            WorkInstructionsTextBox.Location = new Point(114, 45);
-            WorkInstructionsTextBox.Name = "WorkInstructionsTextBox";
-            WorkInstructionsTextBox.Size = new Size(411, 23);
-            WorkInstructionsTextBox.TabIndex = 5;
-            // 
-            // dataGridView4
-            // 
-            dataGridView4.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView4.Location = new Point(2, 4);
-            dataGridView4.Name = "dataGridView4";
-            dataGridView4.Size = new Size(629, 118);
-            dataGridView4.TabIndex = 0;
-            // 
-            // FileUploadButton
-            // 
-            FileUploadButton.Location = new Point(3, 124);
-            FileUploadButton.Name = "FileUploadButton";
-            FileUploadButton.Size = new Size(98, 23);
-            FileUploadButton.TabIndex = 1;
-            FileUploadButton.Text = "+ File Upload";
-            FileUploadButton.UseVisualStyleBackColor = true;
-            // checkBox3
-            // 
-            checkBox3.AutoSize = true;
-            checkBox3.Location = new Point(639, 361);
-            checkBox3.Name = "checkBox3";
-            checkBox3.Size = new Size(86, 19);
-            checkBox3.TabIndex = 36;
-            checkBox3.Text = "checkBox3";
-            checkBox3.UseVisualStyleBackColor = true;
-
             // 
             // Sales_MarketingForm
             // 
@@ -1060,37 +780,6 @@
             ClientSize = new Size(1062, 687);
             Controls.Add(tabControl);
             Controls.Add(RaDUserPrifileButton);
-            ClientSize = new Size(798, 526);
-            Controls.Add(checkBox3);
-            Controls.Add(button2);
-            Controls.Add(ResetButton);
-            Controls.Add(SubmitButton);
-            Controls.Add(SaveButton);
-            Controls.Add(CustomerAddressBox);
-            Controls.Add(label13);
-            Controls.Add(label12);
-            Controls.Add(PriceBox);
-            Controls.Add(label11);
-            Controls.Add(ProductName);
-            Controls.Add(label10);
-            Controls.Add(ProductCodeBox);
-            Controls.Add(label9);
-            Controls.Add(PONumber);
-            Controls.Add(label8);
-            Controls.Add(dateTimePicker1);
-            Controls.Add(label7);
-            Controls.Add(CustomerAddressButton);
-            Controls.Add(label6);
-            Controls.Add(CustomerContactBox);
-            Controls.Add(label5);
-            Controls.Add(QuotationNameberBox);
-            Controls.Add(label4);
-            Controls.Add(QuotationNameber);
-            Controls.Add(label3);
-            Controls.Add(SearchButton);
-            Controls.Add(SearchBox);
-            Controls.Add(checkBox2);
-            Controls.Add(checkBox1);
             Controls.Add(Department);
             Controls.Add(label2);
             Controls.Add(UserName);
@@ -1196,17 +885,6 @@
         private Button button3;
         private Button button4;
         private Label label24;
-
         private DataGridView dataGridView1;
-
-        private TabPage DocumentManagementTabPage;
-        private Label label26;
-        private DateTimePicker dateTimePicker4;
-        private DateTimePicker dateTimePicker3;
-        private TextBox WorkInstructionsTextBox;
-        private Button FileUploadButton;
-        private DataGridView dataGridView4;
-        private CheckBox checkBox3;
-
     }
 }

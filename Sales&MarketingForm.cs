@@ -31,5 +31,20 @@ namespace C_Project
         {
 
         }
+
+        private void AddressTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label20_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label24_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

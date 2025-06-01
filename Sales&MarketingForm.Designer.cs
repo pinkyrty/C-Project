@@ -41,60 +41,62 @@
             dgvQuoteList = new DataGridView();
             AddNewOrdersButton = new Button();
             label3 = new Label();
+            NotesOrtermsTextBox = new TextBox();
+            label20 = new Label();
+            DiscountsOrOffersTextBox = new TextBox();
+            label19 = new Label();
+            PaymentTermsTextBox = new TextBox();
+            label18 = new Label();
+            TransportationMethodTextBox = new TextBox();
+            label17 = new Label();
+            DeliveryTimeTextBox = new TextBox();
+            label16 = new Label();
+            CloseButton = new Button();
+            SaveButton = new Button();
+            ResetButton = new Button();
+            GenPDFButton = new Button();
+            NewProductsButton = new Button();
+            label11 = new Label();
+            dataGridView2 = new DataGridView();
+            groupBox1 = new GroupBox();
+            TelephoneTextBox = new TextBox();
+            label10 = new Label();
+            ContactPersonTextBox = new TextBox();
+            label9 = new Label();
+            AddressTextBox = new TextBox();
+            label8 = new Label();
+            CustomerNameTextBox = new TextBox();
+            label7 = new Label();
+            label6 = new Label();
+            dateTimePicker1 = new DateTimePicker();
+            QuoteNumberTextBox = new TextBox();
+            label5 = new Label();
             ProductionorderTabPage = new TabPage();
             splitContainer2 = new SplitContainer();
             dgvProdOrderList = new DataGridView();
             button1 = new Button();
             label4 = new Label();
-            groupBox1 = new GroupBox();
-            label5 = new Label();
-            QuoteNumberTextBox = new TextBox();
-            dateTimePicker1 = new DateTimePicker();
-            label6 = new Label();
-            label7 = new Label();
-            CustomerNameTextBox = new TextBox();
-            label8 = new Label();
-            AddressTextBox = new TextBox();
-            label9 = new Label();
-            ContactPersonTextBox = new TextBox();
-            label10 = new Label();
-            TelephoneTextBox = new TextBox();
-            dataGridView2 = new DataGridView();
-            label11 = new Label();
-            groupBox2 = new GroupBox();
-            label12 = new Label();
-            OrderNoTextBox = new TextBox();
-            label13 = new Label();
-            dateTimePicker2 = new DateTimePicker();
-            label14 = new Label();
-            comboBox1 = new ComboBox();
-            label15 = new Label();
-            comboBox2 = new ComboBox();
-            NewProductsButton = new Button();
-            GenPDFButton = new Button();
-            ResetButton = new Button();
-            SaveButton = new Button();
-            CloseButton = new Button();
-            label16 = new Label();
-            DeliveryTimeTextBox = new TextBox();
-            label17 = new Label();
-            TransportationMethodTextBox = new TextBox();
-            label18 = new Label();
-            PaymentTermsTextBox = new TextBox();
-            label19 = new Label();
-            DiscountsOrOffersTextBox = new TextBox();
-            label20 = new Label();
-            NotesOrtermsTextBox = new TextBox();
-            label21 = new Label();
-            ReferenceQuoteTextBox = new TextBox();
-            label22 = new Label();
-            NotesOrInstructionsTextBox = new TextBox();
-            dataGridView3 = new DataGridView();
-            label23 = new Label();
-            NewMaterialsButton = new Button();
             button2 = new Button();
             button3 = new Button();
             button4 = new Button();
+            NewMaterialsButton = new Button();
+            label23 = new Label();
+            dataGridView3 = new DataGridView();
+            groupBox2 = new GroupBox();
+            NotesOrInstructionsTextBox = new TextBox();
+            label22 = new Label();
+            ReferenceQuoteTextBox = new TextBox();
+            label21 = new Label();
+            comboBox2 = new ComboBox();
+            label15 = new Label();
+            comboBox1 = new ComboBox();
+            label14 = new Label();
+            dateTimePicker2 = new DateTimePicker();
+            label13 = new Label();
+            OrderNoTextBox = new TextBox();
+            label12 = new Label();
+            label24 = new Label();
+            dataGridView1 = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl.SuspendLayout();
             QuotationTabPage.SuspendLayout();
@@ -103,16 +105,17 @@
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvQuoteList).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            groupBox1.SuspendLayout();
             ProductionorderTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
             splitContainer2.Panel1.SuspendLayout();
             splitContainer2.Panel2.SuspendLayout();
             splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProdOrderList).BeginInit();
-            groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
-            groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
+            groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
@@ -162,7 +165,7 @@
             // RaDUserPrifileButton
             // 
             RaDUserPrifileButton.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
-            RaDUserPrifileButton.Location = new Point(879, 12);
+            RaDUserPrifileButton.Location = new Point(997, 12);
             RaDUserPrifileButton.Name = "RaDUserPrifileButton";
             RaDUserPrifileButton.Size = new Size(59, 38);
             RaDUserPrifileButton.TabIndex = 34;
@@ -176,7 +179,7 @@
             tabControl.Location = new Point(12, 106);
             tabControl.Name = "tabControl";
             tabControl.SelectedIndex = 0;
-            tabControl.Size = new Size(979, 496);
+            tabControl.Size = new Size(1051, 581);
             tabControl.TabIndex = 35;
             // 
             // QuotationTabPage
@@ -185,7 +188,7 @@
             QuotationTabPage.Location = new Point(4, 24);
             QuotationTabPage.Name = "QuotationTabPage";
             QuotationTabPage.Padding = new Padding(3);
-            QuotationTabPage.Size = new Size(971, 468);
+            QuotationTabPage.Size = new Size(1043, 553);
             QuotationTabPage.TabIndex = 0;
             QuotationTabPage.Text = "Quotation";
             QuotationTabPage.UseVisualStyleBackColor = true;
@@ -223,8 +226,8 @@
             splitContainer1.Panel2.Controls.Add(label11);
             splitContainer1.Panel2.Controls.Add(dataGridView2);
             splitContainer1.Panel2.Controls.Add(groupBox1);
-            splitContainer1.Size = new Size(965, 462);
-            splitContainer1.SplitterDistance = 321;
+            splitContainer1.Size = new Size(1037, 547);
+            splitContainer1.SplitterDistance = 344;
             splitContainer1.TabIndex = 0;
             // 
             // dgvQuoteList
@@ -253,13 +256,275 @@
             label3.TabIndex = 0;
             label3.Text = "Production Order Overview";
             // 
+            // NotesOrtermsTextBox
+            // 
+            NotesOrtermsTextBox.Location = new Point(102, 383);
+            NotesOrtermsTextBox.Name = "NotesOrtermsTextBox";
+            NotesOrtermsTextBox.Size = new Size(119, 23);
+            NotesOrtermsTextBox.TabIndex = 17;
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Location = new Point(8, 387);
+            label20.Name = "label20";
+            label20.Size = new Size(77, 15);
+            label20.TabIndex = 16;
+            label20.Text = "Notes/terms";
+            label20.Click += label20_Click;
+            // 
+            // DiscountsOrOffersTextBox
+            // 
+            DiscountsOrOffersTextBox.Location = new Point(414, 347);
+            DiscountsOrOffersTextBox.Name = "DiscountsOrOffersTextBox";
+            DiscountsOrOffersTextBox.Size = new Size(141, 23);
+            DiscountsOrOffersTextBox.TabIndex = 15;
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Location = new Point(270, 347);
+            label19.Name = "label19";
+            label19.Size = new Size(98, 15);
+            label19.TabIndex = 14;
+            label19.Text = "Discounts/offers";
+            // 
+            // PaymentTermsTextBox
+            // 
+            PaymentTermsTextBox.Location = new Point(103, 344);
+            PaymentTermsTextBox.Name = "PaymentTermsTextBox";
+            PaymentTermsTextBox.Size = new Size(119, 23);
+            PaymentTermsTextBox.TabIndex = 13;
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Location = new Point(6, 347);
+            label18.Name = "label18";
+            label18.Size = new Size(90, 15);
+            label18.TabIndex = 12;
+            label18.Text = "Payment terms";
+            // 
+            // TransportationMethodTextBox
+            // 
+            TransportationMethodTextBox.Location = new Point(414, 309);
+            TransportationMethodTextBox.Name = "TransportationMethodTextBox";
+            TransportationMethodTextBox.Size = new Size(141, 23);
+            TransportationMethodTextBox.TabIndex = 11;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new Point(270, 312);
+            label17.Name = "label17";
+            label17.Size = new Size(138, 15);
+            label17.TabIndex = 10;
+            label17.Text = "Transportation method";
+            // 
+            // DeliveryTimeTextBox
+            // 
+            DeliveryTimeTextBox.Location = new Point(103, 309);
+            DeliveryTimeTextBox.Name = "DeliveryTimeTextBox";
+            DeliveryTimeTextBox.Size = new Size(119, 23);
+            DeliveryTimeTextBox.TabIndex = 9;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new Point(8, 312);
+            label16.Name = "label16";
+            label16.Size = new Size(80, 15);
+            label16.TabIndex = 8;
+            label16.Text = "Delivery time";
+            // 
+            // CloseButton
+            // 
+            CloseButton.Location = new Point(608, 521);
+            CloseButton.Name = "CloseButton";
+            CloseButton.Size = new Size(75, 23);
+            CloseButton.TabIndex = 7;
+            CloseButton.Text = "Close";
+            CloseButton.UseVisualStyleBackColor = true;
+            // 
+            // SaveButton
+            // 
+            SaveButton.Location = new Point(437, 521);
+            SaveButton.Name = "SaveButton";
+            SaveButton.Size = new Size(75, 23);
+            SaveButton.TabIndex = 6;
+            SaveButton.Text = "Save";
+            SaveButton.UseVisualStyleBackColor = true;
+            // 
+            // ResetButton
+            // 
+            ResetButton.Location = new Point(518, 521);
+            ResetButton.Name = "ResetButton";
+            ResetButton.Size = new Size(75, 23);
+            ResetButton.TabIndex = 5;
+            ResetButton.Text = "Reset";
+            ResetButton.UseVisualStyleBackColor = true;
+            // 
+            // GenPDFButton
+            // 
+            GenPDFButton.Location = new Point(132, 274);
+            GenPDFButton.Name = "GenPDFButton";
+            GenPDFButton.Size = new Size(75, 23);
+            GenPDFButton.TabIndex = 4;
+            GenPDFButton.Text = "Gen PDF";
+            GenPDFButton.UseVisualStyleBackColor = true;
+            // 
+            // NewProductsButton
+            // 
+            NewProductsButton.Location = new Point(8, 274);
+            NewProductsButton.Name = "NewProductsButton";
+            NewProductsButton.Size = new Size(118, 23);
+            NewProductsButton.TabIndex = 3;
+            NewProductsButton.Text = "＋New products";
+            NewProductsButton.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(11, 130);
+            label11.Name = "label11";
+            label11.Size = new Size(92, 15);
+            label11.TabIndex = 2;
+            label11.Text = "Product Details";
+            // 
+            // dataGridView2
+            // 
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Location = new Point(8, 149);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.Size = new Size(675, 119);
+            dataGridView2.TabIndex = 1;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(TelephoneTextBox);
+            groupBox1.Controls.Add(label10);
+            groupBox1.Controls.Add(ContactPersonTextBox);
+            groupBox1.Controls.Add(label9);
+            groupBox1.Controls.Add(AddressTextBox);
+            groupBox1.Controls.Add(label8);
+            groupBox1.Controls.Add(CustomerNameTextBox);
+            groupBox1.Controls.Add(label7);
+            groupBox1.Controls.Add(label6);
+            groupBox1.Controls.Add(dateTimePicker1);
+            groupBox1.Controls.Add(QuoteNumberTextBox);
+            groupBox1.Controls.Add(label5);
+            groupBox1.Location = new Point(8, 7);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(678, 120);
+            groupBox1.TabIndex = 0;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "groupBox1";
+            // 
+            // TelephoneTextBox
+            // 
+            TelephoneTextBox.Location = new Point(310, 86);
+            TelephoneTextBox.Name = "TelephoneTextBox";
+            TelephoneTextBox.Size = new Size(152, 23);
+            TelephoneTextBox.TabIndex = 11;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(243, 89);
+            label10.Name = "label10";
+            label10.Size = new Size(68, 15);
+            label10.TabIndex = 10;
+            label10.Text = "Telephone";
+            // 
+            // ContactPersonTextBox
+            // 
+            ContactPersonTextBox.Location = new Point(104, 86);
+            ContactPersonTextBox.Name = "ContactPersonTextBox";
+            ContactPersonTextBox.Size = new Size(101, 23);
+            ContactPersonTextBox.TabIndex = 9;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(6, 86);
+            label9.Name = "label9";
+            label9.Size = new Size(92, 15);
+            label9.TabIndex = 8;
+            label9.Text = "Contact Person";
+            // 
+            // AddressTextBox
+            // 
+            AddressTextBox.Location = new Point(310, 53);
+            AddressTextBox.Name = "AddressTextBox";
+            AddressTextBox.Size = new Size(152, 23);
+            AddressTextBox.TabIndex = 7;
+            AddressTextBox.TextChanged += AddressTextBox_TextChanged;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(243, 56);
+            label8.Name = "label8";
+            label8.Size = new Size(52, 15);
+            label8.TabIndex = 6;
+            label8.Text = "Address";
+            // 
+            // CustomerNameTextBox
+            // 
+            CustomerNameTextBox.Location = new Point(105, 52);
+            CustomerNameTextBox.Name = "CustomerNameTextBox";
+            CustomerNameTextBox.Size = new Size(100, 23);
+            CustomerNameTextBox.TabIndex = 5;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.ImageAlign = ContentAlignment.BottomLeft;
+            label7.Location = new Point(6, 56);
+            label7.Name = "label7";
+            label7.Size = new Size(99, 15);
+            label7.TabIndex = 4;
+            label7.Text = "Customer Name";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(243, 26);
+            label6.Name = "label6";
+            label6.Size = new Size(34, 15);
+            label6.TabIndex = 3;
+            label6.Text = "Date";
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Location = new Point(310, 23);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(152, 23);
+            dateTimePicker1.TabIndex = 2;
+            // 
+            // QuoteNumberTextBox
+            // 
+            QuoteNumberTextBox.Location = new Point(105, 23);
+            QuoteNumberTextBox.Name = "QuoteNumberTextBox";
+            QuoteNumberTextBox.Size = new Size(100, 23);
+            QuoteNumberTextBox.TabIndex = 1;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(6, 26);
+            label5.Name = "label5";
+            label5.Size = new Size(93, 15);
+            label5.TabIndex = 0;
+            label5.Text = "Quote Number";
+            // 
             // ProductionorderTabPage
             // 
             ProductionorderTabPage.Controls.Add(splitContainer2);
             ProductionorderTabPage.Location = new Point(4, 24);
             ProductionorderTabPage.Name = "ProductionorderTabPage";
             ProductionorderTabPage.Padding = new Padding(3);
-            ProductionorderTabPage.Size = new Size(971, 468);
+            ProductionorderTabPage.Size = new Size(1043, 553);
             ProductionorderTabPage.TabIndex = 1;
             ProductionorderTabPage.Text = "Production order";
             ProductionorderTabPage.UseVisualStyleBackColor = true;
@@ -278,6 +543,8 @@
             // 
             // splitContainer2.Panel2
             // 
+            splitContainer2.Panel2.Controls.Add(dataGridView1);
+            splitContainer2.Panel2.Controls.Add(label24);
             splitContainer2.Panel2.Controls.Add(button2);
             splitContainer2.Panel2.Controls.Add(button3);
             splitContainer2.Panel2.Controls.Add(button4);
@@ -285,8 +552,8 @@
             splitContainer2.Panel2.Controls.Add(label23);
             splitContainer2.Panel2.Controls.Add(dataGridView3);
             splitContainer2.Panel2.Controls.Add(groupBox2);
-            splitContainer2.Size = new Size(965, 462);
-            splitContainer2.SplitterDistance = 321;
+            splitContainer2.Size = new Size(1037, 547);
+            splitContainer2.SplitterDistance = 344;
             splitContainer2.TabIndex = 0;
             // 
             // dgvProdOrderList
@@ -316,141 +583,58 @@
             label4.TabIndex = 3;
             label4.Text = "Quotation Overview";
             // 
-            // groupBox1
+            // button2
             // 
-            groupBox1.Controls.Add(TelephoneTextBox);
-            groupBox1.Controls.Add(label10);
-            groupBox1.Controls.Add(ContactPersonTextBox);
-            groupBox1.Controls.Add(label9);
-            groupBox1.Controls.Add(AddressTextBox);
-            groupBox1.Controls.Add(label8);
-            groupBox1.Controls.Add(CustomerNameTextBox);
-            groupBox1.Controls.Add(label7);
-            groupBox1.Controls.Add(label6);
-            groupBox1.Controls.Add(dateTimePicker1);
-            groupBox1.Controls.Add(QuoteNumberTextBox);
-            groupBox1.Controls.Add(label5);
-            groupBox1.Location = new Point(8, 7);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(640, 120);
-            groupBox1.TabIndex = 0;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "groupBox1";
+            button2.Location = new Point(611, 519);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 10;
+            button2.Text = "Close";
+            button2.UseVisualStyleBackColor = true;
             // 
-            // label5
+            // button3
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(6, 26);
-            label5.Name = "label5";
-            label5.Size = new Size(93, 15);
-            label5.TabIndex = 0;
-            label5.Text = "Quote Number";
+            button3.Location = new Point(428, 519);
+            button3.Name = "button3";
+            button3.Size = new Size(75, 23);
+            button3.TabIndex = 9;
+            button3.Text = "Save";
+            button3.UseVisualStyleBackColor = true;
             // 
-            // QuoteNumberTextBox
+            // button4
             // 
-            QuoteNumberTextBox.Location = new Point(105, 23);
-            QuoteNumberTextBox.Name = "QuoteNumberTextBox";
-            QuoteNumberTextBox.Size = new Size(100, 23);
-            QuoteNumberTextBox.TabIndex = 1;
+            button4.Location = new Point(521, 519);
+            button4.Name = "button4";
+            button4.Size = new Size(75, 23);
+            button4.TabIndex = 8;
+            button4.Text = "Reset";
+            button4.UseVisualStyleBackColor = true;
             // 
-            // dateTimePicker1
+            // NewMaterialsButton
             // 
-            dateTimePicker1.Location = new Point(310, 23);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(152, 23);
-            dateTimePicker1.TabIndex = 2;
+            NewMaterialsButton.Location = new Point(3, 325);
+            NewMaterialsButton.Name = "NewMaterialsButton";
+            NewMaterialsButton.Size = new Size(118, 25);
+            NewMaterialsButton.TabIndex = 3;
+            NewMaterialsButton.Text = "+ New materials";
+            NewMaterialsButton.UseVisualStyleBackColor = true;
             // 
-            // label6
+            // label23
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(243, 26);
-            label6.Name = "label6";
-            label6.Size = new Size(34, 15);
-            label6.TabIndex = 3;
-            label6.Text = "Date";
+            label23.AutoSize = true;
+            label23.Location = new Point(3, 141);
+            label23.Name = "label23";
+            label23.Size = new Size(326, 15);
+            label23.TabIndex = 2;
+            label23.Text = "Material requirements (can add, delete/change quantity)";
             // 
-            // label7
+            // dataGridView3
             // 
-            label7.AutoSize = true;
-            label7.ImageAlign = ContentAlignment.BottomLeft;
-            label7.Location = new Point(6, 56);
-            label7.Name = "label7";
-            label7.Size = new Size(99, 15);
-            label7.TabIndex = 4;
-            label7.Text = "Customer Name";
-            // 
-            // CustomerNameTextBox
-            // 
-            CustomerNameTextBox.Location = new Point(105, 52);
-            CustomerNameTextBox.Name = "CustomerNameTextBox";
-            CustomerNameTextBox.Size = new Size(100, 23);
-            CustomerNameTextBox.TabIndex = 5;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(243, 56);
-            label8.Name = "label8";
-            label8.Size = new Size(52, 15);
-            label8.TabIndex = 6;
-            label8.Text = "Address";
-            // 
-            // AddressTextBox
-            // 
-            AddressTextBox.Location = new Point(310, 53);
-            AddressTextBox.Name = "AddressTextBox";
-            AddressTextBox.Size = new Size(152, 23);
-            AddressTextBox.TabIndex = 7;
-            AddressTextBox.TextChanged += AddressTextBox_TextChanged;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(6, 86);
-            label9.Name = "label9";
-            label9.Size = new Size(92, 15);
-            label9.TabIndex = 8;
-            label9.Text = "Contact Person";
-            // 
-            // ContactPersonTextBox
-            // 
-            ContactPersonTextBox.Location = new Point(104, 86);
-            ContactPersonTextBox.Name = "ContactPersonTextBox";
-            ContactPersonTextBox.Size = new Size(101, 23);
-            ContactPersonTextBox.TabIndex = 9;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(243, 89);
-            label10.Name = "label10";
-            label10.Size = new Size(68, 15);
-            label10.TabIndex = 10;
-            label10.Text = "Telephone";
-            // 
-            // TelephoneTextBox
-            // 
-            TelephoneTextBox.Location = new Point(310, 86);
-            TelephoneTextBox.Name = "TelephoneTextBox";
-            TelephoneTextBox.Size = new Size(152, 23);
-            TelephoneTextBox.TabIndex = 11;
-            // 
-            // dataGridView2
-            // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(8, 149);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(637, 119);
-            dataGridView2.TabIndex = 1;
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Location = new Point(11, 130);
-            label11.Name = "label11";
-            label11.Size = new Size(92, 15);
-            label11.TabIndex = 2;
-            label11.Text = "Product Details";
+            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView3.Location = new Point(3, 159);
+            dataGridView3.Name = "dataGridView3";
+            dataGridView3.Size = new Size(683, 162);
+            dataGridView3.TabIndex = 1;
             // 
             // groupBox2
             // 
@@ -468,218 +652,17 @@
             groupBox2.Controls.Add(label12);
             groupBox2.Location = new Point(3, 7);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(642, 131);
+            groupBox2.Size = new Size(683, 131);
             groupBox2.TabIndex = 0;
             groupBox2.TabStop = false;
             groupBox2.Text = "groupBox2";
             // 
-            // label12
+            // NotesOrInstructionsTextBox
             // 
-            label12.AutoSize = true;
-            label12.Location = new Point(6, 22);
-            label12.Name = "label12";
-            label12.Size = new Size(64, 15);
-            label12.TabIndex = 0;
-            label12.Text = "Order No.";
-            // 
-            // OrderNoTextBox
-            // 
-            OrderNoTextBox.Location = new Point(76, 18);
-            OrderNoTextBox.Name = "OrderNoTextBox";
-            OrderNoTextBox.Size = new Size(100, 23);
-            OrderNoTextBox.TabIndex = 1;
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Location = new Point(235, 22);
-            label13.Name = "label13";
-            label13.Size = new Size(34, 15);
-            label13.TabIndex = 2;
-            label13.Text = "Date";
-            // 
-            // dateTimePicker2
-            // 
-            dateTimePicker2.Location = new Point(352, 16);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(111, 23);
-            dateTimePicker2.TabIndex = 3;
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Location = new Point(6, 59);
-            label14.Name = "label14";
-            label14.Size = new Size(51, 15);
-            label14.TabIndex = 4;
-            label14.Text = "Product";
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(76, 58);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(100, 23);
-            comboBox1.TabIndex = 5;
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.Location = new Point(8, 98);
-            label15.Name = "label15";
-            label15.Size = new Size(55, 15);
-            label15.TabIndex = 6;
-            label15.Text = "Quantity";
-            // 
-            // comboBox2
-            // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(76, 98);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(100, 23);
-            comboBox2.TabIndex = 7;
-            // 
-            // NewProductsButton
-            // 
-            NewProductsButton.Location = new Point(8, 274);
-            NewProductsButton.Name = "NewProductsButton";
-            NewProductsButton.Size = new Size(118, 23);
-            NewProductsButton.TabIndex = 3;
-            NewProductsButton.Text = "＋New products";
-            NewProductsButton.UseVisualStyleBackColor = true;
-            // 
-            // GenPDFButton
-            // 
-            GenPDFButton.Location = new Point(132, 274);
-            GenPDFButton.Name = "GenPDFButton";
-            GenPDFButton.Size = new Size(75, 23);
-            GenPDFButton.TabIndex = 4;
-            GenPDFButton.Text = "Gen PDF";
-            GenPDFButton.UseVisualStyleBackColor = true;
-            // 
-            // ResetButton
-            // 
-            ResetButton.Location = new Point(469, 425);
-            ResetButton.Name = "ResetButton";
-            ResetButton.Size = new Size(75, 23);
-            ResetButton.TabIndex = 5;
-            ResetButton.Text = "Reset";
-            ResetButton.UseVisualStyleBackColor = true;
-            // 
-            // SaveButton
-            // 
-            SaveButton.Location = new Point(376, 425);
-            SaveButton.Name = "SaveButton";
-            SaveButton.Size = new Size(75, 23);
-            SaveButton.TabIndex = 6;
-            SaveButton.Text = "Save";
-            SaveButton.UseVisualStyleBackColor = true;
-            // 
-            // CloseButton
-            // 
-            CloseButton.Location = new Point(559, 425);
-            CloseButton.Name = "CloseButton";
-            CloseButton.Size = new Size(75, 23);
-            CloseButton.TabIndex = 7;
-            CloseButton.Text = "Close";
-            CloseButton.UseVisualStyleBackColor = true;
-            // 
-            // label16
-            // 
-            label16.AutoSize = true;
-            label16.Location = new Point(8, 312);
-            label16.Name = "label16";
-            label16.Size = new Size(80, 15);
-            label16.TabIndex = 8;
-            label16.Text = "Delivery time";
-            // 
-            // DeliveryTimeTextBox
-            // 
-            DeliveryTimeTextBox.Location = new Point(103, 309);
-            DeliveryTimeTextBox.Name = "DeliveryTimeTextBox";
-            DeliveryTimeTextBox.Size = new Size(119, 23);
-            DeliveryTimeTextBox.TabIndex = 9;
-            // 
-            // label17
-            // 
-            label17.AutoSize = true;
-            label17.Location = new Point(270, 312);
-            label17.Name = "label17";
-            label17.Size = new Size(138, 15);
-            label17.TabIndex = 10;
-            label17.Text = "Transportation method";
-            // 
-            // TransportationMethodTextBox
-            // 
-            TransportationMethodTextBox.Location = new Point(414, 309);
-            TransportationMethodTextBox.Name = "TransportationMethodTextBox";
-            TransportationMethodTextBox.Size = new Size(141, 23);
-            TransportationMethodTextBox.TabIndex = 11;
-            // 
-            // label18
-            // 
-            label18.AutoSize = true;
-            label18.Location = new Point(6, 347);
-            label18.Name = "label18";
-            label18.Size = new Size(90, 15);
-            label18.TabIndex = 12;
-            label18.Text = "Payment terms";
-            // 
-            // PaymentTermsTextBox
-            // 
-            PaymentTermsTextBox.Location = new Point(103, 344);
-            PaymentTermsTextBox.Name = "PaymentTermsTextBox";
-            PaymentTermsTextBox.Size = new Size(119, 23);
-            PaymentTermsTextBox.TabIndex = 13;
-            // 
-            // label19
-            // 
-            label19.AutoSize = true;
-            label19.Location = new Point(270, 347);
-            label19.Name = "label19";
-            label19.Size = new Size(98, 15);
-            label19.TabIndex = 14;
-            label19.Text = "Discounts/offers";
-            // 
-            // DiscountsOrOffersTextBox
-            // 
-            DiscountsOrOffersTextBox.Location = new Point(414, 347);
-            DiscountsOrOffersTextBox.Name = "DiscountsOrOffersTextBox";
-            DiscountsOrOffersTextBox.Size = new Size(141, 23);
-            DiscountsOrOffersTextBox.TabIndex = 15;
-            // 
-            // label20
-            // 
-            label20.AutoSize = true;
-            label20.Location = new Point(8, 387);
-            label20.Name = "label20";
-            label20.Size = new Size(77, 15);
-            label20.TabIndex = 16;
-            label20.Text = "Notes/terms";
-            label20.Click += label20_Click;
-            // 
-            // NotesOrtermsTextBox
-            // 
-            NotesOrtermsTextBox.Location = new Point(102, 383);
-            NotesOrtermsTextBox.Name = "NotesOrtermsTextBox";
-            NotesOrtermsTextBox.Size = new Size(119, 23);
-            NotesOrtermsTextBox.TabIndex = 17;
-            // 
-            // label21
-            // 
-            label21.AutoSize = true;
-            label21.Location = new Point(235, 59);
-            label21.Name = "label21";
-            label21.Size = new Size(103, 15);
-            label21.TabIndex = 8;
-            label21.Text = "Reference Quote";
-            // 
-            // ReferenceQuoteTextBox
-            // 
-            ReferenceQuoteTextBox.Location = new Point(352, 56);
-            ReferenceQuoteTextBox.Name = "ReferenceQuoteTextBox";
-            ReferenceQuoteTextBox.Size = new Size(111, 23);
-            ReferenceQuoteTextBox.TabIndex = 9;
+            NotesOrInstructionsTextBox.Location = new Point(352, 94);
+            NotesOrInstructionsTextBox.Name = "NotesOrInstructionsTextBox";
+            NotesOrInstructionsTextBox.Size = new Size(111, 23);
+            NotesOrInstructionsTextBox.TabIndex = 11;
             // 
             // label22
             // 
@@ -690,72 +673,111 @@
             label22.TabIndex = 10;
             label22.Text = "Notes/Instructions";
             // 
-            // NotesOrInstructionsTextBox
+            // ReferenceQuoteTextBox
             // 
-            NotesOrInstructionsTextBox.Location = new Point(352, 94);
-            NotesOrInstructionsTextBox.Name = "NotesOrInstructionsTextBox";
-            NotesOrInstructionsTextBox.Size = new Size(111, 23);
-            NotesOrInstructionsTextBox.TabIndex = 11;
+            ReferenceQuoteTextBox.Location = new Point(352, 56);
+            ReferenceQuoteTextBox.Name = "ReferenceQuoteTextBox";
+            ReferenceQuoteTextBox.Size = new Size(111, 23);
+            ReferenceQuoteTextBox.TabIndex = 9;
             // 
-            // dataGridView3
+            // label21
             // 
-            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Location = new Point(3, 159);
-            dataGridView3.Name = "dataGridView3";
-            dataGridView3.Size = new Size(645, 162);
-            dataGridView3.TabIndex = 1;
+            label21.AutoSize = true;
+            label21.Location = new Point(235, 59);
+            label21.Name = "label21";
+            label21.Size = new Size(103, 15);
+            label21.TabIndex = 8;
+            label21.Text = "Reference Quote";
             // 
-            // label23
+            // comboBox2
             // 
-            label23.AutoSize = true;
-            label23.Location = new Point(3, 141);
-            label23.Name = "label23";
-            label23.Size = new Size(326, 15);
-            label23.TabIndex = 2;
-            label23.Text = "Material requirements (can add, delete/change quantity)";
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Location = new Point(76, 98);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(100, 23);
+            comboBox2.TabIndex = 7;
             // 
-            // NewMaterialsButton
+            // label15
             // 
-            NewMaterialsButton.Location = new Point(3, 327);
-            NewMaterialsButton.Name = "NewMaterialsButton";
-            NewMaterialsButton.Size = new Size(118, 25);
-            NewMaterialsButton.TabIndex = 3;
-            NewMaterialsButton.Text = "+ New materials";
-            NewMaterialsButton.UseVisualStyleBackColor = true;
+            label15.AutoSize = true;
+            label15.Location = new Point(8, 98);
+            label15.Name = "label15";
+            label15.Size = new Size(55, 15);
+            label15.TabIndex = 6;
+            label15.Text = "Quantity";
             // 
-            // button2
+            // comboBox1
             // 
-            button2.Location = new Point(561, 432);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 10;
-            button2.Text = "Close";
-            button2.UseVisualStyleBackColor = true;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(76, 58);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(100, 23);
+            comboBox1.TabIndex = 5;
             // 
-            // button3
+            // label14
             // 
-            button3.Location = new Point(378, 432);
-            button3.Name = "button3";
-            button3.Size = new Size(75, 23);
-            button3.TabIndex = 9;
-            button3.Text = "Save";
-            button3.UseVisualStyleBackColor = true;
+            label14.AutoSize = true;
+            label14.Location = new Point(6, 59);
+            label14.Name = "label14";
+            label14.Size = new Size(51, 15);
+            label14.TabIndex = 4;
+            label14.Text = "Product";
             // 
-            // button4
+            // dateTimePicker2
             // 
-            button4.Location = new Point(471, 432);
-            button4.Name = "button4";
-            button4.Size = new Size(75, 23);
-            button4.TabIndex = 8;
-            button4.Text = "Reset";
-            button4.UseVisualStyleBackColor = true;
+            dateTimePicker2.Location = new Point(352, 16);
+            dateTimePicker2.Name = "dateTimePicker2";
+            dateTimePicker2.Size = new Size(111, 23);
+            dateTimePicker2.TabIndex = 3;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(235, 22);
+            label13.Name = "label13";
+            label13.Size = new Size(34, 15);
+            label13.TabIndex = 2;
+            label13.Text = "Date";
+            // 
+            // OrderNoTextBox
+            // 
+            OrderNoTextBox.Location = new Point(76, 18);
+            OrderNoTextBox.Name = "OrderNoTextBox";
+            OrderNoTextBox.Size = new Size(100, 23);
+            OrderNoTextBox.TabIndex = 1;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(6, 22);
+            label12.Name = "label12";
+            label12.Size = new Size(64, 15);
+            label12.TabIndex = 0;
+            label12.Text = "Order No.";
+            // 
+            // label24
+            // 
+            label24.AutoSize = true;
+            label24.Location = new Point(7, 353);
+            label24.Name = "label24";
+            label24.Size = new Size(106, 15);
+            label24.TabIndex = 12;
+            label24.Text = "File Management";
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(3, 371);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(683, 142);
+            dataGridView1.TabIndex = 13;
             // 
             // Sales_MarketingForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SlateGray;
-            ClientSize = new Size(992, 600);
+            ClientSize = new Size(1062, 687);
             Controls.Add(tabControl);
             Controls.Add(RaDUserPrifileButton);
             Controls.Add(Department);
@@ -775,6 +797,9 @@
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvQuoteList).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ProductionorderTabPage.ResumeLayout(false);
             splitContainer2.Panel1.ResumeLayout(false);
             splitContainer2.Panel1.PerformLayout();
@@ -783,12 +808,10 @@
             ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
             splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvProdOrderList).EndInit();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -861,5 +884,7 @@
         private Button button2;
         private Button button3;
         private Button button4;
+        private Label label24;
+        private DataGridView dataGridView1;
     }
 }

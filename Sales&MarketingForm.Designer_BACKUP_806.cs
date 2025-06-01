@@ -96,7 +96,9 @@
             OrderNoTextBox = new TextBox();
             label12 = new Label();
             label24 = new Label();
+<<<<<<< HEAD
             dataGridView1 = new DataGridView();
+=======
             label25 = new Label();
             dateTimePicker3 = new DateTimePicker();
             dateTimePicker4 = new DateTimePicker();
@@ -105,7 +107,7 @@
             dataGridView4 = new DataGridView();
             FileUploadButton = new Button();
             checkBox3 = new CheckBox();
-
+>>>>>>> b382f41 (PO Form, Logistic Form, Internal Transfer Form)
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl.SuspendLayout();
             QuotationTabPage.SuspendLayout();
@@ -775,13 +777,13 @@
             // 
             // dataGridView1
             // 
-
+<<<<<<< HEAD
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(3, 371);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(683, 142);
             dataGridView1.TabIndex = 13;
-
+=======
             label25.AutoSize = true;
             label25.Location = new Point(220, 12);
             label25.Name = "label25";
@@ -844,7 +846,7 @@
             checkBox3.TabIndex = 36;
             checkBox3.Text = "checkBox3";
             checkBox3.UseVisualStyleBackColor = true;
-
+>>>>>>> b382f41 (PO Form, Logistic Form, Internal Transfer Form)
             // 
             // Sales_MarketingForm
             // 
@@ -990,9 +992,9 @@
         private Button button3;
         private Button button4;
         private Label label24;
-
+<<<<<<< HEAD
         private DataGridView dataGridView1;
-
+=======
         private TabPage DocumentManagementTabPage;
         private Label label26;
         private DateTimePicker dateTimePicker4;
@@ -1001,6 +1003,6 @@
         private Button FileUploadButton;
         private DataGridView dataGridView4;
         private CheckBox checkBox3;
-
+>>>>>>> b382f41 (PO Form, Logistic Form, Internal Transfer Form)
     }
 }

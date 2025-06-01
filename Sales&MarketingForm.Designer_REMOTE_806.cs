@@ -1,0 +1,1069 @@
+﻿namespace C_Project
+{
+    partial class Sales_MarketingForm
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sales_MarketingForm));
+            pictureBox1 = new PictureBox();
+            label1 = new Label();
+            UserName = new Label();
+            label2 = new Label();
+            Department = new Label();
+            RaDUserPrifileButton = new Button();
+            tabControl = new TabControl();
+            QuotationTabPage = new TabPage();
+            splitContainer1 = new SplitContainer();
+            dgvQuoteList = new DataGridView();
+            AddNewOrdersButton = new Button();
+            label3 = new Label();
+            ProductionorderTabPage = new TabPage();
+            splitContainer2 = new SplitContainer();
+            dgvProdOrderList = new DataGridView();
+            button1 = new Button();
+            label4 = new Label();
+            groupBox1 = new GroupBox();
+            label5 = new Label();
+            QuoteNumberTextBox = new TextBox();
+            dateTimePicker1 = new DateTimePicker();
+            label6 = new Label();
+            label7 = new Label();
+            CustomerNameTextBox = new TextBox();
+            label8 = new Label();
+            AddressTextBox = new TextBox();
+            label9 = new Label();
+            ContactPersonTextBox = new TextBox();
+            label10 = new Label();
+            TelephoneTextBox = new TextBox();
+            dataGridView2 = new DataGridView();
+            label11 = new Label();
+            groupBox2 = new GroupBox();
+            label12 = new Label();
+            OrderNoTextBox = new TextBox();
+            label13 = new Label();
+            dateTimePicker2 = new DateTimePicker();
+            label14 = new Label();
+            comboBox1 = new ComboBox();
+            label15 = new Label();
+            comboBox2 = new ComboBox();
+            NewProductsButton = new Button();
+            GenPDFButton = new Button();
+            ResetButton = new Button();
+            SaveButton = new Button();
+            CloseButton = new Button();
+            label16 = new Label();
+            DeliveryTimeTextBox = new TextBox();
+            label17 = new Label();
+            TransportationMethodTextBox = new TextBox();
+            label18 = new Label();
+            PaymentTermsTextBox = new TextBox();
+            label19 = new Label();
+            DiscountsOrOffersTextBox = new TextBox();
+            label20 = new Label();
+            NotesOrtermsTextBox = new TextBox();
+            label21 = new Label();
+            ReferenceQuoteTextBox = new TextBox();
+            label22 = new Label();
+            NotesOrInstructionsTextBox = new TextBox();
+            dataGridView3 = new DataGridView();
+            label23 = new Label();
+            NewMaterialsButton = new Button();
+            tabControl1 = new TabControl();
+            ProcessAllocationTabPage = new TabPage();
+            ProductionPlanningTabPage = new TabPage();
+            button2 = new Button();
+            button3 = new Button();
+            button4 = new Button();
+            DocumentManagementTabPage = new TabPage();
+            dataGridView1 = new DataGridView();
+            label24 = new Label();
+            label25 = new Label();
+            dateTimePicker3 = new DateTimePicker();
+            dateTimePicker4 = new DateTimePicker();
+            label26 = new Label();
+            WorkInstructionsTextBox = new TextBox();
+            dataGridView4 = new DataGridView();
+            FileUploadButton = new Button();
+            checkBox3 = new CheckBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            tabControl.SuspendLayout();
+            QuotationTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
+            splitContainer1.Panel1.SuspendLayout();
+            splitContainer1.Panel2.SuspendLayout();
+            splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvQuoteList).BeginInit();
+            ProductionorderTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
+            splitContainer2.Panel1.SuspendLayout();
+            splitContainer2.Panel2.SuspendLayout();
+            splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvProdOrderList).BeginInit();
+            groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
+            tabControl1.SuspendLayout();
+            ProcessAllocationTabPage.SuspendLayout();
+            ProductionPlanningTabPage.SuspendLayout();
+            DocumentManagementTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView4).BeginInit();
+            SuspendLayout();
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(12, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(87, 83);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(105, 12);
+            label1.Name = "label1";
+            label1.Size = new Size(76, 15);
+            label1.TabIndex = 1;
+            label1.Text = "User Name :";
+            // 
+            // UserName
+            // 
+            UserName.AutoSize = true;
+            UserName.Location = new Point(177, 12);
+            UserName.Name = "UserName";
+            UserName.Size = new Size(0, 15);
+            UserName.TabIndex = 2;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(105, 38);
+            label2.Name = "label2";
+            label2.Size = new Size(81, 15);
+            label2.TabIndex = 3;
+            label2.Text = "Department :";
+            // 
+            // Department
+            // 
+            Department.AutoSize = true;
+            Department.Location = new Point(186, 38);
+            Department.Name = "Department";
+            Department.Size = new Size(0, 15);
+            Department.TabIndex = 4;
+            // 
+            // RaDUserPrifileButton
+            // 
+            RaDUserPrifileButton.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
+            RaDUserPrifileButton.Location = new Point(879, 12);
+            RaDUserPrifileButton.Name = "RaDUserPrifileButton";
+            RaDUserPrifileButton.Size = new Size(59, 38);
+            RaDUserPrifileButton.TabIndex = 34;
+            RaDUserPrifileButton.Text = "User Prifile";
+            RaDUserPrifileButton.UseVisualStyleBackColor = true;
+            // 
+            // tabControl
+            // 
+            tabControl.Controls.Add(QuotationTabPage);
+            tabControl.Controls.Add(ProductionorderTabPage);
+            tabControl.Location = new Point(12, 106);
+            tabControl.Name = "tabControl";
+            tabControl.SelectedIndex = 0;
+            tabControl.Size = new Size(991, 606);
+            tabControl.TabIndex = 35;
+            // 
+            // QuotationTabPage
+            // 
+            QuotationTabPage.Controls.Add(splitContainer1);
+            QuotationTabPage.Location = new Point(4, 24);
+            QuotationTabPage.Name = "QuotationTabPage";
+            QuotationTabPage.Padding = new Padding(3);
+            QuotationTabPage.Size = new Size(983, 578);
+            QuotationTabPage.TabIndex = 0;
+            QuotationTabPage.Text = "Quotation";
+            QuotationTabPage.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer1
+            // 
+            splitContainer1.Dock = DockStyle.Fill;
+            splitContainer1.Location = new Point(3, 3);
+            splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            splitContainer1.Panel1.Controls.Add(dgvQuoteList);
+            splitContainer1.Panel1.Controls.Add(AddNewOrdersButton);
+            splitContainer1.Panel1.Controls.Add(label3);
+            splitContainer1.Panel1.Paint += splitContainer1_Panel1_Paint;
+            // 
+            // splitContainer1.Panel2
+            // 
+            splitContainer1.Panel2.Controls.Add(NotesOrtermsTextBox);
+            splitContainer1.Panel2.Controls.Add(label20);
+            splitContainer1.Panel2.Controls.Add(DiscountsOrOffersTextBox);
+            splitContainer1.Panel2.Controls.Add(label19);
+            splitContainer1.Panel2.Controls.Add(PaymentTermsTextBox);
+            splitContainer1.Panel2.Controls.Add(label18);
+            splitContainer1.Panel2.Controls.Add(TransportationMethodTextBox);
+            splitContainer1.Panel2.Controls.Add(label17);
+            splitContainer1.Panel2.Controls.Add(DeliveryTimeTextBox);
+            splitContainer1.Panel2.Controls.Add(label16);
+            splitContainer1.Panel2.Controls.Add(CloseButton);
+            splitContainer1.Panel2.Controls.Add(SaveButton);
+            splitContainer1.Panel2.Controls.Add(ResetButton);
+            splitContainer1.Panel2.Controls.Add(GenPDFButton);
+            splitContainer1.Panel2.Controls.Add(NewProductsButton);
+            splitContainer1.Panel2.Controls.Add(label11);
+            splitContainer1.Panel2.Controls.Add(dataGridView2);
+            splitContainer1.Panel2.Controls.Add(groupBox1);
+            splitContainer1.Size = new Size(977, 572);
+            splitContainer1.SplitterDistance = 325;
+            splitContainer1.TabIndex = 0;
+            // 
+            // dgvQuoteList
+            // 
+            dgvQuoteList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvQuoteList.Location = new Point(4, 54);
+            dgvQuoteList.Name = "dgvQuoteList";
+            dgvQuoteList.Size = new Size(298, 138);
+            dgvQuoteList.TabIndex = 2;
+            // 
+            // AddNewOrdersButton
+            // 
+            AddNewOrdersButton.Location = new Point(4, 25);
+            AddNewOrdersButton.Name = "AddNewOrdersButton";
+            AddNewOrdersButton.Size = new Size(115, 23);
+            AddNewOrdersButton.TabIndex = 1;
+            AddNewOrdersButton.Text = "＋Add new orders";
+            AddNewOrdersButton.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(4, 5);
+            label3.Name = "label3";
+            label3.Size = new Size(160, 15);
+            label3.TabIndex = 0;
+            label3.Text = "Production Order Overview";
+            // 
+            // ProductionorderTabPage
+            // 
+            ProductionorderTabPage.Controls.Add(splitContainer2);
+            ProductionorderTabPage.Location = new Point(4, 24);
+            ProductionorderTabPage.Name = "ProductionorderTabPage";
+            ProductionorderTabPage.Padding = new Padding(3);
+            ProductionorderTabPage.Size = new Size(983, 578);
+            ProductionorderTabPage.TabIndex = 1;
+            ProductionorderTabPage.Text = "Production order";
+            ProductionorderTabPage.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer2
+            // 
+            splitContainer2.Dock = DockStyle.Fill;
+            splitContainer2.Location = new Point(3, 3);
+            splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            splitContainer2.Panel1.Controls.Add(dgvProdOrderList);
+            splitContainer2.Panel1.Controls.Add(button1);
+            splitContainer2.Panel1.Controls.Add(label4);
+            // 
+            // splitContainer2.Panel2
+            // 
+            splitContainer2.Panel2.Controls.Add(button2);
+            splitContainer2.Panel2.Controls.Add(button3);
+            splitContainer2.Panel2.Controls.Add(button4);
+            splitContainer2.Panel2.Controls.Add(tabControl1);
+            splitContainer2.Panel2.Controls.Add(NewMaterialsButton);
+            splitContainer2.Panel2.Controls.Add(label23);
+            splitContainer2.Panel2.Controls.Add(dataGridView3);
+            splitContainer2.Panel2.Controls.Add(groupBox2);
+            splitContainer2.Size = new Size(977, 572);
+            splitContainer2.SplitterDistance = 325;
+            splitContainer2.TabIndex = 0;
+            // 
+            // dgvProdOrderList
+            // 
+            dgvProdOrderList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProdOrderList.Location = new Point(4, 54);
+            dgvProdOrderList.Name = "dgvProdOrderList";
+            dgvProdOrderList.Size = new Size(298, 138);
+            dgvProdOrderList.TabIndex = 5;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(4, 25);
+            button1.Name = "button1";
+            button1.Size = new Size(158, 23);
+            button1.TabIndex = 4;
+            button1.Text = "+ Add a new quotation";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(4, 5);
+            label4.Name = "label4";
+            label4.Size = new Size(120, 15);
+            label4.TabIndex = 3;
+            label4.Text = "Quotation Overview";
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(TelephoneTextBox);
+            groupBox1.Controls.Add(label10);
+            groupBox1.Controls.Add(ContactPersonTextBox);
+            groupBox1.Controls.Add(label9);
+            groupBox1.Controls.Add(AddressTextBox);
+            groupBox1.Controls.Add(label8);
+            groupBox1.Controls.Add(CustomerNameTextBox);
+            groupBox1.Controls.Add(label7);
+            groupBox1.Controls.Add(label6);
+            groupBox1.Controls.Add(dateTimePicker1);
+            groupBox1.Controls.Add(QuoteNumberTextBox);
+            groupBox1.Controls.Add(label5);
+            groupBox1.Location = new Point(8, 7);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(640, 120);
+            groupBox1.TabIndex = 0;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "groupBox1";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(6, 26);
+            label5.Name = "label5";
+            label5.Size = new Size(93, 15);
+            label5.TabIndex = 0;
+            label5.Text = "Quote Number";
+            // 
+            // QuoteNumberTextBox
+            // 
+            QuoteNumberTextBox.Location = new Point(105, 23);
+            QuoteNumberTextBox.Name = "QuoteNumberTextBox";
+            QuoteNumberTextBox.Size = new Size(100, 23);
+            QuoteNumberTextBox.TabIndex = 1;
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Location = new Point(310, 23);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(152, 23);
+            dateTimePicker1.TabIndex = 2;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(243, 26);
+            label6.Name = "label6";
+            label6.Size = new Size(34, 15);
+            label6.TabIndex = 3;
+            label6.Text = "Date";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.ImageAlign = ContentAlignment.BottomLeft;
+            label7.Location = new Point(6, 56);
+            label7.Name = "label7";
+            label7.Size = new Size(99, 15);
+            label7.TabIndex = 4;
+            label7.Text = "Customer Name";
+            // 
+            // CustomerNameTextBox
+            // 
+            CustomerNameTextBox.Location = new Point(105, 52);
+            CustomerNameTextBox.Name = "CustomerNameTextBox";
+            CustomerNameTextBox.Size = new Size(100, 23);
+            CustomerNameTextBox.TabIndex = 5;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(243, 56);
+            label8.Name = "label8";
+            label8.Size = new Size(52, 15);
+            label8.TabIndex = 6;
+            label8.Text = "Address";
+            // 
+            // AddressTextBox
+            // 
+            AddressTextBox.Location = new Point(310, 53);
+            AddressTextBox.Name = "AddressTextBox";
+            AddressTextBox.Size = new Size(152, 23);
+            AddressTextBox.TabIndex = 7;
+            AddressTextBox.TextChanged += AddressTextBox_TextChanged;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(6, 86);
+            label9.Name = "label9";
+            label9.Size = new Size(92, 15);
+            label9.TabIndex = 8;
+            label9.Text = "Contact Person";
+            // 
+            // ContactPersonTextBox
+            // 
+            ContactPersonTextBox.Location = new Point(104, 86);
+            ContactPersonTextBox.Name = "ContactPersonTextBox";
+            ContactPersonTextBox.Size = new Size(101, 23);
+            ContactPersonTextBox.TabIndex = 9;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(243, 89);
+            label10.Name = "label10";
+            label10.Size = new Size(68, 15);
+            label10.TabIndex = 10;
+            label10.Text = "Telephone";
+            // 
+            // TelephoneTextBox
+            // 
+            TelephoneTextBox.Location = new Point(310, 86);
+            TelephoneTextBox.Name = "TelephoneTextBox";
+            TelephoneTextBox.Size = new Size(152, 23);
+            TelephoneTextBox.TabIndex = 11;
+            // 
+            // dataGridView2
+            // 
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Location = new Point(8, 149);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.Size = new Size(637, 119);
+            dataGridView2.TabIndex = 1;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(11, 130);
+            label11.Name = "label11";
+            label11.Size = new Size(92, 15);
+            label11.TabIndex = 2;
+            label11.Text = "Product Details";
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(NotesOrInstructionsTextBox);
+            groupBox2.Controls.Add(label22);
+            groupBox2.Controls.Add(ReferenceQuoteTextBox);
+            groupBox2.Controls.Add(label21);
+            groupBox2.Controls.Add(comboBox2);
+            groupBox2.Controls.Add(label15);
+            groupBox2.Controls.Add(comboBox1);
+            groupBox2.Controls.Add(label14);
+            groupBox2.Controls.Add(dateTimePicker2);
+            groupBox2.Controls.Add(label13);
+            groupBox2.Controls.Add(OrderNoTextBox);
+            groupBox2.Controls.Add(label12);
+            groupBox2.Location = new Point(3, 7);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(642, 131);
+            groupBox2.TabIndex = 0;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "groupBox2";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(6, 22);
+            label12.Name = "label12";
+            label12.Size = new Size(64, 15);
+            label12.TabIndex = 0;
+            label12.Text = "Order No.";
+            // 
+            // OrderNoTextBox
+            // 
+            OrderNoTextBox.Location = new Point(76, 18);
+            OrderNoTextBox.Name = "OrderNoTextBox";
+            OrderNoTextBox.Size = new Size(100, 23);
+            OrderNoTextBox.TabIndex = 1;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(235, 22);
+            label13.Name = "label13";
+            label13.Size = new Size(34, 15);
+            label13.TabIndex = 2;
+            label13.Text = "Date";
+            // 
+            // dateTimePicker2
+            // 
+            dateTimePicker2.Location = new Point(352, 16);
+            dateTimePicker2.Name = "dateTimePicker2";
+            dateTimePicker2.Size = new Size(111, 23);
+            dateTimePicker2.TabIndex = 3;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(6, 59);
+            label14.Name = "label14";
+            label14.Size = new Size(51, 15);
+            label14.TabIndex = 4;
+            label14.Text = "Product";
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(76, 58);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(100, 23);
+            comboBox1.TabIndex = 5;
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(8, 98);
+            label15.Name = "label15";
+            label15.Size = new Size(55, 15);
+            label15.TabIndex = 6;
+            label15.Text = "Quantity";
+            // 
+            // comboBox2
+            // 
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Location = new Point(76, 98);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(100, 23);
+            comboBox2.TabIndex = 7;
+            // 
+            // NewProductsButton
+            // 
+            NewProductsButton.Location = new Point(8, 274);
+            NewProductsButton.Name = "NewProductsButton";
+            NewProductsButton.Size = new Size(118, 23);
+            NewProductsButton.TabIndex = 3;
+            NewProductsButton.Text = "＋New products";
+            NewProductsButton.UseVisualStyleBackColor = true;
+            // 
+            // GenPDFButton
+            // 
+            GenPDFButton.Location = new Point(132, 274);
+            GenPDFButton.Name = "GenPDFButton";
+            GenPDFButton.Size = new Size(75, 23);
+            GenPDFButton.TabIndex = 4;
+            GenPDFButton.Text = "Gen PDF";
+            GenPDFButton.UseVisualStyleBackColor = true;
+            // 
+            // ResetButton
+            // 
+            ResetButton.Location = new Point(480, 545);
+            ResetButton.Name = "ResetButton";
+            ResetButton.Size = new Size(75, 23);
+            ResetButton.TabIndex = 5;
+            ResetButton.Text = "Reset";
+            ResetButton.UseVisualStyleBackColor = true;
+            // 
+            // SaveButton
+            // 
+            SaveButton.Location = new Point(387, 545);
+            SaveButton.Name = "SaveButton";
+            SaveButton.Size = new Size(75, 23);
+            SaveButton.TabIndex = 6;
+            SaveButton.Text = "Save";
+            SaveButton.UseVisualStyleBackColor = true;
+            // 
+            // CloseButton
+            // 
+            CloseButton.Location = new Point(570, 545);
+            CloseButton.Name = "CloseButton";
+            CloseButton.Size = new Size(75, 23);
+            CloseButton.TabIndex = 7;
+            CloseButton.Text = "Close";
+            CloseButton.UseVisualStyleBackColor = true;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new Point(8, 312);
+            label16.Name = "label16";
+            label16.Size = new Size(80, 15);
+            label16.TabIndex = 8;
+            label16.Text = "Delivery time";
+            // 
+            // DeliveryTimeTextBox
+            // 
+            DeliveryTimeTextBox.Location = new Point(103, 309);
+            DeliveryTimeTextBox.Name = "DeliveryTimeTextBox";
+            DeliveryTimeTextBox.Size = new Size(119, 23);
+            DeliveryTimeTextBox.TabIndex = 9;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new Point(270, 312);
+            label17.Name = "label17";
+            label17.Size = new Size(138, 15);
+            label17.TabIndex = 10;
+            label17.Text = "Transportation method";
+            // 
+            // TransportationMethodTextBox
+            // 
+            TransportationMethodTextBox.Location = new Point(414, 309);
+            TransportationMethodTextBox.Name = "TransportationMethodTextBox";
+            TransportationMethodTextBox.Size = new Size(141, 23);
+            TransportationMethodTextBox.TabIndex = 11;
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Location = new Point(6, 347);
+            label18.Name = "label18";
+            label18.Size = new Size(90, 15);
+            label18.TabIndex = 12;
+            label18.Text = "Payment terms";
+            // 
+            // PaymentTermsTextBox
+            // 
+            PaymentTermsTextBox.Location = new Point(103, 344);
+            PaymentTermsTextBox.Name = "PaymentTermsTextBox";
+            PaymentTermsTextBox.Size = new Size(119, 23);
+            PaymentTermsTextBox.TabIndex = 13;
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Location = new Point(270, 347);
+            label19.Name = "label19";
+            label19.Size = new Size(98, 15);
+            label19.TabIndex = 14;
+            label19.Text = "Discounts/offers";
+            // 
+            // DiscountsOrOffersTextBox
+            // 
+            DiscountsOrOffersTextBox.Location = new Point(414, 347);
+            DiscountsOrOffersTextBox.Name = "DiscountsOrOffersTextBox";
+            DiscountsOrOffersTextBox.Size = new Size(141, 23);
+            DiscountsOrOffersTextBox.TabIndex = 15;
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Location = new Point(8, 387);
+            label20.Name = "label20";
+            label20.Size = new Size(77, 15);
+            label20.TabIndex = 16;
+            label20.Text = "Notes/terms";
+            label20.Click += label20_Click;
+            // 
+            // NotesOrtermsTextBox
+            // 
+            NotesOrtermsTextBox.Location = new Point(102, 383);
+            NotesOrtermsTextBox.Name = "NotesOrtermsTextBox";
+            NotesOrtermsTextBox.Size = new Size(119, 23);
+            NotesOrtermsTextBox.TabIndex = 17;
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Location = new Point(235, 59);
+            label21.Name = "label21";
+            label21.Size = new Size(103, 15);
+            label21.TabIndex = 8;
+            label21.Text = "Reference Quote";
+            // 
+            // ReferenceQuoteTextBox
+            // 
+            ReferenceQuoteTextBox.Location = new Point(352, 56);
+            ReferenceQuoteTextBox.Name = "ReferenceQuoteTextBox";
+            ReferenceQuoteTextBox.Size = new Size(111, 23);
+            ReferenceQuoteTextBox.TabIndex = 9;
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.Location = new Point(235, 98);
+            label22.Name = "label22";
+            label22.Size = new Size(109, 15);
+            label22.TabIndex = 10;
+            label22.Text = "Notes/Instructions";
+            // 
+            // NotesOrInstructionsTextBox
+            // 
+            NotesOrInstructionsTextBox.Location = new Point(352, 94);
+            NotesOrInstructionsTextBox.Name = "NotesOrInstructionsTextBox";
+            NotesOrInstructionsTextBox.Size = new Size(111, 23);
+            NotesOrInstructionsTextBox.TabIndex = 11;
+            // 
+            // dataGridView3
+            // 
+            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView3.Location = new Point(3, 159);
+            dataGridView3.Name = "dataGridView3";
+            dataGridView3.Size = new Size(645, 162);
+            dataGridView3.TabIndex = 1;
+            // 
+            // label23
+            // 
+            label23.AutoSize = true;
+            label23.Location = new Point(3, 141);
+            label23.Name = "label23";
+            label23.Size = new Size(326, 15);
+            label23.TabIndex = 2;
+            label23.Text = "Material requirements (can add, delete/change quantity)";
+            // 
+            // NewMaterialsButton
+            // 
+            NewMaterialsButton.Location = new Point(3, 327);
+            NewMaterialsButton.Name = "NewMaterialsButton";
+            NewMaterialsButton.Size = new Size(118, 25);
+            NewMaterialsButton.TabIndex = 3;
+            NewMaterialsButton.Text = "+ New materials";
+            NewMaterialsButton.UseVisualStyleBackColor = true;
+            // 
+            // tabControl1
+            // 
+            tabControl1.Controls.Add(ProcessAllocationTabPage);
+            tabControl1.Controls.Add(ProductionPlanningTabPage);
+            tabControl1.Controls.Add(DocumentManagementTabPage);
+            tabControl1.Location = new Point(4, 361);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(641, 178);
+            tabControl1.TabIndex = 4;
+            // 
+            // ProcessAllocationTabPage
+            // 
+            ProcessAllocationTabPage.Controls.Add(dataGridView1);
+            ProcessAllocationTabPage.Location = new Point(4, 24);
+            ProcessAllocationTabPage.Name = "ProcessAllocationTabPage";
+            ProcessAllocationTabPage.Padding = new Padding(3);
+            ProcessAllocationTabPage.Size = new Size(633, 150);
+            ProcessAllocationTabPage.TabIndex = 0;
+            ProcessAllocationTabPage.Text = "Process allocation";
+            ProcessAllocationTabPage.UseVisualStyleBackColor = true;
+            // 
+            // ProductionPlanningTabPage
+            // 
+            ProductionPlanningTabPage.Controls.Add(WorkInstructionsTextBox);
+            ProductionPlanningTabPage.Controls.Add(label26);
+            ProductionPlanningTabPage.Controls.Add(dateTimePicker4);
+            ProductionPlanningTabPage.Controls.Add(dateTimePicker3);
+            ProductionPlanningTabPage.Controls.Add(label25);
+            ProductionPlanningTabPage.Controls.Add(label24);
+            ProductionPlanningTabPage.Location = new Point(4, 24);
+            ProductionPlanningTabPage.Name = "ProductionPlanningTabPage";
+            ProductionPlanningTabPage.Padding = new Padding(3);
+            ProductionPlanningTabPage.Size = new Size(633, 150);
+            ProductionPlanningTabPage.TabIndex = 1;
+            ProductionPlanningTabPage.Text = "Production planning";
+            ProductionPlanningTabPage.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(568, 545);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 10;
+            button2.Text = "Close";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(385, 545);
+            button3.Name = "button3";
+            button3.Size = new Size(75, 23);
+            button3.TabIndex = 9;
+            button3.Text = "Save";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            button4.Location = new Point(478, 545);
+            button4.Name = "button4";
+            button4.Size = new Size(75, 23);
+            button4.TabIndex = 8;
+            button4.Text = "Reset";
+            button4.UseVisualStyleBackColor = true;
+            // 
+            // DocumentManagementTabPage
+            // 
+            DocumentManagementTabPage.Controls.Add(FileUploadButton);
+            DocumentManagementTabPage.Controls.Add(dataGridView4);
+            DocumentManagementTabPage.Location = new Point(4, 24);
+            DocumentManagementTabPage.Name = "DocumentManagementTabPage";
+            DocumentManagementTabPage.Size = new Size(633, 150);
+            DocumentManagementTabPage.TabIndex = 2;
+            DocumentManagementTabPage.Text = "Document management";
+            DocumentManagementTabPage.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(2, 2);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(630, 150);
+            dataGridView1.TabIndex = 0;
+            // 
+            // label24
+            // 
+            label24.AutoSize = true;
+            label24.Location = new Point(3, 13);
+            label24.Name = "label24";
+            label24.Size = new Size(87, 15);
+            label24.TabIndex = 0;
+            label24.Text = "Expected start";
+            label24.Click += label24_Click;
+            // 
+            // label25
+            // 
+            label25.AutoSize = true;
+            label25.Location = new Point(220, 12);
+            label25.Name = "label25";
+            label25.Size = new Size(128, 15);
+            label25.TabIndex = 1;
+            label25.Text = "Expected completion";
+            // 
+            // dateTimePicker3
+            // 
+            dateTimePicker3.Location = new Point(96, 7);
+            dateTimePicker3.Name = "dateTimePicker3";
+            dateTimePicker3.Size = new Size(112, 23);
+            dateTimePicker3.TabIndex = 2;
+            // 
+            // dateTimePicker4
+            // 
+            dateTimePicker4.Location = new Point(356, 7);
+            dateTimePicker4.Name = "dateTimePicker4";
+            dateTimePicker4.Size = new Size(131, 23);
+            dateTimePicker4.TabIndex = 3;
+            // 
+            // label26
+            // 
+            label26.AutoSize = true;
+            label26.Location = new Point(3, 46);
+            label26.Name = "label26";
+            label26.Size = new Size(103, 15);
+            label26.TabIndex = 4;
+            label26.Text = "Work instructions";
+            // 
+            // WorkInstructionsTextBox
+            // 
+            WorkInstructionsTextBox.Location = new Point(114, 45);
+            WorkInstructionsTextBox.Name = "WorkInstructionsTextBox";
+            WorkInstructionsTextBox.Size = new Size(411, 23);
+            WorkInstructionsTextBox.TabIndex = 5;
+            // 
+            // dataGridView4
+            // 
+            dataGridView4.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView4.Location = new Point(2, 4);
+            dataGridView4.Name = "dataGridView4";
+            dataGridView4.Size = new Size(629, 118);
+            dataGridView4.TabIndex = 0;
+            // 
+            // FileUploadButton
+            // 
+            FileUploadButton.Location = new Point(3, 124);
+            FileUploadButton.Name = "FileUploadButton";
+            FileUploadButton.Size = new Size(98, 23);
+            FileUploadButton.TabIndex = 1;
+            FileUploadButton.Text = "+ File Upload";
+            FileUploadButton.UseVisualStyleBackColor = true;
+            // checkBox3
+            // 
+            checkBox3.AutoSize = true;
+            checkBox3.Location = new Point(639, 361);
+            checkBox3.Name = "checkBox3";
+            checkBox3.Size = new Size(86, 19);
+            checkBox3.TabIndex = 36;
+            checkBox3.Text = "checkBox3";
+            checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // Sales_MarketingForm
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.SlateGray;
+            ClientSize = new Size(1004, 713);
+            Controls.Add(tabControl);
+            Controls.Add(RaDUserPrifileButton);
+            ClientSize = new Size(798, 526);
+            Controls.Add(checkBox3);
+            Controls.Add(button2);
+            Controls.Add(ResetButton);
+            Controls.Add(SubmitButton);
+            Controls.Add(SaveButton);
+            Controls.Add(CustomerAddressBox);
+            Controls.Add(label13);
+            Controls.Add(label12);
+            Controls.Add(PriceBox);
+            Controls.Add(label11);
+            Controls.Add(ProductName);
+            Controls.Add(label10);
+            Controls.Add(ProductCodeBox);
+            Controls.Add(label9);
+            Controls.Add(PONumber);
+            Controls.Add(label8);
+            Controls.Add(dateTimePicker1);
+            Controls.Add(label7);
+            Controls.Add(CustomerAddressButton);
+            Controls.Add(label6);
+            Controls.Add(CustomerContactBox);
+            Controls.Add(label5);
+            Controls.Add(QuotationNameberBox);
+            Controls.Add(label4);
+            Controls.Add(QuotationNameber);
+            Controls.Add(label3);
+            Controls.Add(SearchButton);
+            Controls.Add(SearchBox);
+            Controls.Add(checkBox2);
+            Controls.Add(checkBox1);
+            Controls.Add(Department);
+            Controls.Add(label2);
+            Controls.Add(UserName);
+            Controls.Add(label1);
+            Controls.Add(pictureBox1);
+            Name = "Sales_MarketingForm";
+            Text = "Sales_MarketingForm";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            tabControl.ResumeLayout(false);
+            QuotationTabPage.ResumeLayout(false);
+            splitContainer1.Panel1.ResumeLayout(false);
+            splitContainer1.Panel1.PerformLayout();
+            splitContainer1.Panel2.ResumeLayout(false);
+            splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
+            splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvQuoteList).EndInit();
+            ProductionorderTabPage.ResumeLayout(false);
+            splitContainer2.Panel1.ResumeLayout(false);
+            splitContainer2.Panel1.PerformLayout();
+            splitContainer2.Panel2.ResumeLayout(false);
+            splitContainer2.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
+            splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvProdOrderList).EndInit();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
+            tabControl1.ResumeLayout(false);
+            ProcessAllocationTabPage.ResumeLayout(false);
+            ProductionPlanningTabPage.ResumeLayout(false);
+            ProductionPlanningTabPage.PerformLayout();
+            DocumentManagementTabPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView4).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
+        }
+
+        #endregion
+
+        private PictureBox pictureBox1;
+        private Label label1;
+        private Label UserName;
+        private Label label2;
+        private Label Department;
+        private Button RaDUserPrifileButton;
+        private TabControl tabControl;
+        private TabPage QuotationTabPage;
+        private SplitContainer splitContainer1;
+        private TabPage ProductionorderTabPage;
+        private SplitContainer splitContainer2;
+        private DataGridView dgvQuoteList;
+        private Button AddNewOrdersButton;
+        private Label label3;
+        private DataGridView dgvProdOrderList;
+        private Button button1;
+        private Label label4;
+        private GroupBox groupBox1;
+        private TextBox AddressTextBox;
+        private Label label8;
+        private TextBox CustomerNameTextBox;
+        private Label label7;
+        private Label label6;
+        private DateTimePicker dateTimePicker1;
+        private TextBox QuoteNumberTextBox;
+        private Label label5;
+        private Label label10;
+        private TextBox ContactPersonTextBox;
+        private Label label9;
+        private Label label11;
+        private DataGridView dataGridView2;
+        private TextBox TelephoneTextBox;
+        private GroupBox groupBox2;
+        private ComboBox comboBox1;
+        private Label label14;
+        private DateTimePicker dateTimePicker2;
+        private Label label13;
+        private TextBox OrderNoTextBox;
+        private Label label12;
+        private ComboBox comboBox2;
+        private Label label15;
+        private Label label16;
+        private Button CloseButton;
+        private Button SaveButton;
+        private Button ResetButton;
+        private Button GenPDFButton;
+        private Button NewProductsButton;
+        private Label label20;
+        private TextBox DiscountsOrOffersTextBox;
+        private Label label19;
+        private TextBox PaymentTermsTextBox;
+        private Label label18;
+        private TextBox TransportationMethodTextBox;
+        private Label label17;
+        private TextBox DeliveryTimeTextBox;
+        private TextBox NotesOrtermsTextBox;
+        private DataGridView dataGridView3;
+        private TextBox NotesOrInstructionsTextBox;
+        private Label label22;
+        private TextBox ReferenceQuoteTextBox;
+        private Label label21;
+        private Button NewMaterialsButton;
+        private Label label23;
+        private TabControl tabControl1;
+        private TabPage ProcessAllocationTabPage;
+        private TabPage ProductionPlanningTabPage;
+        private Button button2;
+        private Button button3;
+        private Button button4;
+        private DataGridView dataGridView1;
+        private Label label25;
+        private Label label24;
+        private TabPage DocumentManagementTabPage;
+        private Label label26;
+        private DateTimePicker dateTimePicker4;
+        private DateTimePicker dateTimePicker3;
+        private TextBox WorkInstructionsTextBox;
+        private Button FileUploadButton;
+        private DataGridView dataGridView4;
+        private CheckBox checkBox3;
+    }
+}

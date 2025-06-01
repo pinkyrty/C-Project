@@ -68,7 +68,7 @@ namespace C_Project
                     
                     break;
                 case "R&D":
-                    deptForm = new RaD_Form();
+                    deptForm = new RnD_Form();
                     break;
                 case "Sales_Marketing":
                     deptForm = new Sales_MarketingForm();

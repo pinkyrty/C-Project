@@ -32,6 +32,9 @@
     <Compile Update="ProductionOrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Quotation.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="R&amp;D_Form.cs">
       <SubType>Form</SubType>
     </Compile>

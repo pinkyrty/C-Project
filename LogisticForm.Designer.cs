@@ -92,6 +92,20 @@
             label1 = new Label();
             listBox1 = new ListBox();
             InternalTransferOrder = new TabPage();
+            textBox6 = new TextBox();
+            dateTimePicker3 = new DateTimePicker();
+            comboBox4 = new ComboBox();
+            comboBox2 = new ComboBox();
+            textBox5 = new TextBox();
+            textBox4 = new TextBox();
+            textBox3 = new TextBox();
+            label17 = new Label();
+            label16 = new Label();
+            label12 = new Label();
+            label11 = new Label();
+            label10 = new Label();
+            label9 = new Label();
+            label8 = new Label();
             textBox1 = new TextBox();
             button11 = new Button();
             button9 = new Button();
@@ -128,20 +142,6 @@
             SupplierRate = new DataGridViewTextBoxColumn();
             SupplierOperation = new DataGridViewButtonColumn();
             label15 = new Label();
-            label8 = new Label();
-            label9 = new Label();
-            label10 = new Label();
-            label11 = new Label();
-            label12 = new Label();
-            label16 = new Label();
-            label17 = new Label();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            comboBox2 = new ComboBox();
-            comboBox4 = new ComboBox();
-            dateTimePicker3 = new DateTimePicker();
-            textBox6 = new TextBox();
             label18 = new Label();
             label19 = new Label();
             textBox7 = new TextBox();
@@ -665,6 +665,120 @@
             InternalTransferOrder.Text = "internalTransferOrder";
             InternalTransferOrder.UseVisualStyleBackColor = true;
             // 
+            // textBox6
+            // 
+            textBox6.Location = new Point(132, 127);
+            textBox6.Name = "textBox6";
+            textBox6.Size = new Size(197, 23);
+            textBox6.TabIndex = 46;
+            // 
+            // dateTimePicker3
+            // 
+            dateTimePicker3.Location = new Point(104, 158);
+            dateTimePicker3.Name = "dateTimePicker3";
+            dateTimePicker3.Size = new Size(225, 23);
+            dateTimePicker3.TabIndex = 45;
+            // 
+            // comboBox4
+            // 
+            comboBox4.FormattingEnabled = true;
+            comboBox4.Location = new Point(444, 195);
+            comboBox4.Name = "comboBox4";
+            comboBox4.Size = new Size(215, 23);
+            comboBox4.TabIndex = 44;
+            // 
+            // comboBox2
+            // 
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Location = new Point(73, 195);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(256, 23);
+            comboBox2.TabIndex = 43;
+            // 
+            // textBox5
+            // 
+            textBox5.Location = new Point(114, 256);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(215, 23);
+            textBox5.TabIndex = 42;
+            // 
+            // textBox4
+            // 
+            textBox4.Location = new Point(444, 226);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(215, 23);
+            textBox4.TabIndex = 41;
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(182, 226);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(147, 23);
+            textBox3.TabIndex = 40;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new Point(15, 259);
+            label17.Name = "label17";
+            label17.Size = new Size(93, 15);
+            label17.TabIndex = 39;
+            label17.Text = "Manager Sign :";
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new Point(335, 229);
+            label16.Name = "label16";
+            label16.Size = new Size(103, 15);
+            label16.TabIndex = 38;
+            label16.Text = "Transfer Reason :";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(361, 198);
+            label12.Name = "label12";
+            label12.Size = new Size(77, 15);
+            label12.TabIndex = 37;
+            label12.Text = "Destination :";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(15, 229);
+            label11.Name = "label11";
+            label11.Size = new Size(161, 15);
+            label11.TabIndex = 36;
+            label11.Text = "Production Order Number :";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(15, 198);
+            label10.Name = "label10";
+            label10.Size = new Size(52, 15);
+            label10.TabIndex = 35;
+            label10.Text = "Source :";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(15, 164);
+            label9.Name = "label9";
+            label9.Size = new Size(83, 15);
+            label9.TabIndex = 34;
+            label9.Text = "Launch Date :";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(15, 130);
+            label8.Name = "label8";
+            label8.Size = new Size(111, 15);
+            label8.TabIndex = 33;
+            label8.Text = "Transfer Number : ";
+            // 
             // textBox1
             // 
             textBox1.Location = new Point(71, 472);
@@ -924,120 +1038,6 @@
             label15.TabIndex = 0;
             label15.Text = "Supplier Overview";
             // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(15, 130);
-            label8.Name = "label8";
-            label8.Size = new Size(111, 15);
-            label8.TabIndex = 33;
-            label8.Text = "Transfer Number : ";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(15, 164);
-            label9.Name = "label9";
-            label9.Size = new Size(83, 15);
-            label9.TabIndex = 34;
-            label9.Text = "Launch Date :";
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(15, 198);
-            label10.Name = "label10";
-            label10.Size = new Size(52, 15);
-            label10.TabIndex = 35;
-            label10.Text = "Source :";
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Location = new Point(15, 229);
-            label11.Name = "label11";
-            label11.Size = new Size(161, 15);
-            label11.TabIndex = 36;
-            label11.Text = "Production Order Number :";
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Location = new Point(361, 198);
-            label12.Name = "label12";
-            label12.Size = new Size(77, 15);
-            label12.TabIndex = 37;
-            label12.Text = "Destination :";
-            // 
-            // label16
-            // 
-            label16.AutoSize = true;
-            label16.Location = new Point(335, 229);
-            label16.Name = "label16";
-            label16.Size = new Size(103, 15);
-            label16.TabIndex = 38;
-            label16.Text = "Transfer Reason :";
-            // 
-            // label17
-            // 
-            label17.AutoSize = true;
-            label17.Location = new Point(15, 259);
-            label17.Name = "label17";
-            label17.Size = new Size(93, 15);
-            label17.TabIndex = 39;
-            label17.Text = "Manager Sign :";
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(182, 226);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(147, 23);
-            textBox3.TabIndex = 40;
-            // 
-            // textBox4
-            // 
-            textBox4.Location = new Point(444, 226);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(215, 23);
-            textBox4.TabIndex = 41;
-            // 
-            // textBox5
-            // 
-            textBox5.Location = new Point(114, 256);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(215, 23);
-            textBox5.TabIndex = 42;
-            // 
-            // comboBox2
-            // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(73, 195);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(256, 23);
-            comboBox2.TabIndex = 43;
-            // 
-            // comboBox4
-            // 
-            comboBox4.FormattingEnabled = true;
-            comboBox4.Location = new Point(444, 195);
-            comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(215, 23);
-            comboBox4.TabIndex = 44;
-            // 
-            // dateTimePicker3
-            // 
-            dateTimePicker3.Location = new Point(104, 158);
-            dateTimePicker3.Name = "dateTimePicker3";
-            dateTimePicker3.Size = new Size(225, 23);
-            dateTimePicker3.TabIndex = 45;
-            // 
-            // textBox6
-            // 
-            textBox6.Location = new Point(132, 127);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(197, 23);
-            textBox6.TabIndex = 46;
-            // 
             // label18
             // 
             label18.AutoSize = true;
@@ -1083,6 +1083,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.SlateGray;
             ClientSize = new Size(1134, 636);
             Controls.Add(button8);
             Controls.Add(textBox8);

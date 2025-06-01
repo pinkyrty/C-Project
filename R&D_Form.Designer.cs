@@ -139,7 +139,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(12, 12);
+            pictureBox1.Location = new Point(15, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(86, 79);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -160,7 +160,7 @@
             // UserNamelabel
             // 
             UserNamelabel.AutoSize = true;
-            UserNamelabel.Location = new Point(104, 24);
+            UserNamelabel.Location = new Point(107, 24);
             UserNamelabel.Name = "UserNamelabel";
             UserNamelabel.Size = new Size(76, 15);
             UserNamelabel.TabIndex = 46;
@@ -170,7 +170,7 @@
             // UserName
             // 
             UserName.AutoSize = true;
-            UserName.Location = new Point(176, 24);
+            UserName.Location = new Point(188, 24);
             UserName.Name = "UserName";
             UserName.Size = new Size(0, 15);
             UserName.TabIndex = 47;
@@ -178,7 +178,7 @@
             // Department
             // 
             Department.AutoSize = true;
-            Department.Location = new Point(176, 50);
+            Department.Location = new Point(194, 53);
             Department.Name = "Department";
             Department.Size = new Size(0, 15);
             Department.TabIndex = 48;
@@ -768,7 +768,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(104, 53);
+            label2.Location = new Point(107, 53);
             label2.Name = "label2";
             label2.Size = new Size(81, 15);
             label2.TabIndex = 63;

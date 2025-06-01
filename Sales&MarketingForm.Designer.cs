@@ -41,8 +41,11 @@
             splitContainer1 = new SplitContainer();
             splitContainer2 = new SplitContainer();
             label3 = new Label();
-            AddANewQuotationButton = new Button();
-            dgvQuoteList = new DataGridView();
+            AddNewOrdersButton = new Button();
+            dgvProdOrderList = new DataGridView();
+            dataGridView1 = new DataGridView();
+            button1 = new Button();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl.SuspendLayout();
             QuotationTabPage.SuspendLayout();
@@ -51,8 +54,10 @@
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
+            splitContainer2.Panel1.SuspendLayout();
             splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvQuoteList).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvProdOrderList).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
@@ -149,8 +154,8 @@
             // 
             // splitContainer1.Panel1
             // 
-            splitContainer1.Panel1.Controls.Add(dgvQuoteList);
-            splitContainer1.Panel1.Controls.Add(AddANewQuotationButton);
+            splitContainer1.Panel1.Controls.Add(dgvProdOrderList);
+            splitContainer1.Panel1.Controls.Add(AddNewOrdersButton);
             splitContainer1.Panel1.Controls.Add(label3);
             splitContainer1.Panel1.Paint += splitContainer1_Panel1_Paint;
             splitContainer1.Size = new Size(922, 494);
@@ -162,6 +167,12 @@
             splitContainer2.Dock = DockStyle.Fill;
             splitContainer2.Location = new Point(3, 3);
             splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            splitContainer2.Panel1.Controls.Add(dataGridView1);
+            splitContainer2.Panel1.Controls.Add(button1);
+            splitContainer2.Panel1.Controls.Add(label4);
             splitContainer2.Size = new Size(922, 494);
             splitContainer2.SplitterDistance = 307;
             splitContainer2.TabIndex = 0;
@@ -171,26 +182,52 @@
             label3.AutoSize = true;
             label3.Location = new Point(4, 5);
             label3.Name = "label3";
-            label3.Size = new Size(120, 15);
+            label3.Size = new Size(160, 15);
             label3.TabIndex = 0;
-            label3.Text = "Quotation Overview";
+            label3.Text = "Production Order Overview";
             // 
-            // AddANewQuotationButton
+            // AddNewOrdersButton
             // 
-            AddANewQuotationButton.Location = new Point(9, 25);
-            AddANewQuotationButton.Name = "AddANewQuotationButton";
-            AddANewQuotationButton.Size = new Size(158, 23);
-            AddANewQuotationButton.TabIndex = 1;
-            AddANewQuotationButton.Text = "+ Add a new quotation";
-            AddANewQuotationButton.UseVisualStyleBackColor = true;
+            AddNewOrdersButton.Location = new Point(4, 25);
+            AddNewOrdersButton.Name = "AddNewOrdersButton";
+            AddNewOrdersButton.Size = new Size(115, 23);
+            AddNewOrdersButton.TabIndex = 1;
+            AddNewOrdersButton.Text = "＋Add new orders";
+            AddNewOrdersButton.UseVisualStyleBackColor = true;
             // 
-            // dgvQuoteList
+            // dgvProdOrderList
             // 
-            dgvQuoteList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvQuoteList.Location = new Point(4, 54);
-            dgvQuoteList.Name = "dgvQuoteList";
-            dgvQuoteList.Size = new Size(298, 138);
-            dgvQuoteList.TabIndex = 2;
+            dgvProdOrderList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProdOrderList.Location = new Point(4, 54);
+            dgvProdOrderList.Name = "dgvProdOrderList";
+            dgvProdOrderList.Size = new Size(298, 138);
+            dgvProdOrderList.TabIndex = 2;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(4, 54);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(298, 138);
+            dataGridView1.TabIndex = 5;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(4, 25);
+            button1.Name = "button1";
+            button1.Size = new Size(158, 23);
+            button1.TabIndex = 4;
+            button1.Text = "+ Add a new quotation";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(4, 5);
+            label4.Name = "label4";
+            label4.Size = new Size(120, 15);
+            label4.TabIndex = 3;
+            label4.Text = "Quotation Overview";
             // 
             // Sales_MarketingForm
             // 
@@ -215,9 +252,12 @@
             splitContainer1.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
+            splitContainer2.Panel1.ResumeLayout(false);
+            splitContainer2.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
             splitContainer2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvQuoteList).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvProdOrderList).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -235,8 +275,11 @@
         private SplitContainer splitContainer1;
         private TabPage ProductionorderTabPage;
         private SplitContainer splitContainer2;
-        private DataGridView dgvQuoteList;
-        private Button AddANewQuotationButton;
+        private DataGridView dgvProdOrderList;
+        private Button AddNewOrdersButton;
         private Label label3;
+        private DataGridView dataGridView1;
+        private Button button1;
+        private Label label4;
     }
 }

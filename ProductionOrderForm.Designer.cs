@@ -30,8 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductionOrderForm));
             button8 = new Button();
-            textBox8 = new TextBox();
-            textBox7 = new TextBox();
             label19 = new Label();
             label18 = new Label();
             pictureBox1 = new PictureBox();
@@ -77,6 +75,8 @@
             dataGridView2 = new DataGridView();
             label8 = new Label();
             dateTimePicker1 = new DateTimePicker();
+            label13 = new Label();
+            label14 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tabControl1.SuspendLayout();
@@ -96,20 +96,6 @@
             button8.TabIndex = 18;
             button8.Text = "User Profile";
             button8.UseVisualStyleBackColor = true;
-            // 
-            // textBox8
-            // 
-            textBox8.Location = new Point(210, 56);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(124, 23);
-            textBox8.TabIndex = 17;
-            // 
-            // textBox7
-            // 
-            textBox7.Location = new Point(210, 22);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(124, 23);
-            textBox7.TabIndex = 16;
             // 
             // label19
             // 
@@ -460,12 +446,30 @@
             dateTimePicker1.Size = new Size(135, 23);
             dateTimePicker1.TabIndex = 36;
             // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(210, 25);
+            label13.Name = "label13";
+            label13.Size = new Size(0, 15);
+            label13.TabIndex = 37;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(210, 59);
+            label14.Name = "label14";
+            label14.Size = new Size(0, 15);
+            label14.TabIndex = 38;
+            // 
             // ProductionOrderForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SlateGray;
             ClientSize = new Size(868, 611);
+            Controls.Add(label14);
+            Controls.Add(label13);
             Controls.Add(dateTimePicker1);
             Controls.Add(label8);
             Controls.Add(dataGridView2);
@@ -484,8 +488,6 @@
             Controls.Add(textBox1);
             Controls.Add(label1);
             Controls.Add(button8);
-            Controls.Add(textBox8);
-            Controls.Add(textBox7);
             Controls.Add(label19);
             Controls.Add(label18);
             Controls.Add(pictureBox1);
@@ -510,8 +512,6 @@
         #endregion
 
         private Button button8;
-        private TextBox textBox8;
-        private TextBox textBox7;
         private Label label19;
         private Label label18;
         private PictureBox pictureBox1;
@@ -557,5 +557,7 @@
         private DataGridViewTextBoxColumn FMDate;
         private DataGridViewButtonColumn FMFile;
         private DataGridViewButtonColumn FMOperation;
+        private Label label13;
+        private Label label14;
     }
 }

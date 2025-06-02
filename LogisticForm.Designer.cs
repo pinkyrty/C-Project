@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogisticForm));
-            pictureBox1 = new PictureBox();
             dataGridView1 = new DataGridView();
             MaterialNo = new DataGridViewTextBoxColumn();
             name = new DataGridViewTextBoxColumn();
@@ -144,10 +143,10 @@
             label15 = new Label();
             label18 = new Label();
             label19 = new Label();
-            textBox7 = new TextBox();
-            textBox8 = new TextBox();
             button8 = new Button();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            label20 = new Label();
+            label21 = new Label();
+            pictureBox2 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             gbOperation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
@@ -164,17 +163,8 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView7).BeginInit();
             Supplier.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView8).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(12, 12);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(87, 83);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 2;
-            pictureBox1.TabStop = false;
             // 
             // dataGridView1
             // 
@@ -1041,11 +1031,11 @@
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(166, 25);
+            label18.Location = new Point(128, 25);
             label18.Name = "label18";
-            label18.Size = new Size(38, 15);
+            label18.Size = new Size(76, 15);
             label18.TabIndex = 8;
-            label18.Text = "User :";
+            label18.Text = "User Name :";
             // 
             // label19
             // 
@@ -1056,20 +1046,6 @@
             label19.TabIndex = 9;
             label19.Text = "Department :";
             // 
-            // textBox7
-            // 
-            textBox7.Location = new Point(210, 22);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(124, 23);
-            textBox7.TabIndex = 10;
-            // 
-            // textBox8
-            // 
-            textBox8.Location = new Point(210, 56);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(124, 23);
-            textBox8.TabIndex = 11;
-            // 
             // button8
             // 
             button8.Location = new Point(1050, 12);
@@ -1079,23 +1055,48 @@
             button8.Text = "User Profile";
             button8.UseVisualStyleBackColor = true;
             // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Location = new Point(210, 25);
+            label20.Name = "label20";
+            label20.Size = new Size(0, 15);
+            label20.TabIndex = 13;
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Location = new Point(210, 59);
+            label21.Name = "label21";
+            label21.Size = new Size(0, 15);
+            label21.TabIndex = 14;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(12, 12);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(87, 83);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 15;
+            pictureBox2.TabStop = false;
+            // 
             // LogisticForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SlateGray;
             ClientSize = new Size(1134, 636);
+            Controls.Add(pictureBox2);
+            Controls.Add(label21);
+            Controls.Add(label20);
             Controls.Add(button8);
-            Controls.Add(textBox8);
-            Controls.Add(textBox7);
             Controls.Add(label19);
             Controls.Add(label18);
             Controls.Add(tabInventory);
-            Controls.Add(pictureBox1);
             Name = "LogisticForm";
             Text = "LogisticForm";
             Load += LogisticForm_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             gbOperation.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
@@ -1117,13 +1118,12 @@
             Supplier.ResumeLayout(false);
             Supplier.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView8).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private PictureBox pictureBox1;
         private DataGridView dataGridView1;
         private DataGridViewTextBoxColumn MaterialNo;
         private DataGridViewTextBoxColumn name;
@@ -1238,8 +1238,9 @@
         private ComboBox comboBox2;
         private Label label18;
         private Label label19;
-        private TextBox textBox7;
-        private TextBox textBox8;
         private Button button8;
+        private Label label20;
+        private Label label21;
+        private PictureBox pictureBox2;
     }
 }

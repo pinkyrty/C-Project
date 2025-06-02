@@ -48,10 +48,10 @@
             Node = new DataGridViewTextBoxColumn();
             Remark = new DataGridViewTextBoxColumn();
             button8 = new Button();
-            textBox8 = new TextBox();
-            textBox7 = new TextBox();
             label19 = new Label();
             label18 = new Label();
+            label8 = new Label();
+            label9 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -206,20 +206,6 @@
             button8.Text = "User Profile";
             button8.UseVisualStyleBackColor = true;
             // 
-            // textBox8
-            // 
-            textBox8.Location = new Point(207, 62);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(124, 23);
-            textBox8.TabIndex = 19;
-            // 
-            // textBox7
-            // 
-            textBox7.Location = new Point(207, 28);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(124, 23);
-            textBox7.TabIndex = 18;
-            // 
             // label19
             // 
             label19.AutoSize = true;
@@ -238,14 +224,31 @@
             label18.TabIndex = 16;
             label18.Text = "User Name :";
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(207, 31);
+            label8.Name = "label8";
+            label8.Size = new Size(0, 15);
+            label8.TabIndex = 21;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(207, 65);
+            label9.Name = "label9";
+            label9.Size = new Size(0, 15);
+            label9.TabIndex = 22;
+            // 
             // LogisticTrackingForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.SlateGray;
             ClientSize = new Size(741, 418);
+            Controls.Add(label9);
+            Controls.Add(label8);
             Controls.Add(button8);
-            Controls.Add(textBox8);
-            Controls.Add(textBox7);
             Controls.Add(label19);
             Controls.Add(label18);
             Controls.Add(dataGridView1);
@@ -292,9 +295,9 @@
         private DataGridViewTextBoxColumn Node;
         private DataGridViewTextBoxColumn Remark;
         private Button button8;
-        private TextBox textBox8;
-        private TextBox textBox7;
         private Label label19;
         private Label label18;
+        private Label label8;
+        private Label label9;
     }
 }

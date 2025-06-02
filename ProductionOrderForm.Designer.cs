@@ -48,44 +48,44 @@
             label6 = new Label();
             label7 = new Label();
             dataGridView1 = new DataGridView();
-            tabControl1 = new TabControl();
-            tabPage1 = new TabPage();
-            tabPage2 = new TabPage();
-            dataGridView2 = new DataGridView();
-            label8 = new Label();
-            dateTimePicker1 = new DateTimePicker();
             POMaterial = new DataGridViewTextBoxColumn();
             POSpecificate = new DataGridViewTextBoxColumn();
             PORequireQuantity = new DataGridViewTextBoxColumn();
             POInventory = new DataGridViewTextBoxColumn();
-            tabPage3 = new TabPage();
+            tabControl1 = new TabControl();
+            tabPage1 = new TabPage();
             dataGridView3 = new DataGridView();
             ProcessAssignment = new DataGridViewTextBoxColumn();
             assignPeople = new DataGridViewTextBoxColumn();
             Direction = new DataGridViewTextBoxColumn();
             ProcessOperation = new DataGridViewButtonColumn();
-            label9 = new Label();
-            dateTimePicker2 = new DateTimePicker();
-            label10 = new Label();
-            dateTimePicker3 = new DateTimePicker();
-            label11 = new Label();
+            tabPage2 = new TabPage();
             textBox2 = new TextBox();
-            dataGridView4 = new DataGridView();
+            label11 = new Label();
+            dateTimePicker3 = new DateTimePicker();
+            label10 = new Label();
+            dateTimePicker2 = new DateTimePicker();
+            label9 = new Label();
+            tabPage3 = new TabPage();
             label12 = new Label();
+            dataGridView4 = new DataGridView();
             FileName = new DataGridViewTextBoxColumn();
             UploadPerson = new DataGridViewTextBoxColumn();
             FMDate = new DataGridViewTextBoxColumn();
             FMFile = new DataGridViewButtonColumn();
             FMOperation = new DataGridViewButtonColumn();
+            dataGridView2 = new DataGridView();
+            label8 = new Label();
+            dateTimePicker1 = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
-            tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
-            tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
+            tabPage2.SuspendLayout();
+            tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
             // 
             // button8
@@ -94,7 +94,7 @@
             button8.Name = "button8";
             button8.Size = new Size(72, 62);
             button8.TabIndex = 18;
-            button8.Text = "Profile";
+            button8.Text = "User Profile";
             button8.UseVisualStyleBackColor = true;
             // 
             // textBox8
@@ -246,6 +246,26 @@
             dataGridView1.Size = new Size(468, 125);
             dataGridView1.TabIndex = 32;
             // 
+            // POMaterial
+            // 
+            POMaterial.HeaderText = "Material";
+            POMaterial.Name = "POMaterial";
+            // 
+            // POSpecificate
+            // 
+            POSpecificate.HeaderText = "Specificate";
+            POSpecificate.Name = "POSpecificate";
+            // 
+            // PORequireQuantity
+            // 
+            PORequireQuantity.HeaderText = "Require Quantity";
+            PORequireQuantity.Name = "PORequireQuantity";
+            // 
+            // POInventory
+            // 
+            POInventory.HeaderText = "Inventory";
+            POInventory.Name = "POInventory";
+            // 
             // tabControl1
             // 
             tabControl1.Controls.Add(tabPage1);
@@ -267,78 +287,6 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "tabPage1";
             tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            tabPage2.Controls.Add(textBox2);
-            tabPage2.Controls.Add(label11);
-            tabPage2.Controls.Add(dateTimePicker3);
-            tabPage2.Controls.Add(label10);
-            tabPage2.Controls.Add(dateTimePicker2);
-            tabPage2.Controls.Add(label9);
-            tabPage2.Location = new Point(4, 24);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(460, 138);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "tabPage2";
-            tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView2
-            // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(12, 168);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(347, 427);
-            dataGridView2.TabIndex = 34;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(22, 134);
-            label8.Name = "label8";
-            label8.Size = new Size(151, 15);
-            label8.TabIndex = 35;
-            label8.Text = "Production Order Preview";
-            // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.Location = new Point(695, 108);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(135, 23);
-            dateTimePicker1.TabIndex = 36;
-            // 
-            // POMaterial
-            // 
-            POMaterial.HeaderText = "Material";
-            POMaterial.Name = "POMaterial";
-            // 
-            // POSpecificate
-            // 
-            POSpecificate.HeaderText = "Specificate";
-            POSpecificate.Name = "POSpecificate";
-            // 
-            // PORequireQuantity
-            // 
-            PORequireQuantity.HeaderText = "Require Quantity";
-            PORequireQuantity.Name = "PORequireQuantity";
-            // 
-            // POInventory
-            // 
-            POInventory.HeaderText = "Inventory";
-            POInventory.Name = "POInventory";
-            // 
-            // tabPage3
-            // 
-            tabPage3.Controls.Add(label12);
-            tabPage3.Controls.Add(dataGridView4);
-            tabPage3.Location = new Point(4, 24);
-            tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(460, 138);
-            tabPage3.TabIndex = 2;
-            tabPage3.Text = "tabPage3";
-            tabPage3.UseVisualStyleBackColor = true;
             // 
             // dataGridView3
             // 
@@ -369,37 +317,28 @@
             ProcessOperation.HeaderText = "Operation";
             ProcessOperation.Name = "ProcessOperation";
             // 
-            // label9
+            // tabPage2
             // 
-            label9.AutoSize = true;
-            label9.Location = new Point(26, 22);
-            label9.Name = "label9";
-            label9.Size = new Size(69, 15);
-            label9.TabIndex = 0;
-            label9.Text = "Start Date :";
+            tabPage2.Controls.Add(textBox2);
+            tabPage2.Controls.Add(label11);
+            tabPage2.Controls.Add(dateTimePicker3);
+            tabPage2.Controls.Add(label10);
+            tabPage2.Controls.Add(dateTimePicker2);
+            tabPage2.Controls.Add(label9);
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(460, 138);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "tabPage2";
+            tabPage2.UseVisualStyleBackColor = true;
             // 
-            // dateTimePicker2
+            // textBox2
             // 
-            dateTimePicker2.Location = new Point(103, 16);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(200, 23);
-            dateTimePicker2.TabIndex = 1;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(15, 59);
-            label10.Name = "label10";
-            label10.Size = new Size(80, 15);
-            label10.TabIndex = 2;
-            label10.Text = "Target Date :";
-            // 
-            // dateTimePicker3
-            // 
-            dateTimePicker3.Location = new Point(103, 53);
-            dateTimePicker3.Name = "dateTimePicker3";
-            dateTimePicker3.Size = new Size(200, 23);
-            dateTimePicker3.TabIndex = 3;
+            textBox2.Location = new Point(74, 91);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(337, 23);
+            textBox2.TabIndex = 5;
             // 
             // label11
             // 
@@ -410,21 +349,49 @@
             label11.TabIndex = 4;
             label11.Text = "label11";
             // 
-            // textBox2
+            // dateTimePicker3
             // 
-            textBox2.Location = new Point(74, 91);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(337, 23);
-            textBox2.TabIndex = 5;
+            dateTimePicker3.Location = new Point(103, 53);
+            dateTimePicker3.Name = "dateTimePicker3";
+            dateTimePicker3.Size = new Size(200, 23);
+            dateTimePicker3.TabIndex = 3;
             // 
-            // dataGridView4
+            // label10
             // 
-            dataGridView4.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView4.Columns.AddRange(new DataGridViewColumn[] { FileName, UploadPerson, FMDate, FMFile, FMOperation });
-            dataGridView4.Location = new Point(3, 32);
-            dataGridView4.Name = "dataGridView4";
-            dataGridView4.Size = new Size(457, 110);
-            dataGridView4.TabIndex = 0;
+            label10.AutoSize = true;
+            label10.Location = new Point(15, 59);
+            label10.Name = "label10";
+            label10.Size = new Size(80, 15);
+            label10.TabIndex = 2;
+            label10.Text = "Target Date :";
+            // 
+            // dateTimePicker2
+            // 
+            dateTimePicker2.Location = new Point(103, 16);
+            dateTimePicker2.Name = "dateTimePicker2";
+            dateTimePicker2.Size = new Size(200, 23);
+            dateTimePicker2.TabIndex = 1;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(26, 22);
+            label9.Name = "label9";
+            label9.Size = new Size(69, 15);
+            label9.TabIndex = 0;
+            label9.Text = "Start Date :";
+            // 
+            // tabPage3
+            // 
+            tabPage3.Controls.Add(label12);
+            tabPage3.Controls.Add(dataGridView4);
+            tabPage3.Location = new Point(4, 24);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Padding = new Padding(3);
+            tabPage3.Size = new Size(460, 138);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "tabPage3";
+            tabPage3.UseVisualStyleBackColor = true;
             // 
             // label12
             // 
@@ -434,6 +401,15 @@
             label12.Size = new Size(106, 15);
             label12.TabIndex = 1;
             label12.Text = "File Management";
+            // 
+            // dataGridView4
+            // 
+            dataGridView4.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView4.Columns.AddRange(new DataGridViewColumn[] { FileName, UploadPerson, FMDate, FMFile, FMOperation });
+            dataGridView4.Location = new Point(3, 32);
+            dataGridView4.Name = "dataGridView4";
+            dataGridView4.Size = new Size(457, 110);
+            dataGridView4.TabIndex = 0;
             // 
             // FileName
             // 
@@ -459,6 +435,30 @@
             // 
             FMOperation.HeaderText = "Operation";
             FMOperation.Name = "FMOperation";
+            // 
+            // dataGridView2
+            // 
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Location = new Point(12, 168);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.Size = new Size(347, 427);
+            dataGridView2.TabIndex = 34;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(22, 134);
+            label8.Name = "label8";
+            label8.Size = new Size(151, 15);
+            label8.TabIndex = 35;
+            label8.Text = "Production Order Preview";
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Location = new Point(695, 108);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(135, 23);
+            dateTimePicker1.TabIndex = 36;
             // 
             // ProductionOrderForm
             // 
@@ -496,13 +496,13 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }

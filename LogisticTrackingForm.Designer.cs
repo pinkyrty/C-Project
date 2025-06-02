@@ -203,7 +203,7 @@
             button8.Name = "button8";
             button8.Size = new Size(72, 62);
             button8.TabIndex = 20;
-            button8.Text = "Profile";
+            button8.Text = "User Profile";
             button8.UseVisualStyleBackColor = true;
             // 
             // textBox8

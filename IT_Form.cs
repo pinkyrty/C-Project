@@ -16,5 +16,10 @@ namespace C_Project
         {
             InitializeComponent();
         }
+
+        private void label21_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

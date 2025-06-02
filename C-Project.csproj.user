@@ -5,18 +5,18 @@
     <Compile Update="ChangePassword.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="CreateUserForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="CustomerServiceForm.cs">
       <SubType>Form</SubType>
     </Compile>
+<<<<<<< HEAD
     <Compile Update="FinanceDepartment.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
+=======
+>>>>>>> e30e715 (Rename User Profile)
     <Compile Update="InternalTransferForm.cs">
       <SubType>Form</SubType>
     </Compile>

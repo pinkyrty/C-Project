@@ -76,6 +76,8 @@
             dgvProdOrderList = new DataGridView();
             button1 = new Button();
             label4 = new Label();
+            dataGridView1 = new DataGridView();
+            label24 = new Label();
             button2 = new Button();
             button3 = new Button();
             button4 = new Button();
@@ -95,8 +97,6 @@
             label13 = new Label();
             OrderNoTextBox = new TextBox();
             label12 = new Label();
-            label24 = new Label();
-            dataGridView1 = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl.SuspendLayout();
             QuotationTabPage.SuspendLayout();
@@ -113,9 +113,9 @@
             splitContainer2.Panel2.SuspendLayout();
             splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProdOrderList).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
             groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
@@ -169,7 +169,7 @@
             RaDUserPrifileButton.Name = "RaDUserPrifileButton";
             RaDUserPrifileButton.Size = new Size(59, 38);
             RaDUserPrifileButton.TabIndex = 34;
-            RaDUserPrifileButton.Text = "User Prifile";
+            RaDUserPrifileButton.Text = "User Profile";
             RaDUserPrifileButton.UseVisualStyleBackColor = true;
             // 
             // tabControl
@@ -203,7 +203,7 @@
             // 
             splitContainer1.Panel1.Controls.Add(dgvQuoteList);
             splitContainer1.Panel1.Controls.Add(AddNewOrdersButton);
-            splitContainer1.Panel1.Controls.Add(label3);
+            splitContainer1.Panel1.Controls.Add(label4);
             splitContainer1.Panel1.Paint += splitContainer1_Panel1_Paint;
             // 
             // splitContainer1.Panel2
@@ -242,15 +242,15 @@
             // 
             AddNewOrdersButton.Location = new Point(4, 25);
             AddNewOrdersButton.Name = "AddNewOrdersButton";
-            AddNewOrdersButton.Size = new Size(115, 23);
+            AddNewOrdersButton.Size = new Size(76, 23);
             AddNewOrdersButton.TabIndex = 1;
-            AddNewOrdersButton.Text = "＋Add new orders";
+            AddNewOrdersButton.Text = "＋Add new";
             AddNewOrdersButton.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(4, 5);
+            label3.Location = new Point(4, 7);
             label3.Name = "label3";
             label3.Size = new Size(160, 15);
             label3.TabIndex = 0;
@@ -372,7 +372,7 @@
             GenPDFButton.TabIndex = 4;
             GenPDFButton.Text = "Gen PDF";
             GenPDFButton.UseVisualStyleBackColor = true;
-            GenPDFButton.Click += this.genPDF_Click;
+            GenPDFButton.Click += genPDF_Click;
             // 
             // NewProductsButton
             // 
@@ -540,7 +540,7 @@
             // 
             splitContainer2.Panel1.Controls.Add(dgvProdOrderList);
             splitContainer2.Panel1.Controls.Add(button1);
-            splitContainer2.Panel1.Controls.Add(label4);
+            splitContainer2.Panel1.Controls.Add(label3);
             // 
             // splitContainer2.Panel2
             // 
@@ -570,19 +570,36 @@
             // 
             button1.Location = new Point(4, 25);
             button1.Name = "button1";
-            button1.Size = new Size(158, 23);
+            button1.Size = new Size(94, 23);
             button1.TabIndex = 4;
-            button1.Text = "+ Add a new quotation";
+            button1.Text = "+ Add new";
             button1.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(4, 5);
+            label4.Location = new Point(4, 7);
             label4.Name = "label4";
             label4.Size = new Size(120, 15);
             label4.TabIndex = 3;
             label4.Text = "Quotation Overview";
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(3, 371);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(683, 142);
+            dataGridView1.TabIndex = 13;
+            // 
+            // label24
+            // 
+            label24.AutoSize = true;
+            label24.Location = new Point(7, 353);
+            label24.Name = "label24";
+            label24.Size = new Size(106, 15);
+            label24.TabIndex = 12;
+            label24.Text = "File Management";
             // 
             // button2
             // 
@@ -756,23 +773,6 @@
             label12.TabIndex = 0;
             label12.Text = "Order No.";
             // 
-            // label24
-            // 
-            label24.AutoSize = true;
-            label24.Location = new Point(7, 353);
-            label24.Name = "label24";
-            label24.Size = new Size(106, 15);
-            label24.TabIndex = 12;
-            label24.Text = "File Management";
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(3, 371);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(683, 142);
-            dataGridView1.TabIndex = 13;
-            // 
             // Sales_MarketingForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -809,10 +809,10 @@
             ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
             splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvProdOrderList).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }

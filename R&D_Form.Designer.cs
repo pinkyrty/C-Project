@@ -141,7 +141,7 @@
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(15, 12);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(86, 79);
+            pictureBox1.Size = new Size(90, 90);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
@@ -153,14 +153,14 @@
             RaDUserPrifileButton.Name = "RaDUserPrifileButton";
             RaDUserPrifileButton.Size = new Size(59, 38);
             RaDUserPrifileButton.TabIndex = 33;
-            RaDUserPrifileButton.Text = "User Prifile";
+            RaDUserPrifileButton.Text = "User Profile";
             RaDUserPrifileButton.UseVisualStyleBackColor = true;
             RaDUserPrifileButton.Click += RaDUserPrifileButton_Click;
             // 
             // UserNamelabel
             // 
             UserNamelabel.AutoSize = true;
-            UserNamelabel.Location = new Point(107, 24);
+            UserNamelabel.Location = new Point(111, 12);
             UserNamelabel.Name = "UserNamelabel";
             UserNamelabel.Size = new Size(76, 15);
             UserNamelabel.TabIndex = 46;
@@ -187,7 +187,7 @@
             // 
             dgvProductList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvProductList.Columns.AddRange(new DataGridViewColumn[] { ProductCode, ProductName, Edit, Delete });
-            dgvProductList.Location = new Point(12, 126);
+            dgvProductList.Location = new Point(12, 146);
             dgvProductList.Name = "dgvProductList";
             dgvProductList.Size = new Size(330, 679);
             dgvProductList.TabIndex = 49;
@@ -221,7 +221,7 @@
             // 
             // NewProductsButton
             // 
-            NewProductsButton.Location = new Point(12, 97);
+            NewProductsButton.Location = new Point(12, 108);
             NewProductsButton.Name = "NewProductsButton";
             NewProductsButton.Size = new Size(118, 23);
             NewProductsButton.TabIndex = 50;
@@ -885,7 +885,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(107, 53);
+            label2.Location = new Point(111, 42);
             label2.Name = "label2";
             label2.Size = new Size(81, 15);
             label2.TabIndex = 63;

@@ -40,18 +40,19 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.BorderStyle = BorderStyle.Fixed3D;
             pictureBox1.Image = Properties.Resources.SmilesunToy;
-            pictureBox1.Location = new Point(28, 69);
+            pictureBox1.Location = new Point(90, 121);
             pictureBox1.Margin = new Padding(2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(186, 178);
+            pictureBox1.Size = new Size(151, 152);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
             // txtUsername
             // 
-            txtUsername.Location = new Point(343, 131);
+            txtUsername.Location = new Point(343, 153);
             txtUsername.Margin = new Padding(2);
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(98, 23);
@@ -60,7 +61,7 @@
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(343, 166);
+            txtPassword.Location = new Point(343, 199);
             txtPassword.Margin = new Padding(2);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(98, 23);
@@ -70,7 +71,7 @@
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(394, 201);
+            btnLogin.Location = new Point(442, 250);
             btnLogin.Margin = new Padding(2);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(73, 23);
@@ -83,32 +84,35 @@
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.SlateGray;
-            label1.Location = new Point(268, 131);
+            label1.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
+            label1.Location = new Point(268, 156);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(64, 15);
+            label1.Size = new Size(67, 15);
             label1.TabIndex = 4;
             label1.Text = "Username";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(268, 168);
+            label2.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
+            label2.Location = new Point(268, 202);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(60, 15);
+            label2.Size = new Size(65, 15);
             label2.TabIndex = 5;
             label2.Text = "Password";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Arial Narrow", 20.25F, FontStyle.Italic | FontStyle.Underline, GraphicsUnit.Point, 0);
-            label3.Location = new Point(219, 69);
+            label3.Font = new Font("Segoe Script", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(63, 52);
             label3.Name = "label3";
-            label3.Size = new Size(346, 31);
+            label3.Size = new Size(509, 44);
             label3.TabIndex = 6;
-            label3.Text = "SMILE SUNSHINE TOY CO, LTD";
+            label3.Text = "SMILE && SUNSHINE TOY CO, LTD";
+            label3.TextAlign = ContentAlignment.TopCenter;
             label3.Click += label3_Click;
             // 
             // Login

@@ -29,7 +29,7 @@ namespace C_Project
                 using (OleDbConnection conn = new OleDbConnection(connStr))
                 {
                     // Change to check Department
-                    string sql = "SELECT Department FROM [User] WHERE Username=? AND [Password]=? AND Active=True";
+                    string sql = "SELECT Department FROM [Login_User] WHERE Username=? AND [Password]=? AND Active=True";
                     OleDbCommand cmd = new OleDbCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@Username", username);
                     cmd.Parameters.AddWithValue("@Password", password);
@@ -67,15 +67,21 @@ namespace C_Project
                 case "HR":
                     
                     break;
-                case "R&D":
+                case "RND":
                     deptForm = new RnD_Form();
                     break;
-                case "Sales_Marketing":
+                case "SCM":
                     deptForm = new Sales_MarketingForm();
                     break;
+                case "IT":
+                    deptForm = new IT_Form();
+                    break;
+                case "FI":
+                    deptForm = new FinanceDepartment();
+                    break;
                 default:
-                    MessageBox.Show("This department does not have a page yet!");
-                    return;
+                    deptForm = new FinanceDepartment();
+                    break;
             }
             deptForm.Show();
         }

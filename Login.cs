@@ -28,28 +28,29 @@ namespace C_Project
             {
                 using (OleDbConnection conn = new OleDbConnection(connStr))
                 {
-                    // Change to check Department
-                    string sql = "SELECT Department FROM [Login_User] WHERE Username=? AND [Password]=? AND Active=True";
-                    OleDbCommand cmd = new OleDbCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@Username", username);
-                    cmd.Parameters.AddWithValue("@Password", password);
 
                     conn.Open();
-                    object result = cmd.ExecuteScalar();
 
-                    if (result != null)
+                    // Change to check Department
+                    string sql = "SELECT * FROM Login_User WHERE Username=@username AND Password=@password";
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
-                        string department = result.ToString();
-                        MessageBox.Show($"Login successful! Department: {department}");
+                        cmd.Parameters.AddWithValue("@username", username);
+                        cmd.Parameters.AddWithValue("@password", password);
 
-                        // Open the corresponding Form according to the department
-                        OpenDepartmentForm(department);
-                        this.Hide();
+                        using (OleDbDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                string department = reader["Department"].ToString();
+                                string fullname = reader["FullName"].ToString();
+                                MessageBox.Show($"Login successful! Name: {fullname}");
+
+                                OpenDepartmentForm(department);
+                            }
+                        }
                     }
-                    else
-                    {
-                        MessageBox.Show("Wrong username or password!");
-                    }
+                 
                 }
             }
             catch (Exception ex)
@@ -64,23 +65,20 @@ namespace C_Project
             Form deptForm = null;
             switch (department)
             {
-                case "HR":
-                    
-                    break;
-                case "RND":
+                case "1":
                     deptForm = new RnD_Form();
                     break;
-                case "SCM":
+                case "2":
                     deptForm = new Sales_MarketingForm();
                     break;
-                case "IT":
+                case "7":
                     deptForm = new IT_Form();
                     break;
-                case "FI":
+                case "6":
                     deptForm = new FinanceDepartment();
                     break;
                 default:
-                    deptForm = new FinanceDepartment();
+                    deptForm = new IT_Form();
                     break;
             }
             deptForm.Show();

@@ -37,6 +37,7 @@ namespace C_Project
         public RnD_Form()
         {
             InitializeComponent();
+            cmbStatus.Items.Add("11111");
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -140,6 +141,16 @@ namespace C_Project
         }
 
         private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ViewProjectButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvTesting_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

@@ -71,6 +71,7 @@
             // 
             // btnLogin
             // 
+            btnLogin.FlatStyle = FlatStyle.System;
             btnLogin.Location = new Point(442, 250);
             btnLogin.Margin = new Padding(2);
             btnLogin.Name = "btnLogin";
@@ -83,7 +84,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.BackColor = Color.SlateGray;
+            label1.BackColor = Color.LightBlue;
             label1.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
             label1.Location = new Point(268, 156);
             label1.Margin = new Padding(2, 0, 2, 0);
@@ -91,6 +92,7 @@
             label1.Size = new Size(67, 15);
             label1.TabIndex = 4;
             label1.Text = "Username";
+            label1.Click += label1_Click;
             // 
             // label2
             // 
@@ -106,10 +108,11 @@
             // label3
             // 
             label3.AutoSize = true;
+            label3.BorderStyle = BorderStyle.Fixed3D;
             label3.Font = new Font("Segoe Script", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.Location = new Point(63, 52);
             label3.Name = "label3";
-            label3.Size = new Size(509, 44);
+            label3.Size = new Size(511, 46);
             label3.TabIndex = 6;
             label3.Text = "SMILE && SUNSHINE TOY CO, LTD";
             label3.TextAlign = ContentAlignment.TopCenter;
@@ -119,7 +122,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.SlateGray;
+            BackColor = Color.LightBlue;
             ClientSize = new Size(622, 355);
             Controls.Add(label3);
             Controls.Add(label2);

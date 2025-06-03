@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RnD_Form));
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             pictureBox1 = new PictureBox();
             RaDUserPrifileButton = new Button();
             UserNamelabel = new Label();
@@ -59,9 +59,20 @@
             BillofMaterialsTabPage = new TabPage();
             AddMaterialButton = new Button();
             dgvMaterials = new DataGridView();
+            MaterialType = new DataGridViewComboBoxColumn();
+            MaterialName = new DataGridViewTextBoxColumn();
+            Description = new DataGridViewTextBoxColumn();
+            Quantity = new DataGridViewTextBoxColumn();
+            BillofMaterialsDelete = new DataGridViewButtonColumn();
             ManufacturingInstructionsTabPage = new TabPage();
             AddNewStepButton = new Button();
             dgvManufacturing = new DataGridView();
+            StepNumber = new DataGridViewTextBoxColumn();
+            Content = new DataGridViewTextBoxColumn();
+            Equipment = new DataGridViewTextBoxColumn();
+            WorkingHours = new DataGridViewTextBoxColumn();
+            Personnel = new DataGridViewTextBoxColumn();
+            ManufacturingInstructionsDelete = new DataGridViewButtonColumn();
             PackagingInformationTabPage = new TabPage();
             txtPackLabel = new TextBox();
             txtPackMaterial = new TextBox();
@@ -72,8 +83,15 @@
             TestingACertificationTabPage = new TabPage();
             NewCertificationButton = new Button();
             dataGridView1 = new DataGridView();
+            CertificationName = new DataGridViewTextBoxColumn();
+            dgvCertsContent = new DataGridViewTextBoxColumn();
+            dgvCertsDeletion = new DataGridViewButtonColumn();
             AddedTestsButton = new Button();
             dgvTesting = new DataGridView();
+            Testtype = new DataGridViewTextBoxColumn();
+            condition = new DataGridViewTextBoxColumn();
+            standard = new DataGridViewTextBoxColumn();
+            dgvTestingdelete = new DataGridViewButtonColumn();
             ImageAttachmentsTabPage = new TabPage();
             UploadImageButton = new Button();
             ProductPictureBox = new PictureBox();
@@ -92,24 +110,6 @@
             MOQlabel = new Label();
             btnSave = new Button();
             label2 = new Label();
-            MaterialType = new DataGridViewComboBoxColumn();
-            MaterialName = new DataGridViewTextBoxColumn();
-            Description = new DataGridViewTextBoxColumn();
-            Quantity = new DataGridViewTextBoxColumn();
-            BillofMaterialsDelete = new DataGridViewButtonColumn();
-            StepNumber = new DataGridViewTextBoxColumn();
-            Content = new DataGridViewTextBoxColumn();
-            Equipment = new DataGridViewTextBoxColumn();
-            WorkingHours = new DataGridViewTextBoxColumn();
-            Personnel = new DataGridViewTextBoxColumn();
-            ManufacturingInstructionsDelete = new DataGridViewButtonColumn();
-            Testtype = new DataGridViewTextBoxColumn();
-            condition = new DataGridViewTextBoxColumn();
-            standard = new DataGridViewTextBoxColumn();
-            dgvTestingdelete = new DataGridViewButtonColumn();
-            CertificationName = new DataGridViewTextBoxColumn();
-            dgvCertsContent = new DataGridViewTextBoxColumn();
-            dgvCertsDeletion = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProductList).BeginInit();
             tabProductDetail.SuspendLayout();
@@ -205,9 +205,9 @@
             // Edit
             // 
             Edit.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.ForeColor = Color.White;
-            Edit.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            Edit.DefaultCellStyle = dataGridViewCellStyle1;
             Edit.HeaderText = "Edit";
             Edit.Name = "Edit";
             Edit.Text = "Edit";
@@ -224,7 +224,7 @@
             // 
             // NewProductsButton
             // 
-            NewProductsButton.Location = new Point(12, 108);
+            NewProductsButton.Location = new Point(12, 110);
             NewProductsButton.Name = "NewProductsButton";
             NewProductsButton.Size = new Size(118, 23);
             NewProductsButton.TabIndex = 50;
@@ -409,6 +409,34 @@
             dgvMaterials.TabIndex = 0;
             dgvMaterials.CellContentClick += dgvMaterials_CellContentClick;
             // 
+            // MaterialType
+            // 
+            MaterialType.HeaderText = "Material Type";
+            MaterialType.Name = "MaterialType";
+            // 
+            // MaterialName
+            // 
+            MaterialName.HeaderText = "Material Name";
+            MaterialName.Name = "MaterialName";
+            MaterialName.Width = 200;
+            // 
+            // Description
+            // 
+            Description.HeaderText = "Description";
+            Description.Name = "Description";
+            Description.Width = 275;
+            // 
+            // Quantity
+            // 
+            Quantity.HeaderText = "Quantity";
+            Quantity.Name = "Quantity";
+            // 
+            // BillofMaterialsDelete
+            // 
+            BillofMaterialsDelete.HeaderText = "Delete";
+            BillofMaterialsDelete.Name = "BillofMaterialsDelete";
+            BillofMaterialsDelete.Width = 70;
+            // 
             // ManufacturingInstructionsTabPage
             // 
             ManufacturingInstructionsTabPage.Controls.Add(AddNewStepButton);
@@ -439,6 +467,41 @@
             dgvManufacturing.Name = "dgvManufacturing";
             dgvManufacturing.Size = new Size(790, 566);
             dgvManufacturing.TabIndex = 0;
+            // 
+            // StepNumber
+            // 
+            StepNumber.HeaderText = "Step number";
+            StepNumber.Name = "StepNumber";
+            StepNumber.Width = 70;
+            // 
+            // Content
+            // 
+            Content.HeaderText = "Content";
+            Content.Name = "Content";
+            Content.Width = 200;
+            // 
+            // Equipment
+            // 
+            Equipment.HeaderText = "Equipment";
+            Equipment.Name = "Equipment";
+            Equipment.Width = 150;
+            // 
+            // WorkingHours
+            // 
+            WorkingHours.HeaderText = "Working hours";
+            WorkingHours.Name = "WorkingHours";
+            // 
+            // Personnel
+            // 
+            Personnel.HeaderText = "Personnel";
+            Personnel.Name = "Personnel";
+            Personnel.Width = 150;
+            // 
+            // ManufacturingInstructionsDelete
+            // 
+            ManufacturingInstructionsDelete.HeaderText = "Delete";
+            ManufacturingInstructionsDelete.Name = "ManufacturingInstructionsDelete";
+            ManufacturingInstructionsDelete.Width = 70;
             // 
             // PackagingInformationTabPage
             // 
@@ -538,6 +601,24 @@
             dataGridView1.Size = new Size(785, 250);
             dataGridView1.TabIndex = 53;
             // 
+            // CertificationName
+            // 
+            CertificationName.HeaderText = "Certification Name";
+            CertificationName.Name = "CertificationName";
+            CertificationName.Width = 330;
+            // 
+            // dgvCertsContent
+            // 
+            dgvCertsContent.HeaderText = "Content";
+            dgvCertsContent.Name = "dgvCertsContent";
+            dgvCertsContent.Width = 330;
+            // 
+            // dgvCertsDeletion
+            // 
+            dgvCertsDeletion.HeaderText = "Delete";
+            dgvCertsDeletion.Name = "dgvCertsDeletion";
+            dgvCertsDeletion.Width = 70;
+            // 
             // AddedTestsButton
             // 
             AddedTestsButton.Location = new Point(0, 179);
@@ -557,6 +638,29 @@
             dgvTesting.Size = new Size(794, 173);
             dgvTesting.TabIndex = 0;
             dgvTesting.CellContentClick += dgvTesting_CellContentClick;
+            // 
+            // Testtype
+            // 
+            Testtype.HeaderText = "Test type";
+            Testtype.Name = "Testtype";
+            // 
+            // condition
+            // 
+            condition.HeaderText = "condition";
+            condition.Name = "condition";
+            condition.Width = 280;
+            // 
+            // standard
+            // 
+            standard.HeaderText = "standard";
+            standard.Name = "standard";
+            standard.Width = 280;
+            // 
+            // dgvTestingdelete
+            // 
+            dgvTestingdelete.HeaderText = "Delete";
+            dgvTestingdelete.Name = "dgvTestingdelete";
+            dgvTestingdelete.Width = 70;
             // 
             // ImageAttachmentsTabPage
             // 
@@ -727,110 +831,6 @@
             label2.Size = new Size(85, 15);
             label2.TabIndex = 63;
             label2.Text = "Department :";
-            // 
-            // MaterialType
-            // 
-            MaterialType.HeaderText = "Material Type";
-            MaterialType.Name = "MaterialType";
-            // 
-            // MaterialName
-            // 
-            MaterialName.HeaderText = "Material Name";
-            MaterialName.Name = "MaterialName";
-            MaterialName.Width = 200;
-            // 
-            // Description
-            // 
-            Description.HeaderText = "Description";
-            Description.Name = "Description";
-            Description.Width = 275;
-            // 
-            // Quantity
-            // 
-            Quantity.HeaderText = "Quantity";
-            Quantity.Name = "Quantity";
-            // 
-            // BillofMaterialsDelete
-            // 
-            BillofMaterialsDelete.HeaderText = "Delete";
-            BillofMaterialsDelete.Name = "BillofMaterialsDelete";
-            BillofMaterialsDelete.Width = 70;
-            // 
-            // StepNumber
-            // 
-            StepNumber.HeaderText = "Step number";
-            StepNumber.Name = "StepNumber";
-            StepNumber.Width = 70;
-            // 
-            // Content
-            // 
-            Content.HeaderText = "Content";
-            Content.Name = "Content";
-            Content.Width = 200;
-            // 
-            // Equipment
-            // 
-            Equipment.HeaderText = "Equipment";
-            Equipment.Name = "Equipment";
-            Equipment.Width = 150;
-            // 
-            // WorkingHours
-            // 
-            WorkingHours.HeaderText = "Working hours";
-            WorkingHours.Name = "WorkingHours";
-            // 
-            // Personnel
-            // 
-            Personnel.HeaderText = "Personnel";
-            Personnel.Name = "Personnel";
-            Personnel.Width = 150;
-            // 
-            // ManufacturingInstructionsDelete
-            // 
-            ManufacturingInstructionsDelete.HeaderText = "Delete";
-            ManufacturingInstructionsDelete.Name = "ManufacturingInstructionsDelete";
-            ManufacturingInstructionsDelete.Width = 70;
-            // 
-            // Testtype
-            // 
-            Testtype.HeaderText = "Test type";
-            Testtype.Name = "Testtype";
-            // 
-            // condition
-            // 
-            condition.HeaderText = "condition";
-            condition.Name = "condition";
-            condition.Width = 280;
-            // 
-            // standard
-            // 
-            standard.HeaderText = "standard";
-            standard.Name = "standard";
-            standard.Width = 280;
-            // 
-            // dgvTestingdelete
-            // 
-            dgvTestingdelete.HeaderText = "Delete";
-            dgvTestingdelete.Name = "dgvTestingdelete";
-            dgvTestingdelete.Width = 70;
-            // 
-            // CertificationName
-            // 
-            CertificationName.HeaderText = "Certification Name";
-            CertificationName.Name = "CertificationName";
-            CertificationName.Width = 330;
-            // 
-            // dgvCertsContent
-            // 
-            dgvCertsContent.HeaderText = "Content";
-            dgvCertsContent.Name = "dgvCertsContent";
-            dgvCertsContent.Width = 330;
-            // 
-            // dgvCertsDeletion
-            // 
-            dgvCertsDeletion.HeaderText = "Delete";
-            dgvCertsDeletion.Name = "dgvCertsDeletion";
-            dgvCertsDeletion.Width = 70;
             // 
             // RnD_Form
             // 

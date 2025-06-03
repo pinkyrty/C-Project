@@ -40,7 +40,7 @@
             splitContainer1 = new SplitContainer();
             dgvQuoteList = new DataGridView();
             AddNewOrdersButton = new Button();
-            label3 = new Label();
+            label4 = new Label();
             NotesOrtermsTextBox = new TextBox();
             label20 = new Label();
             DiscountsOrOffersTextBox = new TextBox();
@@ -75,7 +75,7 @@
             splitContainer2 = new SplitContainer();
             dgvProdOrderList = new DataGridView();
             button1 = new Button();
-            label4 = new Label();
+            label3 = new Label();
             dataGridView1 = new DataGridView();
             label24 = new Label();
             button2 = new Button();
@@ -247,14 +247,14 @@
             AddNewOrdersButton.Text = "＋Add new";
             AddNewOrdersButton.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // label4
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(4, 7);
-            label3.Name = "label3";
-            label3.Size = new Size(160, 15);
-            label3.TabIndex = 0;
-            label3.Text = "Production Order Overview";
+            label4.AutoSize = true;
+            label4.Location = new Point(4, 7);
+            label4.Name = "label4";
+            label4.Size = new Size(120, 15);
+            label4.TabIndex = 3;
+            label4.Text = "Quotation Overview";
             // 
             // NotesOrtermsTextBox
             // 
@@ -575,14 +575,14 @@
             button1.Text = "+ Add new";
             button1.UseVisualStyleBackColor = true;
             // 
-            // label4
+            // label3
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(4, 7);
-            label4.Name = "label4";
-            label4.Size = new Size(120, 15);
-            label4.TabIndex = 3;
-            label4.Text = "Quotation Overview";
+            label3.AutoSize = true;
+            label3.Location = new Point(4, 7);
+            label3.Name = "label3";
+            label3.Size = new Size(160, 15);
+            label3.TabIndex = 0;
+            label3.Text = "Production Order Overview";
             // 
             // dataGridView1
             // 
@@ -778,7 +778,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SlateGray;
-            ClientSize = new Size(1062, 687);
+            ClientSize = new Size(1153, 858);
             Controls.Add(tabControl);
             Controls.Add(RaDUserPrifileButton);
             Controls.Add(Department);

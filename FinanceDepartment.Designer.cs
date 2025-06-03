@@ -29,17 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FinanceDepartment));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
             button8 = new Button();
             label19 = new Label();
             label18 = new Label();
             pictureBox1 = new PictureBox();
-            chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             button1 = new Button();
@@ -53,7 +46,6 @@
             FIOperation = new DataGridViewButtonColumn();
             label1 = new Label();
             tabPage2 = new TabPage();
-            chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             label4 = new Label();
             dataGridView2 = new DataGridView();
             FIIncomeDate = new DataGridViewTextBoxColumn();
@@ -65,6 +57,10 @@
             label3 = new Label();
             tabPage3 = new TabPage();
             dataGridView3 = new DataGridView();
+            FIStateType = new DataGridViewTextBoxColumn();
+            FIStatePerior = new DataGridViewTextBoxColumn();
+            FIStateFileName = new DataGridViewTextBoxColumn();
+            FIStateOperation = new DataGridViewButtonColumn();
             button3 = new Button();
             label13 = new Label();
             button2 = new Button();
@@ -75,115 +71,94 @@
             label10 = new Label();
             label9 = new Label();
             tabPage4 = new TabPage();
-            tabPage5 = new TabPage();
-            label5 = new Label();
-            label6 = new Label();
-            label7 = new Label();
-            label8 = new Label();
-            FIStateType = new DataGridViewTextBoxColumn();
-            FIStatePerior = new DataGridViewTextBoxColumn();
-            FIStateFileName = new DataGridViewTextBoxColumn();
-            FIStateOperation = new DataGridViewButtonColumn();
-            label14 = new Label();
-            label15 = new Label();
-            comboBox2 = new ComboBox();
-            label16 = new Label();
-            comboBox3 = new ComboBox();
-            label17 = new Label();
-            textBox2 = new TextBox();
-            label20 = new Label();
-            textBox3 = new TextBox();
-            button4 = new Button();
             dataGridView4 = new DataGridView();
             FIRiskType = new DataGridViewTextBoxColumn();
             FIRiskLevel = new DataGridViewTextBoxColumn();
             FIRiskDescription = new DataGridViewTextBoxColumn();
             FIRiskSolution = new DataGridViewTextBoxColumn();
             FIRiskOperation = new DataGridViewButtonColumn();
-            label21 = new Label();
-            label22 = new Label();
-            textBox4 = new TextBox();
-            label23 = new Label();
-            textBox5 = new TextBox();
-            label24 = new Label();
-            textBox6 = new TextBox();
-            label25 = new Label();
-            textBox7 = new TextBox();
+            button4 = new Button();
+            textBox3 = new TextBox();
+            label20 = new Label();
+            textBox2 = new TextBox();
+            label17 = new Label();
+            comboBox3 = new ComboBox();
+            label16 = new Label();
+            comboBox2 = new ComboBox();
+            label15 = new Label();
+            label14 = new Label();
+            tabPage5 = new TabPage();
             dataGridView5 = new DataGridView();
             FIInvestmentProjectName = new DataGridViewTextBoxColumn();
             FIInvestmentInvest = new DataGridViewTextBoxColumn();
             FIInvestmentExpectReturn = new DataGridViewTextBoxColumn();
             FIInvestmentDescriptionOperation = new DataGridViewButtonColumn();
+            textBox7 = new TextBox();
+            label25 = new Label();
+            textBox6 = new TextBox();
+            label24 = new Label();
+            textBox5 = new TextBox();
+            label23 = new Label();
+            textBox4 = new TextBox();
+            label22 = new Label();
+            label21 = new Label();
+            label5 = new Label();
+            label6 = new Label();
+            label7 = new Label();
+            label8 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)chart2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
             tabPage4.SuspendLayout();
-            tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView4).BeginInit();
+            tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView5).BeginInit();
             SuspendLayout();
             // 
             // button8
             // 
-            button8.Location = new Point(752, 12);
+            button8.Location = new Point(1091, 12);
             button8.Name = "button8";
-            button8.Size = new Size(72, 62);
+            button8.Size = new Size(59, 38);
             button8.TabIndex = 18;
-            button8.Text = "Profile";
+            button8.Text = "User Profile";
             button8.UseVisualStyleBackColor = true;
             // 
             // label19
             // 
             label19.AutoSize = true;
-            label19.Location = new Point(123, 59);
+            label19.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
+            label19.Location = new Point(111, 39);
             label19.Name = "label19";
-            label19.Size = new Size(81, 15);
+            label19.Size = new Size(85, 15);
             label19.TabIndex = 15;
             label19.Text = "Department :";
             // 
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(128, 22);
+            label18.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
+            label18.Location = new Point(111, 12);
             label18.Name = "label18";
-            label18.Size = new Size(76, 15);
+            label18.Size = new Size(78, 15);
             label18.TabIndex = 14;
             label18.Text = "User Name :";
             // 
             // pictureBox1
             // 
+            pictureBox1.BorderStyle = BorderStyle.Fixed3D;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(12, 12);
+            pictureBox1.Location = new Point(15, 12);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(87, 83);
+            pictureBox1.Size = new Size(90, 90);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 13;
             pictureBox1.TabStop = false;
-            // 
-            // chart1
-            // 
-            chartArea11.Name = "ChartArea1";
-            chart1.ChartAreas.Add(chartArea11);
-            legend11.Name = "Legend1";
-            chart1.Legends.Add(legend11);
-            chart1.Location = new Point(6, 311);
-            chart1.Name = "chart1";
-            chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Chocolate;
-            series11.ChartArea = "ChartArea1";
-            series11.Legend = "Legend1";
-            series11.Name = "Series1";
-            chart1.Series.Add(series11);
-            chart1.Size = new Size(792, 183);
-            chart1.TabIndex = 19;
-            chart1.Text = "chart1";
-            chart1.Click += chart1_Click;
             // 
             // tabControl1
             // 
@@ -192,10 +167,10 @@
             tabControl1.Controls.Add(tabPage3);
             tabControl1.Controls.Add(tabPage4);
             tabControl1.Controls.Add(tabPage5);
-            tabControl1.Location = new Point(12, 101);
+            tabControl1.Location = new Point(15, 108);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(812, 528);
+            tabControl1.Size = new Size(1126, 738);
             tabControl1.TabIndex = 20;
             // 
             // tabPage1
@@ -204,18 +179,17 @@
             tabPage1.Controls.Add(label2);
             tabPage1.Controls.Add(dataGridView1);
             tabPage1.Controls.Add(label1);
-            tabPage1.Controls.Add(chart1);
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(804, 500);
+            tabPage1.Size = new Size(1118, 710);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Budgeting/forecasting";
             tabPage1.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            button1.Location = new Point(28, 101);
+            button1.Location = new Point(11, 100);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 23;
@@ -225,19 +199,21 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(16, 284);
+            label2.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
+            label2.Location = new Point(6, 320);
             label2.Name = "label2";
-            label2.Size = new Size(217, 15);
+            label2.Size = new Size(232, 15);
             label2.TabIndex = 22;
             label2.Text = "Annual budget and actual trend chart";
             // 
             // dataGridView1
             // 
+            dataGridView1.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { FIYear, FIBudgetRevenue, FIBudgetExpenditure, FIForecastRevenue, FIForecastSpending, FIOperation });
-            dataGridView1.Location = new Point(16, 29);
+            dataGridView1.Location = new Point(6, 29);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(782, 235);
+            dataGridView1.Size = new Size(1106, 270);
             dataGridView1.TabIndex = 21;
             // 
             // FIYear
@@ -273,41 +249,25 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(16, 11);
+            label1.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
+            label1.Location = new Point(6, 11);
             label1.Name = "label1";
-            label1.Size = new Size(165, 15);
+            label1.Size = new Size(176, 15);
             label1.TabIndex = 20;
             label1.Text = "Annual Budget and Forecast";
             // 
             // tabPage2
             // 
-            tabPage2.Controls.Add(chart2);
             tabPage2.Controls.Add(label4);
             tabPage2.Controls.Add(dataGridView2);
             tabPage2.Controls.Add(label3);
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(804, 500);
+            tabPage2.Size = new Size(1118, 710);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Income and Expenditure and cash Flow";
             tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // chart2
-            // 
-            chartArea12.Name = "ChartArea1";
-            chart2.ChartAreas.Add(chartArea12);
-            legend12.Name = "Legend1";
-            chart2.Legends.Add(legend12);
-            chart2.Location = new Point(3, 280);
-            chart2.Name = "chart2";
-            series12.ChartArea = "ChartArea1";
-            series12.Legend = "Legend1";
-            series12.Name = "Series1";
-            chart2.Series.Add(series12);
-            chart2.Size = new Size(801, 220);
-            chart2.TabIndex = 3;
-            chart2.Text = "chart2";
             // 
             // label4
             // 
@@ -394,6 +354,26 @@
             dataGridView3.Name = "dataGridView3";
             dataGridView3.Size = new Size(804, 224);
             dataGridView3.TabIndex = 9;
+            // 
+            // FIStateType
+            // 
+            FIStateType.HeaderText = "Type";
+            FIStateType.Name = "FIStateType";
+            // 
+            // FIStatePerior
+            // 
+            FIStatePerior.HeaderText = "Perior";
+            FIStatePerior.Name = "FIStatePerior";
+            // 
+            // FIStateFileName
+            // 
+            FIStateFileName.HeaderText = "File Name";
+            FIStateFileName.Name = "FIStateFileName";
+            // 
+            // FIStateOperation
+            // 
+            FIStateOperation.HeaderText = "Operation";
+            FIStateOperation.Name = "FIStateOperation";
             // 
             // button3
             // 
@@ -495,163 +475,6 @@
             tabPage4.Text = "Risk Management";
             tabPage4.UseVisualStyleBackColor = true;
             // 
-            // tabPage5
-            // 
-            tabPage5.Controls.Add(dataGridView5);
-            tabPage5.Controls.Add(textBox7);
-            tabPage5.Controls.Add(label25);
-            tabPage5.Controls.Add(textBox6);
-            tabPage5.Controls.Add(label24);
-            tabPage5.Controls.Add(textBox5);
-            tabPage5.Controls.Add(label23);
-            tabPage5.Controls.Add(textBox4);
-            tabPage5.Controls.Add(label22);
-            tabPage5.Controls.Add(label21);
-            tabPage5.Location = new Point(4, 24);
-            tabPage5.Name = "tabPage5";
-            tabPage5.Padding = new Padding(3);
-            tabPage5.Size = new Size(804, 500);
-            tabPage5.TabIndex = 4;
-            tabPage5.Text = "Investment Analysis";
-            tabPage5.UseVisualStyleBackColor = true;
-            tabPage5.Click += tabPage5_Click;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(210, 22);
-            label5.Name = "label5";
-            label5.Size = new Size(0, 15);
-            label5.TabIndex = 21;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(210, 59);
-            label6.Name = "label6";
-            label6.Size = new Size(0, 15);
-            label6.TabIndex = 22;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(210, 22);
-            label7.Name = "label7";
-            label7.Size = new Size(0, 15);
-            label7.TabIndex = 23;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(210, 59);
-            label8.Name = "label8";
-            label8.Size = new Size(0, 15);
-            label8.TabIndex = 24;
-            // 
-            // FIStateType
-            // 
-            FIStateType.HeaderText = "Type";
-            FIStateType.Name = "FIStateType";
-            // 
-            // FIStatePerior
-            // 
-            FIStatePerior.HeaderText = "Perior";
-            FIStatePerior.Name = "FIStatePerior";
-            // 
-            // FIStateFileName
-            // 
-            FIStateFileName.HeaderText = "File Name";
-            FIStateFileName.Name = "FIStateFileName";
-            // 
-            // FIStateOperation
-            // 
-            FIStateOperation.HeaderText = "Operation";
-            FIStateOperation.Name = "FIStateOperation";
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Location = new Point(17, 27);
-            label14.Name = "label14";
-            label14.Size = new Size(161, 15);
-            label14.TabIndex = 0;
-            label14.Text = "Financial Risk Management";
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.Location = new Point(17, 72);
-            label15.Name = "label15";
-            label15.Size = new Size(66, 15);
-            label15.TabIndex = 1;
-            label15.Text = "Risk Type :";
-            // 
-            // comboBox2
-            // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(89, 69);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(121, 23);
-            comboBox2.TabIndex = 2;
-            // 
-            // label16
-            // 
-            label16.AutoSize = true;
-            label16.Location = new Point(260, 69);
-            label16.Name = "label16";
-            label16.Size = new Size(67, 15);
-            label16.TabIndex = 3;
-            label16.Text = "Risk Level :";
-            // 
-            // comboBox3
-            // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(333, 69);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(121, 23);
-            comboBox3.TabIndex = 4;
-            // 
-            // label17
-            // 
-            label17.AutoSize = true;
-            label17.Location = new Point(6, 115);
-            label17.Name = "label17";
-            label17.Size = new Size(77, 15);
-            label17.TabIndex = 5;
-            label17.Text = "Description :";
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(89, 112);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(365, 23);
-            textBox2.TabIndex = 6;
-            // 
-            // label20
-            // 
-            label20.AutoSize = true;
-            label20.Location = new Point(23, 155);
-            label20.Name = "label20";
-            label20.Size = new Size(60, 15);
-            label20.TabIndex = 7;
-            label20.Text = "Solution :";
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(89, 152);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(365, 23);
-            textBox3.TabIndex = 8;
-            // 
-            // button4
-            // 
-            button4.Location = new Point(43, 202);
-            button4.Name = "button4";
-            button4.Size = new Size(75, 23);
-            button4.TabIndex = 9;
-            button4.Text = "New";
-            button4.UseVisualStyleBackColor = true;
-            // 
             // dataGridView4
             // 
             dataGridView4.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -686,78 +509,110 @@
             FIRiskOperation.HeaderText = "Operation";
             FIRiskOperation.Name = "FIRiskOperation";
             // 
-            // label21
+            // button4
             // 
-            label21.AutoSize = true;
-            label21.Location = new Point(31, 23);
-            label21.Name = "label21";
-            label21.Size = new Size(200, 15);
-            label21.TabIndex = 0;
-            label21.Text = "Investment opportunity evaluation";
+            button4.Location = new Point(43, 202);
+            button4.Name = "button4";
+            button4.Size = new Size(75, 23);
+            button4.TabIndex = 9;
+            button4.Text = "New";
+            button4.UseVisualStyleBackColor = true;
             // 
-            // label22
+            // textBox3
             // 
-            label22.AutoSize = true;
-            label22.Location = new Point(24, 65);
-            label22.Name = "label22";
-            label22.Size = new Size(90, 15);
-            label22.TabIndex = 1;
-            label22.Text = "Project Name :";
+            textBox3.Location = new Point(89, 152);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(365, 23);
+            textBox3.TabIndex = 8;
             // 
-            // textBox4
+            // label20
             // 
-            textBox4.Location = new Point(120, 62);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(448, 23);
-            textBox4.TabIndex = 2;
+            label20.AutoSize = true;
+            label20.Location = new Point(23, 155);
+            label20.Name = "label20";
+            label20.Size = new Size(60, 15);
+            label20.TabIndex = 7;
+            label20.Text = "Solution :";
             // 
-            // label23
+            // textBox2
             // 
-            label23.AutoSize = true;
-            label23.Location = new Point(30, 116);
-            label23.Name = "label23";
-            label23.Size = new Size(133, 15);
-            label23.TabIndex = 3;
-            label23.Text = "Estimated Investment :";
+            textBox2.Location = new Point(89, 112);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(365, 23);
+            textBox2.TabIndex = 6;
             // 
-            // textBox5
+            // label17
             // 
-            textBox5.Location = new Point(169, 113);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(135, 23);
-            textBox5.TabIndex = 4;
+            label17.AutoSize = true;
+            label17.Location = new Point(6, 115);
+            label17.Name = "label17";
+            label17.Size = new Size(77, 15);
+            label17.TabIndex = 5;
+            label17.Text = "Description :";
             // 
-            // label24
+            // comboBox3
             // 
-            label24.AutoSize = true;
-            label24.Location = new Point(31, 174);
-            label24.Name = "label24";
-            label24.Size = new Size(77, 15);
-            label24.TabIndex = 5;
-            label24.Text = "Description :";
+            comboBox3.FormattingEnabled = true;
+            comboBox3.Location = new Point(333, 69);
+            comboBox3.Name = "comboBox3";
+            comboBox3.Size = new Size(121, 23);
+            comboBox3.TabIndex = 4;
             // 
-            // textBox6
+            // label16
             // 
-            textBox6.Location = new Point(114, 171);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(454, 23);
-            textBox6.TabIndex = 6;
+            label16.AutoSize = true;
+            label16.Location = new Point(260, 69);
+            label16.Name = "label16";
+            label16.Size = new Size(67, 15);
+            label16.TabIndex = 3;
+            label16.Text = "Risk Level :";
             // 
-            // label25
+            // comboBox2
             // 
-            label25.AutoSize = true;
-            label25.Location = new Point(310, 113);
-            label25.Name = "label25";
-            label25.Size = new Size(152, 15);
-            label25.TabIndex = 7;
-            label25.Text = "Expected Rate Of Return :";
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Location = new Point(89, 69);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(121, 23);
+            comboBox2.TabIndex = 2;
             // 
-            // textBox7
+            // label15
             // 
-            textBox7.Location = new Point(468, 110);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(100, 23);
-            textBox7.TabIndex = 8;
+            label15.AutoSize = true;
+            label15.Location = new Point(17, 72);
+            label15.Name = "label15";
+            label15.Size = new Size(66, 15);
+            label15.TabIndex = 1;
+            label15.Text = "Risk Type :";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(17, 27);
+            label14.Name = "label14";
+            label14.Size = new Size(161, 15);
+            label14.TabIndex = 0;
+            label14.Text = "Financial Risk Management";
+            // 
+            // tabPage5
+            // 
+            tabPage5.Controls.Add(dataGridView5);
+            tabPage5.Controls.Add(textBox7);
+            tabPage5.Controls.Add(label25);
+            tabPage5.Controls.Add(textBox6);
+            tabPage5.Controls.Add(label24);
+            tabPage5.Controls.Add(textBox5);
+            tabPage5.Controls.Add(label23);
+            tabPage5.Controls.Add(textBox4);
+            tabPage5.Controls.Add(label22);
+            tabPage5.Controls.Add(label21);
+            tabPage5.Location = new Point(4, 24);
+            tabPage5.Name = "tabPage5";
+            tabPage5.Padding = new Padding(3);
+            tabPage5.Size = new Size(804, 500);
+            tabPage5.TabIndex = 4;
+            tabPage5.Text = "Investment Analysis";
+            tabPage5.UseVisualStyleBackColor = true;
+            tabPage5.Click += tabPage5_Click;
             // 
             // dataGridView5
             // 
@@ -788,12 +643,117 @@
             FIInvestmentDescriptionOperation.HeaderText = "Operation";
             FIInvestmentDescriptionOperation.Name = "FIInvestmentDescriptionOperation";
             // 
+            // textBox7
+            // 
+            textBox7.Location = new Point(468, 110);
+            textBox7.Name = "textBox7";
+            textBox7.Size = new Size(100, 23);
+            textBox7.TabIndex = 8;
+            // 
+            // label25
+            // 
+            label25.AutoSize = true;
+            label25.Location = new Point(310, 113);
+            label25.Name = "label25";
+            label25.Size = new Size(152, 15);
+            label25.TabIndex = 7;
+            label25.Text = "Expected Rate Of Return :";
+            // 
+            // textBox6
+            // 
+            textBox6.Location = new Point(114, 171);
+            textBox6.Name = "textBox6";
+            textBox6.Size = new Size(454, 23);
+            textBox6.TabIndex = 6;
+            // 
+            // label24
+            // 
+            label24.AutoSize = true;
+            label24.Location = new Point(31, 174);
+            label24.Name = "label24";
+            label24.Size = new Size(77, 15);
+            label24.TabIndex = 5;
+            label24.Text = "Description :";
+            // 
+            // textBox5
+            // 
+            textBox5.Location = new Point(169, 113);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(135, 23);
+            textBox5.TabIndex = 4;
+            // 
+            // label23
+            // 
+            label23.AutoSize = true;
+            label23.Location = new Point(30, 116);
+            label23.Name = "label23";
+            label23.Size = new Size(133, 15);
+            label23.TabIndex = 3;
+            label23.Text = "Estimated Investment :";
+            // 
+            // textBox4
+            // 
+            textBox4.Location = new Point(120, 62);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(448, 23);
+            textBox4.TabIndex = 2;
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.Location = new Point(24, 65);
+            label22.Name = "label22";
+            label22.Size = new Size(90, 15);
+            label22.TabIndex = 1;
+            label22.Text = "Project Name :";
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Location = new Point(31, 23);
+            label21.Name = "label21";
+            label21.Size = new Size(200, 15);
+            label21.TabIndex = 0;
+            label21.Text = "Investment opportunity evaluation";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(210, 22);
+            label5.Name = "label5";
+            label5.Size = new Size(0, 15);
+            label5.TabIndex = 21;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(210, 59);
+            label6.Name = "label6";
+            label6.Size = new Size(0, 15);
+            label6.TabIndex = 22;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(210, 22);
+            label7.Name = "label7";
+            label7.Size = new Size(0, 15);
+            label7.TabIndex = 23;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(210, 59);
+            label8.Name = "label8";
+            label8.Size = new Size(0, 15);
+            label8.TabIndex = 24;
+            // 
             // FinanceDepartment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.SlateGray;
-            ClientSize = new Size(836, 641);
+            BackColor = Color.LightBlue;
+            ClientSize = new Size(1153, 858);
             Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(label6);
@@ -807,23 +767,21 @@
             Text = "FinanceDepartment";
             Load += FinanceDepartment_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)chart2).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
             tabPage4.ResumeLayout(false);
             tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView4).EndInit();
             tabPage5.ResumeLayout(false);
             tabPage5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView4).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView5).EndInit();
             ResumeLayout(false);
             PerformLayout();

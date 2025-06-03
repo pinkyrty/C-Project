@@ -31,5 +31,10 @@ namespace C_Project
         {
 
         }
+
+        private void tabPage5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

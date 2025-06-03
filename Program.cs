@@ -11,7 +11,29 @@ namespace C_Project
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Login());
+            Login login = new Login();
+            if (login.ShowDialog() == DialogResult.OK)
+            {
+                Form targetForm = null;
+                switch (login.TargetFormType)
+                {
+                    case Login.FormType.ITForm:
+                        targetForm = new IT_Form();
+                        break;
+                    case Login.FormType.RNDForm:
+                        targetForm = new RnD_Form();
+                        break;
+                    case Login.FormType.FIForm:
+                        targetForm = new FinanceDepartment();
+                        break;
+                    case Login.FormType.SCMForm:
+                        targetForm = new Sales_MarketingForm();
+                        break;
+                    default:
+                        return;
+                }
+                Application.Run(targetForm);
+            }
         }
     }
 }

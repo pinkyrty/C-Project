@@ -70,7 +70,6 @@
             lblRecord = new Label();
             Procurement = new TabPage();
             comboBox3 = new ComboBox();
-            textBox2 = new TextBox();
             label6 = new Label();
             button7 = new Button();
             label5 = new Label();
@@ -91,7 +90,6 @@
             label1 = new Label();
             listBox1 = new ListBox();
             InternalTransferOrder = new TabPage();
-            textBox6 = new TextBox();
             dateTimePicker3 = new DateTimePicker();
             comboBox4 = new ComboBox();
             comboBox2 = new ComboBox();
@@ -147,6 +145,9 @@
             label20 = new Label();
             label21 = new Label();
             pictureBox2 = new PictureBox();
+            label22 = new Label();
+            button10 = new Button();
+            label23 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             gbOperation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
@@ -168,11 +169,12 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { MaterialNo, name, Specification, Type, unit, StoreHouse, StockQuantity });
-            dataGridView1.Location = new Point(12, 15);
+            dataGridView1.Location = new Point(0, 0);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(1107, 154);
+            dataGridView1.Size = new Size(1121, 158);
             dataGridView1.TabIndex = 3;
             // 
             // MaterialNo
@@ -215,9 +217,9 @@
             gbOperation.Controls.Add(button2);
             gbOperation.Controls.Add(button1);
             gbOperation.Controls.Add(dataGridView2);
-            gbOperation.Location = new Point(6, 175);
+            gbOperation.Location = new Point(0, 175);
             gbOperation.Name = "gbOperation";
-            gbOperation.Size = new Size(553, 203);
+            gbOperation.Size = new Size(559, 203);
             gbOperation.TabIndex = 4;
             gbOperation.TabStop = false;
             gbOperation.Text = "In Warehousing Operation";
@@ -244,6 +246,7 @@
             // 
             // dataGridView2
             // 
+            dataGridView2.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Columns.AddRange(new DataGridViewColumn[] { OperationInventoryMaterial, OperationInventoryName, OperationInventorySpecification, OperationInventoryType, OperationInventoryStorehouse, OperationInventoryDelete });
             dataGridView2.Location = new Point(6, 22);
@@ -290,7 +293,7 @@
             groupBox1.Controls.Add(dataGridView3);
             groupBox1.Location = new Point(565, 175);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(548, 203);
+            groupBox1.Size = new Size(556, 203);
             groupBox1.TabIndex = 5;
             groupBox1.TabStop = false;
             groupBox1.Text = "Out Warehousing Operation";
@@ -315,6 +318,7 @@
             // 
             // dataGridView3
             // 
+            dataGridView3.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView3.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewButtonColumn1 });
             dataGridView3.Location = new Point(6, 22);
@@ -354,11 +358,12 @@
             // 
             // dataGridView4
             // 
+            dataGridView4.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView4.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView4.Columns.AddRange(new DataGridViewColumn[] { Time, Operation, Material, recordName, Quantity, warehouse, remark });
-            dataGridView4.Location = new Point(3, 416);
+            dataGridView4.Location = new Point(0, 416);
             dataGridView4.Name = "dataGridView4";
-            dataGridView4.Size = new Size(1107, 83);
+            dataGridView4.Size = new Size(1121, 83);
             dataGridView4.TabIndex = 6;
             // 
             // Time
@@ -403,10 +408,10 @@
             tabInventory.Controls.Add(InternalTransferOrder);
             tabInventory.Controls.Add(DemandForecast);
             tabInventory.Controls.Add(Supplier);
-            tabInventory.Location = new Point(12, 101);
+            tabInventory.Location = new Point(12, 108);
             tabInventory.Name = "tabInventory";
             tabInventory.SelectedIndex = 0;
-            tabInventory.Size = new Size(1121, 536);
+            tabInventory.Size = new Size(1129, 738);
             tabInventory.TabIndex = 7;
             tabInventory.Tag = "";
             // 
@@ -420,7 +425,7 @@
             Inventory.Location = new Point(4, 24);
             Inventory.Name = "Inventory";
             Inventory.Padding = new Padding(3);
-            Inventory.Size = new Size(1113, 508);
+            Inventory.Size = new Size(1121, 710);
             Inventory.TabIndex = 0;
             Inventory.Text = "Inventory";
             Inventory.UseVisualStyleBackColor = true;
@@ -437,8 +442,8 @@
             // 
             // Procurement
             // 
+            Procurement.Controls.Add(label22);
             Procurement.Controls.Add(comboBox3);
-            Procurement.Controls.Add(textBox2);
             Procurement.Controls.Add(label6);
             Procurement.Controls.Add(button7);
             Procurement.Controls.Add(label5);
@@ -456,7 +461,7 @@
             Procurement.Location = new Point(4, 24);
             Procurement.Name = "Procurement";
             Procurement.Padding = new Padding(3);
-            Procurement.Size = new Size(1113, 508);
+            Procurement.Size = new Size(1121, 710);
             Procurement.TabIndex = 1;
             Procurement.Text = "Procurement";
             Procurement.UseVisualStyleBackColor = true;
@@ -464,22 +469,15 @@
             // comboBox3
             // 
             comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(165, 176);
+            comboBox3.Location = new Point(130, 187);
             comboBox3.Name = "comboBox3";
             comboBox3.Size = new Size(200, 23);
             comboBox3.TabIndex = 16;
             // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(165, 137);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(200, 23);
-            textBox2.TabIndex = 15;
-            // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(33, 140);
+            label6.Location = new Point(18, 151);
             label6.Name = "label6";
             label6.Size = new Size(106, 15);
             label6.TabIndex = 14;
@@ -487,7 +485,7 @@
             // 
             // button7
             // 
-            button7.Location = new Point(372, 136);
+            button7.Location = new Point(348, 151);
             button7.Name = "button7";
             button7.Size = new Size(126, 23);
             button7.TabIndex = 13;
@@ -497,7 +495,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(33, 266);
+            label5.Location = new Point(18, 277);
             label5.Name = "label5";
             label5.Size = new Size(42, 15);
             label5.TabIndex = 12;
@@ -506,7 +504,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(33, 240);
+            label4.Location = new Point(18, 251);
             label4.Name = "label4";
             label4.Size = new Size(107, 15);
             label4.TabIndex = 11;
@@ -515,7 +513,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(33, 211);
+            label3.Location = new Point(18, 222);
             label3.Name = "label3";
             label3.Size = new Size(76, 15);
             label3.TabIndex = 10;
@@ -525,21 +523,21 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(165, 263);
+            comboBox1.Location = new Point(130, 274);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(200, 23);
             comboBox1.TabIndex = 9;
             // 
             // dateTimePicker2
             // 
-            dateTimePicker2.Location = new Point(165, 234);
+            dateTimePicker2.Location = new Point(130, 245);
             dateTimePicker2.Name = "dateTimePicker2";
             dateTimePicker2.Size = new Size(200, 23);
             dateTimePicker2.TabIndex = 8;
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(165, 205);
+            dateTimePicker1.Location = new Point(130, 216);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(200, 23);
             dateTimePicker1.TabIndex = 7;
@@ -547,7 +545,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(33, 179);
+            label2.Location = new Point(18, 190);
             label2.Name = "label2";
             label2.Size = new Size(60, 15);
             label2.TabIndex = 5;
@@ -555,7 +553,7 @@
             // 
             // button6
             // 
-            button6.Location = new Point(981, 452);
+            button6.Location = new Point(1018, 668);
             button6.Name = "button6";
             button6.Size = new Size(97, 36);
             button6.TabIndex = 4;
@@ -564,7 +562,7 @@
             // 
             // button5
             // 
-            button5.Location = new Point(28, 386);
+            button5.Location = new Point(27, 400);
             button5.Name = "button5";
             button5.Size = new Size(96, 31);
             button5.TabIndex = 3;
@@ -573,11 +571,12 @@
             // 
             // dataGridView5
             // 
+            dataGridView5.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView5.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView5.Columns.AddRange(new DataGridViewColumn[] { ProcurementMaterial, ProcurementSpecificate, ProcurementQuantity, ProcurementPrice, ProcurementDelete });
-            dataGridView5.Location = new Point(17, 331);
+            dataGridView5.Location = new Point(17, 344);
             dataGridView5.Name = "dataGridView5";
-            dataGridView5.Size = new Size(1070, 168);
+            dataGridView5.Size = new Size(1098, 318);
             dataGridView5.TabIndex = 2;
             // 
             // ProcurementMaterial
@@ -608,9 +607,10 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
             label1.Location = new Point(17, 11);
             label1.Name = "label1";
-            label1.Size = new Size(121, 15);
+            label1.Size = new Size(131, 15);
             label1.TabIndex = 1;
             label1.Text = "Procurement History";
             // 
@@ -620,13 +620,14 @@
             listBox1.ItemHeight = 15;
             listBox1.Location = new Point(17, 37);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(1070, 79);
+            listBox1.Size = new Size(1098, 79);
             listBox1.TabIndex = 0;
             // 
             // InternalTransferOrder
             // 
             InternalTransferOrder.BackgroundImageLayout = ImageLayout.None;
-            InternalTransferOrder.Controls.Add(textBox6);
+            InternalTransferOrder.Controls.Add(label23);
+            InternalTransferOrder.Controls.Add(button10);
             InternalTransferOrder.Controls.Add(dateTimePicker3);
             InternalTransferOrder.Controls.Add(comboBox4);
             InternalTransferOrder.Controls.Add(comboBox2);
@@ -650,17 +651,10 @@
             InternalTransferOrder.Location = new Point(4, 24);
             InternalTransferOrder.Name = "InternalTransferOrder";
             InternalTransferOrder.Padding = new Padding(3);
-            InternalTransferOrder.Size = new Size(1113, 508);
+            InternalTransferOrder.Size = new Size(1121, 710);
             InternalTransferOrder.TabIndex = 2;
-            InternalTransferOrder.Text = "internalTransferOrder";
+            InternalTransferOrder.Text = "Internal Transfer Order";
             InternalTransferOrder.UseVisualStyleBackColor = true;
-            // 
-            // textBox6
-            // 
-            textBox6.Location = new Point(132, 127);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(197, 23);
-            textBox6.TabIndex = 46;
             // 
             // dateTimePicker3
             // 
@@ -805,6 +799,7 @@
             // 
             // dataGridView6
             // 
+            dataGridView6.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView6.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView6.Columns.AddRange(new DataGridViewColumn[] { internalTransferMaterial, internalTransferDescription, internalTransferSpecificate, internalTransferType, internalTransferQuantity, internaltransferOperation });
             dataGridView6.Location = new Point(15, 294);
@@ -846,9 +841,10 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(15, 18);
+            label7.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
+            label7.Location = new Point(17, 11);
             label7.Name = "label7";
-            label7.Size = new Size(139, 15);
+            label7.Size = new Size(152, 15);
             label7.TabIndex = 2;
             label7.Text = "Internal Transfer History";
             // 
@@ -872,23 +868,24 @@
             DemandForecast.Location = new Point(4, 24);
             DemandForecast.Name = "DemandForecast";
             DemandForecast.Padding = new Padding(3);
-            DemandForecast.Size = new Size(1113, 508);
+            DemandForecast.Size = new Size(1121, 710);
             DemandForecast.TabIndex = 3;
-            DemandForecast.Text = "demandForecast";
+            DemandForecast.Text = "Demand Forecast";
             DemandForecast.UseVisualStyleBackColor = true;
             // 
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(7, 19);
+            label14.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
+            label14.Location = new Point(17, 11);
             label14.Name = "label14";
-            label14.Size = new Size(147, 15);
+            label14.Size = new Size(156, 15);
             label14.TabIndex = 3;
-            label14.Text = "demand Forecast History";
+            label14.Text = "Demand Forecast History";
             // 
             // button13
             // 
-            button13.Location = new Point(20, 125);
+            button13.Location = new Point(26, 101);
             button13.Name = "button13";
             button13.Size = new Size(75, 23);
             button13.TabIndex = 2;
@@ -897,20 +894,21 @@
             // 
             // button12
             // 
-            button12.Location = new Point(1018, 459);
+            button12.Location = new Point(1018, 668);
             button12.Name = "button12";
-            button12.Size = new Size(88, 40);
+            button12.Size = new Size(97, 36);
             button12.TabIndex = 1;
             button12.Text = "Save";
             button12.UseVisualStyleBackColor = true;
             // 
             // dataGridView7
             // 
+            dataGridView7.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView7.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView7.Columns.AddRange(new DataGridViewColumn[] { demandForecastMaterial, DemandForecastPeriod, DemandForecastPredicted, DemandForecastAuthor, DemandForecastPredictedDate, DemandForecastOperation });
-            dataGridView7.Location = new Point(7, 54);
+            dataGridView7.Location = new Point(16, 29);
             dataGridView7.Name = "dataGridView7";
-            dataGridView7.Size = new Size(1100, 206);
+            dataGridView7.Size = new Size(1090, 629);
             dataGridView7.TabIndex = 0;
             // 
             // demandForecastMaterial
@@ -952,23 +950,23 @@
             Supplier.Location = new Point(4, 24);
             Supplier.Name = "Supplier";
             Supplier.Padding = new Padding(3);
-            Supplier.Size = new Size(1113, 508);
+            Supplier.Size = new Size(1121, 710);
             Supplier.TabIndex = 4;
             Supplier.Text = "Supplier";
             Supplier.UseVisualStyleBackColor = true;
             // 
             // button15
             // 
-            button15.Location = new Point(981, 455);
+            button15.Location = new Point(1018, 668);
             button15.Name = "button15";
-            button15.Size = new Size(107, 44);
+            button15.Size = new Size(97, 36);
             button15.TabIndex = 3;
             button15.Text = "Save";
             button15.UseVisualStyleBackColor = true;
             // 
             // button14
             // 
-            button14.Location = new Point(28, 124);
+            button14.Location = new Point(27, 102);
             button14.Name = "button14";
             button14.Size = new Size(114, 25);
             button14.TabIndex = 2;
@@ -977,11 +975,12 @@
             // 
             // dataGridView8
             // 
+            dataGridView8.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView8.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView8.Columns.AddRange(new DataGridViewColumn[] { SupplierNo, SupplierName, SupplierContactPerson, SupplierEmail, SupplierContact, SupplierRate, SupplierOperation });
-            dataGridView8.Location = new Point(17, 49);
+            dataGridView8.Location = new Point(17, 29);
             dataGridView8.Name = "dataGridView8";
-            dataGridView8.Size = new Size(1071, 400);
+            dataGridView8.Size = new Size(1089, 633);
             dataGridView8.TabIndex = 1;
             // 
             // SupplierNo
@@ -1022,35 +1021,38 @@
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(17, 21);
+            label15.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
+            label15.Location = new Point(17, 11);
             label15.Name = "label15";
-            label15.Size = new Size(109, 15);
+            label15.Size = new Size(115, 15);
             label15.TabIndex = 0;
             label15.Text = "Supplier Overview";
             // 
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(128, 25);
+            label18.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
+            label18.Location = new Point(111, 12);
             label18.Name = "label18";
-            label18.Size = new Size(76, 15);
+            label18.Size = new Size(78, 15);
             label18.TabIndex = 8;
             label18.Text = "User Name :";
             // 
             // label19
             // 
             label19.AutoSize = true;
-            label19.Location = new Point(123, 59);
+            label19.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
+            label19.Location = new Point(111, 39);
             label19.Name = "label19";
-            label19.Size = new Size(81, 15);
+            label19.Size = new Size(85, 15);
             label19.TabIndex = 9;
             label19.Text = "Department :";
             // 
             // button8
             // 
-            button8.Location = new Point(1050, 12);
+            button8.Location = new Point(1091, 12);
             button8.Name = "button8";
-            button8.Size = new Size(72, 62);
+            button8.Size = new Size(59, 38);
             button8.TabIndex = 12;
             button8.Text = "User Profile";
             button8.UseVisualStyleBackColor = true;
@@ -1073,19 +1075,48 @@
             // 
             // pictureBox2
             // 
+            pictureBox2.BorderStyle = BorderStyle.Fixed3D;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
             pictureBox2.Location = new Point(12, 12);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(87, 83);
+            pictureBox2.Size = new Size(90, 90);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 15;
             pictureBox2.TabStop = false;
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.Location = new Point(131, 151);
+            label22.Name = "label22";
+            label22.Size = new Size(115, 15);
+            label22.TabIndex = 17;
+            label22.Text = "Click To Create No.";
+            label22.Click += label22_Click;
+            // 
+            // button10
+            // 
+            button10.Location = new Point(349, 127);
+            button10.Name = "button10";
+            button10.Size = new Size(126, 23);
+            button10.TabIndex = 47;
+            button10.Text = "New Transfer No.";
+            button10.UseVisualStyleBackColor = true;
+            // 
+            // label23
+            // 
+            label23.AutoSize = true;
+            label23.Location = new Point(131, 131);
+            label23.Name = "label23";
+            label23.Size = new Size(163, 15);
+            label23.TabIndex = 48;
+            label23.Text = "Click To Create Transfer No.";
             // 
             // LogisticForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.SlateGray;
+            BackColor = Color.LightBlue;
             ClientSize = new Size(1153, 858);
             Controls.Add(pictureBox2);
             Controls.Add(label21);
@@ -1185,7 +1216,6 @@
         private Label label2;
         private Button button6;
         private Button button7;
-        private TextBox textBox2;
         private Label label6;
         private ListBox listBox2;
         private Button button9;
@@ -1232,7 +1262,6 @@
         private TextBox textBox4;
         private TextBox textBox3;
         private Label label17;
-        private TextBox textBox6;
         private DateTimePicker dateTimePicker3;
         private ComboBox comboBox4;
         private ComboBox comboBox2;
@@ -1242,5 +1271,8 @@
         private Label label20;
         private Label label21;
         private PictureBox pictureBox2;
+        private Label label22;
+        private Label label23;
+        private Button button10;
     }
 }

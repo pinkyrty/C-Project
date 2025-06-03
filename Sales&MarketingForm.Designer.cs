@@ -51,9 +51,7 @@
             label17 = new Label();
             DeliveryTimeTextBox = new TextBox();
             label16 = new Label();
-            CloseButton = new Button();
             SaveButton = new Button();
-            ResetButton = new Button();
             GenPDFButton = new Button();
             NewProductsButton = new Button();
             label11 = new Label();
@@ -218,9 +216,7 @@
             splitContainer1.Panel2.Controls.Add(label17);
             splitContainer1.Panel2.Controls.Add(DeliveryTimeTextBox);
             splitContainer1.Panel2.Controls.Add(label16);
-            splitContainer1.Panel2.Controls.Add(CloseButton);
             splitContainer1.Panel2.Controls.Add(SaveButton);
-            splitContainer1.Panel2.Controls.Add(ResetButton);
             splitContainer1.Panel2.Controls.Add(GenPDFButton);
             splitContainer1.Panel2.Controls.Add(NewProductsButton);
             splitContainer1.Panel2.Controls.Add(label11);
@@ -337,36 +333,19 @@
             label16.TabIndex = 8;
             label16.Text = "Delivery time";
             // 
-            // CloseButton
-            // 
-            CloseButton.Location = new Point(608, 521);
-            CloseButton.Name = "CloseButton";
-            CloseButton.Size = new Size(75, 23);
-            CloseButton.TabIndex = 7;
-            CloseButton.Text = "Close";
-            CloseButton.UseVisualStyleBackColor = true;
-            // 
             // SaveButton
             // 
-            SaveButton.Location = new Point(437, 521);
+            SaveButton.Location = new Point(608, 521);
             SaveButton.Name = "SaveButton";
             SaveButton.Size = new Size(75, 23);
             SaveButton.TabIndex = 6;
             SaveButton.Text = "Save";
             SaveButton.UseVisualStyleBackColor = true;
-            // 
-            // ResetButton
-            // 
-            ResetButton.Location = new Point(518, 521);
-            ResetButton.Name = "ResetButton";
-            ResetButton.Size = new Size(75, 23);
-            ResetButton.TabIndex = 5;
-            ResetButton.Text = "Reset";
-            ResetButton.UseVisualStyleBackColor = true;
+            SaveButton.Click += SaveButton_Click;
             // 
             // GenPDFButton
             // 
-            GenPDFButton.Location = new Point(132, 274);
+            GenPDFButton.Location = new Point(8, 421);
             GenPDFButton.Name = "GenPDFButton";
             GenPDFButton.Size = new Size(75, 23);
             GenPDFButton.TabIndex = 4;
@@ -861,9 +840,7 @@
         private ComboBox comboBox2;
         private Label label15;
         private Label label16;
-        private Button CloseButton;
         private Button SaveButton;
-        private Button ResetButton;
         private Button GenPDFButton;
         private Button NewProductsButton;
         private Label label20;

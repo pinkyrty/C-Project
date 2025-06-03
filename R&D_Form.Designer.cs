@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RnD_Form));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             pictureBox1 = new PictureBox();
             RaDUserPrifileButton = new Button();
             UserNamelabel = new Label();
@@ -205,9 +205,9 @@
             // Edit
             // 
             Edit.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            Edit.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            Edit.DefaultCellStyle = dataGridViewCellStyle2;
             Edit.HeaderText = "Edit";
             Edit.Name = "Edit";
             Edit.Text = "Edit";
@@ -664,6 +664,7 @@
             // 
             // ImageAttachmentsTabPage
             // 
+            ImageAttachmentsTabPage.BackColor = SystemColors.GradientInactiveCaption;
             ImageAttachmentsTabPage.Controls.Add(UploadImageButton);
             ImageAttachmentsTabPage.Controls.Add(ProductPictureBox);
             ImageAttachmentsTabPage.Location = new Point(4, 24);
@@ -672,11 +673,10 @@
             ImageAttachmentsTabPage.Size = new Size(790, 566);
             ImageAttachmentsTabPage.TabIndex = 5;
             ImageAttachmentsTabPage.Text = "Image Attachments";
-            ImageAttachmentsTabPage.UseVisualStyleBackColor = true;
             // 
             // UploadImageButton
             // 
-            UploadImageButton.Location = new Point(404, 145);
+            UploadImageButton.Location = new Point(612, 266);
             UploadImageButton.Name = "UploadImageButton";
             UploadImageButton.Size = new Size(123, 50);
             UploadImageButton.TabIndex = 1;
@@ -688,7 +688,7 @@
             ProductPictureBox.BackColor = Color.Gainsboro;
             ProductPictureBox.Location = new Point(9, 6);
             ProductPictureBox.Name = "ProductPictureBox";
-            ProductPictureBox.Size = new Size(341, 346);
+            ProductPictureBox.Size = new Size(540, 554);
             ProductPictureBox.TabIndex = 0;
             ProductPictureBox.TabStop = false;
             // 
@@ -731,7 +731,7 @@
             // cmbStatus
             // 
             cmbStatus.FormattingEnabled = true;
-            cmbStatus.Items.AddRange(new object[] { "Under development", "In mass production", "Discontinued" });
+            cmbStatus.Items.AddRange(new object[] { "Under Development", "In Mass Production", "Discontinued" });
             cmbStatus.Location = new Point(9, 97);
             cmbStatus.Name = "cmbStatus";
             cmbStatus.Size = new Size(168, 23);

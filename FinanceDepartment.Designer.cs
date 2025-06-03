@@ -29,9 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FinanceDepartment));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             button8 = new Button();
             label19 = new Label();
             label18 = new Label();
@@ -49,11 +52,22 @@
             FIOperation = new DataGridViewButtonColumn();
             label1 = new Label();
             tabPage2 = new TabPage();
+            chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             label4 = new Label();
             dataGridView2 = new DataGridView();
+            FIIncomeDate = new DataGridViewTextBoxColumn();
+            FIIncomeType = new DataGridViewComboBoxColumn();
+            FIIncomeAmount = new DataGridViewTextBoxColumn();
+            FIIncomeRemark = new DataGridViewTextBoxColumn();
+            FIIncomeState = new DataGridViewComboBoxColumn();
+            FIIincomeOperation = new DataGridViewButtonColumn();
             label3 = new Label();
             tabPage3 = new TabPage();
             dataGridView3 = new DataGridView();
+            FIStateType = new DataGridViewTextBoxColumn();
+            FIStatePerior = new DataGridViewTextBoxColumn();
+            FIStateFileName = new DataGridViewTextBoxColumn();
+            FIStateOperation = new DataGridViewButtonColumn();
             button3 = new Button();
             label13 = new Label();
             button2 = new Button();
@@ -64,7 +78,13 @@
             label10 = new Label();
             label9 = new Label();
             tabPage4 = new TabPage();
+            textBox8 = new TextBox();
             dataGridView4 = new DataGridView();
+            FIRiskType = new DataGridViewTextBoxColumn();
+            FIRiskLevel = new DataGridViewTextBoxColumn();
+            FIRiskDescription = new DataGridViewTextBoxColumn();
+            FIRiskSolution = new DataGridViewTextBoxColumn();
+            FIRiskOperation = new DataGridViewButtonColumn();
             button4 = new Button();
             textBox3 = new TextBox();
             label20 = new Label();
@@ -72,11 +92,15 @@
             label17 = new Label();
             comboBox3 = new ComboBox();
             label16 = new Label();
-            comboBox2 = new ComboBox();
             label15 = new Label();
             label14 = new Label();
             tabPage5 = new TabPage();
+            button5 = new Button();
             dataGridView5 = new DataGridView();
+            FIInvestmentProjectName = new DataGridViewTextBoxColumn();
+            FIInvestmentInvest = new DataGridViewTextBoxColumn();
+            FIInvestmentExpectReturn = new DataGridViewTextBoxColumn();
+            FIInvestmentDescriptionOperation = new DataGridViewButtonColumn();
             textBox7 = new TextBox();
             label25 = new Label();
             textBox6 = new TextBox();
@@ -90,32 +114,13 @@
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
-            chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            FIInvestmentProjectName = new DataGridViewTextBoxColumn();
-            FIInvestmentInvest = new DataGridViewTextBoxColumn();
-            FIInvestmentExpectReturn = new DataGridViewTextBoxColumn();
-            FIInvestmentDescriptionOperation = new DataGridViewButtonColumn();
-            button5 = new Button();
-            FIRiskType = new DataGridViewTextBoxColumn();
-            FIRiskLevel = new DataGridViewTextBoxColumn();
-            FIRiskDescription = new DataGridViewTextBoxColumn();
-            FIRiskSolution = new DataGridViewTextBoxColumn();
-            FIRiskOperation = new DataGridViewButtonColumn();
-            FIStateType = new DataGridViewTextBoxColumn();
-            FIStatePerior = new DataGridViewTextBoxColumn();
-            FIStateFileName = new DataGridViewTextBoxColumn();
-            FIStateOperation = new DataGridViewButtonColumn();
-            FIIncomeDate = new DataGridViewTextBoxColumn();
-            FIIncomeType = new DataGridViewComboBoxColumn();
-            FIIncomeAmount = new DataGridViewTextBoxColumn();
-            FIIncomeRemark = new DataGridViewTextBoxColumn();
-            FIIncomeState = new DataGridViewComboBoxColumn();
-            FIIincomeOperation = new DataGridViewButtonColumn();
+            chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
@@ -123,7 +128,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView4).BeginInit();
             tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView5).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)chart3).BeginInit();
             SuspendLayout();
             // 
             // button8
@@ -181,6 +186,7 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(chart3);
             tabPage1.Controls.Add(button1);
             tabPage1.Controls.Add(label2);
             tabPage1.Controls.Add(dataGridView1);
@@ -249,7 +255,7 @@
             // 
             // FIOperation
             // 
-            FIOperation.HeaderText = "Operation";
+            FIOperation.HeaderText = "Delete";
             FIOperation.Name = "FIOperation";
             // 
             // label1
@@ -276,6 +282,22 @@
             tabPage2.Text = "Income and Expenditure and Cash Flow";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // chart1
+            // 
+            chartArea2.Name = "ChartArea1";
+            chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            chart1.Legends.Add(legend2);
+            chart1.Location = new Point(333, 320);
+            chart1.Name = "chart1";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            chart1.Series.Add(series2);
+            chart1.Size = new Size(300, 300);
+            chart1.TabIndex = 3;
+            chart1.Text = "chart1";
+            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -295,6 +317,37 @@
             dataGridView2.Name = "dataGridView2";
             dataGridView2.Size = new Size(1106, 219);
             dataGridView2.TabIndex = 1;
+            dataGridView2.CellContentClick += dataGridView2_CellContentClick;
+            // 
+            // FIIncomeDate
+            // 
+            FIIncomeDate.HeaderText = "Date";
+            FIIncomeDate.Name = "FIIncomeDate";
+            // 
+            // FIIncomeType
+            // 
+            FIIncomeType.HeaderText = "Type";
+            FIIncomeType.Name = "FIIncomeType";
+            // 
+            // FIIncomeAmount
+            // 
+            FIIncomeAmount.HeaderText = "Amount";
+            FIIncomeAmount.Name = "FIIncomeAmount";
+            // 
+            // FIIncomeRemark
+            // 
+            FIIncomeRemark.HeaderText = "Remark";
+            FIIncomeRemark.Name = "FIIncomeRemark";
+            // 
+            // FIIncomeState
+            // 
+            FIIncomeState.HeaderText = "State";
+            FIIncomeState.Name = "FIIncomeState";
+            // 
+            // FIIincomeOperation
+            // 
+            FIIincomeOperation.HeaderText = "Delete";
+            FIIincomeOperation.Name = "FIIincomeOperation";
             // 
             // label3
             // 
@@ -335,6 +388,26 @@
             dataGridView3.Name = "dataGridView3";
             dataGridView3.Size = new Size(1109, 508);
             dataGridView3.TabIndex = 9;
+            // 
+            // FIStateType
+            // 
+            FIStateType.HeaderText = "Type";
+            FIStateType.Name = "FIStateType";
+            // 
+            // FIStatePerior
+            // 
+            FIStatePerior.HeaderText = "Perior";
+            FIStatePerior.Name = "FIStatePerior";
+            // 
+            // FIStateFileName
+            // 
+            FIStateFileName.HeaderText = "File Name";
+            FIStateFileName.Name = "FIStateFileName";
+            // 
+            // FIStateOperation
+            // 
+            FIStateOperation.HeaderText = "Delete";
+            FIStateOperation.Name = "FIStateOperation";
             // 
             // button3
             // 
@@ -419,6 +492,7 @@
             // 
             // tabPage4
             // 
+            tabPage4.Controls.Add(textBox8);
             tabPage4.Controls.Add(dataGridView4);
             tabPage4.Controls.Add(button4);
             tabPage4.Controls.Add(textBox3);
@@ -427,7 +501,6 @@
             tabPage4.Controls.Add(label17);
             tabPage4.Controls.Add(comboBox3);
             tabPage4.Controls.Add(label16);
-            tabPage4.Controls.Add(comboBox2);
             tabPage4.Controls.Add(label15);
             tabPage4.Controls.Add(label14);
             tabPage4.Location = new Point(4, 24);
@@ -438,6 +511,13 @@
             tabPage4.Text = "Risk Management";
             tabPage4.UseVisualStyleBackColor = true;
             // 
+            // textBox8
+            // 
+            textBox8.Location = new Point(98, 46);
+            textBox8.Name = "textBox8";
+            textBox8.Size = new Size(133, 23);
+            textBox8.TabIndex = 11;
+            // 
             // dataGridView4
             // 
             dataGridView4.BackgroundColor = SystemColors.GradientInactiveCaption;
@@ -447,6 +527,31 @@
             dataGridView4.Name = "dataGridView4";
             dataGridView4.Size = new Size(1109, 486);
             dataGridView4.TabIndex = 10;
+            // 
+            // FIRiskType
+            // 
+            FIRiskType.HeaderText = "Risk Type";
+            FIRiskType.Name = "FIRiskType";
+            // 
+            // FIRiskLevel
+            // 
+            FIRiskLevel.HeaderText = "Risk Level";
+            FIRiskLevel.Name = "FIRiskLevel";
+            // 
+            // FIRiskDescription
+            // 
+            FIRiskDescription.HeaderText = "Description";
+            FIRiskDescription.Name = "FIRiskDescription";
+            // 
+            // FIRiskSolution
+            // 
+            FIRiskSolution.HeaderText = "Solution";
+            FIRiskSolution.Name = "FIRiskSolution";
+            // 
+            // FIRiskOperation
+            // 
+            FIRiskOperation.HeaderText = "Delete";
+            FIRiskOperation.Name = "FIRiskOperation";
             // 
             // button4
             // 
@@ -492,6 +597,7 @@
             // comboBox3
             // 
             comboBox3.FormattingEnabled = true;
+            comboBox3.Items.AddRange(new object[] { "Low", "Medium", "High" });
             comboBox3.Location = new Point(342, 46);
             comboBox3.Name = "comboBox3";
             comboBox3.Size = new Size(121, 23);
@@ -505,14 +611,6 @@
             label16.Size = new Size(67, 15);
             label16.TabIndex = 3;
             label16.Text = "Risk Level :";
-            // 
-            // comboBox2
-            // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(98, 46);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(121, 23);
-            comboBox2.TabIndex = 2;
             // 
             // label15
             // 
@@ -555,6 +653,15 @@
             tabPage5.UseVisualStyleBackColor = true;
             tabPage5.Click += tabPage5_Click;
             // 
+            // button5
+            // 
+            button5.Location = new Point(92, 191);
+            button5.Name = "button5";
+            button5.Size = new Size(75, 23);
+            button5.TabIndex = 10;
+            button5.Text = "Add";
+            button5.UseVisualStyleBackColor = true;
+            // 
             // dataGridView5
             // 
             dataGridView5.BackgroundColor = SystemColors.GradientInactiveCaption;
@@ -564,6 +671,26 @@
             dataGridView5.Name = "dataGridView5";
             dataGridView5.Size = new Size(1106, 471);
             dataGridView5.TabIndex = 9;
+            // 
+            // FIInvestmentProjectName
+            // 
+            FIInvestmentProjectName.HeaderText = "Project Name";
+            FIInvestmentProjectName.Name = "FIInvestmentProjectName";
+            // 
+            // FIInvestmentInvest
+            // 
+            FIInvestmentInvest.HeaderText = "Invest";
+            FIInvestmentInvest.Name = "FIInvestmentInvest";
+            // 
+            // FIInvestmentExpectReturn
+            // 
+            FIInvestmentExpectReturn.HeaderText = "Expected Return(%)";
+            FIInvestmentExpectReturn.Name = "FIInvestmentExpectReturn";
+            // 
+            // FIInvestmentDescriptionOperation
+            // 
+            FIInvestmentDescriptionOperation.HeaderText = "Delete";
+            FIInvestmentDescriptionOperation.Name = "FIInvestmentDescriptionOperation";
             // 
             // textBox7
             // 
@@ -671,125 +798,21 @@
             label8.Size = new Size(0, 15);
             label8.TabIndex = 24;
             // 
-            // chart1
+            // chart3
             // 
-            chartArea4.Name = "ChartArea1";
-            chart1.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            chart1.Legends.Add(legend4);
-            chart1.Location = new Point(333, 320);
-            chart1.Name = "chart1";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            chart1.Series.Add(series4);
-            chart1.Size = new Size(300, 300);
-            chart1.TabIndex = 3;
-            chart1.Text = "chart1";
-            // 
-            // FIInvestmentProjectName
-            // 
-            FIInvestmentProjectName.HeaderText = "Project Name";
-            FIInvestmentProjectName.Name = "FIInvestmentProjectName";
-            // 
-            // FIInvestmentInvest
-            // 
-            FIInvestmentInvest.HeaderText = "Invest";
-            FIInvestmentInvest.Name = "FIInvestmentInvest";
-            // 
-            // FIInvestmentExpectReturn
-            // 
-            FIInvestmentExpectReturn.HeaderText = "Expected Return(%)";
-            FIInvestmentExpectReturn.Name = "FIInvestmentExpectReturn";
-            // 
-            // FIInvestmentDescriptionOperation
-            // 
-            FIInvestmentDescriptionOperation.HeaderText = "Delete";
-            FIInvestmentDescriptionOperation.Name = "FIInvestmentDescriptionOperation";
-            // 
-            // button5
-            // 
-            button5.Location = new Point(92, 191);
-            button5.Name = "button5";
-            button5.Size = new Size(75, 23);
-            button5.TabIndex = 10;
-            button5.Text = "Add";
-            button5.UseVisualStyleBackColor = true;
-            // 
-            // FIRiskType
-            // 
-            FIRiskType.HeaderText = "Risk Type";
-            FIRiskType.Name = "FIRiskType";
-            // 
-            // FIRiskLevel
-            // 
-            FIRiskLevel.HeaderText = "Risk Level";
-            FIRiskLevel.Name = "FIRiskLevel";
-            // 
-            // FIRiskDescription
-            // 
-            FIRiskDescription.HeaderText = "Description";
-            FIRiskDescription.Name = "FIRiskDescription";
-            // 
-            // FIRiskSolution
-            // 
-            FIRiskSolution.HeaderText = "Solution";
-            FIRiskSolution.Name = "FIRiskSolution";
-            // 
-            // FIRiskOperation
-            // 
-            FIRiskOperation.HeaderText = "Delete";
-            FIRiskOperation.Name = "FIRiskOperation";
-            // 
-            // FIStateType
-            // 
-            FIStateType.HeaderText = "Type";
-            FIStateType.Name = "FIStateType";
-            // 
-            // FIStatePerior
-            // 
-            FIStatePerior.HeaderText = "Perior";
-            FIStatePerior.Name = "FIStatePerior";
-            // 
-            // FIStateFileName
-            // 
-            FIStateFileName.HeaderText = "File Name";
-            FIStateFileName.Name = "FIStateFileName";
-            // 
-            // FIStateOperation
-            // 
-            FIStateOperation.HeaderText = "Delete";
-            FIStateOperation.Name = "FIStateOperation";
-            // 
-            // FIIncomeDate
-            // 
-            FIIncomeDate.HeaderText = "Date";
-            FIIncomeDate.Name = "FIIncomeDate";
-            // 
-            // FIIncomeType
-            // 
-            FIIncomeType.HeaderText = "Type";
-            FIIncomeType.Name = "FIIncomeType";
-            // 
-            // FIIncomeAmount
-            // 
-            FIIncomeAmount.HeaderText = "Amount";
-            FIIncomeAmount.Name = "FIIncomeAmount";
-            // 
-            // FIIncomeRemark
-            // 
-            FIIncomeRemark.HeaderText = "Remark";
-            FIIncomeRemark.Name = "FIIncomeRemark";
-            // 
-            // FIIncomeState
-            // 
-            FIIncomeState.HeaderText = "State";
-            FIIncomeState.Name = "FIIncomeState";
-            // 
-            // FIIincomeOperation
-            // 
-            FIIincomeOperation.HeaderText = "Delete";
-            FIIincomeOperation.Name = "FIIincomeOperation";
+            chartArea1.Name = "ChartArea1";
+            chart3.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            chart3.Legends.Add(legend1);
+            chart3.Location = new Point(347, 361);
+            chart3.Name = "chart3";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            chart3.Series.Add(series1);
+            chart3.Size = new Size(300, 300);
+            chart3.TabIndex = 24;
+            chart3.Text = "chart3";
             // 
             // FinanceDepartment
             // 
@@ -816,6 +839,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
@@ -826,7 +850,7 @@
             tabPage5.ResumeLayout(false);
             tabPage5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView5).EndInit();
-            ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)chart3).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -841,12 +865,6 @@
         private TabPage tabPage1;
         private Label label2;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn FIYear;
-        private DataGridViewTextBoxColumn FIBudgetRevenue;
-        private DataGridViewTextBoxColumn FIBudgetExpenditure;
-        private DataGridViewTextBoxColumn FIForecastRevenue;
-        private DataGridViewTextBoxColumn FIForecastSpending;
-        private DataGridViewButtonColumn FIOperation;
         private Label label1;
         private TabPage tabPage2;
         private TabPage tabPage3;
@@ -873,7 +891,6 @@
         private Label label13;
         private ComboBox comboBox3;
         private Label label16;
-        private ComboBox comboBox2;
         private Label label15;
         private Label label14;
         private Label label17;
@@ -913,5 +930,13 @@
         private DataGridViewTextBoxColumn FIInvestmentInvest;
         private DataGridViewTextBoxColumn FIInvestmentExpectReturn;
         private DataGridViewButtonColumn FIInvestmentDescriptionOperation;
+        private TextBox textBox8;
+        private DataGridViewTextBoxColumn FIYear;
+        private DataGridViewTextBoxColumn FIBudgetRevenue;
+        private DataGridViewTextBoxColumn FIBudgetExpenditure;
+        private DataGridViewTextBoxColumn FIForecastRevenue;
+        private DataGridViewTextBoxColumn FIForecastSpending;
+        private DataGridViewButtonColumn FIOperation;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
     }
 }

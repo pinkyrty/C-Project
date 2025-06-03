@@ -58,10 +58,11 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.BorderStyle = BorderStyle.Fixed3D;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(12, 12);
+            pictureBox1.Location = new Point(15, 12);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(87, 83);
+            pictureBox1.Size = new Size(90, 90);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
@@ -223,6 +224,7 @@
             label18.Size = new Size(76, 15);
             label18.TabIndex = 16;
             label18.Text = "User Name :";
+            label18.Click += label18_Click;
             // 
             // label8
             // 

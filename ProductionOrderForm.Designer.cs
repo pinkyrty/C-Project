@@ -77,6 +77,8 @@
             dateTimePicker1 = new DateTimePicker();
             label13 = new Label();
             label14 = new Label();
+            POorderNumber = new DataGridViewTextBoxColumn();
+            PoProduct = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tabControl1.SuspendLayout();
@@ -220,9 +222,9 @@
             label7.AutoSize = true;
             label7.Location = new Point(374, 259);
             label7.Name = "label7";
-            label7.Size = new Size(42, 15);
+            label7.Size = new Size(130, 15);
             label7.TabIndex = 31;
-            label7.Text = "label7";
+            label7.Text = "Material Requirement";
             // 
             // dataGridView1
             // 
@@ -272,7 +274,7 @@
             tabPage1.Padding = new Padding(3);
             tabPage1.Size = new Size(460, 138);
             tabPage1.TabIndex = 0;
-            tabPage1.Text = "tabPage1";
+            tabPage1.Text = "Process Assignment";
             tabPage1.UseVisualStyleBackColor = true;
             // 
             // dataGridView3
@@ -317,14 +319,14 @@
             tabPage2.Padding = new Padding(3);
             tabPage2.Size = new Size(460, 138);
             tabPage2.TabIndex = 1;
-            tabPage2.Text = "tabPage2";
+            tabPage2.Text = "Production Plan";
             tabPage2.UseVisualStyleBackColor = true;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(74, 91);
+            textBox2.Location = new Point(124, 91);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(337, 23);
+            textBox2.Size = new Size(248, 23);
             textBox2.TabIndex = 5;
             // 
             // label11
@@ -332,9 +334,9 @@
             label11.AutoSize = true;
             label11.Location = new Point(15, 94);
             label11.Name = "label11";
-            label11.Size = new Size(49, 15);
+            label11.Size = new Size(103, 15);
             label11.TabIndex = 4;
-            label11.Text = "label11";
+            label11.Text = "Work Instructions";
             // 
             // dateTimePicker3
             // 
@@ -377,7 +379,7 @@
             tabPage3.Padding = new Padding(3);
             tabPage3.Size = new Size(460, 138);
             tabPage3.TabIndex = 2;
-            tabPage3.Text = "tabPage3";
+            tabPage3.Text = "File Management";
             tabPage3.UseVisualStyleBackColor = true;
             // 
             // label12
@@ -426,6 +428,7 @@
             // dataGridView2
             // 
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { POorderNumber, PoProduct });
             dataGridView2.Location = new Point(12, 168);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.Size = new Size(347, 427);
@@ -463,12 +466,22 @@
             label14.Size = new Size(0, 15);
             label14.TabIndex = 38;
             // 
+            // POorderNumber
+            // 
+            POorderNumber.HeaderText = "Order Number";
+            POorderNumber.Name = "POorderNumber";
+            // 
+            // PoProduct
+            // 
+            PoProduct.HeaderText = "Product";
+            PoProduct.Name = "PoProduct";
+            // 
             // ProductionOrderForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.SlateGray;
-            ClientSize = new Size(1153, 858);
+            BackColor = Color.LightBlue;
+            ClientSize = new Size(860, 858);
             Controls.Add(label14);
             Controls.Add(label13);
             Controls.Add(dateTimePicker1);
@@ -560,5 +573,7 @@
         private DataGridViewButtonColumn FMOperation;
         private Label label13;
         private Label label14;
+        private DataGridViewTextBoxColumn POorderNumber;
+        private DataGridViewTextBoxColumn PoProduct;
     }
 }

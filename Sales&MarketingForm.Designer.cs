@@ -129,7 +129,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(105, 12);
+            label1.Location = new Point(111, 12);
             label1.Name = "label1";
             label1.Size = new Size(76, 15);
             label1.TabIndex = 1;
@@ -146,7 +146,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(105, 38);
+            label2.Location = new Point(111, 39);
             label2.Name = "label2";
             label2.Size = new Size(81, 15);
             label2.TabIndex = 3;
@@ -163,7 +163,7 @@
             // RaDUserPrifileButton
             // 
             RaDUserPrifileButton.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
-            RaDUserPrifileButton.Location = new Point(997, 12);
+            RaDUserPrifileButton.Location = new Point(1091, 12);
             RaDUserPrifileButton.Name = "RaDUserPrifileButton";
             RaDUserPrifileButton.Size = new Size(59, 38);
             RaDUserPrifileButton.TabIndex = 34;
@@ -174,10 +174,10 @@
             // 
             tabControl.Controls.Add(QuotationTabPage);
             tabControl.Controls.Add(ProductionorderTabPage);
-            tabControl.Location = new Point(12, 106);
+            tabControl.Location = new Point(3, 118);
             tabControl.Name = "tabControl";
             tabControl.SelectedIndex = 0;
-            tabControl.Size = new Size(1051, 581);
+            tabControl.Size = new Size(1138, 736);
             tabControl.TabIndex = 35;
             // 
             // QuotationTabPage
@@ -186,7 +186,7 @@
             QuotationTabPage.Location = new Point(4, 24);
             QuotationTabPage.Name = "QuotationTabPage";
             QuotationTabPage.Padding = new Padding(3);
-            QuotationTabPage.Size = new Size(1043, 553);
+            QuotationTabPage.Size = new Size(1130, 708);
             QuotationTabPage.TabIndex = 0;
             QuotationTabPage.Text = "Quotation";
             QuotationTabPage.UseVisualStyleBackColor = true;
@@ -222,8 +222,8 @@
             splitContainer1.Panel2.Controls.Add(label11);
             splitContainer1.Panel2.Controls.Add(dataGridView2);
             splitContainer1.Panel2.Controls.Add(groupBox1);
-            splitContainer1.Size = new Size(1037, 547);
-            splitContainer1.SplitterDistance = 344;
+            splitContainer1.Size = new Size(1124, 702);
+            splitContainer1.SplitterDistance = 372;
             splitContainer1.TabIndex = 0;
             // 
             // dgvQuoteList
@@ -231,7 +231,7 @@
             dgvQuoteList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvQuoteList.Location = new Point(4, 54);
             dgvQuoteList.Name = "dgvQuoteList";
-            dgvQuoteList.Size = new Size(298, 138);
+            dgvQuoteList.Size = new Size(365, 645);
             dgvQuoteList.TabIndex = 2;
             // 
             // AddNewOrdersButton
@@ -756,7 +756,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.SlateGray;
+            BackColor = Color.LightBlue;
             ClientSize = new Size(1153, 858);
             Controls.Add(tabControl);
             Controls.Add(RaDUserPrifileButton);

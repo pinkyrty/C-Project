@@ -76,9 +76,7 @@
             label3 = new Label();
             dataGridView1 = new DataGridView();
             label24 = new Label();
-            button2 = new Button();
             button3 = new Button();
-            button4 = new Button();
             NewMaterialsButton = new Button();
             label23 = new Label();
             dataGridView3 = new DataGridView();
@@ -228,6 +226,7 @@
             // 
             // dgvQuoteList
             // 
+            dgvQuoteList.BackgroundColor = SystemColors.GradientInactiveCaption;
             dgvQuoteList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvQuoteList.Location = new Point(4, 54);
             dgvQuoteList.Name = "dgvQuoteList";
@@ -254,7 +253,7 @@
             // 
             // NotesOrtermsTextBox
             // 
-            NotesOrtermsTextBox.Location = new Point(102, 383);
+            NotesOrtermsTextBox.Location = new Point(102, 523);
             NotesOrtermsTextBox.Name = "NotesOrtermsTextBox";
             NotesOrtermsTextBox.Size = new Size(119, 23);
             NotesOrtermsTextBox.TabIndex = 17;
@@ -262,7 +261,7 @@
             // label20
             // 
             label20.AutoSize = true;
-            label20.Location = new Point(8, 387);
+            label20.Location = new Point(8, 527);
             label20.Name = "label20";
             label20.Size = new Size(77, 15);
             label20.TabIndex = 16;
@@ -271,7 +270,7 @@
             // 
             // DiscountsOrOffersTextBox
             // 
-            DiscountsOrOffersTextBox.Location = new Point(414, 347);
+            DiscountsOrOffersTextBox.Location = new Point(414, 487);
             DiscountsOrOffersTextBox.Name = "DiscountsOrOffersTextBox";
             DiscountsOrOffersTextBox.Size = new Size(141, 23);
             DiscountsOrOffersTextBox.TabIndex = 15;
@@ -279,7 +278,7 @@
             // label19
             // 
             label19.AutoSize = true;
-            label19.Location = new Point(270, 347);
+            label19.Location = new Point(270, 487);
             label19.Name = "label19";
             label19.Size = new Size(98, 15);
             label19.TabIndex = 14;
@@ -287,7 +286,7 @@
             // 
             // PaymentTermsTextBox
             // 
-            PaymentTermsTextBox.Location = new Point(103, 344);
+            PaymentTermsTextBox.Location = new Point(103, 484);
             PaymentTermsTextBox.Name = "PaymentTermsTextBox";
             PaymentTermsTextBox.Size = new Size(119, 23);
             PaymentTermsTextBox.TabIndex = 13;
@@ -295,7 +294,7 @@
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(6, 347);
+            label18.Location = new Point(6, 487);
             label18.Name = "label18";
             label18.Size = new Size(90, 15);
             label18.TabIndex = 12;
@@ -303,7 +302,7 @@
             // 
             // TransportationMethodTextBox
             // 
-            TransportationMethodTextBox.Location = new Point(414, 309);
+            TransportationMethodTextBox.Location = new Point(414, 449);
             TransportationMethodTextBox.Name = "TransportationMethodTextBox";
             TransportationMethodTextBox.Size = new Size(141, 23);
             TransportationMethodTextBox.TabIndex = 11;
@@ -311,7 +310,7 @@
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(270, 312);
+            label17.Location = new Point(270, 452);
             label17.Name = "label17";
             label17.Size = new Size(138, 15);
             label17.TabIndex = 10;
@@ -319,7 +318,7 @@
             // 
             // DeliveryTimeTextBox
             // 
-            DeliveryTimeTextBox.Location = new Point(103, 309);
+            DeliveryTimeTextBox.Location = new Point(103, 449);
             DeliveryTimeTextBox.Name = "DeliveryTimeTextBox";
             DeliveryTimeTextBox.Size = new Size(119, 23);
             DeliveryTimeTextBox.TabIndex = 9;
@@ -327,7 +326,7 @@
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new Point(8, 312);
+            label16.Location = new Point(8, 452);
             label16.Name = "label16";
             label16.Size = new Size(80, 15);
             label16.TabIndex = 8;
@@ -335,9 +334,9 @@
             // 
             // SaveButton
             // 
-            SaveButton.Location = new Point(608, 521);
+            SaveButton.Location = new Point(648, 663);
             SaveButton.Name = "SaveButton";
-            SaveButton.Size = new Size(75, 23);
+            SaveButton.Size = new Size(97, 36);
             SaveButton.TabIndex = 6;
             SaveButton.Text = "Save";
             SaveButton.UseVisualStyleBackColor = true;
@@ -345,7 +344,7 @@
             // 
             // GenPDFButton
             // 
-            GenPDFButton.Location = new Point(8, 421);
+            GenPDFButton.Location = new Point(8, 561);
             GenPDFButton.Name = "GenPDFButton";
             GenPDFButton.Size = new Size(75, 23);
             GenPDFButton.TabIndex = 4;
@@ -355,7 +354,7 @@
             // 
             // NewProductsButton
             // 
-            NewProductsButton.Location = new Point(8, 274);
+            NewProductsButton.Location = new Point(8, 414);
             NewProductsButton.Name = "NewProductsButton";
             NewProductsButton.Size = new Size(118, 23);
             NewProductsButton.TabIndex = 3;
@@ -365,7 +364,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(11, 130);
+            label11.Location = new Point(6, 193);
             label11.Name = "label11";
             label11.Size = new Size(92, 15);
             label11.TabIndex = 2;
@@ -373,10 +372,11 @@
             // 
             // dataGridView2
             // 
+            dataGridView2.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(8, 149);
+            dataGridView2.Location = new Point(6, 212);
             dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(675, 119);
+            dataGridView2.Size = new Size(734, 196);
             dataGridView2.TabIndex = 1;
             // 
             // groupBox1
@@ -393,16 +393,15 @@
             groupBox1.Controls.Add(dateTimePicker1);
             groupBox1.Controls.Add(QuoteNumberTextBox);
             groupBox1.Controls.Add(label5);
-            groupBox1.Location = new Point(8, 7);
+            groupBox1.Location = new Point(6, 35);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(678, 120);
+            groupBox1.Size = new Size(734, 120);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
-            groupBox1.Text = "groupBox1";
             // 
             // TelephoneTextBox
             // 
-            TelephoneTextBox.Location = new Point(310, 86);
+            TelephoneTextBox.Location = new Point(442, 89);
             TelephoneTextBox.Name = "TelephoneTextBox";
             TelephoneTextBox.Size = new Size(152, 23);
             TelephoneTextBox.TabIndex = 11;
@@ -410,7 +409,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(243, 89);
+            label10.Location = new Point(375, 92);
             label10.Name = "label10";
             label10.Size = new Size(68, 15);
             label10.TabIndex = 10;
@@ -418,7 +417,7 @@
             // 
             // ContactPersonTextBox
             // 
-            ContactPersonTextBox.Location = new Point(104, 86);
+            ContactPersonTextBox.Location = new Point(155, 89);
             ContactPersonTextBox.Name = "ContactPersonTextBox";
             ContactPersonTextBox.Size = new Size(101, 23);
             ContactPersonTextBox.TabIndex = 9;
@@ -426,7 +425,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(6, 86);
+            label9.Location = new Point(57, 89);
             label9.Name = "label9";
             label9.Size = new Size(92, 15);
             label9.TabIndex = 8;
@@ -434,7 +433,7 @@
             // 
             // AddressTextBox
             // 
-            AddressTextBox.Location = new Point(310, 53);
+            AddressTextBox.Location = new Point(442, 56);
             AddressTextBox.Name = "AddressTextBox";
             AddressTextBox.Size = new Size(152, 23);
             AddressTextBox.TabIndex = 7;
@@ -443,7 +442,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(243, 56);
+            label8.Location = new Point(375, 59);
             label8.Name = "label8";
             label8.Size = new Size(52, 15);
             label8.TabIndex = 6;
@@ -451,7 +450,7 @@
             // 
             // CustomerNameTextBox
             // 
-            CustomerNameTextBox.Location = new Point(105, 52);
+            CustomerNameTextBox.Location = new Point(156, 55);
             CustomerNameTextBox.Name = "CustomerNameTextBox";
             CustomerNameTextBox.Size = new Size(100, 23);
             CustomerNameTextBox.TabIndex = 5;
@@ -460,7 +459,7 @@
             // 
             label7.AutoSize = true;
             label7.ImageAlign = ContentAlignment.BottomLeft;
-            label7.Location = new Point(6, 56);
+            label7.Location = new Point(57, 59);
             label7.Name = "label7";
             label7.Size = new Size(99, 15);
             label7.TabIndex = 4;
@@ -469,7 +468,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(243, 26);
+            label6.Location = new Point(375, 29);
             label6.Name = "label6";
             label6.Size = new Size(34, 15);
             label6.TabIndex = 3;
@@ -477,14 +476,14 @@
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(310, 23);
+            dateTimePicker1.Location = new Point(442, 26);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(152, 23);
             dateTimePicker1.TabIndex = 2;
             // 
             // QuoteNumberTextBox
             // 
-            QuoteNumberTextBox.Location = new Point(105, 23);
+            QuoteNumberTextBox.Location = new Point(156, 26);
             QuoteNumberTextBox.Name = "QuoteNumberTextBox";
             QuoteNumberTextBox.Size = new Size(100, 23);
             QuoteNumberTextBox.TabIndex = 1;
@@ -492,7 +491,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(6, 26);
+            label5.Location = new Point(57, 29);
             label5.Name = "label5";
             label5.Size = new Size(93, 15);
             label5.TabIndex = 0;
@@ -504,7 +503,7 @@
             ProductionorderTabPage.Location = new Point(4, 24);
             ProductionorderTabPage.Name = "ProductionorderTabPage";
             ProductionorderTabPage.Padding = new Padding(3);
-            ProductionorderTabPage.Size = new Size(1043, 553);
+            ProductionorderTabPage.Size = new Size(1130, 708);
             ProductionorderTabPage.TabIndex = 1;
             ProductionorderTabPage.Text = "Production order";
             ProductionorderTabPage.UseVisualStyleBackColor = true;
@@ -525,23 +524,22 @@
             // 
             splitContainer2.Panel2.Controls.Add(dataGridView1);
             splitContainer2.Panel2.Controls.Add(label24);
-            splitContainer2.Panel2.Controls.Add(button2);
             splitContainer2.Panel2.Controls.Add(button3);
-            splitContainer2.Panel2.Controls.Add(button4);
             splitContainer2.Panel2.Controls.Add(NewMaterialsButton);
             splitContainer2.Panel2.Controls.Add(label23);
             splitContainer2.Panel2.Controls.Add(dataGridView3);
             splitContainer2.Panel2.Controls.Add(groupBox2);
-            splitContainer2.Size = new Size(1037, 547);
-            splitContainer2.SplitterDistance = 344;
+            splitContainer2.Size = new Size(1124, 702);
+            splitContainer2.SplitterDistance = 372;
             splitContainer2.TabIndex = 0;
             // 
             // dgvProdOrderList
             // 
+            dgvProdOrderList.BackgroundColor = SystemColors.GradientInactiveCaption;
             dgvProdOrderList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvProdOrderList.Location = new Point(4, 54);
             dgvProdOrderList.Name = "dgvProdOrderList";
-            dgvProdOrderList.Size = new Size(298, 138);
+            dgvProdOrderList.Size = new Size(365, 645);
             dgvProdOrderList.TabIndex = 5;
             dgvProdOrderList.CellContentClick += dgvProdOrderList_CellContentClick;
             // 
@@ -565,51 +563,34 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(3, 371);
+            dataGridView1.Location = new Point(5, 415);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(683, 142);
+            dataGridView1.Size = new Size(738, 142);
             dataGridView1.TabIndex = 13;
             // 
             // label24
             // 
             label24.AutoSize = true;
-            label24.Location = new Point(7, 353);
+            label24.Location = new Point(9, 397);
             label24.Name = "label24";
             label24.Size = new Size(106, 15);
             label24.TabIndex = 12;
             label24.Text = "File Management";
             // 
-            // button2
-            // 
-            button2.Location = new Point(611, 519);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 10;
-            button2.Text = "Close";
-            button2.UseVisualStyleBackColor = true;
-            // 
             // button3
             // 
-            button3.Location = new Point(428, 519);
+            button3.Location = new Point(648, 663);
             button3.Name = "button3";
-            button3.Size = new Size(75, 23);
+            button3.Size = new Size(97, 36);
             button3.TabIndex = 9;
             button3.Text = "Save";
             button3.UseVisualStyleBackColor = true;
             // 
-            // button4
-            // 
-            button4.Location = new Point(521, 519);
-            button4.Name = "button4";
-            button4.Size = new Size(75, 23);
-            button4.TabIndex = 8;
-            button4.Text = "Reset";
-            button4.UseVisualStyleBackColor = true;
-            // 
             // NewMaterialsButton
             // 
-            NewMaterialsButton.Location = new Point(3, 325);
+            NewMaterialsButton.Location = new Point(9, 352);
             NewMaterialsButton.Name = "NewMaterialsButton";
             NewMaterialsButton.Size = new Size(118, 25);
             NewMaterialsButton.TabIndex = 3;
@@ -619,7 +600,7 @@
             // label23
             // 
             label23.AutoSize = true;
-            label23.Location = new Point(3, 141);
+            label23.Location = new Point(9, 168);
             label23.Name = "label23";
             label23.Size = new Size(326, 15);
             label23.TabIndex = 2;
@@ -627,10 +608,11 @@
             // 
             // dataGridView3
             // 
+            dataGridView3.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Location = new Point(3, 159);
+            dataGridView3.Location = new Point(9, 186);
             dataGridView3.Name = "dataGridView3";
-            dataGridView3.Size = new Size(683, 162);
+            dataGridView3.Size = new Size(736, 160);
             dataGridView3.TabIndex = 1;
             // 
             // groupBox2
@@ -647,12 +629,11 @@
             groupBox2.Controls.Add(label13);
             groupBox2.Controls.Add(OrderNoTextBox);
             groupBox2.Controls.Add(label12);
-            groupBox2.Location = new Point(3, 7);
+            groupBox2.Location = new Point(11, 25);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(683, 131);
+            groupBox2.Size = new Size(732, 131);
             groupBox2.TabIndex = 0;
             groupBox2.TabStop = false;
-            groupBox2.Text = "groupBox2";
             // 
             // NotesOrInstructionsTextBox
             // 
@@ -859,9 +840,7 @@
         private Label label21;
         private Button NewMaterialsButton;
         private Label label23;
-        private Button button2;
         private Button button3;
-        private Button button4;
         private Label label24;
         private DataGridView dataGridView1;
     }

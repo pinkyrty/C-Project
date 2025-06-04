@@ -49,18 +49,20 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(111, 47);
+            label1.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
+            label1.Location = new Point(111, 12);
             label1.Name = "label1";
-            label1.Size = new Size(71, 15);
+            label1.Size = new Size(72, 15);
             label1.TabIndex = 0;
-            label1.Text = "Staff Name";
+            label1.Text = "User Name";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(111, 97);
+            label2.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
+            label2.Location = new Point(111, 39);
             label2.Name = "label2";
-            label2.Size = new Size(75, 15);
+            label2.Size = new Size(79, 15);
             label2.TabIndex = 1;
             label2.Text = "Department";
             // 
@@ -83,9 +85,10 @@
             // label3
             // 
             label3.AutoSize = true;
+            label3.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
             label3.Location = new Point(175, 149);
             label3.Name = "label3";
-            label3.Size = new Size(108, 15);
+            label3.Size = new Size(114, 15);
             label3.TabIndex = 4;
             label3.Text = "Change password";
             label3.Click += label3_Click;
@@ -93,50 +96,51 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(73, 196);
+            label4.Location = new Point(77, 197);
             label4.Name = "label4";
-            label4.Size = new Size(107, 15);
+            label4.Size = new Size(113, 15);
             label4.TabIndex = 5;
-            label4.Text = "Existing password";
+            label4.Text = "Existing password: ";
             // 
             // ExistingPasswordBox
             // 
-            ExistingPasswordBox.Location = new Point(253, 193);
+            ExistingPasswordBox.Location = new Point(196, 194);
             ExistingPasswordBox.Name = "ExistingPasswordBox";
-            ExistingPasswordBox.Size = new Size(159, 23);
+            ExistingPasswordBox.Size = new Size(182, 23);
             ExistingPasswordBox.TabIndex = 6;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(73, 248);
+            label5.Location = new Point(94, 248);
             label5.Name = "label5";
-            label5.Size = new Size(90, 15);
+            label5.Size = new Size(96, 15);
             label5.TabIndex = 7;
-            label5.Text = "New password";
+            label5.Text = "New password: ";
             // 
             // NewPasswordBox
             // 
-            NewPasswordBox.Location = new Point(253, 245);
+            NewPasswordBox.Location = new Point(196, 245);
             NewPasswordBox.Name = "NewPasswordBox";
-            NewPasswordBox.Size = new Size(159, 23);
+            NewPasswordBox.Size = new Size(182, 23);
             NewPasswordBox.TabIndex = 8;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(73, 298);
+            label6.Location = new Point(75, 298);
             label6.Name = "label6";
-            label6.Size = new Size(109, 15);
+            label6.Size = new Size(115, 15);
             label6.TabIndex = 9;
-            label6.Text = "Confirm password";
+            label6.Text = "Confirm password: ";
             // 
             // ConfirmPasswordBox
             // 
-            ConfirmPasswordBox.Location = new Point(253, 295);
+            ConfirmPasswordBox.Location = new Point(196, 295);
             ConfirmPasswordBox.Name = "ConfirmPasswordBox";
-            ConfirmPasswordBox.Size = new Size(159, 23);
+            ConfirmPasswordBox.Size = new Size(182, 23);
             ConfirmPasswordBox.TabIndex = 10;
+            ConfirmPasswordBox.TextChanged += ConfirmPasswordBox_TextChanged;
             // 
             // UpdatePasswordButton
             // 
@@ -159,9 +163,9 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(13, 34);
+            pictureBox1.Location = new Point(15, 12);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(86, 78);
+            pictureBox1.Size = new Size(90, 90);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 13;
             pictureBox1.TabStop = false;
@@ -171,7 +175,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.SlateGray;
+            BackColor = Color.LightBlue;
             ClientSize = new Size(469, 484);
             Controls.Add(pictureBox1);
             Controls.Add(CancelButton);

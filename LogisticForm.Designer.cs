@@ -69,6 +69,7 @@
             Inventory = new TabPage();
             lblRecord = new Label();
             Procurement = new TabPage();
+            label22 = new Label();
             comboBox3 = new ComboBox();
             label6 = new Label();
             button7 = new Button();
@@ -90,6 +91,8 @@
             label1 = new Label();
             listBox1 = new ListBox();
             InternalTransferOrder = new TabPage();
+            label23 = new Label();
+            button10 = new Button();
             dateTimePicker3 = new DateTimePicker();
             comboBox4 = new ComboBox();
             comboBox2 = new ComboBox();
@@ -145,9 +148,6 @@
             label20 = new Label();
             label21 = new Label();
             pictureBox2 = new PictureBox();
-            label22 = new Label();
-            button10 = new Button();
-            label23 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             gbOperation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
@@ -466,6 +466,16 @@
             Procurement.Text = "Procurement";
             Procurement.UseVisualStyleBackColor = true;
             // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.Location = new Point(131, 151);
+            label22.Name = "label22";
+            label22.Size = new Size(115, 15);
+            label22.TabIndex = 17;
+            label22.Text = "Click To Create No.";
+            label22.Click += label22_Click;
+            // 
             // comboBox3
             // 
             comboBox3.FormattingEnabled = true;
@@ -655,6 +665,24 @@
             InternalTransferOrder.TabIndex = 2;
             InternalTransferOrder.Text = "Internal Transfer Order";
             InternalTransferOrder.UseVisualStyleBackColor = true;
+            // 
+            // label23
+            // 
+            label23.AutoSize = true;
+            label23.Location = new Point(131, 131);
+            label23.Name = "label23";
+            label23.Size = new Size(163, 15);
+            label23.TabIndex = 48;
+            label23.Text = "Click To Create Transfer No.";
+            // 
+            // button10
+            // 
+            button10.Location = new Point(349, 127);
+            button10.Name = "button10";
+            button10.Size = new Size(126, 23);
+            button10.TabIndex = 47;
+            button10.Text = "New Transfer No.";
+            button10.UseVisualStyleBackColor = true;
             // 
             // dateTimePicker3
             // 
@@ -1077,40 +1105,12 @@
             // 
             pictureBox2.BorderStyle = BorderStyle.Fixed3D;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(12, 12);
+            pictureBox2.Location = new Point(15, 12);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(90, 90);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 15;
             pictureBox2.TabStop = false;
-            // 
-            // label22
-            // 
-            label22.AutoSize = true;
-            label22.Location = new Point(131, 151);
-            label22.Name = "label22";
-            label22.Size = new Size(115, 15);
-            label22.TabIndex = 17;
-            label22.Text = "Click To Create No.";
-            label22.Click += label22_Click;
-            // 
-            // button10
-            // 
-            button10.Location = new Point(349, 127);
-            button10.Name = "button10";
-            button10.Size = new Size(126, 23);
-            button10.TabIndex = 47;
-            button10.Text = "New Transfer No.";
-            button10.UseVisualStyleBackColor = true;
-            // 
-            // label23
-            // 
-            label23.AutoSize = true;
-            label23.Location = new Point(131, 131);
-            label23.Name = "label23";
-            label23.Size = new Size(163, 15);
-            label23.TabIndex = 48;
-            label23.Text = "Click To Create Transfer No.";
             // 
             // LogisticForm
             // 

@@ -31,5 +31,10 @@ namespace C_Project
         {
 
         }
+
+        private void ConfirmPasswordBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

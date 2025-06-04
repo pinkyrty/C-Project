@@ -323,7 +323,7 @@
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(552, 291);
+            tabPage2.Size = new Size(718, 373);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Production Plan";
             tabPage2.UseVisualStyleBackColor = true;
@@ -383,7 +383,7 @@
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(552, 291);
+            tabPage3.Size = new Size(718, 373);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "File Management";
             tabPage3.UseVisualStyleBackColor = true;
@@ -438,7 +438,7 @@
             dataGridView2.Columns.AddRange(new DataGridViewColumn[] { POorderNumber, PoProduct });
             dataGridView2.Location = new Point(15, 157);
             dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(353, 666);
+            dataGridView2.Size = new Size(380, 666);
             dataGridView2.TabIndex = 34;
             // 
             // POorderNumber

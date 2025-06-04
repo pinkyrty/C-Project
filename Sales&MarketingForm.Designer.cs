@@ -462,7 +462,7 @@
             // 
             // ContactPersonTextBox
             // 
-            ContactPersonTextBox.Location = new Point(155, 89);
+            ContactPersonTextBox.Location = new Point(161, 89);
             ContactPersonTextBox.Name = "ContactPersonTextBox";
             ContactPersonTextBox.Size = new Size(101, 23);
             ContactPersonTextBox.TabIndex = 9;
@@ -495,7 +495,7 @@
             // 
             // CustomerNameTextBox
             // 
-            CustomerNameTextBox.Location = new Point(156, 55);
+            CustomerNameTextBox.Location = new Point(162, 55);
             CustomerNameTextBox.Name = "CustomerNameTextBox";
             CustomerNameTextBox.Size = new Size(100, 23);
             CustomerNameTextBox.TabIndex = 5;
@@ -528,7 +528,7 @@
             // 
             // QuoteNumberTextBox
             // 
-            QuoteNumberTextBox.Location = new Point(156, 26);
+            QuoteNumberTextBox.Location = new Point(162, 26);
             QuoteNumberTextBox.Name = "QuoteNumberTextBox";
             QuoteNumberTextBox.Size = new Size(100, 23);
             QuoteNumberTextBox.TabIndex = 1;
@@ -536,11 +536,12 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(57, 29);
+            label5.Location = new Point(41, 29);
             label5.Name = "label5";
-            label5.Size = new Size(93, 15);
+            label5.Size = new Size(115, 15);
             label5.TabIndex = 0;
-            label5.Text = "Quote Number";
+            label5.Text = "Quotation Number";
+            label5.Click += label5_Click;
             // 
             // ProductionorderTabPage
             // 

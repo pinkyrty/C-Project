@@ -12,9 +12,19 @@ namespace C_Project
 {
     public partial class IT_Form : Form
     {
+        public string DepartmentName { get; set; }
+        public string Username { get; set; }
         public IT_Form()
         {
             InitializeComponent();
+
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            label30.Text = Username;
+            label31.Text = DepartmentName;
         }
 
         private void label21_Click(object sender, EventArgs e)

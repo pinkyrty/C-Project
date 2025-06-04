@@ -20,6 +20,8 @@ namespace C_Project
             DTForm
         }
         public FormType TargetFormType { get; private set; } = FormType.LoginForm;
+        public string DepartmentName { get; private set; }
+        public string Username { get; private set; }
         public Login()
         {
             InitializeComponent();
@@ -54,9 +56,19 @@ namespace C_Project
                         {
                             if (reader.Read())
                             {
-                                string department = reader["Department"].ToString();
                                 string fullname = reader["FullName"].ToString();
-                                MessageBox.Show($"Login successful! Name: {fullname}");
+                                string department = reader["Department"].ToString();
+                                string departmentName = "";
+
+                                Username = fullname;
+                                string sql2 = "SELECT Description FROM Login_Department WHERE DepartmentID = ?";
+                                using (OleDbCommand cmd2 = new OleDbCommand(sql2, conn))
+                                {
+                                    cmd2.Parameters.AddWithValue("?", department);
+                                    departmentName = cmd2.ExecuteScalar()?.ToString() ?? "";
+                                    DepartmentName = departmentName;
+                                }
+                                MessageBox.Show($"Login successful! Department Name: {departmentName}, User: {fullname}");
 
                                 OpenDepartmentForm(department);
                             }
@@ -85,28 +97,31 @@ namespace C_Project
             {
                 case "1":
                     TargetFormType = FormType.RNDForm;
-                    //deptForm = new RnD_Form();
                     break;
                 case "2":
-                    TargetFormType = FormType.SCMForm;
-                    //deptForm = new Sales_MarketingForm();
+                    TargetFormType = FormType.SMDForm;
                     break;
-                case "7":
-                    TargetFormType = FormType.ITForm;
-                    //deptForm = new IT_Form();
+                case "3":
+                    TargetFormType = FormType.PDForm;
+                    break;
+                case "4":
+                    TargetFormType = FormType.SCMForm;
+                    break;
+                case "5":
+                    TargetFormType = FormType.CSDForm;
                     break;
                 case "6":
                     TargetFormType = FormType.FIForm;
-                    //deptForm = new FinanceDepartment();
+                    break;
+                case "7":
+                    TargetFormType = FormType.ITForm;
                     break;
                 default:
-                    TargetFormType = FormType.ITForm;
-                    //deptForm = new IT_Form();
+                    TargetFormType = FormType.DTForm;
                     break;
             }
             DialogResult = DialogResult.OK;
             Close();
-            //deptForm.Show();
         }
 
         // The remaining control event handlers can be kept

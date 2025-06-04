@@ -43,6 +43,8 @@
             UpdatePasswordButton = new Button();
             CancelButton = new Button();
             pictureBox1 = new PictureBox();
+            label7 = new Label();
+            label8 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -171,12 +173,32 @@
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
             // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(196, 12);
+            label7.Name = "label7";
+            label7.Size = new Size(42, 15);
+            label7.TabIndex = 14;
+            label7.Text = "label7";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(196, 39);
+            label8.Name = "label8";
+            label8.Size = new Size(42, 15);
+            label8.TabIndex = 15;
+            label8.Text = "label8";
+            // 
             // ChangePassword
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightBlue;
             ClientSize = new Size(469, 484);
+            Controls.Add(label8);
+            Controls.Add(label7);
             Controls.Add(pictureBox1);
             Controls.Add(CancelButton);
             Controls.Add(UpdatePasswordButton);
@@ -215,5 +237,7 @@
         private Button UpdatePasswordButton;
         private Button CancelButton;
         private PictureBox pictureBox1;
+        private Label label7;
+        private Label label8;
     }
 }

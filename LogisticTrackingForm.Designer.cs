@@ -42,14 +42,18 @@
             textBox3 = new TextBox();
             label7 = new Label();
             dataGridView1 = new DataGridView();
-            Time = new DataGridViewTextBoxColumn();
-            Node = new DataGridViewTextBoxColumn();
-            Remark = new DataGridViewTextBoxColumn();
             button8 = new Button();
             label19 = new Label();
             label18 = new Label();
             label8 = new Label();
             label9 = new Label();
+            LTStation = new DataGridViewTextBoxColumn();
+            LTTime = new DataGridViewTextBoxColumn();
+            LTState = new DataGridViewComboBoxColumn();
+            LTRemark = new DataGridViewTextBoxColumn();
+            LTOperation = new DataGridViewButtonColumn();
+            button1 = new Button();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -164,27 +168,12 @@
             // 
             dataGridView1.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Time, Node, Remark });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { LTStation, LTTime, LTState, LTRemark, LTOperation });
             dataGridView1.Location = new Point(14, 548);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(1127, 139);
+            dataGridView1.Size = new Size(1127, 164);
             dataGridView1.TabIndex = 15;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // Time
-            // 
-            Time.HeaderText = "Node";
-            Time.Name = "Time";
-            // 
-            // Node
-            // 
-            Node.HeaderText = "Time";
-            Node.Name = "Node";
-            // 
-            // Remark
-            // 
-            Remark.HeaderText = "Remark";
-            Remark.Name = "Remark";
             // 
             // button8
             // 
@@ -232,12 +221,57 @@
             label9.Size = new Size(0, 15);
             label9.TabIndex = 22;
             // 
+            // LTStation
+            // 
+            LTStation.HeaderText = "Station";
+            LTStation.Name = "LTStation";
+            // 
+            // LTTime
+            // 
+            LTTime.HeaderText = "Time";
+            LTTime.Name = "LTTime";
+            // 
+            // LTState
+            // 
+            LTState.HeaderText = "State";
+            LTState.Name = "LTState";
+            // 
+            // LTRemark
+            // 
+            LTRemark.HeaderText = "Remark";
+            LTRemark.Name = "LTRemark";
+            // 
+            // LTOperation
+            // 
+            LTOperation.HeaderText = "Operation";
+            LTOperation.Name = "LTOperation";
+            // 
+            // button1
+            // 
+            button1.Location = new Point(30, 736);
+            button1.Name = "button1";
+            button1.Size = new Size(89, 42);
+            button1.TabIndex = 23;
+            button1.Text = "Save";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(30, 607);
+            button2.Name = "button2";
+            button2.Size = new Size(101, 23);
+            button2.TabIndex = 24;
+            button2.Text = "New Station";
+            button2.UseVisualStyleBackColor = true;
+            // 
             // LogisticTrackingForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightBlue;
             ClientSize = new Size(1153, 858);
+            Controls.Add(button2);
+            Controls.Add(button1);
             Controls.Add(label9);
             Controls.Add(label8);
             Controls.Add(button8);
@@ -258,6 +292,7 @@
             Controls.Add(pictureBox1);
             Name = "LogisticTrackingForm";
             Text = "LogisticTracking";
+            Load += LogisticTrackingForm_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
@@ -279,13 +314,17 @@
         private TextBox textBox3;
         private Label label7;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn Time;
-        private DataGridViewTextBoxColumn Node;
-        private DataGridViewTextBoxColumn Remark;
         private Button button8;
         private Label label19;
         private Label label18;
         private Label label8;
         private Label label9;
+        private DataGridViewTextBoxColumn LTStation;
+        private DataGridViewTextBoxColumn LTTime;
+        private DataGridViewComboBoxColumn LTState;
+        private DataGridViewTextBoxColumn LTRemark;
+        private DataGridViewButtonColumn LTOperation;
+        private Button button1;
+        private Button button2;
     }
 }

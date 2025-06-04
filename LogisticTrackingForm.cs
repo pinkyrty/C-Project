@@ -26,5 +26,10 @@ namespace C_Project
         {
 
         }
+
+        private void LogisticTrackingForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

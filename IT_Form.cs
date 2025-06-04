@@ -31,5 +31,10 @@ namespace C_Project
         {
 
         }
+
+        private void IT_Form_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

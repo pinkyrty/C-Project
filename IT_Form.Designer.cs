@@ -31,9 +31,9 @@ namespace C_Project
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IT_Form));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             pictureBox1 = new PictureBox();
             Department = new Label();
             label2 = new Label();
@@ -51,6 +51,8 @@ namespace C_Project
             ActiveUsersTextBox = new TextBox();
             label3 = new Label();
             dataGridView1 = new DataGridView();
+            ITDashBoardTime = new DataGridViewTextBoxColumn();
+            ITDashBoardEvent = new DataGridViewTextBoxColumn();
             RepairSupportTabPage = new TabPage();
             AddNewButton = new Button();
             StatusComboBox = new ComboBox();
@@ -62,6 +64,11 @@ namespace C_Project
             label8 = new Label();
             label7 = new Label();
             dataGridView2 = new DataGridView();
+            ITrepairOrderNumber = new DataGridViewTextBoxColumn();
+            ITrepairSubject = new DataGridViewTextBoxColumn();
+            ITrepairAuthor = new DataGridViewTextBoxColumn();
+            ITrepaidState = new DataGridViewComboBoxColumn();
+            ITrepairOperation = new DataGridViewButtonColumn();
             AssetManagementTabPage = new TabPage();
             AddNewAssetButton = new Button();
             AssetStatusComboBox = new ComboBox();
@@ -73,6 +80,11 @@ namespace C_Project
             label12 = new Label();
             label11 = new Label();
             dataGridView3 = new DataGridView();
+            ITAssetNumber = new DataGridViewTextBoxColumn();
+            ITassetName = new DataGridViewTextBoxColumn();
+            ITassetType = new DataGridViewTextBoxColumn();
+            ITassetState = new DataGridViewTextBoxColumn();
+            ITassetOperation = new DataGridViewButtonColumn();
             UserManagementTabPage = new TabPage();
             AddNewUserButton = new Button();
             ActiveComboBox = new ComboBox();
@@ -86,6 +98,12 @@ namespace C_Project
             label16 = new Label();
             label15 = new Label();
             dataGridView4 = new DataGridView();
+            ITuserID = new DataGridViewTextBoxColumn();
+            ITuserName = new DataGridViewTextBoxColumn();
+            ITuserDepartment = new DataGridViewComboBoxColumn();
+            ITuserFullName = new DataGridViewTextBoxColumn();
+            ITuserActive = new DataGridViewCheckBoxColumn();
+            ITuserOperation = new DataGridViewButtonColumn();
             MaintenanceLogTabPage = new TabPage();
             AddNewLogButton = new Button();
             textBox3 = new TextBox();
@@ -97,6 +115,11 @@ namespace C_Project
             label21 = new Label();
             label20 = new Label();
             dataGridView5 = new DataGridView();
+            ITmaintenanceDate = new DataGridViewTextBoxColumn();
+            ITmaintenanceContent = new DataGridViewTextBoxColumn();
+            ITmaintenanceInCharge = new DataGridViewTextBoxColumn();
+            ITmaintenanceRemark = new DataGridViewTextBoxColumn();
+            ITmaintenanceOperation = new DataGridViewButtonColumn();
             TechnicalSolutionsTabPage = new TabPage();
             SolutionsButton = new Button();
             TechnicalStatusComboBox = new ComboBox();
@@ -110,6 +133,12 @@ namespace C_Project
             label25 = new Label();
             label24 = new Label();
             dataGridView6 = new DataGridView();
+            ITtechnicalProjectName = new DataGridViewTextBoxColumn();
+            ITtechnicalDepartment = new DataGridViewComboBoxColumn();
+            ITtechnicalProcess = new DataGridViewComboBoxColumn();
+            ITtechnicalIncharge = new DataGridViewTextBoxColumn();
+            ITtechnicalState = new DataGridViewComboBoxColumn();
+            ITtechnicalOperation = new DataGridViewButtonColumn();
             StatisticalReportsTabPage = new TabPage();
             chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             DepartmentEntranceTabPage = new TabPage();
@@ -123,35 +152,6 @@ namespace C_Project
             RnDbutton = new Button();
             sqlCommandBuilder1 = new Microsoft.Data.SqlClient.SqlCommandBuilder();
             button8 = new Button();
-            ITDashBoardTime = new DataGridViewTextBoxColumn();
-            ITDashBoardEvent = new DataGridViewTextBoxColumn();
-            ITrepairOrderNumber = new DataGridViewTextBoxColumn();
-            ITrepairSubject = new DataGridViewTextBoxColumn();
-            ITrepairAuthor = new DataGridViewTextBoxColumn();
-            ITrepaidState = new DataGridViewComboBoxColumn();
-            ITrepairOperation = new DataGridViewButtonColumn();
-            ITAssetNumber = new DataGridViewTextBoxColumn();
-            ITassetName = new DataGridViewTextBoxColumn();
-            ITassetType = new DataGridViewTextBoxColumn();
-            ITassetState = new DataGridViewTextBoxColumn();
-            ITassetOperation = new DataGridViewButtonColumn();
-            ITuserID = new DataGridViewTextBoxColumn();
-            ITuserName = new DataGridViewTextBoxColumn();
-            ITuserDepartment = new DataGridViewComboBoxColumn();
-            ITuserFullName = new DataGridViewTextBoxColumn();
-            ITuserActive = new DataGridViewCheckBoxColumn();
-            ITuserOperation = new DataGridViewButtonColumn();
-            ITmaintenanceDate = new DataGridViewTextBoxColumn();
-            ITmaintenanceContent = new DataGridViewTextBoxColumn();
-            ITmaintenanceInCharge = new DataGridViewTextBoxColumn();
-            ITmaintenanceRemark = new DataGridViewTextBoxColumn();
-            ITmaintenanceOperation = new DataGridViewButtonColumn();
-            ITtechnicalProjectName = new DataGridViewTextBoxColumn();
-            ITtechnicalDepartment = new DataGridViewComboBoxColumn();
-            ITtechnicalProcess = new DataGridViewComboBoxColumn();
-            ITtechnicalIncharge = new DataGridViewTextBoxColumn();
-            ITtechnicalState = new DataGridViewComboBoxColumn();
-            ITtechnicalOperation = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl1.SuspendLayout();
             DashboardTabPage.SuspendLayout();
@@ -337,6 +337,16 @@ namespace C_Project
             dataGridView1.Size = new Size(1143, 608);
             dataGridView1.TabIndex = 0;
             // 
+            // ITDashBoardTime
+            // 
+            ITDashBoardTime.HeaderText = "Time";
+            ITDashBoardTime.Name = "ITDashBoardTime";
+            // 
+            // ITDashBoardEvent
+            // 
+            ITDashBoardEvent.HeaderText = "Event";
+            ITDashBoardEvent.Name = "ITDashBoardEvent";
+            // 
             // RepairSupportTabPage
             // 
             RepairSupportTabPage.Controls.Add(AddNewButton);
@@ -442,6 +452,31 @@ namespace C_Project
             dataGridView2.Size = new Size(1143, 616);
             dataGridView2.TabIndex = 0;
             // 
+            // ITrepairOrderNumber
+            // 
+            ITrepairOrderNumber.HeaderText = "Order Number";
+            ITrepairOrderNumber.Name = "ITrepairOrderNumber";
+            // 
+            // ITrepairSubject
+            // 
+            ITrepairSubject.HeaderText = "Subjet";
+            ITrepairSubject.Name = "ITrepairSubject";
+            // 
+            // ITrepairAuthor
+            // 
+            ITrepairAuthor.HeaderText = "Author";
+            ITrepairAuthor.Name = "ITrepairAuthor";
+            // 
+            // ITrepaidState
+            // 
+            ITrepaidState.HeaderText = "State";
+            ITrepaidState.Name = "ITrepaidState";
+            // 
+            // ITrepairOperation
+            // 
+            ITrepairOperation.HeaderText = "Operation";
+            ITrepairOperation.Name = "ITrepairOperation";
+            // 
             // AssetManagementTabPage
             // 
             AssetManagementTabPage.Controls.Add(AddNewAssetButton);
@@ -545,6 +580,31 @@ namespace C_Project
             dataGridView3.Name = "dataGridView3";
             dataGridView3.Size = new Size(1143, 616);
             dataGridView3.TabIndex = 0;
+            // 
+            // ITAssetNumber
+            // 
+            ITAssetNumber.HeaderText = "Asset Number";
+            ITAssetNumber.Name = "ITAssetNumber";
+            // 
+            // ITassetName
+            // 
+            ITassetName.HeaderText = "Name";
+            ITassetName.Name = "ITassetName";
+            // 
+            // ITassetType
+            // 
+            ITassetType.HeaderText = "Type";
+            ITassetType.Name = "ITassetType";
+            // 
+            // ITassetState
+            // 
+            ITassetState.HeaderText = "State";
+            ITassetState.Name = "ITassetState";
+            // 
+            // ITassetOperation
+            // 
+            ITassetOperation.HeaderText = "Operation";
+            ITassetOperation.Name = "ITassetOperation";
             // 
             // UserManagementTabPage
             // 
@@ -668,6 +728,36 @@ namespace C_Project
             dataGridView4.Size = new Size(1143, 616);
             dataGridView4.TabIndex = 0;
             // 
+            // ITuserID
+            // 
+            ITuserID.HeaderText = "User ID";
+            ITuserID.Name = "ITuserID";
+            // 
+            // ITuserName
+            // 
+            ITuserName.HeaderText = "User Name";
+            ITuserName.Name = "ITuserName";
+            // 
+            // ITuserDepartment
+            // 
+            ITuserDepartment.HeaderText = "Department";
+            ITuserDepartment.Name = "ITuserDepartment";
+            // 
+            // ITuserFullName
+            // 
+            ITuserFullName.HeaderText = "Full Name";
+            ITuserFullName.Name = "ITuserFullName";
+            // 
+            // ITuserActive
+            // 
+            ITuserActive.HeaderText = "Active";
+            ITuserActive.Name = "ITuserActive";
+            // 
+            // ITuserOperation
+            // 
+            ITuserOperation.HeaderText = "Operation";
+            ITuserOperation.Name = "ITuserOperation";
+            // 
             // MaintenanceLogTabPage
             // 
             MaintenanceLogTabPage.Controls.Add(AddNewLogButton);
@@ -770,6 +860,31 @@ namespace C_Project
             dataGridView5.Name = "dataGridView5";
             dataGridView5.Size = new Size(1143, 613);
             dataGridView5.TabIndex = 0;
+            // 
+            // ITmaintenanceDate
+            // 
+            ITmaintenanceDate.HeaderText = "Date";
+            ITmaintenanceDate.Name = "ITmaintenanceDate";
+            // 
+            // ITmaintenanceContent
+            // 
+            ITmaintenanceContent.HeaderText = "Content";
+            ITmaintenanceContent.Name = "ITmaintenanceContent";
+            // 
+            // ITmaintenanceInCharge
+            // 
+            ITmaintenanceInCharge.HeaderText = "In Charge Person";
+            ITmaintenanceInCharge.Name = "ITmaintenanceInCharge";
+            // 
+            // ITmaintenanceRemark
+            // 
+            ITmaintenanceRemark.HeaderText = "Remark";
+            ITmaintenanceRemark.Name = "ITmaintenanceRemark";
+            // 
+            // ITmaintenanceOperation
+            // 
+            ITmaintenanceOperation.HeaderText = "Operation";
+            ITmaintenanceOperation.Name = "ITmaintenanceOperation";
             // 
             // TechnicalSolutionsTabPage
             // 
@@ -893,6 +1008,36 @@ namespace C_Project
             dataGridView6.Size = new Size(1143, 611);
             dataGridView6.TabIndex = 0;
             // 
+            // ITtechnicalProjectName
+            // 
+            ITtechnicalProjectName.HeaderText = "Project Name";
+            ITtechnicalProjectName.Name = "ITtechnicalProjectName";
+            // 
+            // ITtechnicalDepartment
+            // 
+            ITtechnicalDepartment.HeaderText = "Department";
+            ITtechnicalDepartment.Name = "ITtechnicalDepartment";
+            // 
+            // ITtechnicalProcess
+            // 
+            ITtechnicalProcess.HeaderText = "Process";
+            ITtechnicalProcess.Name = "ITtechnicalProcess";
+            // 
+            // ITtechnicalIncharge
+            // 
+            ITtechnicalIncharge.HeaderText = "In Charge Person";
+            ITtechnicalIncharge.Name = "ITtechnicalIncharge";
+            // 
+            // ITtechnicalState
+            // 
+            ITtechnicalState.HeaderText = "State";
+            ITtechnicalState.Name = "ITtechnicalState";
+            // 
+            // ITtechnicalOperation
+            // 
+            ITtechnicalOperation.HeaderText = "Operation";
+            ITtechnicalOperation.Name = "ITtechnicalOperation";
+            // 
             // StatisticalReportsTabPage
             // 
             StatisticalReportsTabPage.BackColor = SystemColors.GradientInactiveCaption;
@@ -905,16 +1050,16 @@ namespace C_Project
             // 
             // chart1
             // 
-            chartArea4.Name = "ChartArea1";
-            chart1.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            chart1.Legends.Add(legend4);
+            chartArea2.Name = "ChartArea1";
+            chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            chart1.Legends.Add(legend2);
             chart1.Location = new Point(11, 95);
             chart1.Name = "chart1";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            chart1.Series.Add(series4);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            chart1.Series.Add(series2);
             chart1.Size = new Size(1123, 469);
             chart1.TabIndex = 0;
             chart1.Text = "chart1";
@@ -987,7 +1132,7 @@ namespace C_Project
             MarketingButton.Name = "MarketingButton";
             MarketingButton.Size = new Size(199, 90);
             MarketingButton.TabIndex = 2;
-            MarketingButton.Text = "Marketing";
+            MarketingButton.Text = "Logistic and  Warehouse";
             MarketingButton.UseVisualStyleBackColor = true;
             // 
             // SalesButton
@@ -996,7 +1141,7 @@ namespace C_Project
             SalesButton.Name = "SalesButton";
             SalesButton.Size = new Size(199, 90);
             SalesButton.TabIndex = 1;
-            SalesButton.Text = "Sales";
+            SalesButton.Text = "Sales And Marketing";
             SalesButton.UseVisualStyleBackColor = true;
             // 
             // RnDbutton
@@ -1017,151 +1162,6 @@ namespace C_Project
             button8.Text = "User Profile";
             button8.UseVisualStyleBackColor = true;
             // 
-            // ITDashBoardTime
-            // 
-            ITDashBoardTime.HeaderText = "Time";
-            ITDashBoardTime.Name = "ITDashBoardTime";
-            // 
-            // ITDashBoardEvent
-            // 
-            ITDashBoardEvent.HeaderText = "Event";
-            ITDashBoardEvent.Name = "ITDashBoardEvent";
-            // 
-            // ITrepairOrderNumber
-            // 
-            ITrepairOrderNumber.HeaderText = "Order Number";
-            ITrepairOrderNumber.Name = "ITrepairOrderNumber";
-            // 
-            // ITrepairSubject
-            // 
-            ITrepairSubject.HeaderText = "Subjet";
-            ITrepairSubject.Name = "ITrepairSubject";
-            // 
-            // ITrepairAuthor
-            // 
-            ITrepairAuthor.HeaderText = "Author";
-            ITrepairAuthor.Name = "ITrepairAuthor";
-            // 
-            // ITrepaidState
-            // 
-            ITrepaidState.HeaderText = "State";
-            ITrepaidState.Name = "ITrepaidState";
-            // 
-            // ITrepairOperation
-            // 
-            ITrepairOperation.HeaderText = "Operation";
-            ITrepairOperation.Name = "ITrepairOperation";
-            // 
-            // ITAssetNumber
-            // 
-            ITAssetNumber.HeaderText = "Asset Number";
-            ITAssetNumber.Name = "ITAssetNumber";
-            // 
-            // ITassetName
-            // 
-            ITassetName.HeaderText = "Name";
-            ITassetName.Name = "ITassetName";
-            // 
-            // ITassetType
-            // 
-            ITassetType.HeaderText = "Type";
-            ITassetType.Name = "ITassetType";
-            // 
-            // ITassetState
-            // 
-            ITassetState.HeaderText = "State";
-            ITassetState.Name = "ITassetState";
-            // 
-            // ITassetOperation
-            // 
-            ITassetOperation.HeaderText = "Operation";
-            ITassetOperation.Name = "ITassetOperation";
-            // 
-            // ITuserID
-            // 
-            ITuserID.HeaderText = "User ID";
-            ITuserID.Name = "ITuserID";
-            // 
-            // ITuserName
-            // 
-            ITuserName.HeaderText = "User Name";
-            ITuserName.Name = "ITuserName";
-            // 
-            // ITuserDepartment
-            // 
-            ITuserDepartment.HeaderText = "Department";
-            ITuserDepartment.Name = "ITuserDepartment";
-            // 
-            // ITuserFullName
-            // 
-            ITuserFullName.HeaderText = "Full Name";
-            ITuserFullName.Name = "ITuserFullName";
-            // 
-            // ITuserActive
-            // 
-            ITuserActive.HeaderText = "Active";
-            ITuserActive.Name = "ITuserActive";
-            // 
-            // ITuserOperation
-            // 
-            ITuserOperation.HeaderText = "Operation";
-            ITuserOperation.Name = "ITuserOperation";
-            // 
-            // ITmaintenanceDate
-            // 
-            ITmaintenanceDate.HeaderText = "Date";
-            ITmaintenanceDate.Name = "ITmaintenanceDate";
-            // 
-            // ITmaintenanceContent
-            // 
-            ITmaintenanceContent.HeaderText = "Content";
-            ITmaintenanceContent.Name = "ITmaintenanceContent";
-            // 
-            // ITmaintenanceInCharge
-            // 
-            ITmaintenanceInCharge.HeaderText = "In Charge Person";
-            ITmaintenanceInCharge.Name = "ITmaintenanceInCharge";
-            // 
-            // ITmaintenanceRemark
-            // 
-            ITmaintenanceRemark.HeaderText = "Remark";
-            ITmaintenanceRemark.Name = "ITmaintenanceRemark";
-            // 
-            // ITmaintenanceOperation
-            // 
-            ITmaintenanceOperation.HeaderText = "Operation";
-            ITmaintenanceOperation.Name = "ITmaintenanceOperation";
-            // 
-            // ITtechnicalProjectName
-            // 
-            ITtechnicalProjectName.HeaderText = "Project Name";
-            ITtechnicalProjectName.Name = "ITtechnicalProjectName";
-            // 
-            // ITtechnicalDepartment
-            // 
-            ITtechnicalDepartment.HeaderText = "Department";
-            ITtechnicalDepartment.Name = "ITtechnicalDepartment";
-            // 
-            // ITtechnicalProcess
-            // 
-            ITtechnicalProcess.HeaderText = "Process";
-            ITtechnicalProcess.Name = "ITtechnicalProcess";
-            // 
-            // ITtechnicalIncharge
-            // 
-            ITtechnicalIncharge.HeaderText = "In Charge Person";
-            ITtechnicalIncharge.Name = "ITtechnicalIncharge";
-            // 
-            // ITtechnicalState
-            // 
-            ITtechnicalState.HeaderText = "State";
-            ITtechnicalState.Name = "ITtechnicalState";
-            // 
-            // ITtechnicalOperation
-            // 
-            ITtechnicalOperation.HeaderText = "Operation";
-            ITtechnicalOperation.Name = "ITtechnicalOperation";
-            // 
             // IT_Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1177,6 +1177,7 @@ namespace C_Project
             Controls.Add(pictureBox1);
             Name = "IT_Form";
             Text = "IT_Form";
+            Load += IT_Form_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             tabControl1.ResumeLayout(false);
             DashboardTabPage.ResumeLayout(false);

@@ -68,6 +68,16 @@
             pictureBox1 = new PictureBox();
             ExportToExcelButton = new Button();
             RaDUserPrifileButton = new Button();
+            CSRecordDate = new DataGridViewTextBoxColumn();
+            CScustomer = new DataGridViewTextBoxColumn();
+            CScontact = new DataGridViewTextBoxColumn();
+            CSstate = new DataGridViewTextBoxColumn();
+            CSreturnDate = new DataGridViewTextBoxColumn();
+            CSreturnCustomer = new DataGridViewTextBoxColumn();
+            CSreturnProduct = new DataGridViewTextBoxColumn();
+            CSreturnReason = new DataGridViewTextBoxColumn();
+            CSreturnState = new DataGridViewComboBoxColumn();
+            CSreturnRemark = new DataGridViewTextBoxColumn();
             tabMain.SuspendLayout();
             InteractionRecordsTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
@@ -125,6 +135,7 @@
             // 
             dataGridView1.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { CSRecordDate, CScustomer, CScontact, CSstate });
             dataGridView1.Location = new Point(5, 26);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(363, 662);
@@ -381,6 +392,7 @@
             // 
             dataGridView2.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { CSreturnDate, CSreturnCustomer, CSreturnProduct, CSreturnReason, CSreturnState, CSreturnRemark });
             dataGridView2.Location = new Point(0, 21);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.Size = new Size(1121, 644);
@@ -461,6 +473,56 @@
             RaDUserPrifileButton.Text = "User Profile";
             RaDUserPrifileButton.UseVisualStyleBackColor = true;
             // 
+            // CSRecordDate
+            // 
+            CSRecordDate.HeaderText = "Date";
+            CSRecordDate.Name = "CSRecordDate";
+            // 
+            // CScustomer
+            // 
+            CScustomer.HeaderText = "Customer";
+            CScustomer.Name = "CScustomer";
+            // 
+            // CScontact
+            // 
+            CScontact.HeaderText = "Contact";
+            CScontact.Name = "CScontact";
+            // 
+            // CSstate
+            // 
+            CSstate.HeaderText = "State";
+            CSstate.Name = "CSstate";
+            // 
+            // CSreturnDate
+            // 
+            CSreturnDate.HeaderText = "Date";
+            CSreturnDate.Name = "CSreturnDate";
+            // 
+            // CSreturnCustomer
+            // 
+            CSreturnCustomer.HeaderText = "Customer";
+            CSreturnCustomer.Name = "CSreturnCustomer";
+            // 
+            // CSreturnProduct
+            // 
+            CSreturnProduct.HeaderText = "Product";
+            CSreturnProduct.Name = "CSreturnProduct";
+            // 
+            // CSreturnReason
+            // 
+            CSreturnReason.HeaderText = "Reason";
+            CSreturnReason.Name = "CSreturnReason";
+            // 
+            // CSreturnState
+            // 
+            CSreturnState.HeaderText = "State";
+            CSreturnState.Name = "CSreturnState";
+            // 
+            // CSreturnRemark
+            // 
+            CSreturnRemark.HeaderText = "Remark";
+            CSreturnRemark.Name = "CSreturnRemark";
+            // 
             // CustomerServiceForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -536,5 +598,15 @@
         private Button RaEaSaveButton;
         private DataGridView dataGridView2;
         private Label label14;
+        private DataGridViewTextBoxColumn CSRecordDate;
+        private DataGridViewTextBoxColumn CScustomer;
+        private DataGridViewTextBoxColumn CScontact;
+        private DataGridViewTextBoxColumn CSstate;
+        private DataGridViewTextBoxColumn CSreturnDate;
+        private DataGridViewTextBoxColumn CSreturnCustomer;
+        private DataGridViewTextBoxColumn CSreturnProduct;
+        private DataGridViewTextBoxColumn CSreturnReason;
+        private DataGridViewComboBoxColumn CSreturnState;
+        private DataGridViewTextBoxColumn CSreturnRemark;
     }
 }

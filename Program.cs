@@ -28,6 +28,9 @@ namespace C_Project
                     case Login.FormType.PDForm:
                         targetForm = new ProductionOrderForm();
                         break;
+                    case Login.FormType.CSDForm:
+                        targetForm = new CustomerServiceForm();
+                        break;
                     case Login.FormType.SCMForm:
                         targetForm = new LogisticForm();
                         break;

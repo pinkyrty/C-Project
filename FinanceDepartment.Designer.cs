@@ -29,18 +29,19 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FinanceDepartment));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             button8 = new Button();
             label19 = new Label();
             label18 = new Label();
             pictureBox1 = new PictureBox();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             button1 = new Button();
             label2 = new Label();
             dataGridView1 = new DataGridView();
@@ -114,10 +115,10 @@
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
-            chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chart3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
@@ -128,7 +129,6 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView4).BeginInit();
             tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView5).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)chart3).BeginInit();
             SuspendLayout();
             // 
             // button8
@@ -198,6 +198,22 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Budgeting/Forecasting";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // chart3
+            // 
+            chartArea1.Name = "ChartArea1";
+            chart3.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            chart3.Legends.Add(legend1);
+            chart3.Location = new Point(347, 361);
+            chart3.Name = "chart3";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            chart3.Series.Add(series1);
+            chart3.Size = new Size(300, 300);
+            chart3.TabIndex = 24;
+            chart3.Text = "chart3";
             // 
             // button1
             // 
@@ -486,9 +502,9 @@
             label9.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
             label9.Location = new Point(6, 11);
             label9.Name = "label9";
-            label9.Size = new Size(457, 15);
+            label9.Size = new Size(128, 15);
             label9.TabIndex = 0;
-            label9.Text = "Financial statements (income statement/balance sheet/cash flow statement)";
+            label9.Text = "Financial statements";
             // 
             // tabPage4
             // 
@@ -798,22 +814,6 @@
             label8.Size = new Size(0, 15);
             label8.TabIndex = 24;
             // 
-            // chart3
-            // 
-            chartArea1.Name = "ChartArea1";
-            chart3.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            chart3.Legends.Add(legend1);
-            chart3.Location = new Point(347, 361);
-            chart3.Name = "chart3";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            chart3.Series.Add(series1);
-            chart3.Size = new Size(300, 300);
-            chart3.TabIndex = 24;
-            chart3.Text = "chart3";
-            // 
             // FinanceDepartment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -836,6 +836,7 @@
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)chart3).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
@@ -850,7 +851,6 @@
             tabPage5.ResumeLayout(false);
             tabPage5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView5).EndInit();
-            ((System.ComponentModel.ISupportInitialize)chart3).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }

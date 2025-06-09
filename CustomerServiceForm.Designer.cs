@@ -33,6 +33,10 @@
             InteractionRecordsTabPage = new TabPage();
             splitContainer1 = new SplitContainer();
             dataGridView1 = new DataGridView();
+            CSRecordDate = new DataGridViewTextBoxColumn();
+            CScustomer = new DataGridViewTextBoxColumn();
+            CScontact = new DataGridViewTextBoxColumn();
+            CSstate = new DataGridViewTextBoxColumn();
             label1 = new Label();
             SaveButton = new Button();
             groupBox1 = new GroupBox();
@@ -60,6 +64,12 @@
             ReturnAndExchangeAreaTabPage = new TabPage();
             RaEaSaveButton = new Button();
             dataGridView2 = new DataGridView();
+            CSreturnDate = new DataGridViewTextBoxColumn();
+            CSreturnCustomer = new DataGridViewTextBoxColumn();
+            CSreturnProduct = new DataGridViewTextBoxColumn();
+            CSreturnReason = new DataGridViewTextBoxColumn();
+            CSreturnState = new DataGridViewComboBoxColumn();
+            CSreturnRemark = new DataGridViewTextBoxColumn();
             label14 = new Label();
             label2 = new Label();
             Department = new Label();
@@ -68,16 +78,6 @@
             pictureBox1 = new PictureBox();
             ExportToExcelButton = new Button();
             RaDUserPrifileButton = new Button();
-            CSRecordDate = new DataGridViewTextBoxColumn();
-            CScustomer = new DataGridViewTextBoxColumn();
-            CScontact = new DataGridViewTextBoxColumn();
-            CSstate = new DataGridViewTextBoxColumn();
-            CSreturnDate = new DataGridViewTextBoxColumn();
-            CSreturnCustomer = new DataGridViewTextBoxColumn();
-            CSreturnProduct = new DataGridViewTextBoxColumn();
-            CSreturnReason = new DataGridViewTextBoxColumn();
-            CSreturnState = new DataGridViewComboBoxColumn();
-            CSreturnRemark = new DataGridViewTextBoxColumn();
             tabMain.SuspendLayout();
             InteractionRecordsTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
@@ -140,6 +140,26 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(363, 662);
             dataGridView1.TabIndex = 1;
+            // 
+            // CSRecordDate
+            // 
+            CSRecordDate.HeaderText = "Date";
+            CSRecordDate.Name = "CSRecordDate";
+            // 
+            // CScustomer
+            // 
+            CScustomer.HeaderText = "Customer";
+            CScustomer.Name = "CScustomer";
+            // 
+            // CScontact
+            // 
+            CScontact.HeaderText = "Contact";
+            CScontact.Name = "CScontact";
+            // 
+            // CSstate
+            // 
+            CSstate.HeaderText = "State";
+            CSstate.Name = "CSstate";
             // 
             // label1
             // 
@@ -398,6 +418,36 @@
             dataGridView2.Size = new Size(1121, 644);
             dataGridView2.TabIndex = 1;
             // 
+            // CSreturnDate
+            // 
+            CSreturnDate.HeaderText = "Date";
+            CSreturnDate.Name = "CSreturnDate";
+            // 
+            // CSreturnCustomer
+            // 
+            CSreturnCustomer.HeaderText = "Customer";
+            CSreturnCustomer.Name = "CSreturnCustomer";
+            // 
+            // CSreturnProduct
+            // 
+            CSreturnProduct.HeaderText = "Product";
+            CSreturnProduct.Name = "CSreturnProduct";
+            // 
+            // CSreturnReason
+            // 
+            CSreturnReason.HeaderText = "Reason";
+            CSreturnReason.Name = "CSreturnReason";
+            // 
+            // CSreturnState
+            // 
+            CSreturnState.HeaderText = "State";
+            CSreturnState.Name = "CSreturnState";
+            // 
+            // CSreturnRemark
+            // 
+            CSreturnRemark.HeaderText = "Remark";
+            CSreturnRemark.Name = "CSreturnRemark";
+            // 
             // label14
             // 
             label14.AutoSize = true;
@@ -472,56 +522,6 @@
             RaDUserPrifileButton.TabIndex = 70;
             RaDUserPrifileButton.Text = "User Profile";
             RaDUserPrifileButton.UseVisualStyleBackColor = true;
-            // 
-            // CSRecordDate
-            // 
-            CSRecordDate.HeaderText = "Date";
-            CSRecordDate.Name = "CSRecordDate";
-            // 
-            // CScustomer
-            // 
-            CScustomer.HeaderText = "Customer";
-            CScustomer.Name = "CScustomer";
-            // 
-            // CScontact
-            // 
-            CScontact.HeaderText = "Contact";
-            CScontact.Name = "CScontact";
-            // 
-            // CSstate
-            // 
-            CSstate.HeaderText = "State";
-            CSstate.Name = "CSstate";
-            // 
-            // CSreturnDate
-            // 
-            CSreturnDate.HeaderText = "Date";
-            CSreturnDate.Name = "CSreturnDate";
-            // 
-            // CSreturnCustomer
-            // 
-            CSreturnCustomer.HeaderText = "Customer";
-            CSreturnCustomer.Name = "CSreturnCustomer";
-            // 
-            // CSreturnProduct
-            // 
-            CSreturnProduct.HeaderText = "Product";
-            CSreturnProduct.Name = "CSreturnProduct";
-            // 
-            // CSreturnReason
-            // 
-            CSreturnReason.HeaderText = "Reason";
-            CSreturnReason.Name = "CSreturnReason";
-            // 
-            // CSreturnState
-            // 
-            CSreturnState.HeaderText = "State";
-            CSreturnState.Name = "CSreturnState";
-            // 
-            // CSreturnRemark
-            // 
-            CSreturnRemark.HeaderText = "Remark";
-            CSreturnRemark.Name = "CSreturnRemark";
             // 
             // CustomerServiceForm
             // 

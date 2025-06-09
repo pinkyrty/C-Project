@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FinanceDepartment));
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
@@ -41,16 +42,11 @@
             pictureBox1 = new PictureBox();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            btn_Save = new Button();
+            dataGridView1 = new DataGridView();
             chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             button1 = new Button();
             label2 = new Label();
-            dataGridView1 = new DataGridView();
-            FIYear = new DataGridViewTextBoxColumn();
-            FIBudgetRevenue = new DataGridViewTextBoxColumn();
-            FIBudgetExpenditure = new DataGridViewTextBoxColumn();
-            FIForecastRevenue = new DataGridViewTextBoxColumn();
-            FIForecastSpending = new DataGridViewTextBoxColumn();
-            FIOperation = new DataGridViewButtonColumn();
             label1 = new Label();
             tabPage2 = new TabPage();
             chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -115,11 +111,15 @@
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
+            financeDepartmentBindingSource = new BindingSource(components);
+            financeDepartmentBindingSource1 = new BindingSource(components);
+            financeDepartmentBindingSource2 = new BindingSource(components);
+            sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)chart3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)chart3).BeginInit();
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
@@ -129,6 +129,9 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView4).BeginInit();
             tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)financeDepartmentBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)financeDepartmentBindingSource1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)financeDepartmentBindingSource2).BeginInit();
             SuspendLayout();
             // 
             // button8
@@ -186,10 +189,11 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(btn_Save);
+            tabPage1.Controls.Add(dataGridView1);
             tabPage1.Controls.Add(chart3);
             tabPage1.Controls.Add(button1);
             tabPage1.Controls.Add(label2);
-            tabPage1.Controls.Add(dataGridView1);
             tabPage1.Controls.Add(label1);
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
@@ -198,6 +202,24 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Budgeting/Forecasting";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btn_Save
+            // 
+            btn_Save.Location = new Point(98, 254);
+            btn_Save.Name = "btn_Save";
+            btn_Save.Size = new Size(75, 23);
+            btn_Save.TabIndex = 26;
+            btn_Save.Text = "Save";
+            btn_Save.UseVisualStyleBackColor = true;
+            btn_Save.Click += btn_Save_Click;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(179, 41);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(898, 236);
+            dataGridView1.TabIndex = 25;
             // 
             // chart3
             // 
@@ -233,46 +255,6 @@
             label2.Size = new Size(232, 15);
             label2.TabIndex = 22;
             label2.Text = "Annual budget and actual trend chart";
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.BackgroundColor = SystemColors.GradientInactiveCaption;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { FIYear, FIBudgetRevenue, FIBudgetExpenditure, FIForecastRevenue, FIForecastSpending, FIOperation });
-            dataGridView1.Location = new Point(6, 29);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(1106, 270);
-            dataGridView1.TabIndex = 21;
-            // 
-            // FIYear
-            // 
-            FIYear.HeaderText = "Year";
-            FIYear.Name = "FIYear";
-            // 
-            // FIBudgetRevenue
-            // 
-            FIBudgetRevenue.HeaderText = "Budget Revenue";
-            FIBudgetRevenue.Name = "FIBudgetRevenue";
-            // 
-            // FIBudgetExpenditure
-            // 
-            FIBudgetExpenditure.HeaderText = "Budget Expenditure";
-            FIBudgetExpenditure.Name = "FIBudgetExpenditure";
-            // 
-            // FIForecastRevenue
-            // 
-            FIForecastRevenue.HeaderText = "Forecastr Revenue";
-            FIForecastRevenue.Name = "FIForecastRevenue";
-            // 
-            // FIForecastSpending
-            // 
-            FIForecastSpending.HeaderText = "Forecast Spending";
-            FIForecastSpending.Name = "FIForecastSpending";
-            // 
-            // FIOperation
-            // 
-            FIOperation.HeaderText = "Delete";
-            FIOperation.Name = "FIOperation";
             // 
             // label1
             // 
@@ -814,6 +796,23 @@
             label8.Size = new Size(0, 15);
             label8.TabIndex = 24;
             // 
+            // financeDepartmentBindingSource
+            // 
+            financeDepartmentBindingSource.DataSource = typeof(FinanceDepartment);
+            // 
+            // financeDepartmentBindingSource1
+            // 
+            financeDepartmentBindingSource1.DataSource = typeof(FinanceDepartment);
+            // 
+            // financeDepartmentBindingSource2
+            // 
+            financeDepartmentBindingSource2.DataSource = typeof(FinanceDepartment);
+            // 
+            // sqlCommand1
+            // 
+            sqlCommand1.CommandTimeout = 30;
+            sqlCommand1.EnableOptimizedParameterBinding = false;
+            // 
             // FinanceDepartment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -836,8 +835,8 @@
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)chart3).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)chart3).EndInit();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
@@ -851,6 +850,9 @@
             tabPage5.ResumeLayout(false);
             tabPage5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)financeDepartmentBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)financeDepartmentBindingSource1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)financeDepartmentBindingSource2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -864,7 +866,6 @@
         private TabControl tabControl1;
         private TabPage tabPage1;
         private Label label2;
-        private DataGridView dataGridView1;
         private Label label1;
         private TabPage tabPage2;
         private TabPage tabPage3;
@@ -931,12 +932,12 @@
         private DataGridViewTextBoxColumn FIInvestmentExpectReturn;
         private DataGridViewButtonColumn FIInvestmentDescriptionOperation;
         private TextBox textBox8;
-        private DataGridViewTextBoxColumn FIYear;
-        private DataGridViewTextBoxColumn FIBudgetRevenue;
-        private DataGridViewTextBoxColumn FIBudgetExpenditure;
-        private DataGridViewTextBoxColumn FIForecastRevenue;
-        private DataGridViewTextBoxColumn FIForecastSpending;
-        private DataGridViewButtonColumn FIOperation;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
+        private BindingSource financeDepartmentBindingSource;
+        private BindingSource financeDepartmentBindingSource1;
+        private BindingSource financeDepartmentBindingSource2;
+        private DataGridView dataGridView1;
+        private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
+        private Button btn_Save;
     }
 }

@@ -47,13 +47,10 @@
             label18 = new Label();
             label8 = new Label();
             label9 = new Label();
-            LTStation = new DataGridViewTextBoxColumn();
-            LTTime = new DataGridViewTextBoxColumn();
-            LTState = new DataGridViewComboBoxColumn();
-            LTRemark = new DataGridViewTextBoxColumn();
-            LTOperation = new DataGridViewButtonColumn();
             button1 = new Button();
             button2 = new Button();
+            label31 = new Label();
+            label30 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -168,7 +165,6 @@
             // 
             dataGridView1.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { LTStation, LTTime, LTState, LTRemark, LTOperation });
             dataGridView1.Location = new Point(14, 548);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(1127, 164);
@@ -221,31 +217,6 @@
             label9.Size = new Size(0, 15);
             label9.TabIndex = 22;
             // 
-            // LTStation
-            // 
-            LTStation.HeaderText = "Station";
-            LTStation.Name = "LTStation";
-            // 
-            // LTTime
-            // 
-            LTTime.HeaderText = "Time";
-            LTTime.Name = "LTTime";
-            // 
-            // LTState
-            // 
-            LTState.HeaderText = "State";
-            LTState.Name = "LTState";
-            // 
-            // LTRemark
-            // 
-            LTRemark.HeaderText = "Remark";
-            LTRemark.Name = "LTRemark";
-            // 
-            // LTOperation
-            // 
-            LTOperation.HeaderText = "Operation";
-            LTOperation.Name = "LTOperation";
-            // 
             // button1
             // 
             button1.Location = new Point(30, 736);
@@ -264,12 +235,33 @@
             button2.Text = "New Station";
             button2.UseVisualStyleBackColor = true;
             // 
+            // label31
+            // 
+            label31.AutoSize = true;
+            label31.Location = new Point(202, 39);
+            label31.Name = "label31";
+            label31.Size = new Size(49, 15);
+            label31.TabIndex = 26;
+            label31.Text = "label31";
+            // 
+            // label30
+            // 
+            label30.AutoSize = true;
+            label30.Location = new Point(202, 12);
+            label30.Name = "label30";
+            label30.Size = new Size(49, 15);
+            label30.TabIndex = 25;
+            label30.Text = "label30";
+            label30.Click += label30_Click;
+            // 
             // LogisticTrackingForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightBlue;
             ClientSize = new Size(1153, 858);
+            Controls.Add(label31);
+            Controls.Add(label30);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(label9);
@@ -319,12 +311,9 @@
         private Label label18;
         private Label label8;
         private Label label9;
-        private DataGridViewTextBoxColumn LTStation;
-        private DataGridViewTextBoxColumn LTTime;
-        private DataGridViewComboBoxColumn LTState;
-        private DataGridViewTextBoxColumn LTRemark;
-        private DataGridViewButtonColumn LTOperation;
         private Button button1;
         private Button button2;
+        private Label label31;
+        private Label label30;
     }
 }

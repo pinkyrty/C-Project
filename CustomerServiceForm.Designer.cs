@@ -33,10 +33,6 @@
             InteractionRecordsTabPage = new TabPage();
             splitContainer1 = new SplitContainer();
             dataGridView1 = new DataGridView();
-            CSRecordDate = new DataGridViewTextBoxColumn();
-            CScustomer = new DataGridViewTextBoxColumn();
-            CScontact = new DataGridViewTextBoxColumn();
-            CSstate = new DataGridViewTextBoxColumn();
             label1 = new Label();
             SaveButton = new Button();
             groupBox1 = new GroupBox();
@@ -135,31 +131,10 @@
             // 
             dataGridView1.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { CSRecordDate, CScustomer, CScontact, CSstate });
             dataGridView1.Location = new Point(5, 26);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(363, 662);
             dataGridView1.TabIndex = 1;
-            // 
-            // CSRecordDate
-            // 
-            CSRecordDate.HeaderText = "Date";
-            CSRecordDate.Name = "CSRecordDate";
-            // 
-            // CScustomer
-            // 
-            CScustomer.HeaderText = "Customer";
-            CScustomer.Name = "CScustomer";
-            // 
-            // CScontact
-            // 
-            CScontact.HeaderText = "Contact";
-            CScontact.Name = "CScontact";
-            // 
-            // CSstate
-            // 
-            CSstate.HeaderText = "State";
-            CSstate.Name = "CSstate";
             // 
             // label1
             // 
@@ -598,10 +573,6 @@
         private Button RaEaSaveButton;
         private DataGridView dataGridView2;
         private Label label14;
-        private DataGridViewTextBoxColumn CSRecordDate;
-        private DataGridViewTextBoxColumn CScustomer;
-        private DataGridViewTextBoxColumn CScontact;
-        private DataGridViewTextBoxColumn CSstate;
         private DataGridViewTextBoxColumn CSreturnDate;
         private DataGridViewTextBoxColumn CSreturnCustomer;
         private DataGridViewTextBoxColumn CSreturnProduct;

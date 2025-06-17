@@ -30,12 +30,12 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FinanceDepartment));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             button8 = new Button();
             label19 = new Label();
             label18 = new Label();
@@ -115,6 +115,8 @@
             financeDepartmentBindingSource1 = new BindingSource(components);
             financeDepartmentBindingSource2 = new BindingSource(components);
             sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
+            label30 = new Label();
+            label31 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -215,6 +217,7 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(179, 41);
             dataGridView1.Name = "dataGridView1";
@@ -223,23 +226,23 @@
             // 
             // chart3
             // 
-            chartArea1.Name = "ChartArea1";
-            chart3.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            chart3.Legends.Add(legend1);
+            chartArea3.Name = "ChartArea1";
+            chart3.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            chart3.Legends.Add(legend3);
             chart3.Location = new Point(347, 361);
             chart3.Name = "chart3";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            chart3.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            chart3.Series.Add(series3);
             chart3.Size = new Size(300, 300);
             chart3.TabIndex = 24;
             chart3.Text = "chart3";
             // 
             // button1
             // 
-            button1.Location = new Point(11, 100);
+            button1.Location = new Point(98, 118);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 23;
@@ -282,16 +285,16 @@
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            chart1.Legends.Add(legend2);
+            chartArea4.Name = "ChartArea1";
+            chart1.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            chart1.Legends.Add(legend4);
             chart1.Location = new Point(333, 320);
             chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            chart1.Series.Add(series2);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            chart1.Series.Add(series4);
             chart1.Size = new Size(300, 300);
             chart1.TabIndex = 3;
             chart1.Text = "chart1";
@@ -813,12 +816,32 @@
             sqlCommand1.CommandTimeout = 30;
             sqlCommand1.EnableOptimizedParameterBinding = false;
             // 
+            // label30
+            // 
+            label30.AutoSize = true;
+            label30.Location = new Point(198, 12);
+            label30.Name = "label30";
+            label30.Size = new Size(49, 15);
+            label30.TabIndex = 25;
+            label30.Text = "label30";
+            // 
+            // label31
+            // 
+            label31.AutoSize = true;
+            label31.Location = new Point(198, 39);
+            label31.Name = "label31";
+            label31.Size = new Size(49, 15);
+            label31.TabIndex = 26;
+            label31.Text = "label31";
+            // 
             // FinanceDepartment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightBlue;
             ClientSize = new Size(1153, 858);
+            Controls.Add(label31);
+            Controls.Add(label30);
             Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(label6);
@@ -939,5 +962,7 @@
         private DataGridView dataGridView1;
         private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
         private Button btn_Save;
+        private Label label30;
+        private Label label31;
     }
 }

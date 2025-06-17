@@ -17,6 +17,7 @@ namespace C_Project
             if (login.ShowDialog() == DialogResult.OK)
             {
                 Form targetForm = null;
+                MessageBox.Show(login.TargetFormType.ToString());
                 switch (login.TargetFormType)
                 {
                     case Login.FormType.RNDForm:
@@ -32,10 +33,18 @@ namespace C_Project
                         targetForm = new CustomerServiceForm();
                         break;
                     case Login.FormType.SCMForm:
-                        targetForm = new LogisticForm();
+                        //targetForm = new LogisticForm();
+                        //var scmForm = new LogisticForm();
+                        //scmForm.Username = login.Username;
+                        //scmForm.DepartmentName = login.DepartmentName;
+                        //targetForm = scmForm;
                         break;
                     case Login.FormType.FIForm:
-                        targetForm = new FinanceDepartment();
+                        //targetForm = new FinanceDepartment();
+                        var fiForm = new FinanceDepartment();
+                        fiForm.Username = login.Username;
+                        fiForm.DepartmentName = login.DepartmentName;
+                        targetForm = fiForm;
                         break;
                     case Login.FormType.ITForm:
                         var itForm = new IT_Form();

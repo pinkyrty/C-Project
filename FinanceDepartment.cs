@@ -16,8 +16,10 @@ namespace C_Project
 {
     public partial class FinanceDepartment : Form
     {
+        public string DepartmentName { get; set; }
+        public string Username { get; set; }
         private string connStr;
-        private static DataTable dataTable;
+        private static DataTable budgetDataTable;
 
         public FinanceDepartment()
         {
@@ -30,13 +32,21 @@ namespace C_Project
             string dbPath = Path.Combine(projectRoot, "ToySystem.accdb");
             connStr = $@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={dbPath};";
         }
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            label30.Text = Username;
+            label31.Text = DepartmentName;
+            MessageBox.Show(Username);
+        }
 
         private void FinanceDepartment_Load(object sender, EventArgs e)
         {
-            this.LoadTable();
+            this.LoadBudgetTable();
+            //this.LoadCashFlowTable();
         }
 
-        private void LoadTable()
+        private void LoadBudgetTable()
         {
             try
             {
@@ -51,9 +61,9 @@ namespace C_Project
 
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
-                            dataTable = new DataTable();
-                            adapter.Fill(dataTable);
-                            dataGridView1.DataSource = dataTable;
+                            budgetDataTable = new DataTable();
+                            adapter.Fill(budgetDataTable);
+                            dataGridView1.DataSource = budgetDataTable;
                             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                             dataGridView1.Columns["ID"].ReadOnly = true;
                         }
@@ -69,60 +79,93 @@ namespace C_Project
             }
         }
 
-        private void InsertTable()
-        {
-            try
-            {
-                using (OleDbConnection conn = new OleDbConnection(connStr))
-                {
+        //private void LoadCashFlowTable()
+        //{
+        //    try
+        //    {
+        //        using (OleDbConnection conn = new OleDbConnection(connStr))
+        //        {
 
-                    conn.Open();
+        //            conn.Open();
 
-                    string sql = "INSERT INTO FI_Budget (FiscalYear, BudgetIncome, BudgetExpense, ForecastIncome, ForecastExpense, Remark) VALUES (?, ?, ?, ?, ?, ?)";
-                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
-                    {
-                        int rowsInserted = 0;
-                        foreach (DataRow row in dataTable.Rows)
-                        {
-                            if ((row.RowState == DataRowState.Added))
-                            {
-                                string fiscalYear = row["FiscalYear"].ToString().Trim();
-                                string budgetIncome = row["BudgetIncome"].ToString().Trim();
-                                string BudgetExpense = row["BudgetExpense"].ToString().Trim();
-                                string ForecastIncome = row["ForecastIncome"].ToString().Trim();
-                                string ForecastExpense = row["ForecastExpense"].ToString().Trim();
-                                string Remark = row["Remark"].ToString().Trim();
+        //            string sql = "SELECT * FROM FI_CashFlow";
+        //            using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+        //            {
 
-                                cmd.Parameters.Clear();
-                                cmd.Parameters.AddWithValue("?", fiscalYear);
-                                cmd.Parameters.AddWithValue("?", budgetIncome);
-                                cmd.Parameters.AddWithValue("?", BudgetExpense);
-                                cmd.Parameters.AddWithValue("?", ForecastIncome);
-                                cmd.Parameters.AddWithValue("?", ForecastExpense);
-                                cmd.Parameters.AddWithValue("?", Remark);
-                                int rowsAffected = cmd.ExecuteNonQuery();
-                                if (rowsAffected > 0)
-                                {
-                                    rowsInserted++;
+        //                using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
+        //                {
+        //                    dataTable = new DataTable();
+        //                    adapter.Fill(dataTable);
+        //                    dataGridView1.DataSource = dataTable;
+        //                    dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        //                    dataGridView1.Columns["ID"].ReadOnly = true;
+        //                }
+        //            }
 
-                                }
-                            }
-                        }
-                        if (rowsInserted > 0)
-                        {
-                            dataTable.AcceptChanges();
-                            MessageBox.Show("Success Insert");
-                            LoadTable();
-                        }
-                    }
-                    conn.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error connecting to database!\n" + ex.Message);
-            }
-        }
+        //            conn.Close();
+
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Error connecting to database!\n" + ex.Message);
+        //    }
+        //}
+
+        //private void InsertBudgetTable()
+        //{
+        //    try
+        //    {
+        //        using (OleDbConnection conn = new OleDbConnection(connStr))
+        //        {
+
+        //            conn.Open();
+
+        //            string sql = "INSERT INTO FI_Budget (FiscalYear, BudgetIncome, BudgetExpense, ForecastIncome, ForecastExpense, Remark) VALUES (?, ?, ?, ?, ?, ?)";
+        //            using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+        //            {
+        //                int rowsInserted = 0;
+        //                foreach (DataRow row in dataTable.Rows)
+        //                {
+        //                    if ((row.RowState == DataRowState.Added))
+        //                    {
+        //                        string fiscalYear = row["FiscalYear"].ToString().Trim();
+        //                        string budgetIncome = row["BudgetIncome"].ToString().Trim();
+        //                        string BudgetExpense = row["BudgetExpense"].ToString().Trim();
+        //                        string ForecastIncome = row["ForecastIncome"].ToString().Trim();
+        //                        string ForecastExpense = row["ForecastExpense"].ToString().Trim();
+        //                        string Remark = row["Remark"].ToString().Trim();
+
+        //                        cmd.Parameters.Clear();
+        //                        cmd.Parameters.AddWithValue("?", fiscalYear);
+        //                        cmd.Parameters.AddWithValue("?", budgetIncome);
+        //                        cmd.Parameters.AddWithValue("?", BudgetExpense);
+        //                        cmd.Parameters.AddWithValue("?", ForecastIncome);
+        //                        cmd.Parameters.AddWithValue("?", ForecastExpense);
+        //                        cmd.Parameters.AddWithValue("?", Remark);
+        //                        int rowsAffected = cmd.ExecuteNonQuery();
+        //                        if (rowsAffected > 0)
+        //                        {
+        //                            rowsInserted++;
+
+        //                        }
+        //                    }
+        //                }
+        //                if (rowsInserted > 0)
+        //                {
+        //                    dataTable.AcceptChanges();
+        //                    MessageBox.Show("Success Insert");
+        //                    LoadBudgetTable();
+        //                }
+        //            }
+        //            conn.Close();
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Error connecting to database!\n" + ex.Message);
+        //    }
+        //}
 
         private void chart1_Click(object sender, EventArgs e)
         {
@@ -146,7 +189,7 @@ namespace C_Project
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
-            InsertTable();
+            //InsertBudgetTable();
         }
     }
 }

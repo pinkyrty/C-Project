@@ -15,6 +15,9 @@ namespace C_Project
     {
         private string connStr;
         private static DataTable interactionLogDataTable;
+        private static DataTable returnDataTable;
+        public string DepartmentName { get; set; }
+        public string Username { get; set; }
 
         public CustomerServiceForm()
         {
@@ -27,8 +30,16 @@ namespace C_Project
             string dbPath = Path.Combine(projectRoot, "ToySystem.accdb");
             connStr = $@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={dbPath};";
             this.LoadInteractionLogTable();
+            this.LoadReturnTable();
+        }
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            label30.Text = Username;
+            label31.Text = DepartmentName;
         }
 
+        //first Tab
         private void LoadInteractionLogTable()
         {
             try
@@ -38,7 +49,7 @@ namespace C_Project
 
                     conn.Open();
 
-                    string sql = "SELECT * FROM CSD_InteractionLog";
+                    string sql = "SELECT ID, Date, CustomerName, Channel FROM CSD_InteractionLog";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
                         MessageBox.Show("Connect Success");
@@ -62,9 +73,53 @@ namespace C_Project
             }
         }
 
+        //second Tab
+        private void LoadReturnTable()
+        {
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+
+                    conn.Open();
+
+                    string sql = "SELECT * FROM CSD_RefundCase";
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                    {
+                        MessageBox.Show("Connect Success");
+                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
+                        {
+                            returnDataTable = new DataTable();
+                            adapter.Fill(returnDataTable);
+                            dataGridView2.DataSource = returnDataTable;
+                            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                            dataGridView2.Columns["ID"].ReadOnly = true;
+                        }
+                    }
+
+                    conn.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error connecting to database!\n" + ex.Message);
+            }
+        }
+
 
 
         private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void CustomerServiceForm_Load(object sender, EventArgs e)
         {
 
         }

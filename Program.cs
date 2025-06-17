@@ -31,9 +31,13 @@ namespace C_Project
                         break;
                     case Login.FormType.CSDForm:
                         targetForm = new CustomerServiceForm();
+                        var csdForm = new CustomerServiceForm();
+                        csdForm.Username = login.Username;
+                        csdForm.DepartmentName = login.DepartmentName;
+                        targetForm = csdForm;
                         break;
                     case Login.FormType.SCMForm:
-                        //targetForm = new LogisticForm();
+                        targetForm = new LogisticTrackingForm();
                         //var scmForm = new LogisticForm();
                         //scmForm.Username = login.Username;
                         //scmForm.DepartmentName = login.DepartmentName;
@@ -53,7 +57,7 @@ namespace C_Project
                         targetForm = itForm;
                         break;
                     case Login.FormType.DTForm:
-                        targetForm = new LogisticTrackingForm();
+                        targetForm = new LogisticForm();
                         break;
                     default:
                         return;

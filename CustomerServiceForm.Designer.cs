@@ -60,12 +60,6 @@
             ReturnAndExchangeAreaTabPage = new TabPage();
             RaEaSaveButton = new Button();
             dataGridView2 = new DataGridView();
-            CSreturnDate = new DataGridViewTextBoxColumn();
-            CSreturnCustomer = new DataGridViewTextBoxColumn();
-            CSreturnProduct = new DataGridViewTextBoxColumn();
-            CSreturnReason = new DataGridViewTextBoxColumn();
-            CSreturnState = new DataGridViewComboBoxColumn();
-            CSreturnRemark = new DataGridViewTextBoxColumn();
             label14 = new Label();
             label2 = new Label();
             Department = new Label();
@@ -74,6 +68,8 @@
             pictureBox1 = new PictureBox();
             ExportToExcelButton = new Button();
             RaDUserPrifileButton = new Button();
+            label31 = new Label();
+            label30 = new Label();
             tabMain.SuspendLayout();
             InteractionRecordsTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
@@ -135,6 +131,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(363, 662);
             dataGridView1.TabIndex = 1;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // label1
             // 
@@ -387,41 +384,10 @@
             // 
             dataGridView2.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { CSreturnDate, CSreturnCustomer, CSreturnProduct, CSreturnReason, CSreturnState, CSreturnRemark });
-            dataGridView2.Location = new Point(0, 21);
+            dataGridView2.Location = new Point(13, 21);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.Size = new Size(1121, 644);
             dataGridView2.TabIndex = 1;
-            // 
-            // CSreturnDate
-            // 
-            CSreturnDate.HeaderText = "Date";
-            CSreturnDate.Name = "CSreturnDate";
-            // 
-            // CSreturnCustomer
-            // 
-            CSreturnCustomer.HeaderText = "Customer";
-            CSreturnCustomer.Name = "CSreturnCustomer";
-            // 
-            // CSreturnProduct
-            // 
-            CSreturnProduct.HeaderText = "Product";
-            CSreturnProduct.Name = "CSreturnProduct";
-            // 
-            // CSreturnReason
-            // 
-            CSreturnReason.HeaderText = "Reason";
-            CSreturnReason.Name = "CSreturnReason";
-            // 
-            // CSreturnState
-            // 
-            CSreturnState.HeaderText = "State";
-            CSreturnState.Name = "CSreturnState";
-            // 
-            // CSreturnRemark
-            // 
-            CSreturnRemark.HeaderText = "Remark";
-            CSreturnRemark.Name = "CSreturnRemark";
             // 
             // label14
             // 
@@ -498,12 +464,32 @@
             RaDUserPrifileButton.Text = "User Profile";
             RaDUserPrifileButton.UseVisualStyleBackColor = true;
             // 
+            // label31
+            // 
+            label31.AutoSize = true;
+            label31.Location = new Point(202, 39);
+            label31.Name = "label31";
+            label31.Size = new Size(49, 15);
+            label31.TabIndex = 72;
+            label31.Text = "label31";
+            // 
+            // label30
+            // 
+            label30.AutoSize = true;
+            label30.Location = new Point(202, 12);
+            label30.Name = "label30";
+            label30.Size = new Size(49, 15);
+            label30.TabIndex = 71;
+            label30.Text = "label30";
+            // 
             // CustomerServiceForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightBlue;
             ClientSize = new Size(1153, 858);
+            Controls.Add(label31);
+            Controls.Add(label30);
             Controls.Add(RaDUserPrifileButton);
             Controls.Add(ExportToExcelButton);
             Controls.Add(label2);
@@ -514,6 +500,7 @@
             Controls.Add(tabMain);
             Name = "CustomerServiceForm";
             Text = "CustomerServiceForm";
+            Load += CustomerServiceForm_Load;
             tabMain.ResumeLayout(false);
             InteractionRecordsTabPage.ResumeLayout(false);
             splitContainer1.Panel1.ResumeLayout(false);
@@ -573,11 +560,7 @@
         private Button RaEaSaveButton;
         private DataGridView dataGridView2;
         private Label label14;
-        private DataGridViewTextBoxColumn CSreturnDate;
-        private DataGridViewTextBoxColumn CSreturnCustomer;
-        private DataGridViewTextBoxColumn CSreturnProduct;
-        private DataGridViewTextBoxColumn CSreturnReason;
-        private DataGridViewComboBoxColumn CSreturnState;
-        private DataGridViewTextBoxColumn CSreturnRemark;
+        private Label label31;
+        private Label label30;
     }
 }

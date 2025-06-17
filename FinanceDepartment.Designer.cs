@@ -52,12 +52,6 @@
             chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             label4 = new Label();
             dataGridView2 = new DataGridView();
-            FIIncomeDate = new DataGridViewTextBoxColumn();
-            FIIncomeType = new DataGridViewComboBoxColumn();
-            FIIncomeAmount = new DataGridViewTextBoxColumn();
-            FIIncomeRemark = new DataGridViewTextBoxColumn();
-            FIIncomeState = new DataGridViewComboBoxColumn();
-            FIIincomeOperation = new DataGridViewButtonColumn();
             label3 = new Label();
             tabPage3 = new TabPage();
             dataGridView3 = new DataGridView();
@@ -223,6 +217,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(898, 236);
             dataGridView1.TabIndex = 25;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // chart3
             // 
@@ -313,42 +308,11 @@
             // 
             dataGridView2.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { FIIncomeDate, FIIncomeType, FIIncomeAmount, FIIncomeRemark, FIIncomeState, FIIincomeOperation });
             dataGridView2.Location = new Point(6, 29);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.Size = new Size(1106, 219);
             dataGridView2.TabIndex = 1;
             dataGridView2.CellContentClick += dataGridView2_CellContentClick;
-            // 
-            // FIIncomeDate
-            // 
-            FIIncomeDate.HeaderText = "Date";
-            FIIncomeDate.Name = "FIIncomeDate";
-            // 
-            // FIIncomeType
-            // 
-            FIIncomeType.HeaderText = "Type";
-            FIIncomeType.Name = "FIIncomeType";
-            // 
-            // FIIncomeAmount
-            // 
-            FIIncomeAmount.HeaderText = "Amount";
-            FIIncomeAmount.Name = "FIIncomeAmount";
-            // 
-            // FIIncomeRemark
-            // 
-            FIIncomeRemark.HeaderText = "Remark";
-            FIIncomeRemark.Name = "FIIncomeRemark";
-            // 
-            // FIIncomeState
-            // 
-            FIIncomeState.HeaderText = "State";
-            FIIncomeState.Name = "FIIncomeState";
-            // 
-            // FIIincomeOperation
-            // 
-            FIIincomeOperation.HeaderText = "Delete";
-            FIIincomeOperation.Name = "FIIincomeOperation";
             // 
             // label3
             // 
@@ -824,6 +788,7 @@
             label30.Size = new Size(49, 15);
             label30.TabIndex = 25;
             label30.Text = "label30";
+            label30.Click += label30_Click;
             // 
             // label31
             // 
@@ -934,12 +899,6 @@
         private Label label22;
         private Label label21;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private DataGridViewTextBoxColumn FIIncomeDate;
-        private DataGridViewComboBoxColumn FIIncomeType;
-        private DataGridViewTextBoxColumn FIIncomeAmount;
-        private DataGridViewTextBoxColumn FIIncomeRemark;
-        private DataGridViewComboBoxColumn FIIncomeState;
-        private DataGridViewButtonColumn FIIincomeOperation;
         private DataGridViewTextBoxColumn FIStateType;
         private DataGridViewTextBoxColumn FIStatePerior;
         private DataGridViewTextBoxColumn FIStateFileName;

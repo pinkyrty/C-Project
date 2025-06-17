@@ -148,6 +148,8 @@
             label20 = new Label();
             label21 = new Label();
             pictureBox2 = new PictureBox();
+            label30 = new Label();
+            label31 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             gbOperation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
@@ -1112,12 +1114,32 @@
             pictureBox2.TabIndex = 15;
             pictureBox2.TabStop = false;
             // 
+            // label30
+            // 
+            label30.AutoSize = true;
+            label30.Location = new Point(195, 12);
+            label30.Name = "label30";
+            label30.Size = new Size(49, 15);
+            label30.TabIndex = 26;
+            label30.Text = "label30";
+            // 
+            // label31
+            // 
+            label31.AutoSize = true;
+            label31.Location = new Point(195, 39);
+            label31.Name = "label31";
+            label31.Size = new Size(49, 15);
+            label31.TabIndex = 27;
+            label31.Text = "label31";
+            // 
             // LogisticForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightBlue;
             ClientSize = new Size(1153, 858);
+            Controls.Add(label31);
+            Controls.Add(label30);
             Controls.Add(pictureBox2);
             Controls.Add(label21);
             Controls.Add(label20);
@@ -1274,5 +1296,7 @@
         private Label label22;
         private Label label23;
         private Button button10;
+        private Label label30;
+        private Label label31;
     }
 }

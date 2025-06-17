@@ -31,28 +31,12 @@ namespace C_Project
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IT_Form));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             pictureBox1 = new PictureBox();
             Department = new Label();
             label2 = new Label();
             UserName = new Label();
             label1 = new Label();
             tabControl1 = new TabControl();
-            DashboardTabPage = new TabPage();
-            AddNewEventsButton = new Button();
-            EventTextBox = new TextBox();
-            label6 = new Label();
-            label5 = new Label();
-            dateTimePicker1 = new DateTimePicker();
-            NumberofRepairTextBox = new TextBox();
-            label4 = new Label();
-            ActiveUsersTextBox = new TextBox();
-            label3 = new Label();
-            dataGridView1 = new DataGridView();
-            ITDashBoardTime = new DataGridViewTextBoxColumn();
-            ITDashBoardEvent = new DataGridViewTextBoxColumn();
             RepairSupportTabPage = new TabPage();
             AddNewButton = new Button();
             StatusComboBox = new ComboBox();
@@ -120,27 +104,6 @@ namespace C_Project
             ITmaintenanceInCharge = new DataGridViewTextBoxColumn();
             ITmaintenanceRemark = new DataGridViewTextBoxColumn();
             ITmaintenanceOperation = new DataGridViewButtonColumn();
-            TechnicalSolutionsTabPage = new TabPage();
-            SolutionsButton = new Button();
-            TechnicalStatusComboBox = new ComboBox();
-            PersonInChargeTextBox = new TextBox();
-            ProgressTextBox = new TextBox();
-            TechnicalDepartmentComboBox = new ComboBox();
-            TechniaslNameTextBox = new TextBox();
-            label28 = new Label();
-            label27 = new Label();
-            label26 = new Label();
-            label25 = new Label();
-            label24 = new Label();
-            dataGridView6 = new DataGridView();
-            ITtechnicalProjectName = new DataGridViewTextBoxColumn();
-            ITtechnicalDepartment = new DataGridViewComboBoxColumn();
-            ITtechnicalProcess = new DataGridViewComboBoxColumn();
-            ITtechnicalIncharge = new DataGridViewTextBoxColumn();
-            ITtechnicalState = new DataGridViewComboBoxColumn();
-            ITtechnicalOperation = new DataGridViewButtonColumn();
-            StatisticalReportsTabPage = new TabPage();
-            chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             DepartmentEntranceTabPage = new TabPage();
             label29 = new Label();
             FinanceButton = new Button();
@@ -156,8 +119,6 @@ namespace C_Project
             label31 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl1.SuspendLayout();
-            DashboardTabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             RepairSupportTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             AssetManagementTabPage.SuspendLayout();
@@ -166,10 +127,6 @@ namespace C_Project
             ((System.ComponentModel.ISupportInitialize)dataGridView4).BeginInit();
             MaintenanceLogTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView5).BeginInit();
-            TechnicalSolutionsTabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView6).BeginInit();
-            StatisticalReportsTabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
             DepartmentEntranceTabPage.SuspendLayout();
             SuspendLayout();
             // 
@@ -222,132 +179,16 @@ namespace C_Project
             // 
             // tabControl1
             // 
-            tabControl1.Controls.Add(DashboardTabPage);
+            tabControl1.Controls.Add(DepartmentEntranceTabPage);
+            tabControl1.Controls.Add(UserManagementTabPage);
             tabControl1.Controls.Add(RepairSupportTabPage);
             tabControl1.Controls.Add(AssetManagementTabPage);
-            tabControl1.Controls.Add(UserManagementTabPage);
             tabControl1.Controls.Add(MaintenanceLogTabPage);
-            tabControl1.Controls.Add(TechnicalSolutionsTabPage);
-            tabControl1.Controls.Add(StatisticalReportsTabPage);
-            tabControl1.Controls.Add(DepartmentEntranceTabPage);
             tabControl1.Location = new Point(12, 129);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(1129, 717);
             tabControl1.TabIndex = 13;
-            // 
-            // DashboardTabPage
-            // 
-            DashboardTabPage.Controls.Add(AddNewEventsButton);
-            DashboardTabPage.Controls.Add(EventTextBox);
-            DashboardTabPage.Controls.Add(label6);
-            DashboardTabPage.Controls.Add(label5);
-            DashboardTabPage.Controls.Add(dateTimePicker1);
-            DashboardTabPage.Controls.Add(NumberofRepairTextBox);
-            DashboardTabPage.Controls.Add(label4);
-            DashboardTabPage.Controls.Add(ActiveUsersTextBox);
-            DashboardTabPage.Controls.Add(label3);
-            DashboardTabPage.Controls.Add(dataGridView1);
-            DashboardTabPage.Location = new Point(4, 24);
-            DashboardTabPage.Name = "DashboardTabPage";
-            DashboardTabPage.Padding = new Padding(3);
-            DashboardTabPage.Size = new Size(1121, 689);
-            DashboardTabPage.TabIndex = 0;
-            DashboardTabPage.Text = "Dashboard";
-            DashboardTabPage.UseVisualStyleBackColor = true;
-            // 
-            // AddNewEventsButton
-            // 
-            AddNewEventsButton.Location = new Point(600, 660);
-            AddNewEventsButton.Name = "AddNewEventsButton";
-            AddNewEventsButton.Size = new Size(98, 23);
-            AddNewEventsButton.TabIndex = 9;
-            AddNewEventsButton.Text = "New Events";
-            AddNewEventsButton.UseVisualStyleBackColor = true;
-            // 
-            // EventTextBox
-            // 
-            EventTextBox.Location = new Point(285, 661);
-            EventTextBox.Name = "EventTextBox";
-            EventTextBox.Size = new Size(309, 23);
-            EventTextBox.TabIndex = 8;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(235, 664);
-            label6.Name = "label6";
-            label6.Size = new Size(44, 15);
-            label6.TabIndex = 7;
-            label6.Text = "Event: ";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(11, 664);
-            label5.Name = "label5";
-            label5.Size = new Size(41, 15);
-            label5.TabIndex = 6;
-            label5.Text = "Time: ";
-            // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.Location = new Point(58, 658);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(123, 23);
-            dateTimePicker1.TabIndex = 5;
-            // 
-            // NumberofRepairTextBox
-            // 
-            NumberofRepairTextBox.Location = new Point(407, 14);
-            NumberofRepairTextBox.Name = "NumberofRepairTextBox";
-            NumberofRepairTextBox.Size = new Size(100, 23);
-            NumberofRepairTextBox.TabIndex = 4;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(195, 17);
-            label4.Name = "label4";
-            label4.Size = new Size(206, 15);
-            label4.TabIndex = 3;
-            label4.Text = "Number of repair orders this month";
-            // 
-            // ActiveUsersTextBox
-            // 
-            ActiveUsersTextBox.Location = new Point(76, 14);
-            ActiveUsersTextBox.Name = "ActiveUsersTextBox";
-            ActiveUsersTextBox.Size = new Size(100, 23);
-            ActiveUsersTextBox.TabIndex = 2;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(3, 17);
-            label3.Name = "label3";
-            label3.Size = new Size(72, 15);
-            label3.TabIndex = 1;
-            label3.Text = "Active users";
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.BackgroundColor = SystemColors.GradientInactiveCaption;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ITDashBoardTime, ITDashBoardEvent });
-            dataGridView1.Location = new Point(0, 44);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(1143, 608);
-            dataGridView1.TabIndex = 0;
-            // 
-            // ITDashBoardTime
-            // 
-            ITDashBoardTime.HeaderText = "Time";
-            ITDashBoardTime.Name = "ITDashBoardTime";
-            // 
-            // ITDashBoardEvent
-            // 
-            ITDashBoardEvent.HeaderText = "Event";
-            ITDashBoardEvent.Name = "ITDashBoardEvent";
             // 
             // RepairSupportTabPage
             // 
@@ -656,14 +497,14 @@ namespace C_Project
             // DepartmentComboBox
             // 
             DepartmentComboBox.FormattingEnabled = true;
-            DepartmentComboBox.Location = new Point(887, 622);
+            DepartmentComboBox.Location = new Point(861, 622);
             DepartmentComboBox.Name = "DepartmentComboBox";
             DepartmentComboBox.Size = new Size(242, 23);
             DepartmentComboBox.TabIndex = 8;
             // 
             // UserNameTextBox
             // 
-            UserNameTextBox.Location = new Point(407, 622);
+            UserNameTextBox.Location = new Point(381, 622);
             UserNameTextBox.Name = "UserNameTextBox";
             UserNameTextBox.Size = new Size(341, 23);
             UserNameTextBox.TabIndex = 7;
@@ -696,7 +537,7 @@ namespace C_Project
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(800, 625);
+            label17.Location = new Point(774, 625);
             label17.Name = "label17";
             label17.Size = new Size(81, 15);
             label17.TabIndex = 3;
@@ -705,7 +546,7 @@ namespace C_Project
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new Point(331, 625);
+            label16.Location = new Point(305, 625);
             label16.Name = "label16";
             label16.Size = new Size(70, 15);
             label16.TabIndex = 2;
@@ -888,184 +729,6 @@ namespace C_Project
             ITmaintenanceOperation.HeaderText = "Operation";
             ITmaintenanceOperation.Name = "ITmaintenanceOperation";
             // 
-            // TechnicalSolutionsTabPage
-            // 
-            TechnicalSolutionsTabPage.Controls.Add(SolutionsButton);
-            TechnicalSolutionsTabPage.Controls.Add(TechnicalStatusComboBox);
-            TechnicalSolutionsTabPage.Controls.Add(PersonInChargeTextBox);
-            TechnicalSolutionsTabPage.Controls.Add(ProgressTextBox);
-            TechnicalSolutionsTabPage.Controls.Add(TechnicalDepartmentComboBox);
-            TechnicalSolutionsTabPage.Controls.Add(TechniaslNameTextBox);
-            TechnicalSolutionsTabPage.Controls.Add(label28);
-            TechnicalSolutionsTabPage.Controls.Add(label27);
-            TechnicalSolutionsTabPage.Controls.Add(label26);
-            TechnicalSolutionsTabPage.Controls.Add(label25);
-            TechnicalSolutionsTabPage.Controls.Add(label24);
-            TechnicalSolutionsTabPage.Controls.Add(dataGridView6);
-            TechnicalSolutionsTabPage.Location = new Point(4, 24);
-            TechnicalSolutionsTabPage.Name = "TechnicalSolutionsTabPage";
-            TechnicalSolutionsTabPage.Size = new Size(1121, 689);
-            TechnicalSolutionsTabPage.TabIndex = 5;
-            TechnicalSolutionsTabPage.Text = "Technical Solutions";
-            TechnicalSolutionsTabPage.UseVisualStyleBackColor = true;
-            // 
-            // SolutionsButton
-            // 
-            SolutionsButton.Location = new Point(579, 658);
-            SolutionsButton.Name = "SolutionsButton";
-            SolutionsButton.Size = new Size(117, 26);
-            SolutionsButton.TabIndex = 11;
-            SolutionsButton.Text = "+ Add new Solutions";
-            SolutionsButton.UseVisualStyleBackColor = true;
-            // 
-            // TechnicalStatusComboBox
-            // 
-            TechnicalStatusComboBox.FormattingEnabled = true;
-            TechnicalStatusComboBox.Location = new Point(424, 661);
-            TechnicalStatusComboBox.Name = "TechnicalStatusComboBox";
-            TechnicalStatusComboBox.Size = new Size(121, 23);
-            TechnicalStatusComboBox.TabIndex = 10;
-            // 
-            // PersonInChargeTextBox
-            // 
-            PersonInChargeTextBox.Location = new Point(123, 661);
-            PersonInChargeTextBox.Name = "PersonInChargeTextBox";
-            PersonInChargeTextBox.Size = new Size(181, 23);
-            PersonInChargeTextBox.TabIndex = 9;
-            // 
-            // ProgressTextBox
-            // 
-            ProgressTextBox.Location = new Point(858, 617);
-            ProgressTextBox.Name = "ProgressTextBox";
-            ProgressTextBox.Size = new Size(210, 23);
-            ProgressTextBox.TabIndex = 8;
-            // 
-            // TechnicalDepartmentComboBox
-            // 
-            TechnicalDepartmentComboBox.FormattingEnabled = true;
-            TechnicalDepartmentComboBox.Location = new Point(504, 622);
-            TechnicalDepartmentComboBox.Name = "TechnicalDepartmentComboBox";
-            TechnicalDepartmentComboBox.Size = new Size(232, 23);
-            TechnicalDepartmentComboBox.TabIndex = 7;
-            // 
-            // TechniaslNameTextBox
-            // 
-            TechniaslNameTextBox.Location = new Point(65, 622);
-            TechniaslNameTextBox.Name = "TechniaslNameTextBox";
-            TechniaslNameTextBox.Size = new Size(298, 23);
-            TechniaslNameTextBox.TabIndex = 6;
-            // 
-            // label28
-            // 
-            label28.AutoSize = true;
-            label28.Location = new Point(371, 664);
-            label28.Name = "label28";
-            label28.Size = new Size(47, 15);
-            label28.TabIndex = 5;
-            label28.Text = "Status: ";
-            // 
-            // label27
-            // 
-            label27.AutoSize = true;
-            label27.Location = new Point(11, 664);
-            label27.Name = "label27";
-            label27.Size = new Size(106, 15);
-            label27.TabIndex = 4;
-            label27.Text = "Person in charge: ";
-            // 
-            // label26
-            // 
-            label26.AutoSize = true;
-            label26.Location = new Point(791, 625);
-            label26.Name = "label26";
-            label26.Size = new Size(61, 15);
-            label26.TabIndex = 3;
-            label26.Text = "Progress: ";
-            // 
-            // label25
-            // 
-            label25.AutoSize = true;
-            label25.Location = new Point(417, 625);
-            label25.Name = "label25";
-            label25.Size = new Size(81, 15);
-            label25.TabIndex = 2;
-            label25.Text = "Department: ";
-            // 
-            // label24
-            // 
-            label24.AutoSize = true;
-            label24.Location = new Point(11, 625);
-            label24.Name = "label24";
-            label24.Size = new Size(48, 15);
-            label24.TabIndex = 1;
-            label24.Text = "Name: ";
-            // 
-            // dataGridView6
-            // 
-            dataGridView6.BackgroundColor = SystemColors.GradientInactiveCaption;
-            dataGridView6.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView6.Columns.AddRange(new DataGridViewColumn[] { ITtechnicalProjectName, ITtechnicalDepartment, ITtechnicalProcess, ITtechnicalIncharge, ITtechnicalState, ITtechnicalOperation });
-            dataGridView6.Location = new Point(0, 0);
-            dataGridView6.Name = "dataGridView6";
-            dataGridView6.Size = new Size(1143, 611);
-            dataGridView6.TabIndex = 0;
-            // 
-            // ITtechnicalProjectName
-            // 
-            ITtechnicalProjectName.HeaderText = "Project Name";
-            ITtechnicalProjectName.Name = "ITtechnicalProjectName";
-            // 
-            // ITtechnicalDepartment
-            // 
-            ITtechnicalDepartment.HeaderText = "Department";
-            ITtechnicalDepartment.Name = "ITtechnicalDepartment";
-            // 
-            // ITtechnicalProcess
-            // 
-            ITtechnicalProcess.HeaderText = "Process";
-            ITtechnicalProcess.Name = "ITtechnicalProcess";
-            // 
-            // ITtechnicalIncharge
-            // 
-            ITtechnicalIncharge.HeaderText = "In Charge Person";
-            ITtechnicalIncharge.Name = "ITtechnicalIncharge";
-            // 
-            // ITtechnicalState
-            // 
-            ITtechnicalState.HeaderText = "State";
-            ITtechnicalState.Name = "ITtechnicalState";
-            // 
-            // ITtechnicalOperation
-            // 
-            ITtechnicalOperation.HeaderText = "Operation";
-            ITtechnicalOperation.Name = "ITtechnicalOperation";
-            // 
-            // StatisticalReportsTabPage
-            // 
-            StatisticalReportsTabPage.BackColor = SystemColors.GradientInactiveCaption;
-            StatisticalReportsTabPage.Controls.Add(chart1);
-            StatisticalReportsTabPage.Location = new Point(4, 24);
-            StatisticalReportsTabPage.Name = "StatisticalReportsTabPage";
-            StatisticalReportsTabPage.Size = new Size(1121, 689);
-            StatisticalReportsTabPage.TabIndex = 6;
-            StatisticalReportsTabPage.Text = "Statistical Reports";
-            // 
-            // chart1
-            // 
-            chartArea2.Name = "ChartArea1";
-            chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            chart1.Legends.Add(legend2);
-            chart1.Location = new Point(11, 95);
-            chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            chart1.Series.Add(series2);
-            chart1.Size = new Size(1123, 469);
-            chart1.TabIndex = 0;
-            chart1.Text = "chart1";
-            // 
             // DepartmentEntranceTabPage
             // 
             DepartmentEntranceTabPage.BackColor = SystemColors.GradientInactiveCaption;
@@ -1203,9 +866,6 @@ namespace C_Project
             Load += IT_Form_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             tabControl1.ResumeLayout(false);
-            DashboardTabPage.ResumeLayout(false);
-            DashboardTabPage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             RepairSupportTabPage.ResumeLayout(false);
             RepairSupportTabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
@@ -1218,11 +878,6 @@ namespace C_Project
             MaintenanceLogTabPage.ResumeLayout(false);
             MaintenanceLogTabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView5).EndInit();
-            TechnicalSolutionsTabPage.ResumeLayout(false);
-            TechnicalSolutionsTabPage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView6).EndInit();
-            StatisticalReportsTabPage.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
             DepartmentEntranceTabPage.ResumeLayout(false);
             DepartmentEntranceTabPage.PerformLayout();
             ResumeLayout(false);
@@ -1237,24 +892,11 @@ namespace C_Project
         private Label UserName;
         private Label label1;
         private TabControl tabControl1;
-        private TabPage DashboardTabPage;
         private TabPage RepairSupportTabPage;
-        private DataGridView dataGridView1;
         private TabPage AssetManagementTabPage;
         private TabPage UserManagementTabPage;
         private TabPage MaintenanceLogTabPage;
-        private TabPage TechnicalSolutionsTabPage;
-        private TabPage StatisticalReportsTabPage;
         private TabPage DepartmentEntranceTabPage;
-        private TextBox EventTextBox;
-        private Label label6;
-        private Label label5;
-        private DateTimePicker dateTimePicker1;
-        private TextBox NumberofRepairTextBox;
-        private Label label4;
-        private TextBox ActiveUsersTextBox;
-        private Label label3;
-        private Button AddNewEventsButton;
         private ComboBox StatusComboBox;
         private TextBox SubmitterTextBox;
         private TextBox SubjectTextBox;
@@ -1297,18 +939,6 @@ namespace C_Project
         private TextBox textBox3;
         private TextBox textBox2;
         private TextBox textBox1;
-        private Label label28;
-        private Label label27;
-        private Label label26;
-        private Label label25;
-        private Label label24;
-        private DataGridView dataGridView6;
-        private Button SolutionsButton;
-        private ComboBox TechnicalStatusComboBox;
-        private TextBox PersonInChargeTextBox;
-        private TextBox ProgressTextBox;
-        private ComboBox TechnicalDepartmentComboBox;
-        private TextBox TechniaslNameTextBox;
         private Label label29;
         private Button FinanceButton;
         private Button CustomerServiceButton;
@@ -1318,10 +948,7 @@ namespace C_Project
         private Button SalesButton;
         private Button RnDbutton;
         private Microsoft.Data.SqlClient.SqlCommandBuilder sqlCommandBuilder1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private Button button8;
-        private DataGridViewTextBoxColumn ITDashBoardTime;
-        private DataGridViewTextBoxColumn ITDashBoardEvent;
         private DataGridViewTextBoxColumn ITrepairOrderNumber;
         private DataGridViewTextBoxColumn ITrepairSubject;
         private DataGridViewTextBoxColumn ITrepairAuthor;
@@ -1343,12 +970,6 @@ namespace C_Project
         private DataGridViewTextBoxColumn ITmaintenanceInCharge;
         private DataGridViewTextBoxColumn ITmaintenanceRemark;
         private DataGridViewButtonColumn ITmaintenanceOperation;
-        private DataGridViewTextBoxColumn ITtechnicalProjectName;
-        private DataGridViewComboBoxColumn ITtechnicalDepartment;
-        private DataGridViewComboBoxColumn ITtechnicalProcess;
-        private DataGridViewTextBoxColumn ITtechnicalIncharge;
-        private DataGridViewComboBoxColumn ITtechnicalState;
-        private DataGridViewButtonColumn ITtechnicalOperation;
         private Label label30;
         private Label label31;
     }

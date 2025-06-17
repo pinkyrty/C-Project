@@ -20,6 +20,7 @@ namespace C_Project
         public string Username { get; set; }
         private string connStr;
         private static DataTable budgetDataTable;
+        private static DataTable cashFlowDataTable;
 
         public FinanceDepartment()
         {
@@ -43,9 +44,10 @@ namespace C_Project
         private void FinanceDepartment_Load(object sender, EventArgs e)
         {
             this.LoadBudgetTable();
-            //this.LoadCashFlowTable();
+            this.LoadCashFlowTable();
         }
 
+        //First Tab
         private void LoadBudgetTable()
         {
             try
@@ -79,38 +81,39 @@ namespace C_Project
             }
         }
 
-        //private void LoadCashFlowTable()
-        //{
-        //    try
-        //    {
-        //        using (OleDbConnection conn = new OleDbConnection(connStr))
-        //        {
+        //Second Tab
+        private void LoadCashFlowTable()
+        {
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
 
-        //            conn.Open();
+                    conn.Open();
 
-        //            string sql = "SELECT * FROM FI_CashFlow";
-        //            using (OleDbCommand cmd = new OleDbCommand(sql, conn))
-        //            {
+                    string sql = "SELECT * FROM FI_CashFlow";
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                    {
 
-        //                using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
-        //                {
-        //                    dataTable = new DataTable();
-        //                    adapter.Fill(dataTable);
-        //                    dataGridView1.DataSource = dataTable;
-        //                    dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-        //                    dataGridView1.Columns["ID"].ReadOnly = true;
-        //                }
-        //            }
+                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
+                        {
+                            cashFlowDataTable = new DataTable();
+                            adapter.Fill(cashFlowDataTable);
+                            dataGridView2.DataSource = cashFlowDataTable;
+                            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                            dataGridView2.Columns["ID"].ReadOnly = true;
+                        }
+                    }
 
-        //            conn.Close();
+                    conn.Close();
 
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Error connecting to database!\n" + ex.Message);
-        //    }
-        //}
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error connecting to database!\n" + ex.Message);
+            }
+        }
 
         //private void InsertBudgetTable()
         //{
@@ -190,6 +193,16 @@ namespace C_Project
         private void btn_Save_Click(object sender, EventArgs e)
         {
             //InsertBudgetTable();
+        }
+
+        private void label30_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

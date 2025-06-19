@@ -28,6 +28,10 @@ namespace C_Project
                         break;
                     case Login.FormType.PDForm:
                         targetForm = new ProductionOrderForm();
+                        var pdForm = new ProductionOrderForm();
+                        pdForm.Username = login.Username;
+                        pdForm.DepartmentName = login.DepartmentName;
+                        targetForm = pdForm;
                         break;
                     case Login.FormType.CSDForm:
                         targetForm = new CustomerServiceForm();

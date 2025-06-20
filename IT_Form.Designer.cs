@@ -37,38 +37,15 @@ namespace C_Project
             UserName = new Label();
             label1 = new Label();
             tabControl1 = new TabControl();
-            RepairSupportTabPage = new TabPage();
-            AddNewButton = new Button();
-            StatusComboBox = new ComboBox();
-            SubmitterTextBox = new TextBox();
-            SubjectTextBox = new TextBox();
-            TicketNumberTextBox = new TextBox();
-            label10 = new Label();
-            label9 = new Label();
-            label8 = new Label();
-            label7 = new Label();
-            dataGridView2 = new DataGridView();
-            ITrepairOrderNumber = new DataGridViewTextBoxColumn();
-            ITrepairSubject = new DataGridViewTextBoxColumn();
-            ITrepairAuthor = new DataGridViewTextBoxColumn();
-            ITrepaidState = new DataGridViewComboBoxColumn();
-            ITrepairOperation = new DataGridViewButtonColumn();
-            AssetManagementTabPage = new TabPage();
-            AddNewAssetButton = new Button();
-            AssetStatusComboBox = new ComboBox();
-            TypeTextBox = new TextBox();
-            NameTextBox = new TextBox();
-            AssetNumberTextBox = new TextBox();
-            label14 = new Label();
-            label13 = new Label();
-            label12 = new Label();
-            label11 = new Label();
-            dataGridView3 = new DataGridView();
-            ITAssetNumber = new DataGridViewTextBoxColumn();
-            ITassetName = new DataGridViewTextBoxColumn();
-            ITassetType = new DataGridViewTextBoxColumn();
-            ITassetState = new DataGridViewTextBoxColumn();
-            ITassetOperation = new DataGridViewButtonColumn();
+            DepartmentEntranceTabPage = new TabPage();
+            label29 = new Label();
+            FinanceButton = new Button();
+            CustomerServiceButton = new Button();
+            SupplyChainButton = new Button();
+            ProductionButton = new Button();
+            MarketingButton = new Button();
+            SalesButton = new Button();
+            RnDbutton = new Button();
             UserManagementTabPage = new TabPage();
             AddNewUserButton = new Button();
             ActiveComboBox = new ComboBox();
@@ -81,13 +58,29 @@ namespace C_Project
             label17 = new Label();
             label16 = new Label();
             label15 = new Label();
-            dataGridView4 = new DataGridView();
-            ITuserID = new DataGridViewTextBoxColumn();
-            ITuserName = new DataGridViewTextBoxColumn();
-            ITuserDepartment = new DataGridViewComboBoxColumn();
-            ITuserFullName = new DataGridViewTextBoxColumn();
-            ITuserActive = new DataGridViewCheckBoxColumn();
-            ITuserOperation = new DataGridViewButtonColumn();
+            dataGridView1 = new DataGridView();
+            RepairSupportTabPage = new TabPage();
+            AddNewButton = new Button();
+            StatusComboBox = new ComboBox();
+            SubmitterTextBox = new TextBox();
+            SubjectTextBox = new TextBox();
+            TicketNumberTextBox = new TextBox();
+            label10 = new Label();
+            label9 = new Label();
+            label8 = new Label();
+            label7 = new Label();
+            dataGridView2 = new DataGridView();
+            AssetManagementTabPage = new TabPage();
+            AddNewAssetButton = new Button();
+            AssetStatusComboBox = new ComboBox();
+            TypeTextBox = new TextBox();
+            NameTextBox = new TextBox();
+            AssetNumberTextBox = new TextBox();
+            label14 = new Label();
+            label13 = new Label();
+            label12 = new Label();
+            label11 = new Label();
+            dataGridView3 = new DataGridView();
             MaintenanceLogTabPage = new TabPage();
             AddNewLogButton = new Button();
             textBox3 = new TextBox();
@@ -98,36 +91,23 @@ namespace C_Project
             label22 = new Label();
             label21 = new Label();
             label20 = new Label();
-            dataGridView5 = new DataGridView();
-            ITmaintenanceDate = new DataGridViewTextBoxColumn();
-            ITmaintenanceContent = new DataGridViewTextBoxColumn();
-            ITmaintenanceInCharge = new DataGridViewTextBoxColumn();
-            ITmaintenanceRemark = new DataGridViewTextBoxColumn();
-            ITmaintenanceOperation = new DataGridViewButtonColumn();
-            DepartmentEntranceTabPage = new TabPage();
-            label29 = new Label();
-            FinanceButton = new Button();
-            CustomerServiceButton = new Button();
-            SupplyChainButton = new Button();
-            ProductionButton = new Button();
-            MarketingButton = new Button();
-            SalesButton = new Button();
-            RnDbutton = new Button();
+            dataGridView4 = new DataGridView();
             sqlCommandBuilder1 = new Microsoft.Data.SqlClient.SqlCommandBuilder();
-            button8 = new Button();
+            btnUserProfile = new Button();
             label30 = new Label();
             label31 = new Label();
+            btnLogout = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl1.SuspendLayout();
+            DepartmentEntranceTabPage.SuspendLayout();
+            UserManagementTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             RepairSupportTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             AssetManagementTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
-            UserManagementTabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView4).BeginInit();
             MaintenanceLogTabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView5).BeginInit();
-            DepartmentEntranceTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView4).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
@@ -189,6 +169,217 @@ namespace C_Project
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(1129, 717);
             tabControl1.TabIndex = 13;
+            // 
+            // DepartmentEntranceTabPage
+            // 
+            DepartmentEntranceTabPage.BackColor = SystemColors.GradientInactiveCaption;
+            DepartmentEntranceTabPage.Controls.Add(label29);
+            DepartmentEntranceTabPage.Controls.Add(FinanceButton);
+            DepartmentEntranceTabPage.Controls.Add(CustomerServiceButton);
+            DepartmentEntranceTabPage.Controls.Add(SupplyChainButton);
+            DepartmentEntranceTabPage.Controls.Add(ProductionButton);
+            DepartmentEntranceTabPage.Controls.Add(MarketingButton);
+            DepartmentEntranceTabPage.Controls.Add(SalesButton);
+            DepartmentEntranceTabPage.Controls.Add(RnDbutton);
+            DepartmentEntranceTabPage.Location = new Point(4, 24);
+            DepartmentEntranceTabPage.Name = "DepartmentEntranceTabPage";
+            DepartmentEntranceTabPage.Size = new Size(1121, 689);
+            DepartmentEntranceTabPage.TabIndex = 7;
+            DepartmentEntranceTabPage.Text = "Department Entrance";
+            // 
+            // label29
+            // 
+            label29.AutoSize = true;
+            label29.Location = new Point(30, 38);
+            label29.Name = "label29";
+            label29.Size = new Size(127, 15);
+            label29.TabIndex = 7;
+            label29.Text = "Department Entrance";
+            // 
+            // FinanceButton
+            // 
+            FinanceButton.Location = new Point(110, 522);
+            FinanceButton.Name = "FinanceButton";
+            FinanceButton.Size = new Size(199, 90);
+            FinanceButton.TabIndex = 6;
+            FinanceButton.Text = "Finance";
+            FinanceButton.UseVisualStyleBackColor = true;
+            // 
+            // CustomerServiceButton
+            // 
+            CustomerServiceButton.Location = new Point(816, 309);
+            CustomerServiceButton.Name = "CustomerServiceButton";
+            CustomerServiceButton.Size = new Size(199, 90);
+            CustomerServiceButton.TabIndex = 5;
+            CustomerServiceButton.Text = "Customer Service";
+            CustomerServiceButton.UseVisualStyleBackColor = true;
+            // 
+            // SupplyChainButton
+            // 
+            SupplyChainButton.Location = new Point(457, 309);
+            SupplyChainButton.Name = "SupplyChainButton";
+            SupplyChainButton.Size = new Size(199, 90);
+            SupplyChainButton.TabIndex = 4;
+            SupplyChainButton.Text = "Supply Chain";
+            SupplyChainButton.UseVisualStyleBackColor = true;
+            // 
+            // ProductionButton
+            // 
+            ProductionButton.Location = new Point(110, 309);
+            ProductionButton.Name = "ProductionButton";
+            ProductionButton.Size = new Size(199, 90);
+            ProductionButton.TabIndex = 3;
+            ProductionButton.Text = "Production";
+            ProductionButton.UseVisualStyleBackColor = true;
+            // 
+            // MarketingButton
+            // 
+            MarketingButton.Location = new Point(816, 102);
+            MarketingButton.Name = "MarketingButton";
+            MarketingButton.Size = new Size(199, 90);
+            MarketingButton.TabIndex = 2;
+            MarketingButton.Text = "Logistic and  Warehouse";
+            MarketingButton.UseVisualStyleBackColor = true;
+            // 
+            // SalesButton
+            // 
+            SalesButton.Location = new Point(457, 102);
+            SalesButton.Name = "SalesButton";
+            SalesButton.Size = new Size(199, 90);
+            SalesButton.TabIndex = 1;
+            SalesButton.Text = "Sales And Marketing";
+            SalesButton.UseVisualStyleBackColor = true;
+            // 
+            // RnDbutton
+            // 
+            RnDbutton.Location = new Point(110, 102);
+            RnDbutton.Name = "RnDbutton";
+            RnDbutton.Size = new Size(199, 90);
+            RnDbutton.TabIndex = 0;
+            RnDbutton.Text = "RnD";
+            RnDbutton.UseVisualStyleBackColor = true;
+            // 
+            // UserManagementTabPage
+            // 
+            UserManagementTabPage.Controls.Add(AddNewUserButton);
+            UserManagementTabPage.Controls.Add(ActiveComboBox);
+            UserManagementTabPage.Controls.Add(FullNameTextBox);
+            UserManagementTabPage.Controls.Add(DepartmentComboBox);
+            UserManagementTabPage.Controls.Add(UserNameTextBox);
+            UserManagementTabPage.Controls.Add(UserIDTextBox);
+            UserManagementTabPage.Controls.Add(label19);
+            UserManagementTabPage.Controls.Add(label18);
+            UserManagementTabPage.Controls.Add(label17);
+            UserManagementTabPage.Controls.Add(label16);
+            UserManagementTabPage.Controls.Add(label15);
+            UserManagementTabPage.Controls.Add(dataGridView1);
+            UserManagementTabPage.Location = new Point(4, 24);
+            UserManagementTabPage.Name = "UserManagementTabPage";
+            UserManagementTabPage.Size = new Size(1121, 689);
+            UserManagementTabPage.TabIndex = 3;
+            UserManagementTabPage.Text = "User Management";
+            UserManagementTabPage.UseVisualStyleBackColor = true;
+            // 
+            // AddNewUserButton
+            // 
+            AddNewUserButton.Location = new Point(564, 661);
+            AddNewUserButton.Name = "AddNewUserButton";
+            AddNewUserButton.Size = new Size(121, 23);
+            AddNewUserButton.TabIndex = 11;
+            AddNewUserButton.Text = "+ Add New User";
+            AddNewUserButton.UseVisualStyleBackColor = true;
+            // 
+            // ActiveComboBox
+            // 
+            ActiveComboBox.FormattingEnabled = true;
+            ActiveComboBox.Location = new Point(378, 661);
+            ActiveComboBox.Name = "ActiveComboBox";
+            ActiveComboBox.Size = new Size(134, 23);
+            ActiveComboBox.TabIndex = 10;
+            // 
+            // FullNameTextBox
+            // 
+            FullNameTextBox.Location = new Point(78, 661);
+            FullNameTextBox.Name = "FullNameTextBox";
+            FullNameTextBox.Size = new Size(164, 23);
+            FullNameTextBox.TabIndex = 9;
+            // 
+            // DepartmentComboBox
+            // 
+            DepartmentComboBox.FormattingEnabled = true;
+            DepartmentComboBox.Location = new Point(861, 622);
+            DepartmentComboBox.Name = "DepartmentComboBox";
+            DepartmentComboBox.Size = new Size(242, 23);
+            DepartmentComboBox.TabIndex = 8;
+            // 
+            // UserNameTextBox
+            // 
+            UserNameTextBox.Location = new Point(381, 622);
+            UserNameTextBox.Name = "UserNameTextBox";
+            UserNameTextBox.Size = new Size(341, 23);
+            UserNameTextBox.TabIndex = 7;
+            // 
+            // UserIDTextBox
+            // 
+            UserIDTextBox.Location = new Point(67, 622);
+            UserIDTextBox.Name = "UserIDTextBox";
+            UserIDTextBox.Size = new Size(209, 23);
+            UserIDTextBox.TabIndex = 6;
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Location = new Point(331, 664);
+            label19.Name = "label19";
+            label19.Size = new Size(41, 15);
+            label19.TabIndex = 5;
+            label19.Text = "Active";
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Location = new Point(11, 664);
+            label18.Name = "label18";
+            label18.Size = new Size(67, 15);
+            label18.TabIndex = 4;
+            label18.Text = "FullName: ";
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new Point(774, 625);
+            label17.Name = "label17";
+            label17.Size = new Size(81, 15);
+            label17.TabIndex = 3;
+            label17.Text = "Department: ";
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new Point(305, 625);
+            label16.Name = "label16";
+            label16.Size = new Size(70, 15);
+            label16.TabIndex = 2;
+            label16.Text = "Username: ";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(11, 625);
+            label15.Name = "label15";
+            label15.Size = new Size(50, 15);
+            label15.TabIndex = 1;
+            label15.Text = "UserID: ";
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.BackgroundColor = SystemColors.GradientInactiveCaption;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(0, 0);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(1143, 616);
+            dataGridView1.TabIndex = 0;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // RepairSupportTabPage
             // 
@@ -289,36 +480,10 @@ namespace C_Project
             // 
             dataGridView2.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { ITrepairOrderNumber, ITrepairSubject, ITrepairAuthor, ITrepaidState, ITrepairOperation });
             dataGridView2.Location = new Point(0, 0);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.Size = new Size(1143, 616);
             dataGridView2.TabIndex = 0;
-            // 
-            // ITrepairOrderNumber
-            // 
-            ITrepairOrderNumber.HeaderText = "Order Number";
-            ITrepairOrderNumber.Name = "ITrepairOrderNumber";
-            // 
-            // ITrepairSubject
-            // 
-            ITrepairSubject.HeaderText = "Subjet";
-            ITrepairSubject.Name = "ITrepairSubject";
-            // 
-            // ITrepairAuthor
-            // 
-            ITrepairAuthor.HeaderText = "Author";
-            ITrepairAuthor.Name = "ITrepairAuthor";
-            // 
-            // ITrepaidState
-            // 
-            ITrepaidState.HeaderText = "State";
-            ITrepaidState.Name = "ITrepaidState";
-            // 
-            // ITrepairOperation
-            // 
-            ITrepairOperation.HeaderText = "Operation";
-            ITrepairOperation.Name = "ITrepairOperation";
             // 
             // AssetManagementTabPage
             // 
@@ -418,188 +583,10 @@ namespace C_Project
             // 
             dataGridView3.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Columns.AddRange(new DataGridViewColumn[] { ITAssetNumber, ITassetName, ITassetType, ITassetState, ITassetOperation });
             dataGridView3.Location = new Point(0, 0);
             dataGridView3.Name = "dataGridView3";
             dataGridView3.Size = new Size(1143, 616);
             dataGridView3.TabIndex = 0;
-            // 
-            // ITAssetNumber
-            // 
-            ITAssetNumber.HeaderText = "Asset Number";
-            ITAssetNumber.Name = "ITAssetNumber";
-            // 
-            // ITassetName
-            // 
-            ITassetName.HeaderText = "Name";
-            ITassetName.Name = "ITassetName";
-            // 
-            // ITassetType
-            // 
-            ITassetType.HeaderText = "Type";
-            ITassetType.Name = "ITassetType";
-            // 
-            // ITassetState
-            // 
-            ITassetState.HeaderText = "State";
-            ITassetState.Name = "ITassetState";
-            // 
-            // ITassetOperation
-            // 
-            ITassetOperation.HeaderText = "Operation";
-            ITassetOperation.Name = "ITassetOperation";
-            // 
-            // UserManagementTabPage
-            // 
-            UserManagementTabPage.Controls.Add(AddNewUserButton);
-            UserManagementTabPage.Controls.Add(ActiveComboBox);
-            UserManagementTabPage.Controls.Add(FullNameTextBox);
-            UserManagementTabPage.Controls.Add(DepartmentComboBox);
-            UserManagementTabPage.Controls.Add(UserNameTextBox);
-            UserManagementTabPage.Controls.Add(UserIDTextBox);
-            UserManagementTabPage.Controls.Add(label19);
-            UserManagementTabPage.Controls.Add(label18);
-            UserManagementTabPage.Controls.Add(label17);
-            UserManagementTabPage.Controls.Add(label16);
-            UserManagementTabPage.Controls.Add(label15);
-            UserManagementTabPage.Controls.Add(dataGridView4);
-            UserManagementTabPage.Location = new Point(4, 24);
-            UserManagementTabPage.Name = "UserManagementTabPage";
-            UserManagementTabPage.Size = new Size(1121, 689);
-            UserManagementTabPage.TabIndex = 3;
-            UserManagementTabPage.Text = "User Management";
-            UserManagementTabPage.UseVisualStyleBackColor = true;
-            // 
-            // AddNewUserButton
-            // 
-            AddNewUserButton.Location = new Point(564, 661);
-            AddNewUserButton.Name = "AddNewUserButton";
-            AddNewUserButton.Size = new Size(121, 23);
-            AddNewUserButton.TabIndex = 11;
-            AddNewUserButton.Text = "+ Add New User";
-            AddNewUserButton.UseVisualStyleBackColor = true;
-            // 
-            // ActiveComboBox
-            // 
-            ActiveComboBox.FormattingEnabled = true;
-            ActiveComboBox.Location = new Point(378, 661);
-            ActiveComboBox.Name = "ActiveComboBox";
-            ActiveComboBox.Size = new Size(134, 23);
-            ActiveComboBox.TabIndex = 10;
-            // 
-            // FullNameTextBox
-            // 
-            FullNameTextBox.Location = new Point(78, 661);
-            FullNameTextBox.Name = "FullNameTextBox";
-            FullNameTextBox.Size = new Size(164, 23);
-            FullNameTextBox.TabIndex = 9;
-            // 
-            // DepartmentComboBox
-            // 
-            DepartmentComboBox.FormattingEnabled = true;
-            DepartmentComboBox.Location = new Point(861, 622);
-            DepartmentComboBox.Name = "DepartmentComboBox";
-            DepartmentComboBox.Size = new Size(242, 23);
-            DepartmentComboBox.TabIndex = 8;
-            // 
-            // UserNameTextBox
-            // 
-            UserNameTextBox.Location = new Point(381, 622);
-            UserNameTextBox.Name = "UserNameTextBox";
-            UserNameTextBox.Size = new Size(341, 23);
-            UserNameTextBox.TabIndex = 7;
-            // 
-            // UserIDTextBox
-            // 
-            UserIDTextBox.Location = new Point(67, 622);
-            UserIDTextBox.Name = "UserIDTextBox";
-            UserIDTextBox.Size = new Size(209, 23);
-            UserIDTextBox.TabIndex = 6;
-            // 
-            // label19
-            // 
-            label19.AutoSize = true;
-            label19.Location = new Point(331, 664);
-            label19.Name = "label19";
-            label19.Size = new Size(41, 15);
-            label19.TabIndex = 5;
-            label19.Text = "Active";
-            // 
-            // label18
-            // 
-            label18.AutoSize = true;
-            label18.Location = new Point(11, 664);
-            label18.Name = "label18";
-            label18.Size = new Size(67, 15);
-            label18.TabIndex = 4;
-            label18.Text = "FullName: ";
-            // 
-            // label17
-            // 
-            label17.AutoSize = true;
-            label17.Location = new Point(774, 625);
-            label17.Name = "label17";
-            label17.Size = new Size(81, 15);
-            label17.TabIndex = 3;
-            label17.Text = "Department: ";
-            // 
-            // label16
-            // 
-            label16.AutoSize = true;
-            label16.Location = new Point(305, 625);
-            label16.Name = "label16";
-            label16.Size = new Size(70, 15);
-            label16.TabIndex = 2;
-            label16.Text = "Username: ";
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.Location = new Point(11, 625);
-            label15.Name = "label15";
-            label15.Size = new Size(50, 15);
-            label15.TabIndex = 1;
-            label15.Text = "UserID: ";
-            // 
-            // dataGridView4
-            // 
-            dataGridView4.BackgroundColor = SystemColors.GradientInactiveCaption;
-            dataGridView4.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView4.Columns.AddRange(new DataGridViewColumn[] { ITuserID, ITuserName, ITuserDepartment, ITuserFullName, ITuserActive, ITuserOperation });
-            dataGridView4.Location = new Point(0, 0);
-            dataGridView4.Name = "dataGridView4";
-            dataGridView4.Size = new Size(1143, 616);
-            dataGridView4.TabIndex = 0;
-            // 
-            // ITuserID
-            // 
-            ITuserID.HeaderText = "User ID";
-            ITuserID.Name = "ITuserID";
-            // 
-            // ITuserName
-            // 
-            ITuserName.HeaderText = "User Name";
-            ITuserName.Name = "ITuserName";
-            // 
-            // ITuserDepartment
-            // 
-            ITuserDepartment.HeaderText = "Department";
-            ITuserDepartment.Name = "ITuserDepartment";
-            // 
-            // ITuserFullName
-            // 
-            ITuserFullName.HeaderText = "Full Name";
-            ITuserFullName.Name = "ITuserFullName";
-            // 
-            // ITuserActive
-            // 
-            ITuserActive.HeaderText = "Active";
-            ITuserActive.Name = "ITuserActive";
-            // 
-            // ITuserOperation
-            // 
-            ITuserOperation.HeaderText = "Operation";
-            ITuserOperation.Name = "ITuserOperation";
             // 
             // MaintenanceLogTabPage
             // 
@@ -612,7 +599,7 @@ namespace C_Project
             MaintenanceLogTabPage.Controls.Add(label22);
             MaintenanceLogTabPage.Controls.Add(label21);
             MaintenanceLogTabPage.Controls.Add(label20);
-            MaintenanceLogTabPage.Controls.Add(dataGridView5);
+            MaintenanceLogTabPage.Controls.Add(dataGridView4);
             MaintenanceLogTabPage.Location = new Point(4, 24);
             MaintenanceLogTabPage.Name = "MaintenanceLogTabPage";
             MaintenanceLogTabPage.Size = new Size(1121, 689);
@@ -694,138 +681,24 @@ namespace C_Project
             label20.TabIndex = 1;
             label20.Text = "Date: ";
             // 
-            // dataGridView5
+            // dataGridView4
             // 
-            dataGridView5.BackgroundColor = SystemColors.GradientInactiveCaption;
-            dataGridView5.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView5.Columns.AddRange(new DataGridViewColumn[] { ITmaintenanceDate, ITmaintenanceContent, ITmaintenanceInCharge, ITmaintenanceRemark, ITmaintenanceOperation });
-            dataGridView5.Location = new Point(0, 0);
-            dataGridView5.Name = "dataGridView5";
-            dataGridView5.Size = new Size(1143, 613);
-            dataGridView5.TabIndex = 0;
+            dataGridView4.BackgroundColor = SystemColors.GradientInactiveCaption;
+            dataGridView4.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView4.Location = new Point(0, 0);
+            dataGridView4.Name = "dataGridView4";
+            dataGridView4.Size = new Size(1143, 613);
+            dataGridView4.TabIndex = 0;
             // 
-            // ITmaintenanceDate
+            // btnUserProfile
             // 
-            ITmaintenanceDate.HeaderText = "Date";
-            ITmaintenanceDate.Name = "ITmaintenanceDate";
-            // 
-            // ITmaintenanceContent
-            // 
-            ITmaintenanceContent.HeaderText = "Content";
-            ITmaintenanceContent.Name = "ITmaintenanceContent";
-            // 
-            // ITmaintenanceInCharge
-            // 
-            ITmaintenanceInCharge.HeaderText = "In Charge Person";
-            ITmaintenanceInCharge.Name = "ITmaintenanceInCharge";
-            // 
-            // ITmaintenanceRemark
-            // 
-            ITmaintenanceRemark.HeaderText = "Remark";
-            ITmaintenanceRemark.Name = "ITmaintenanceRemark";
-            // 
-            // ITmaintenanceOperation
-            // 
-            ITmaintenanceOperation.HeaderText = "Operation";
-            ITmaintenanceOperation.Name = "ITmaintenanceOperation";
-            // 
-            // DepartmentEntranceTabPage
-            // 
-            DepartmentEntranceTabPage.BackColor = SystemColors.GradientInactiveCaption;
-            DepartmentEntranceTabPage.Controls.Add(label29);
-            DepartmentEntranceTabPage.Controls.Add(FinanceButton);
-            DepartmentEntranceTabPage.Controls.Add(CustomerServiceButton);
-            DepartmentEntranceTabPage.Controls.Add(SupplyChainButton);
-            DepartmentEntranceTabPage.Controls.Add(ProductionButton);
-            DepartmentEntranceTabPage.Controls.Add(MarketingButton);
-            DepartmentEntranceTabPage.Controls.Add(SalesButton);
-            DepartmentEntranceTabPage.Controls.Add(RnDbutton);
-            DepartmentEntranceTabPage.Location = new Point(4, 24);
-            DepartmentEntranceTabPage.Name = "DepartmentEntranceTabPage";
-            DepartmentEntranceTabPage.Size = new Size(1121, 689);
-            DepartmentEntranceTabPage.TabIndex = 7;
-            DepartmentEntranceTabPage.Text = "Department Entrance";
-            // 
-            // label29
-            // 
-            label29.AutoSize = true;
-            label29.Location = new Point(30, 38);
-            label29.Name = "label29";
-            label29.Size = new Size(127, 15);
-            label29.TabIndex = 7;
-            label29.Text = "Department Entrance";
-            // 
-            // FinanceButton
-            // 
-            FinanceButton.Location = new Point(110, 522);
-            FinanceButton.Name = "FinanceButton";
-            FinanceButton.Size = new Size(199, 90);
-            FinanceButton.TabIndex = 6;
-            FinanceButton.Text = "Finance";
-            FinanceButton.UseVisualStyleBackColor = true;
-            // 
-            // CustomerServiceButton
-            // 
-            CustomerServiceButton.Location = new Point(816, 309);
-            CustomerServiceButton.Name = "CustomerServiceButton";
-            CustomerServiceButton.Size = new Size(199, 90);
-            CustomerServiceButton.TabIndex = 5;
-            CustomerServiceButton.Text = "Customer Service";
-            CustomerServiceButton.UseVisualStyleBackColor = true;
-            // 
-            // SupplyChainButton
-            // 
-            SupplyChainButton.Location = new Point(457, 309);
-            SupplyChainButton.Name = "SupplyChainButton";
-            SupplyChainButton.Size = new Size(199, 90);
-            SupplyChainButton.TabIndex = 4;
-            SupplyChainButton.Text = "Supply Chain";
-            SupplyChainButton.UseVisualStyleBackColor = true;
-            // 
-            // ProductionButton
-            // 
-            ProductionButton.Location = new Point(110, 309);
-            ProductionButton.Name = "ProductionButton";
-            ProductionButton.Size = new Size(199, 90);
-            ProductionButton.TabIndex = 3;
-            ProductionButton.Text = "Production";
-            ProductionButton.UseVisualStyleBackColor = true;
-            // 
-            // MarketingButton
-            // 
-            MarketingButton.Location = new Point(816, 102);
-            MarketingButton.Name = "MarketingButton";
-            MarketingButton.Size = new Size(199, 90);
-            MarketingButton.TabIndex = 2;
-            MarketingButton.Text = "Logistic and  Warehouse";
-            MarketingButton.UseVisualStyleBackColor = true;
-            // 
-            // SalesButton
-            // 
-            SalesButton.Location = new Point(457, 102);
-            SalesButton.Name = "SalesButton";
-            SalesButton.Size = new Size(199, 90);
-            SalesButton.TabIndex = 1;
-            SalesButton.Text = "Sales And Marketing";
-            SalesButton.UseVisualStyleBackColor = true;
-            // 
-            // RnDbutton
-            // 
-            RnDbutton.Location = new Point(110, 102);
-            RnDbutton.Name = "RnDbutton";
-            RnDbutton.Size = new Size(199, 90);
-            RnDbutton.TabIndex = 0;
-            RnDbutton.Text = "RnD";
-            RnDbutton.UseVisualStyleBackColor = true;
-            // 
-            // button8
-            // 
-            button8.Location = new Point(1091, 12);
-            button8.Name = "button8";
-            button8.Size = new Size(59, 38);
-            button8.TabIndex = 21;
-            button8.Text = "User Profile";
-            button8.UseVisualStyleBackColor = true;
+            btnUserProfile.Location = new Point(1091, 12);
+            btnUserProfile.Name = "btnUserProfile";
+            btnUserProfile.Size = new Size(59, 38);
+            btnUserProfile.TabIndex = 21;
+            btnUserProfile.Text = "User Profile";
+            btnUserProfile.UseVisualStyleBackColor = true;
+            btnUserProfile.Click += btnUserProfile_click;
             // 
             // label30
             // 
@@ -846,15 +719,27 @@ namespace C_Project
             label31.TabIndex = 23;
             label31.Text = "label31";
             // 
+            // btnLogout
+            // 
+            btnLogout.Location = new Point(1028, 12);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(57, 38);
+            btnLogout.TabIndex = 24;
+            btnLogout.Text = "Logout";
+            btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            this.Controls.Add(this.btnLogout);
+            // 
             // IT_Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightBlue;
             ClientSize = new Size(1153, 858);
+            Controls.Add(btnLogout);
             Controls.Add(label31);
             Controls.Add(label30);
-            Controls.Add(button8);
+            Controls.Add(btnUserProfile);
             Controls.Add(tabControl1);
             Controls.Add(Department);
             Controls.Add(label2);
@@ -866,20 +751,20 @@ namespace C_Project
             Load += IT_Form_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             tabControl1.ResumeLayout(false);
+            DepartmentEntranceTabPage.ResumeLayout(false);
+            DepartmentEntranceTabPage.PerformLayout();
+            UserManagementTabPage.ResumeLayout(false);
+            UserManagementTabPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             RepairSupportTabPage.ResumeLayout(false);
             RepairSupportTabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             AssetManagementTabPage.ResumeLayout(false);
             AssetManagementTabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
-            UserManagementTabPage.ResumeLayout(false);
-            UserManagementTabPage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView4).EndInit();
             MaintenanceLogTabPage.ResumeLayout(false);
             MaintenanceLogTabPage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView5).EndInit();
-            DepartmentEntranceTabPage.ResumeLayout(false);
-            DepartmentEntranceTabPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView4).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -928,13 +813,13 @@ namespace C_Project
         private Label label17;
         private Label label16;
         private Label label15;
-        private DataGridView dataGridView4;
+        private DataGridView dataGridView1;
         private DateTimePicker dateTimePicker2;
         private Label label23;
         private Label label22;
         private Label label21;
         private Label label20;
-        private DataGridView dataGridView5;
+        private DataGridView dataGridView4;
         private Button AddNewLogButton;
         private TextBox textBox3;
         private TextBox textBox2;
@@ -948,29 +833,9 @@ namespace C_Project
         private Button SalesButton;
         private Button RnDbutton;
         private Microsoft.Data.SqlClient.SqlCommandBuilder sqlCommandBuilder1;
-        private Button button8;
-        private DataGridViewTextBoxColumn ITrepairOrderNumber;
-        private DataGridViewTextBoxColumn ITrepairSubject;
-        private DataGridViewTextBoxColumn ITrepairAuthor;
-        private DataGridViewComboBoxColumn ITrepaidState;
-        private DataGridViewButtonColumn ITrepairOperation;
-        private DataGridViewTextBoxColumn ITAssetNumber;
-        private DataGridViewTextBoxColumn ITassetName;
-        private DataGridViewTextBoxColumn ITassetType;
-        private DataGridViewTextBoxColumn ITassetState;
-        private DataGridViewButtonColumn ITassetOperation;
-        private DataGridViewTextBoxColumn ITuserID;
-        private DataGridViewTextBoxColumn ITuserName;
-        private DataGridViewComboBoxColumn ITuserDepartment;
-        private DataGridViewTextBoxColumn ITuserFullName;
-        private DataGridViewCheckBoxColumn ITuserActive;
-        private DataGridViewButtonColumn ITuserOperation;
-        private DataGridViewTextBoxColumn ITmaintenanceDate;
-        private DataGridViewTextBoxColumn ITmaintenanceContent;
-        private DataGridViewTextBoxColumn ITmaintenanceInCharge;
-        private DataGridViewTextBoxColumn ITmaintenanceRemark;
-        private DataGridViewButtonColumn ITmaintenanceOperation;
+        private Button btnUserProfile;
         private Label label30;
         private Label label31;
+        private System.Windows.Forms.Button btnLogout;
     }
 }

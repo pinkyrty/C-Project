@@ -13,60 +13,18 @@ namespace C_Project
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Login login = new Login();
-            if (login.ShowDialog() == DialogResult.OK)
+
+            while (true)
             {
-                Form targetForm = null;
-                MessageBox.Show(login.TargetFormType.ToString());
-                switch (login.TargetFormType)
+                Login login = new Login();
+                if (login.ShowDialog() == DialogResult.OK)
                 {
-                    case Login.FormType.RNDForm:
-                        targetForm = new RnD_Form();
-                        break;
-                    case Login.FormType.SMDForm:
-                        targetForm = new Sales_MarketingForm();
-                        break;
-                    case Login.FormType.PDForm:
-                        targetForm = new ProductionOrderForm();
-                        var pdForm = new ProductionOrderForm();
-                        pdForm.Username = login.Username;
-                        pdForm.DepartmentName = login.DepartmentName;
-                        targetForm = pdForm;
-                        break;
-                    case Login.FormType.CSDForm:
-                        targetForm = new CustomerServiceForm();
-                        var csdForm = new CustomerServiceForm();
-                        csdForm.Username = login.Username;
-                        csdForm.DepartmentName = login.DepartmentName;
-                        targetForm = csdForm;
-                        break;
-                    case Login.FormType.SCMForm:
-                        targetForm = new LogisticTrackingForm();
-                        var scmForm = new LogisticTrackingForm();
-                        scmForm.Username = login.Username;
-                        scmForm.DepartmentName = login.DepartmentName;
-                        targetForm = scmForm;
-                        break;
-                    case Login.FormType.FIForm:
-                        //targetForm = new FinanceDepartment();
-                        var fiForm = new FinanceDepartment();
-                        fiForm.Username = login.Username;
-                        fiForm.DepartmentName = login.DepartmentName;
-                        targetForm = fiForm;
-                        break;
-                    case Login.FormType.ITForm:
-                        var itForm = new IT_Form();
-                        itForm.Username = login.Username;
-                        itForm.DepartmentName = login.DepartmentName;
-                        targetForm = itForm;
-                        break;
-                    case Login.FormType.DTForm:
-                        targetForm = new LogisticTrackingForm();
-                        break;
-                    default:
-                        return;
+                    Login.OpenDepartmentForm(login);
                 }
-                Application.Run(targetForm);
+                else
+                {
+                    break; // 退出程式
+                }
             }
         }
     }

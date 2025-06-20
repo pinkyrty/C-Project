@@ -43,8 +43,8 @@
             UpdatePasswordButton = new Button();
             CancelButton = new Button();
             pictureBox1 = new PictureBox();
-            label7 = new Label();
-            label8 = new Label();
+            label30 = new Label();
+            label31 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -173,23 +173,24 @@
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
             // 
-            // label7
+            // label30
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(196, 12);
-            label7.Name = "label7";
-            label7.Size = new Size(42, 15);
-            label7.TabIndex = 14;
-            label7.Text = "label7";
+            label30.AutoSize = true;
+            label30.Location = new Point(196, 12);
+            label30.Name = "label30";
+            label30.Size = new Size(49, 15);
+            label30.TabIndex = 14;
+            label30.Text = "label30";
+            label30.Click += label7_Click;
             // 
-            // label8
+            // label31
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(196, 39);
-            label8.Name = "label8";
-            label8.Size = new Size(42, 15);
-            label8.TabIndex = 15;
-            label8.Text = "label8";
+            label31.AutoSize = true;
+            label31.Location = new Point(196, 39);
+            label31.Name = "label31";
+            label31.Size = new Size(49, 15);
+            label31.TabIndex = 15;
+            label31.Text = "label31";
             // 
             // ChangePassword
             // 
@@ -197,8 +198,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightBlue;
             ClientSize = new Size(469, 484);
-            Controls.Add(label8);
-            Controls.Add(label7);
+            Controls.Add(label31);
+            Controls.Add(label30);
             Controls.Add(pictureBox1);
             Controls.Add(CancelButton);
             Controls.Add(UpdatePasswordButton);
@@ -237,7 +238,7 @@
         private Button UpdatePasswordButton;
         private Button CancelButton;
         private PictureBox pictureBox1;
-        private Label label7;
-        private Label label8;
+        private Label label30;
+        private Label label31;
     }
 }

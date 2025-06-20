@@ -69,12 +69,14 @@ namespace C_Project
                                     DepartmentName = departmentName;
                                 }
                                 MessageBox.Show($"Login successful! Department Name: {departmentName}, User: {fullname}");
-
-                                OpenDepartmentForm(department);
+                                SetDepartmentForm(department);
+                                this.Hide(); // 先隱藏 Login Form
+                                OpenDepartmentForm(this); // 開啟部門表單（ShowDialog）
+                                this.Close(); // 部門表單關閉後，結束 Login Form
                             }
                             else
                             {
-                                MessageBox.Show("�Τ�W�٩αK�X���~");
+                                MessageBox.Show("�Τ�W�٩αK�X���~");
                             }
                         }
                     }
@@ -89,10 +91,8 @@ namespace C_Project
             }
         }
 
-        // Open the corresponding form according to the department
-        private void OpenDepartmentForm(string department)
+        private void SetDepartmentForm(string department)
         {
-            Form deptForm = null;
             switch (department)
             {
                 case "1":
@@ -120,8 +120,63 @@ namespace C_Project
                     TargetFormType = FormType.DTForm;
                     break;
             }
-            DialogResult = DialogResult.OK;
-            Close();
+        }
+
+        // Open the corresponding form according to the department
+        public static void OpenDepartmentForm(Login login)
+        {
+            Form targetForm = null;
+            switch (login.TargetFormType)
+            {
+                case FormType.RNDForm:
+                    targetForm = new RnD_Form();
+                    break;
+                case FormType.SMDForm:
+                    targetForm = new Sales_MarketingForm();
+                    break;
+                case FormType.PDForm:
+                    targetForm = new ProductionOrderForm();
+                    break;
+                case FormType.SCMForm:
+                    targetForm = new LogisticTrackingForm();
+                    break;
+                case FormType.CSDForm:
+                    targetForm = new CustomerServiceForm();
+                    break;
+                case FormType.FIForm:
+                    targetForm = new FinanceDepartment();
+                    break;
+                case FormType.ITForm:
+                    targetForm = new IT_Form();
+                    break;
+                default:
+                    targetForm = new LogisticTrackingForm();
+                    break;
+            }
+
+            // 傳遞 Username 和 DepartmentName
+            if (targetForm is IT_Form itForm)
+            {
+                itForm.Username = login.Username;
+                itForm.DepartmentName = login.DepartmentName;
+            }
+            else if (targetForm is FinanceDepartment fiForm)
+            {
+                fiForm.Username = login.Username;
+                fiForm.DepartmentName = login.DepartmentName;
+            }
+            else if (targetForm is CustomerServiceForm csdForm)
+            {
+                csdForm.Username = login.Username;
+                csdForm.DepartmentName = login.DepartmentName;
+            }
+            else if (targetForm is LogisticTrackingForm scmForm)
+            {
+                scmForm.Username = login.Username;
+                scmForm.DepartmentName = login.DepartmentName;
+            }
+            if (targetForm != null)
+                targetForm.ShowDialog();
         }
 
         // The remaining control event handlers can be kept

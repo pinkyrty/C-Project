@@ -12,9 +12,18 @@ namespace C_Project
 {
     public partial class ChangePassword : Form
     {
+        public string DepartmentName { get; set; }
+        public string Username { get; set; }
         public ChangePassword()
         {
             InitializeComponent();
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            label30.Text = Username;
+            label31.Text = DepartmentName;
         }
 
         private void ChangePassword_Load(object sender, EventArgs e)
@@ -33,6 +42,17 @@ namespace C_Project
         }
 
         private void ConfirmPasswordBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void ConfirmPassworButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Password Changed!");
+            this.Close();
+        }
+
+
+        private void label7_Click(object sender, EventArgs e)
         {
 
         }

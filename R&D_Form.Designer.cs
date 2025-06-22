@@ -29,17 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RnD_Form));
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             pictureBox1 = new PictureBox();
             RaDUserPrifileButton = new Button();
             UserNamelabel = new Label();
-            UserName = new Label();
-            Department = new Label();
             dgvProductList = new DataGridView();
-            ProductCode = new DataGridViewTextBoxColumn();
-            ProductName = new DataGridViewTextBoxColumn();
-            Edit = new DataGridViewButtonColumn();
-            Delete = new DataGridViewButtonColumn();
             NewProductsButton = new Button();
             tabProductDetail = new TabControl();
             ProductSpecificationsTabPage = new TabPage();
@@ -59,20 +52,9 @@
             BillofMaterialsTabPage = new TabPage();
             AddMaterialButton = new Button();
             dgvMaterials = new DataGridView();
-            MaterialType = new DataGridViewComboBoxColumn();
-            MaterialName = new DataGridViewTextBoxColumn();
-            Description = new DataGridViewTextBoxColumn();
-            Quantity = new DataGridViewTextBoxColumn();
-            BillofMaterialsDelete = new DataGridViewButtonColumn();
             ManufacturingInstructionsTabPage = new TabPage();
             AddNewStepButton = new Button();
             dgvManufacturing = new DataGridView();
-            StepNumber = new DataGridViewTextBoxColumn();
-            Content = new DataGridViewTextBoxColumn();
-            Equipment = new DataGridViewTextBoxColumn();
-            WorkingHours = new DataGridViewTextBoxColumn();
-            Personnel = new DataGridViewTextBoxColumn();
-            ManufacturingInstructionsDelete = new DataGridViewButtonColumn();
             PackagingInformationTabPage = new TabPage();
             txtPackLabel = new TextBox();
             txtPackMaterial = new TextBox();
@@ -83,15 +65,8 @@
             TestingACertificationTabPage = new TabPage();
             NewCertificationButton = new Button();
             dataGridView1 = new DataGridView();
-            CertificationName = new DataGridViewTextBoxColumn();
-            dgvCertsContent = new DataGridViewTextBoxColumn();
-            dgvCertsDeletion = new DataGridViewButtonColumn();
             AddedTestsButton = new Button();
             dgvTesting = new DataGridView();
-            Testtype = new DataGridViewTextBoxColumn();
-            condition = new DataGridViewTextBoxColumn();
-            standard = new DataGridViewTextBoxColumn();
-            dgvTestingdelete = new DataGridViewButtonColumn();
             ImageAttachmentsTabPage = new TabPage();
             UploadImageButton = new Button();
             ProductPictureBox = new PictureBox();
@@ -110,6 +85,8 @@
             MOQlabel = new Label();
             btnSave = new Button();
             label2 = new Label();
+            label31 = new Label();
+            label30 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProductList).BeginInit();
             tabProductDetail.SuspendLayout();
@@ -161,66 +138,15 @@
             UserNamelabel.Text = "User Name :";
             UserNamelabel.Click += UserNamelabel_Click;
             // 
-            // UserName
-            // 
-            UserName.AutoSize = true;
-            UserName.Location = new Point(188, 24);
-            UserName.Name = "UserName";
-            UserName.Size = new Size(0, 15);
-            UserName.TabIndex = 47;
-            // 
-            // Department
-            // 
-            Department.AutoSize = true;
-            Department.Location = new Point(194, 53);
-            Department.Name = "Department";
-            Department.Size = new Size(0, 15);
-            Department.TabIndex = 48;
-            // 
             // dgvProductList
             // 
             dgvProductList.BackgroundColor = SystemColors.GradientInactiveCaption;
             dgvProductList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvProductList.Columns.AddRange(new DataGridViewColumn[] { ProductCode, ProductName, Edit, Delete });
             dgvProductList.Location = new Point(12, 146);
             dgvProductList.Name = "dgvProductList";
             dgvProductList.Size = new Size(330, 679);
             dgvProductList.TabIndex = 49;
             dgvProductList.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // ProductCode
-            // 
-            ProductCode.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            ProductCode.Frozen = true;
-            ProductCode.HeaderText = "ProductCode";
-            ProductCode.Name = "ProductCode";
-            // 
-            // ProductName
-            // 
-            ProductName.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            ProductName.Frozen = true;
-            ProductName.HeaderText = "ProductName";
-            ProductName.Name = "ProductName";
-            // 
-            // Edit
-            // 
-            Edit.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            Edit.DefaultCellStyle = dataGridViewCellStyle2;
-            Edit.HeaderText = "Edit";
-            Edit.Name = "Edit";
-            Edit.Text = "Edit";
-            Edit.ToolTipText = "Edit";
-            Edit.UseColumnTextForButtonValue = true;
-            Edit.Width = 35;
-            // 
-            // Delete
-            // 
-            Delete.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            Delete.HeaderText = "Delete";
-            Delete.Name = "Delete";
-            Delete.Width = 50;
             // 
             // NewProductsButton
             // 
@@ -402,40 +328,11 @@
             // 
             dgvMaterials.BackgroundColor = SystemColors.GradientInactiveCaption;
             dgvMaterials.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMaterials.Columns.AddRange(new DataGridViewColumn[] { MaterialType, MaterialName, Description, Quantity, BillofMaterialsDelete });
             dgvMaterials.Location = new Point(0, 0);
             dgvMaterials.Name = "dgvMaterials";
             dgvMaterials.Size = new Size(790, 566);
             dgvMaterials.TabIndex = 0;
             dgvMaterials.CellContentClick += dgvMaterials_CellContentClick;
-            // 
-            // MaterialType
-            // 
-            MaterialType.HeaderText = "Material Type";
-            MaterialType.Name = "MaterialType";
-            // 
-            // MaterialName
-            // 
-            MaterialName.HeaderText = "Material Name";
-            MaterialName.Name = "MaterialName";
-            MaterialName.Width = 200;
-            // 
-            // Description
-            // 
-            Description.HeaderText = "Description";
-            Description.Name = "Description";
-            Description.Width = 275;
-            // 
-            // Quantity
-            // 
-            Quantity.HeaderText = "Quantity";
-            Quantity.Name = "Quantity";
-            // 
-            // BillofMaterialsDelete
-            // 
-            BillofMaterialsDelete.HeaderText = "Delete";
-            BillofMaterialsDelete.Name = "BillofMaterialsDelete";
-            BillofMaterialsDelete.Width = 70;
             // 
             // ManufacturingInstructionsTabPage
             // 
@@ -462,46 +359,11 @@
             // 
             dgvManufacturing.BackgroundColor = SystemColors.GradientInactiveCaption;
             dgvManufacturing.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvManufacturing.Columns.AddRange(new DataGridViewColumn[] { StepNumber, Content, Equipment, WorkingHours, Personnel, ManufacturingInstructionsDelete });
             dgvManufacturing.Location = new Point(0, 0);
             dgvManufacturing.Name = "dgvManufacturing";
             dgvManufacturing.Size = new Size(790, 566);
             dgvManufacturing.TabIndex = 0;
-            // 
-            // StepNumber
-            // 
-            StepNumber.HeaderText = "Step number";
-            StepNumber.Name = "StepNumber";
-            StepNumber.Width = 70;
-            // 
-            // Content
-            // 
-            Content.HeaderText = "Content";
-            Content.Name = "Content";
-            Content.Width = 200;
-            // 
-            // Equipment
-            // 
-            Equipment.HeaderText = "Equipment";
-            Equipment.Name = "Equipment";
-            Equipment.Width = 150;
-            // 
-            // WorkingHours
-            // 
-            WorkingHours.HeaderText = "Working hours";
-            WorkingHours.Name = "WorkingHours";
-            // 
-            // Personnel
-            // 
-            Personnel.HeaderText = "Personnel";
-            Personnel.Name = "Personnel";
-            Personnel.Width = 150;
-            // 
-            // ManufacturingInstructionsDelete
-            // 
-            ManufacturingInstructionsDelete.HeaderText = "Delete";
-            ManufacturingInstructionsDelete.Name = "ManufacturingInstructionsDelete";
-            ManufacturingInstructionsDelete.Width = 70;
+            dgvManufacturing.CellContentClick += dgvManufacturing_CellContentClick;
             // 
             // PackagingInformationTabPage
             // 
@@ -595,29 +457,10 @@
             // 
             dataGridView1.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { CertificationName, dgvCertsContent, dgvCertsDeletion });
             dataGridView1.Location = new Point(0, 232);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(785, 250);
             dataGridView1.TabIndex = 53;
-            // 
-            // CertificationName
-            // 
-            CertificationName.HeaderText = "Certification Name";
-            CertificationName.Name = "CertificationName";
-            CertificationName.Width = 330;
-            // 
-            // dgvCertsContent
-            // 
-            dgvCertsContent.HeaderText = "Content";
-            dgvCertsContent.Name = "dgvCertsContent";
-            dgvCertsContent.Width = 330;
-            // 
-            // dgvCertsDeletion
-            // 
-            dgvCertsDeletion.HeaderText = "Delete";
-            dgvCertsDeletion.Name = "dgvCertsDeletion";
-            dgvCertsDeletion.Width = 70;
             // 
             // AddedTestsButton
             // 
@@ -632,35 +475,11 @@
             // 
             dgvTesting.BackgroundColor = SystemColors.GradientInactiveCaption;
             dgvTesting.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvTesting.Columns.AddRange(new DataGridViewColumn[] { Testtype, condition, standard, dgvTestingdelete });
             dgvTesting.Location = new Point(0, 0);
             dgvTesting.Name = "dgvTesting";
             dgvTesting.Size = new Size(794, 173);
             dgvTesting.TabIndex = 0;
             dgvTesting.CellContentClick += dgvTesting_CellContentClick;
-            // 
-            // Testtype
-            // 
-            Testtype.HeaderText = "Test type";
-            Testtype.Name = "Testtype";
-            // 
-            // condition
-            // 
-            condition.HeaderText = "condition";
-            condition.Name = "condition";
-            condition.Width = 280;
-            // 
-            // standard
-            // 
-            standard.HeaderText = "standard";
-            standard.Name = "standard";
-            standard.Width = 280;
-            // 
-            // dgvTestingdelete
-            // 
-            dgvTestingdelete.HeaderText = "Delete";
-            dgvTestingdelete.Name = "dgvTestingdelete";
-            dgvTestingdelete.Width = 70;
             // 
             // ImageAttachmentsTabPage
             // 
@@ -832,20 +651,38 @@
             label2.TabIndex = 63;
             label2.Text = "Department :";
             // 
+            // label31
+            // 
+            label31.AutoSize = true;
+            label31.Location = new Point(202, 39);
+            label31.Name = "label31";
+            label31.Size = new Size(49, 15);
+            label31.TabIndex = 65;
+            label31.Text = "label31";
+            // 
+            // label30
+            // 
+            label30.AutoSize = true;
+            label30.Location = new Point(202, 12);
+            label30.Name = "label30";
+            label30.Size = new Size(49, 15);
+            label30.TabIndex = 64;
+            label30.Text = "label30";
+            // 
             // RnD_Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightBlue;
             ClientSize = new Size(1153, 858);
+            Controls.Add(label31);
+            Controls.Add(label30);
             Controls.Add(label2);
             Controls.Add(panel1);
             Controls.Add(btnSave);
             Controls.Add(tabProductDetail);
             Controls.Add(NewProductsButton);
             Controls.Add(dgvProductList);
-            Controls.Add(Department);
-            Controls.Add(UserName);
             Controls.Add(UserNamelabel);
             Controls.Add(RaDUserPrifileButton);
             Controls.Add(pictureBox1);
@@ -879,8 +716,6 @@
         private PictureBox pictureBox1;
         private Button RaDUserPrifileButton;
         private Label UserNamelabel;
-        private Label UserName;
-        private Label Department;
         private DataGridView dgvProductList;
         private Button NewProductsButton;
         private TabControl tabProductDetail;
@@ -934,27 +769,7 @@
         private TextBox UserGuideTextBox;
         private TextBox ComplianceStandardsTextBox;
         private TextBox FunctionalDescriptionTextBox;
-        private DataGridViewTextBoxColumn ProductCode;
-        private DataGridViewTextBoxColumn ProductName;
-        private DataGridViewButtonColumn Edit;
-        private DataGridViewButtonColumn Delete;
-        private DataGridViewComboBoxColumn MaterialType;
-        private DataGridViewTextBoxColumn MaterialName;
-        private DataGridViewTextBoxColumn Description;
-        private DataGridViewTextBoxColumn Quantity;
-        private DataGridViewButtonColumn BillofMaterialsDelete;
-        private DataGridViewTextBoxColumn StepNumber;
-        private DataGridViewTextBoxColumn Content;
-        private DataGridViewTextBoxColumn Equipment;
-        private DataGridViewTextBoxColumn WorkingHours;
-        private DataGridViewTextBoxColumn Personnel;
-        private DataGridViewButtonColumn ManufacturingInstructionsDelete;
-        private DataGridViewTextBoxColumn Testtype;
-        private DataGridViewTextBoxColumn condition;
-        private DataGridViewTextBoxColumn standard;
-        private DataGridViewButtonColumn dgvTestingdelete;
-        private DataGridViewTextBoxColumn CertificationName;
-        private DataGridViewTextBoxColumn dgvCertsContent;
-        private DataGridViewButtonColumn dgvCertsDeletion;
+        private Label label31;
+        private Label label30;
     }
 }

@@ -1,25 +1,228 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Excel;
+using Microsoft.Office.Interop.Word;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Office.Interop.Excel;
-using Microsoft.Office.Interop.Word;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace C_Project
 {
     public partial class Sales_MarketingForm : Form
     {
+        private string connStr;
+        private static System.Data.DataTable quotationDetailDataTable;
+        private static System.Data.DataTable quotationlDataTable;
+        private static System.Data.DataTable prodOrderDataTable;
+        private static System.Data.DataTable orderFileDataTable;
+        private static System.Data.DataTable prodOrderMatDataTable;
+        public string DepartmentName { get; set; }
+        public string Username { get; set; }
         public Sales_MarketingForm()
         {
             InitializeComponent();
+            string projectRoot = Directory.GetCurrentDirectory();
+            if (projectRoot.Contains("bin\\Debug"))
+            {
+                projectRoot = Directory.GetParent(projectRoot).Parent.Parent.FullName;
+            }
+            string dbPath = Path.Combine(projectRoot, "ToySystem.accdb");
+            connStr = $@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={dbPath};";
+            this.LoadQuotationDetailTable();
+            this.LoadQuotationlTable();
+            this.LoadProdOrderTable();
+            this.LoadOrderFileTable();
+            this.LoadProdOrderMatTable();
         }
 
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            label30.Text = Username;
+            label31.Text = DepartmentName;
+        }
+
+        //first Tab
+        private void LoadQuotationDetailTable()
+        {
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+
+                    conn.Open();
+
+                    string sql = "SELECT * FROM SMD_Quotation";
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                    {
+                        MessageBox.Show("Connect Success");
+                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
+                        {
+                            quotationDetailDataTable = new System.Data.DataTable();
+                            adapter.Fill(quotationDetailDataTable);
+                            dataGridView2.DataSource = quotationDetailDataTable;
+                            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                            dataGridView2.AllowUserToResizeColumns = false;
+                            dataGridView2.Columns["QDetaiIID"].ReadOnly = true;
+                        }
+                    }
+
+                    conn.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error connecting to database!\n" + ex.Message);
+            }
+        }
+
+        //second Tab
+        private void LoadQuotationlTable()
+        {
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+
+                    conn.Open();
+
+                    string sql = "SELECT * FROM SMD_QuotationDetail";
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                    {
+                        MessageBox.Show("Connect Success");
+                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
+                        {
+                            quotationDetailDataTable = new System.Data.DataTable();
+                            adapter.Fill(quotationDetailDataTable);
+                            dgvQuoteList.DataSource = quotationDetailDataTable;
+                            dgvQuoteList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                            dgvQuoteList.AllowUserToResizeColumns = false;
+                            dgvQuoteList.Columns["OMatID"].ReadOnly = true;
+                        }
+                    }
+
+                    conn.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error connecting to database!\n" + ex.Message);
+            }
+        }
+
+        //third Tab
+        private void LoadProdOrderTable()
+        {
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+
+                    conn.Open();
+
+                    string sql = "SELECT * FROM SMD_ProdOrderMat";
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                    {
+                        MessageBox.Show("Connect Success");
+                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
+                        {
+                            quotationDetailDataTable = new System.Data.DataTable();
+                            adapter.Fill(quotationDetailDataTable);
+                            dgvProdOrderList.DataSource = quotationDetailDataTable;
+                            dgvProdOrderList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                            dgvProdOrderList.AllowUserToResizeColumns = false;
+                            dgvProdOrderList.Columns["OMatID"].ReadOnly = true;
+                        }
+                    }
+
+                    conn.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error connecting to database!\n" + ex.Message);
+            }
+        }
+
+        //fourth Tab
+        private void LoadOrderFileTable()
+        {
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+
+                    conn.Open();
+
+                    string sql = "SELECT * FROM SMD_OrderFile";
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                    {
+                        MessageBox.Show("Connect Success");
+                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
+                        {
+                            orderFileDataTable = new System.Data.DataTable();
+                            adapter.Fill(orderFileDataTable);
+                            dataGridView3.DataSource = orderFileDataTable;
+                            dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                            dataGridView3.AllowUserToResizeColumns = false;
+                            dataGridView3.Columns["OFID"].ReadOnly = true;
+                        }
+                    }
+
+                    conn.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error connecting to database!\n" + ex.Message);
+            }
+        }
+
+        //fifth Tab
+        private void LoadProdOrderMatTable()
+        {
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+
+                    conn.Open();
+
+                    string sql = "SELECT * FROM SMD_OrderFile";
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                    {
+                        MessageBox.Show("Connect Success");
+                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
+                        {
+                            prodOrderMatDataTable = new System.Data.DataTable();
+                            adapter.Fill(prodOrderMatDataTable);
+                            dataGridView1.DataSource = prodOrderMatDataTable;
+                            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                            dataGridView1.AllowUserToResizeColumns = false;
+                            dataGridView1.Columns["OMatID"].ReadOnly = true;
+                        }
+                    }
+
+                    conn.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error connecting to database!\n" + ex.Message);
+            }
+        }
         private void label13_Click(object sender, EventArgs e)
         {
 
@@ -162,6 +365,21 @@ namespace C_Project
 
         }
         private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvQuoteList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

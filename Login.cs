@@ -175,6 +175,21 @@ namespace C_Project
                 scmForm.Username = login.Username;
                 scmForm.DepartmentName = login.DepartmentName;
             }
+            else if (targetForm is Sales_MarketingForm smdForm)
+            {
+                smdForm.Username = login.Username;
+                smdForm.DepartmentName = login.DepartmentName;
+            }
+            else if (targetForm is RnD_Form rndForm)
+            {
+                rndForm.Username = login.Username;
+                rndForm.DepartmentName = login.DepartmentName;
+            }
+            else if (targetForm is ProductionOrderForm pdForm)
+            {
+                pdForm.Username = login.Username;
+                pdForm.DepartmentName = login.DepartmentName;
+            }
             if (targetForm != null)
                 targetForm.ShowDialog();
         }

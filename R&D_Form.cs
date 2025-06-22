@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,211 @@ namespace C_Project
 {
     public partial class RnD_Form : Form
     {
+        private string connStr;
+        private static DataTable productDataTable;
+        private static DataTable materialListDataTable;
+        private static DataTable processDataTable;
+        private static DataTable testDataTable;
+        private static DataTable certDataTable;
         private BindingList<Product> productList = new BindingList<Product>();
         private Dictionary<string, ProjectInfo> projects;
+        public string DepartmentName { get; set; }
+        public string Username { get; set; }
+
+        public RnD_Form()
+        {
+            InitializeComponent();
+            string projectRoot = Directory.GetCurrentDirectory();
+            if (projectRoot.Contains("bin\\Debug"))
+            {
+                projectRoot = Directory.GetParent(projectRoot).Parent.Parent.FullName;
+            }
+            string dbPath = Path.Combine(projectRoot, "ToySystem.accdb");
+            connStr = $@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={dbPath};";
+            this.LoadProductTable();
+            this.LoadMaterialListTable();
+            this.LoadProcessTable();
+            this.LoadTestTable();
+            this.LoadCertTable();
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            label30.Text = Username;
+            label31.Text = DepartmentName;
+        }
+        //first Tab
+        private void LoadProductTable()
+        {
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+
+                    conn.Open();
+
+                    string sql = "SELECT ProductID, Name FROM RND_Cert";
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                    {
+                        MessageBox.Show("Connect Success");
+                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
+                        {
+                            productDataTable = new System.Data.DataTable();
+                            adapter.Fill(productDataTable);
+                            dgvProductList.DataSource = productDataTable;
+                            dgvProductList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                            dgvProductList.AllowUserToResizeColumns = false;
+                            dgvProductList.Columns["ProductID"].ReadOnly = true;
+                        }
+                    }
+
+                    conn.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error connecting to database!\n" + ex.Message);
+            }
+        }
+
+        //second Tab
+        private void LoadMaterialListTable()
+        {
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+
+                    conn.Open();
+
+                    string sql = "SELECT Type, Name, Desc, Qty FROM RND_MaterialList";
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                    {
+                        MessageBox.Show("Connect Success");
+                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
+                        {
+                            materialListDataTable = new System.Data.DataTable();
+                            adapter.Fill(materialListDataTable);
+                            dgvMaterials.DataSource = materialListDataTable;
+                            dgvMaterials.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                            dgvMaterials.AllowUserToResizeColumns = false;
+                        }
+                    }
+
+                    conn.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error connecting to database!\n" + ex.Message);
+            }
+        }
+
+        //third Tab
+        private void LoadProcessTable()
+        {
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+
+                    conn.Open();
+
+                    string sql = "SELECT ProductID, Content, Equip, Time, Staff FROM RND_Process";
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                    {
+                        MessageBox.Show("Connect Success");
+                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
+                        {
+                            processDataTable = new System.Data.DataTable();
+                            adapter.Fill(processDataTable);
+                            dgvManufacturing.DataSource = processDataTable;
+                            dgvManufacturing.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                            dgvManufacturing.AllowUserToResizeColumns = false;
+                        }
+                    }
+
+                    conn.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error connecting to database!\n" + ex.Message);
+            }
+        }
+
+        //fourth Tab
+        private void LoadTestTable()
+        {
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+
+                    conn.Open();
+
+                    string sql = "SELECT Type, Condition, Standard FROM RND_Test";
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                    {
+                        MessageBox.Show("Connect Success");
+                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
+                        {
+                            testDataTable = new System.Data.DataTable();
+                            adapter.Fill(testDataTable);
+                            dgvTesting.DataSource = testDataTable;
+                            dgvTesting.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                            dgvTesting.AllowUserToResizeColumns = false;
+                        }
+                    }
+
+                    conn.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error connecting to database!\n" + ex.Message);
+            }
+        }
+
+        //fifth Tab
+        private void LoadCertTable()
+        {
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+
+                    conn.Open();
+
+                    string sql = "SELECT Name, Content FROM RND_Cert";
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                    {
+                        MessageBox.Show("Connect Success");
+                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
+                        {
+                            certDataTable = new System.Data.DataTable();
+                            adapter.Fill(certDataTable);
+                            dataGridView1.DataSource = certDataTable;
+                            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                            dataGridView1.AllowUserToResizeColumns = false;
+                        }
+                    }
+
+                    conn.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error connecting to database!\n" + ex.Message);
+            }
+        }
+
 
         // Product data structure
         public class Product
@@ -31,13 +235,6 @@ namespace C_Project
             public string CustomerName { get; set; }
             public string Requirement { get; set; }
             public string Status { get; set; }
-        }
-
-
-        public RnD_Form()
-        {
-            InitializeComponent();
-            cmbStatus.Items.Add("11111");
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -151,6 +348,11 @@ namespace C_Project
         }
 
         private void dgvTesting_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvManufacturing_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

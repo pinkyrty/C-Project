@@ -56,12 +56,6 @@
             NewProductsButton = new Button();
             label11 = new Label();
             dataGridView2 = new DataGridView();
-            SMDProductName = new DataGridViewComboBoxColumn();
-            SMDproductNumber = new DataGridViewTextBoxColumn();
-            SMDproductQuantity = new DataGridViewTextBoxColumn();
-            SMDproductPrice = new DataGridViewTextBoxColumn();
-            SMDproductAmount = new DataGridViewTextBoxColumn();
-            SMDproductOperation = new DataGridViewButtonColumn();
             groupBox1 = new GroupBox();
             TelephoneTextBox = new TextBox();
             label10 = new Label();
@@ -83,10 +77,6 @@
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             dataGridView1 = new DataGridView();
-            SMDprocessProcess = new DataGridViewTextBoxColumn();
-            SMDprocessAssignTo = new DataGridViewTextBoxColumn();
-            SMDprocessDescription = new DataGridViewTextBoxColumn();
-            SMDprocessOperation = new DataGridViewButtonColumn();
             tabPage2 = new TabPage();
             dateTimePicker4 = new DateTimePicker();
             dateTimePicker3 = new DateTimePicker();
@@ -106,11 +96,6 @@
             NewMaterialsButton = new Button();
             label23 = new Label();
             dataGridView3 = new DataGridView();
-            SMDrequirementMaterial = new DataGridViewTextBoxColumn();
-            SMDrequirementspecificate = new DataGridViewTextBoxColumn();
-            SMDrequirementQuantity = new DataGridViewTextBoxColumn();
-            SMDrequirementInventory = new DataGridViewTextBoxColumn();
-            SMDrequirementOperation = new DataGridViewButtonColumn();
             groupBox2 = new GroupBox();
             NotesOrInstructionsTextBox = new TextBox();
             label22 = new Label();
@@ -124,13 +109,8 @@
             label13 = new Label();
             OrderNoTextBox = new TextBox();
             label12 = new Label();
-            SMDnumber = new DataGridViewTextBoxColumn();
-            SMDcustomer = new DataGridViewTextBoxColumn();
-            SMDoperation = new DataGridViewButtonColumn();
-            SMDreviewOrderNumber = new DataGridViewTextBoxColumn();
-            SMDreviewProduct = new DataGridViewTextBoxColumn();
-            SMDreviewEdit = new DataGridViewButtonColumn();
-            SMDreviewDelete = new DataGridViewButtonColumn();
+            label31 = new Label();
+            label30 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl.SuspendLayout();
             QuotationTabPage.SuspendLayout();
@@ -271,11 +251,11 @@
             // 
             dgvQuoteList.BackgroundColor = SystemColors.GradientInactiveCaption;
             dgvQuoteList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvQuoteList.Columns.AddRange(new DataGridViewColumn[] { SMDnumber, SMDcustomer, SMDoperation });
             dgvQuoteList.Location = new Point(4, 54);
             dgvQuoteList.Name = "dgvQuoteList";
             dgvQuoteList.Size = new Size(365, 645);
             dgvQuoteList.TabIndex = 2;
+            dgvQuoteList.CellContentClick += dgvQuoteList_CellContentClick;
             // 
             // AddNewOrdersButton
             // 
@@ -418,41 +398,11 @@
             // 
             dataGridView2.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { SMDProductName, SMDproductNumber, SMDproductQuantity, SMDproductPrice, SMDproductAmount, SMDproductOperation });
             dataGridView2.Location = new Point(6, 212);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.Size = new Size(734, 196);
             dataGridView2.TabIndex = 1;
-            // 
-            // SMDProductName
-            // 
-            SMDProductName.HeaderText = "Product Name";
-            SMDProductName.Name = "SMDProductName";
-            // 
-            // SMDproductNumber
-            // 
-            SMDproductNumber.HeaderText = "Product Number";
-            SMDproductNumber.Name = "SMDproductNumber";
-            // 
-            // SMDproductQuantity
-            // 
-            SMDproductQuantity.HeaderText = "Quantity";
-            SMDproductQuantity.Name = "SMDproductQuantity";
-            // 
-            // SMDproductPrice
-            // 
-            SMDproductPrice.HeaderText = "Price";
-            SMDproductPrice.Name = "SMDproductPrice";
-            // 
-            // SMDproductAmount
-            // 
-            SMDproductAmount.HeaderText = "Amount";
-            SMDproductAmount.Name = "SMDproductAmount";
-            // 
-            // SMDproductOperation
-            // 
-            SMDproductOperation.HeaderText = "Operation";
-            SMDproductOperation.Name = "SMDproductOperation";
+            dataGridView2.CellContentClick += dataGridView2_CellContentClick;
             // 
             // groupBox1
             // 
@@ -613,7 +563,6 @@
             // 
             dgvProdOrderList.BackgroundColor = SystemColors.GradientInactiveCaption;
             dgvProdOrderList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProdOrderList.Columns.AddRange(new DataGridViewColumn[] { SMDreviewOrderNumber, SMDreviewProduct, SMDreviewEdit, SMDreviewDelete });
             dgvProdOrderList.Location = new Point(4, 54);
             dgvProdOrderList.Name = "dgvProdOrderList";
             dgvProdOrderList.Size = new Size(365, 645);
@@ -664,31 +613,10 @@
             // 
             dataGridView1.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { SMDprocessProcess, SMDprocessAssignTo, SMDprocessDescription, SMDprocessOperation });
             dataGridView1.Location = new Point(0, 0);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(726, 203);
             dataGridView1.TabIndex = 0;
-            // 
-            // SMDprocessProcess
-            // 
-            SMDprocessProcess.HeaderText = "Process";
-            SMDprocessProcess.Name = "SMDprocessProcess";
-            // 
-            // SMDprocessAssignTo
-            // 
-            SMDprocessAssignTo.HeaderText = "Assign To";
-            SMDprocessAssignTo.Name = "SMDprocessAssignTo";
-            // 
-            // SMDprocessDescription
-            // 
-            SMDprocessDescription.HeaderText = "Description";
-            SMDprocessDescription.Name = "SMDprocessDescription";
-            // 
-            // SMDprocessOperation
-            // 
-            SMDprocessOperation.HeaderText = "Operation";
-            SMDprocessOperation.Name = "SMDprocessOperation";
             // 
             // tabPage2
             // 
@@ -840,36 +768,10 @@
             // 
             dataGridView3.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Columns.AddRange(new DataGridViewColumn[] { SMDrequirementMaterial, SMDrequirementspecificate, SMDrequirementQuantity, SMDrequirementInventory, SMDrequirementOperation });
             dataGridView3.Location = new Point(9, 186);
             dataGridView3.Name = "dataGridView3";
             dataGridView3.Size = new Size(736, 160);
             dataGridView3.TabIndex = 1;
-            // 
-            // SMDrequirementMaterial
-            // 
-            SMDrequirementMaterial.HeaderText = "Material Name";
-            SMDrequirementMaterial.Name = "SMDrequirementMaterial";
-            // 
-            // SMDrequirementspecificate
-            // 
-            SMDrequirementspecificate.HeaderText = "Specificate";
-            SMDrequirementspecificate.Name = "SMDrequirementspecificate";
-            // 
-            // SMDrequirementQuantity
-            // 
-            SMDrequirementQuantity.HeaderText = "Require Quantity";
-            SMDrequirementQuantity.Name = "SMDrequirementQuantity";
-            // 
-            // SMDrequirementInventory
-            // 
-            SMDrequirementInventory.HeaderText = "Inventory";
-            SMDrequirementInventory.Name = "SMDrequirementInventory";
-            // 
-            // SMDrequirementOperation
-            // 
-            SMDrequirementOperation.HeaderText = "Operation";
-            SMDrequirementOperation.Name = "SMDrequirementOperation";
             // 
             // groupBox2
             // 
@@ -989,43 +891,23 @@
             label12.TabIndex = 0;
             label12.Text = "Order No.";
             // 
-            // SMDnumber
+            // label31
             // 
-            SMDnumber.HeaderText = "Quotation Number";
-            SMDnumber.Name = "SMDnumber";
+            label31.AutoSize = true;
+            label31.Location = new Point(202, 39);
+            label31.Name = "label31";
+            label31.Size = new Size(49, 15);
+            label31.TabIndex = 37;
+            label31.Text = "label31";
             // 
-            // SMDcustomer
+            // label30
             // 
-            SMDcustomer.HeaderText = "Customer";
-            SMDcustomer.Name = "SMDcustomer";
-            // 
-            // SMDoperation
-            // 
-            SMDoperation.HeaderText = "Operation";
-            SMDoperation.Name = "SMDoperation";
-            // 
-            // SMDreviewOrderNumber
-            // 
-            SMDreviewOrderNumber.HeaderText = "Order Number";
-            SMDreviewOrderNumber.Name = "SMDreviewOrderNumber";
-            SMDreviewOrderNumber.Width = 80;
-            // 
-            // SMDreviewProduct
-            // 
-            SMDreviewProduct.HeaderText = "Product";
-            SMDreviewProduct.Name = "SMDreviewProduct";
-            // 
-            // SMDreviewEdit
-            // 
-            SMDreviewEdit.HeaderText = "Edit";
-            SMDreviewEdit.Name = "SMDreviewEdit";
-            SMDreviewEdit.Width = 50;
-            // 
-            // SMDreviewDelete
-            // 
-            SMDreviewDelete.HeaderText = "Delete";
-            SMDreviewDelete.Name = "SMDreviewDelete";
-            SMDreviewDelete.Width = 60;
+            label30.AutoSize = true;
+            label30.Location = new Point(202, 12);
+            label30.Name = "label30";
+            label30.Size = new Size(49, 15);
+            label30.TabIndex = 36;
+            label30.Text = "label30";
             // 
             // Sales_MarketingForm
             // 
@@ -1033,6 +915,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightBlue;
             ClientSize = new Size(1153, 858);
+            Controls.Add(label31);
+            Controls.Add(label30);
             Controls.Add(tabControl);
             Controls.Add(RaDUserPrifileButton);
             Controls.Add(Department);
@@ -1142,26 +1026,11 @@
         private Label label23;
         private Button button3;
         private Label label24;
-        private DataGridViewComboBoxColumn SMDProductName;
-        private DataGridViewTextBoxColumn SMDproductNumber;
-        private DataGridViewTextBoxColumn SMDproductQuantity;
-        private DataGridViewTextBoxColumn SMDproductPrice;
-        private DataGridViewTextBoxColumn SMDproductAmount;
-        private DataGridViewButtonColumn SMDproductOperation;
-        private DataGridViewTextBoxColumn SMDrequirementMaterial;
-        private DataGridViewTextBoxColumn SMDrequirementspecificate;
-        private DataGridViewTextBoxColumn SMDrequirementQuantity;
-        private DataGridViewTextBoxColumn SMDrequirementInventory;
-        private DataGridViewButtonColumn SMDrequirementOperation;
         private TabControl tabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;
         private DataGridView dataGridView1;
         private TabPage tabPage3;
-        private DataGridViewTextBoxColumn SMDprocessProcess;
-        private DataGridViewTextBoxColumn SMDprocessAssignTo;
-        private DataGridViewTextBoxColumn SMDprocessDescription;
-        private DataGridViewButtonColumn SMDprocessOperation;
         private TextBox textBox3;
         private Label label27;
         private Label label26;
@@ -1174,12 +1043,7 @@
         private DataGridViewTextBoxColumn SMDfilemanageDate;
         private DataGridViewButtonColumn SMDfilemanagePreview;
         private DataGridViewButtonColumn SMDfilemanageOperation;
-        private DataGridViewTextBoxColumn SMDnumber;
-        private DataGridViewTextBoxColumn SMDcustomer;
-        private DataGridViewButtonColumn SMDoperation;
-        private DataGridViewTextBoxColumn SMDreviewOrderNumber;
-        private DataGridViewTextBoxColumn SMDreviewProduct;
-        private DataGridViewButtonColumn SMDreviewEdit;
-        private DataGridViewButtonColumn SMDreviewDelete;
+        private Label label31;
+        private Label label30;
     }
 }

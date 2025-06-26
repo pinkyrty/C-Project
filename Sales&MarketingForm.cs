@@ -285,7 +285,7 @@ namespace C_Project
 
                 // 開啟 Excel 檔案
                 Workbook workbook = excelApp.Workbooks.Open(excelPath);
-                Worksheet worksheet = workbook.ActiveSheet;
+                Worksheet worksheet = (Worksheet) workbook.ActiveSheet;
 
                 InsertDataToExcel(worksheet);
 

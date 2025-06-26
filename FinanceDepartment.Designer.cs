@@ -37,7 +37,6 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             btnUserProfile = new Button();
-            btnUserProfile.Click += btnUserProfile_click;
             label19 = new Label();
             label18 = new Label();
             pictureBox1 = new PictureBox();
@@ -99,6 +98,7 @@
             sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             label30 = new Label();
             label31 = new Label();
+            btnLogout = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -126,6 +126,7 @@
             btnUserProfile.TabIndex = 18;
             btnUserProfile.Text = "User Profile";
             btnUserProfile.UseVisualStyleBackColor = true;
+            btnUserProfile.Click += btnUserProfile_click;
             // 
             // label19
             // 
@@ -719,12 +720,24 @@
             label31.TabIndex = 26;
             label31.Text = "label31";
             // 
+            // btnLogout
+            // 
+            btnLogout.Location = new Point(1028, 12);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(57, 38);
+            btnLogout.TabIndex = 24;
+            btnLogout.Text = "Logout";
+            btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            this.Controls.Add(this.btnLogout);
+            // 
             // FinanceDepartment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightBlue;
             ClientSize = new Size(1153, 858);
+            Controls.Add(btnLogout);
             Controls.Add(label31);
             Controls.Add(label30);
             Controls.Add(label8);
@@ -830,5 +843,6 @@
         private Button btn_Save;
         private Label label30;
         private Label label31;
+        private Button btnLogout;
     }
 }

@@ -232,12 +232,10 @@ namespace C_Project
             Login loginForm = new Login();
             if (loginForm.ShowDialog() == DialogResult.OK)
             {
-                // 重新登入後，根據部門再開啟對應表單
                 Login.OpenDepartmentForm(loginForm);
             }
             else
             {
-                // 如果沒登入成功，直接關閉應用程式
                 Application.Exit();
             }
         }

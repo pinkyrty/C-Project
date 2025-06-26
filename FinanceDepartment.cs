@@ -334,5 +334,18 @@ namespace C_Project
             this.Hide();
         }
 
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Login loginForm = new Login();
+            if (loginForm.ShowDialog() == DialogResult.OK)
+            {
+                Login.OpenDepartmentForm(loginForm);
+            }
+            else
+            {
+                Application.Exit();
+            }
+        }
     }
 }

@@ -87,6 +87,7 @@
             label2 = new Label();
             label31 = new Label();
             label30 = new Label();
+            btnLogout = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProductList).BeginInit();
             tabProductDetail.SuspendLayout();
@@ -669,12 +670,23 @@
             label30.TabIndex = 64;
             label30.Text = "label30";
             // 
+            // btnLogout
+            // 
+            btnLogout.Location = new Point(1028, 12);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(57, 38);
+            btnLogout.TabIndex = 25;
+            btnLogout.Text = "Logout";
+            btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
+            // 
             // RnD_Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightBlue;
             ClientSize = new Size(1153, 858);
+            Controls.Add(btnLogout);
             Controls.Add(label31);
             Controls.Add(label30);
             Controls.Add(label2);
@@ -771,5 +783,6 @@
         private TextBox FunctionalDescriptionTextBox;
         private Label label31;
         private Label label30;
+        private Button btnLogout;
     }
 }

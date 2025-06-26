@@ -111,6 +111,7 @@
             label12 = new Label();
             label31 = new Label();
             label30 = new Label();
+            btnLogout = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl.SuspendLayout();
             QuotationTabPage.SuspendLayout();
@@ -909,12 +910,23 @@
             label30.TabIndex = 36;
             label30.Text = "label30";
             // 
+            // btnLogout
+            // 
+            btnLogout.Location = new Point(1028, 12);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(57, 38);
+            btnLogout.TabIndex = 25;
+            btnLogout.Text = "Logout";
+            btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
+            // 
             // Sales_MarketingForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightBlue;
             ClientSize = new Size(1153, 858);
+            Controls.Add(btnLogout);
             Controls.Add(label31);
             Controls.Add(label30);
             Controls.Add(tabControl);
@@ -1045,5 +1057,6 @@
         private DataGridViewButtonColumn SMDfilemanageOperation;
         private Label label31;
         private Label label30;
+        private Button btnLogout;
     }
 }

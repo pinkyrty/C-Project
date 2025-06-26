@@ -189,6 +189,7 @@ namespace C_Project
             {
                 pdForm.Username = login.Username;
                 pdForm.DepartmentName = login.DepartmentName;
+            }
             else if (targetForm is LogisticTrackingForm DTForm)
             {
                 DTForm.Username = login.Username;

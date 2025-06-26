@@ -70,6 +70,7 @@
             RaDUserPrifileButton = new Button();
             label31 = new Label();
             label30 = new Label();
+            btnLogout = new Button();
             tabMain.SuspendLayout();
             InteractionRecordsTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
@@ -482,12 +483,23 @@
             label30.TabIndex = 71;
             label30.Text = "label30";
             // 
+            // btnLogout
+            // 
+            btnLogout.Location = new Point(1028, 12);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(57, 38);
+            btnLogout.TabIndex = 73;
+            btnLogout.Text = "Logout";
+            btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
+            // 
             // CustomerServiceForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightBlue;
             ClientSize = new Size(1153, 858);
+            Controls.Add(btnLogout);
             Controls.Add(label31);
             Controls.Add(label30);
             Controls.Add(RaDUserPrifileButton);
@@ -562,5 +574,6 @@
         private Label label14;
         private Label label31;
         private Label label30;
+        private Button btnLogout;
     }
 }

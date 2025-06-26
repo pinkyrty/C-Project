@@ -70,7 +70,7 @@ namespace C_Project
                             dataGridView2.DataSource = quotationDetailDataTable;
                             dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                             dataGridView2.AllowUserToResizeColumns = false;
-                            dataGridView2.Columns["QDetaiIID"].ReadOnly = true;
+                            dataGridView2.Columns["QuotationID"].ReadOnly = true;
                         }
                     }
 
@@ -105,7 +105,7 @@ namespace C_Project
                             dgvQuoteList.DataSource = quotationDetailDataTable;
                             dgvQuoteList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                             dgvQuoteList.AllowUserToResizeColumns = false;
-                            dgvQuoteList.Columns["OMatID"].ReadOnly = true;
+                            dgvQuoteList.Columns["QDetailID"].ReadOnly = true;
                         }
                     }
 
@@ -210,7 +210,7 @@ namespace C_Project
                             dataGridView1.DataSource = prodOrderMatDataTable;
                             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                             dataGridView1.AllowUserToResizeColumns = false;
-                            dataGridView1.Columns["OMatID"].ReadOnly = true;
+                            dataGridView1.Columns["OFID"].ReadOnly = true;
                         }
                     }
 

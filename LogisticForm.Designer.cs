@@ -30,41 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogisticForm));
             dataGridView1 = new DataGridView();
-            MaterialNo = new DataGridViewTextBoxColumn();
-            name = new DataGridViewTextBoxColumn();
-            Specification = new DataGridViewTextBoxColumn();
-            Type = new DataGridViewTextBoxColumn();
-            unit = new DataGridViewTextBoxColumn();
-            StoreHouse = new DataGridViewTextBoxColumn();
-            StockQuantity = new DataGridViewTextBoxColumn();
             gbOperation = new GroupBox();
             button2 = new Button();
             button1 = new Button();
             dataGridView2 = new DataGridView();
-            OperationInventoryMaterial = new DataGridViewTextBoxColumn();
-            OperationInventoryName = new DataGridViewTextBoxColumn();
-            OperationInventorySpecification = new DataGridViewTextBoxColumn();
-            OperationInventoryType = new DataGridViewTextBoxColumn();
-            OperationInventoryStorehouse = new DataGridViewTextBoxColumn();
-            OperationInventoryDelete = new DataGridViewButtonColumn();
             groupBox1 = new GroupBox();
             button3 = new Button();
             button4 = new Button();
             dataGridView3 = new DataGridView();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
-            dataGridViewButtonColumn1 = new DataGridViewButtonColumn();
             dataGridView4 = new DataGridView();
-            Time = new DataGridViewTextBoxColumn();
-            Operation = new DataGridViewTextBoxColumn();
-            Material = new DataGridViewTextBoxColumn();
-            recordName = new DataGridViewTextBoxColumn();
-            Quantity = new DataGridViewTextBoxColumn();
-            warehouse = new DataGridViewTextBoxColumn();
-            remark = new DataGridViewTextBoxColumn();
             tabInventory = new TabControl();
             Inventory = new TabPage();
             lblRecord = new Label();
@@ -83,11 +57,6 @@
             button6 = new Button();
             button5 = new Button();
             dataGridView5 = new DataGridView();
-            ProcurementMaterial = new DataGridViewTextBoxColumn();
-            ProcurementSpecificate = new DataGridViewTextBoxColumn();
-            ProcurementQuantity = new DataGridViewTextBoxColumn();
-            ProcurementPrice = new DataGridViewTextBoxColumn();
-            ProcurementDelete = new DataGridViewButtonColumn();
             label1 = new Label();
             listBox1 = new ListBox();
             InternalTransferOrder = new TabPage();
@@ -111,12 +80,6 @@
             button9 = new Button();
             label13 = new Label();
             dataGridView6 = new DataGridView();
-            internalTransferMaterial = new DataGridViewTextBoxColumn();
-            internalTransferDescription = new DataGridViewTextBoxColumn();
-            internalTransferSpecificate = new DataGridViewTextBoxColumn();
-            internalTransferType = new DataGridViewComboBoxColumn();
-            internalTransferQuantity = new DataGridViewTextBoxColumn();
-            internaltransferOperation = new DataGridViewButtonColumn();
             label7 = new Label();
             listBox2 = new ListBox();
             DemandForecast = new TabPage();
@@ -124,23 +87,10 @@
             button13 = new Button();
             button12 = new Button();
             dataGridView7 = new DataGridView();
-            demandForecastMaterial = new DataGridViewTextBoxColumn();
-            DemandForecastPeriod = new DataGridViewTextBoxColumn();
-            DemandForecastPredicted = new DataGridViewTextBoxColumn();
-            DemandForecastAuthor = new DataGridViewTextBoxColumn();
-            DemandForecastPredictedDate = new DataGridViewTextBoxColumn();
-            DemandForecastOperation = new DataGridViewButtonColumn();
             Supplier = new TabPage();
             button15 = new Button();
             button14 = new Button();
             dataGridView8 = new DataGridView();
-            SupplierNo = new DataGridViewTextBoxColumn();
-            SupplierName = new DataGridViewTextBoxColumn();
-            SupplierContactPerson = new DataGridViewTextBoxColumn();
-            SupplierEmail = new DataGridViewTextBoxColumn();
-            SupplierContact = new DataGridViewTextBoxColumn();
-            SupplierRate = new DataGridViewTextBoxColumn();
-            SupplierOperation = new DataGridViewButtonColumn();
             label15 = new Label();
             label18 = new Label();
             label19 = new Label();
@@ -173,46 +123,11 @@
             // 
             dataGridView1.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { MaterialNo, name, Specification, Type, unit, StoreHouse, StockQuantity });
-            dataGridView1.Location = new Point(0, 0);
+            dataGridView1.Location = new Point(-14, 0);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(1121, 158);
             dataGridView1.TabIndex = 3;
-            // 
-            // MaterialNo
-            // 
-            MaterialNo.HeaderText = "Material No";
-            MaterialNo.Name = "MaterialNo";
-            // 
-            // name
-            // 
-            name.HeaderText = "Name";
-            name.Name = "name";
-            // 
-            // Specification
-            // 
-            Specification.HeaderText = "Specification";
-            Specification.Name = "Specification";
-            // 
-            // Type
-            // 
-            Type.HeaderText = "Type";
-            Type.Name = "Type";
-            // 
-            // unit
-            // 
-            unit.HeaderText = "Unit";
-            unit.Name = "unit";
-            // 
-            // StoreHouse
-            // 
-            StoreHouse.HeaderText = "Storehouse";
-            StoreHouse.Name = "StoreHouse";
-            // 
-            // StockQuantity
-            // 
-            StockQuantity.HeaderText = "Stock Quantity";
-            StockQuantity.Name = "StockQuantity";
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // gbOperation
             // 
@@ -250,43 +165,11 @@
             // 
             dataGridView2.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { OperationInventoryMaterial, OperationInventoryName, OperationInventorySpecification, OperationInventoryType, OperationInventoryStorehouse, OperationInventoryDelete });
             dataGridView2.Location = new Point(6, 22);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.Size = new Size(541, 117);
             dataGridView2.TabIndex = 0;
             dataGridView2.CellContentClick += dataGridView2_CellContentClick;
-            // 
-            // OperationInventoryMaterial
-            // 
-            OperationInventoryMaterial.HeaderText = "Material";
-            OperationInventoryMaterial.Name = "OperationInventoryMaterial";
-            // 
-            // OperationInventoryName
-            // 
-            OperationInventoryName.HeaderText = "Name";
-            OperationInventoryName.Name = "OperationInventoryName";
-            // 
-            // OperationInventorySpecification
-            // 
-            OperationInventorySpecification.HeaderText = "Specification";
-            OperationInventorySpecification.Name = "OperationInventorySpecification";
-            // 
-            // OperationInventoryType
-            // 
-            OperationInventoryType.HeaderText = "Type";
-            OperationInventoryType.Name = "OperationInventoryType";
-            // 
-            // OperationInventoryStorehouse
-            // 
-            OperationInventoryStorehouse.HeaderText = "Storehouse";
-            OperationInventoryStorehouse.Name = "OperationInventoryStorehouse";
-            // 
-            // OperationInventoryDelete
-            // 
-            OperationInventoryDelete.HeaderText = "Operation";
-            OperationInventoryDelete.Name = "OperationInventoryDelete";
-            OperationInventoryDelete.Text = "Delete";
             // 
             // groupBox1
             // 
@@ -317,91 +200,25 @@
             button4.TabIndex = 1;
             button4.Text = "Confirm Out";
             button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // dataGridView3
             // 
             dataGridView3.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewButtonColumn1 });
             dataGridView3.Location = new Point(6, 22);
             dataGridView3.Name = "dataGridView3";
             dataGridView3.Size = new Size(536, 117);
             dataGridView3.TabIndex = 0;
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.HeaderText = "Material";
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.HeaderText = "Name";
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.HeaderText = "Specification";
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewTextBoxColumn4.HeaderText = "Type";
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            dataGridViewTextBoxColumn5.HeaderText = "Storehouse";
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // dataGridViewButtonColumn1
-            // 
-            dataGridViewButtonColumn1.HeaderText = "Delete";
-            dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
-            // 
             // dataGridView4
             // 
             dataGridView4.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView4.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView4.Columns.AddRange(new DataGridViewColumn[] { Time, Operation, Material, recordName, Quantity, warehouse, remark });
             dataGridView4.Location = new Point(0, 416);
             dataGridView4.Name = "dataGridView4";
             dataGridView4.Size = new Size(1121, 83);
             dataGridView4.TabIndex = 6;
-            // 
-            // Time
-            // 
-            Time.HeaderText = "Time";
-            Time.Name = "Time";
-            // 
-            // Operation
-            // 
-            Operation.HeaderText = "Operation";
-            Operation.Name = "Operation";
-            // 
-            // Material
-            // 
-            Material.HeaderText = "Material";
-            Material.Name = "Material";
-            // 
-            // recordName
-            // 
-            recordName.HeaderText = "Name";
-            recordName.Name = "recordName";
-            // 
-            // Quantity
-            // 
-            Quantity.HeaderText = "Quantity";
-            Quantity.Name = "Quantity";
-            // 
-            // warehouse
-            // 
-            warehouse.HeaderText = "Warehouse";
-            warehouse.Name = "warehouse";
-            // 
-            // remark
-            // 
-            remark.HeaderText = "Remark";
-            remark.Name = "remark";
             // 
             // tabInventory
             // 
@@ -585,36 +402,10 @@
             // 
             dataGridView5.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView5.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView5.Columns.AddRange(new DataGridViewColumn[] { ProcurementMaterial, ProcurementSpecificate, ProcurementQuantity, ProcurementPrice, ProcurementDelete });
             dataGridView5.Location = new Point(17, 344);
             dataGridView5.Name = "dataGridView5";
             dataGridView5.Size = new Size(1098, 318);
             dataGridView5.TabIndex = 2;
-            // 
-            // ProcurementMaterial
-            // 
-            ProcurementMaterial.HeaderText = "Material";
-            ProcurementMaterial.Name = "ProcurementMaterial";
-            // 
-            // ProcurementSpecificate
-            // 
-            ProcurementSpecificate.HeaderText = "Specificate";
-            ProcurementSpecificate.Name = "ProcurementSpecificate";
-            // 
-            // ProcurementQuantity
-            // 
-            ProcurementQuantity.HeaderText = "Quantity";
-            ProcurementQuantity.Name = "ProcurementQuantity";
-            // 
-            // ProcurementPrice
-            // 
-            ProcurementPrice.HeaderText = "Price";
-            ProcurementPrice.Name = "ProcurementPrice";
-            // 
-            // ProcurementDelete
-            // 
-            ProcurementDelete.HeaderText = "Operation";
-            ProcurementDelete.Name = "ProcurementDelete";
             // 
             // label1
             // 
@@ -831,42 +622,10 @@
             // 
             dataGridView6.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView6.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView6.Columns.AddRange(new DataGridViewColumn[] { internalTransferMaterial, internalTransferDescription, internalTransferSpecificate, internalTransferType, internalTransferQuantity, internaltransferOperation });
             dataGridView6.Location = new Point(15, 294);
             dataGridView6.Name = "dataGridView6";
             dataGridView6.Size = new Size(1070, 168);
             dataGridView6.TabIndex = 27;
-            // 
-            // internalTransferMaterial
-            // 
-            internalTransferMaterial.HeaderText = "Material";
-            internalTransferMaterial.Name = "internalTransferMaterial";
-            // 
-            // internalTransferDescription
-            // 
-            internalTransferDescription.HeaderText = "Description";
-            internalTransferDescription.Name = "internalTransferDescription";
-            // 
-            // internalTransferSpecificate
-            // 
-            internalTransferSpecificate.HeaderText = "Specificate";
-            internalTransferSpecificate.Name = "internalTransferSpecificate";
-            // 
-            // internalTransferType
-            // 
-            internalTransferType.HeaderText = "Type";
-            internalTransferType.Items.AddRange(new object[] { "Raw Materials", "Components", "Finished Product" });
-            internalTransferType.Name = "internalTransferType";
-            // 
-            // internalTransferQuantity
-            // 
-            internalTransferQuantity.HeaderText = "Qunatity";
-            internalTransferQuantity.Name = "internalTransferQuantity";
-            // 
-            // internaltransferOperation
-            // 
-            internaltransferOperation.HeaderText = "Operation";
-            internaltransferOperation.Name = "internaltransferOperation";
             // 
             // label7
             // 
@@ -935,41 +694,10 @@
             // 
             dataGridView7.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView7.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView7.Columns.AddRange(new DataGridViewColumn[] { demandForecastMaterial, DemandForecastPeriod, DemandForecastPredicted, DemandForecastAuthor, DemandForecastPredictedDate, DemandForecastOperation });
             dataGridView7.Location = new Point(16, 29);
             dataGridView7.Name = "dataGridView7";
             dataGridView7.Size = new Size(1090, 629);
             dataGridView7.TabIndex = 0;
-            // 
-            // demandForecastMaterial
-            // 
-            demandForecastMaterial.HeaderText = "Material";
-            demandForecastMaterial.Name = "demandForecastMaterial";
-            // 
-            // DemandForecastPeriod
-            // 
-            DemandForecastPeriod.HeaderText = "Period";
-            DemandForecastPeriod.Name = "DemandForecastPeriod";
-            // 
-            // DemandForecastPredicted
-            // 
-            DemandForecastPredicted.HeaderText = "Predicted Quantity";
-            DemandForecastPredicted.Name = "DemandForecastPredicted";
-            // 
-            // DemandForecastAuthor
-            // 
-            DemandForecastAuthor.HeaderText = "Author";
-            DemandForecastAuthor.Name = "DemandForecastAuthor";
-            // 
-            // DemandForecastPredictedDate
-            // 
-            DemandForecastPredictedDate.HeaderText = "Predicted Date";
-            DemandForecastPredictedDate.Name = "DemandForecastPredictedDate";
-            // 
-            // DemandForecastOperation
-            // 
-            DemandForecastOperation.HeaderText = "Operation";
-            DemandForecastOperation.Name = "DemandForecastOperation";
             // 
             // Supplier
             // 
@@ -1007,46 +735,10 @@
             // 
             dataGridView8.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView8.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView8.Columns.AddRange(new DataGridViewColumn[] { SupplierNo, SupplierName, SupplierContactPerson, SupplierEmail, SupplierContact, SupplierRate, SupplierOperation });
             dataGridView8.Location = new Point(17, 29);
             dataGridView8.Name = "dataGridView8";
             dataGridView8.Size = new Size(1089, 633);
             dataGridView8.TabIndex = 1;
-            // 
-            // SupplierNo
-            // 
-            SupplierNo.HeaderText = "Supplier Number";
-            SupplierNo.Name = "SupplierNo";
-            // 
-            // SupplierName
-            // 
-            SupplierName.HeaderText = "Name";
-            SupplierName.Name = "SupplierName";
-            // 
-            // SupplierContactPerson
-            // 
-            SupplierContactPerson.HeaderText = "ContactPerson";
-            SupplierContactPerson.Name = "SupplierContactPerson";
-            // 
-            // SupplierEmail
-            // 
-            SupplierEmail.HeaderText = "Email";
-            SupplierEmail.Name = "SupplierEmail";
-            // 
-            // SupplierContact
-            // 
-            SupplierContact.HeaderText = "Contact";
-            SupplierContact.Name = "SupplierContact";
-            // 
-            // SupplierRate
-            // 
-            SupplierRate.HeaderText = "Rate";
-            SupplierRate.Name = "SupplierRate";
-            // 
-            // SupplierOperation
-            // 
-            SupplierOperation.HeaderText = "Operation";
-            SupplierOperation.Name = "SupplierOperation";
             // 
             // label15
             // 
@@ -1178,13 +870,6 @@
 
         #endregion
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn MaterialNo;
-        private DataGridViewTextBoxColumn name;
-        private DataGridViewTextBoxColumn Specification;
-        private DataGridViewTextBoxColumn Type;
-        private DataGridViewTextBoxColumn unit;
-        private DataGridViewTextBoxColumn StoreHouse;
-        private DataGridViewTextBoxColumn StockQuantity;
         private GroupBox gbOperation;
         private Button button2;
         private Button button1;
@@ -1193,12 +878,6 @@
         private Button button3;
         private Button button4;
         private DataGridView dataGridView3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private DataGridViewButtonColumn dataGridViewButtonColumn1;
         private DataGridView dataGridView4;
         private TabControl tabInventory;
         private TabPage Inventory;
@@ -1206,27 +885,9 @@
         private TabPage InternalTransferOrder;
         private TabPage DemandForecast;
         private TabPage Supplier;
-        private DataGridViewTextBoxColumn OperationInventoryMaterial;
-        private DataGridViewTextBoxColumn OperationInventoryName;
-        private DataGridViewTextBoxColumn OperationInventorySpecification;
-        private DataGridViewTextBoxColumn OperationInventoryType;
-        private DataGridViewTextBoxColumn OperationInventoryStorehouse;
-        private DataGridViewButtonColumn OperationInventoryDelete;
-        private DataGridViewTextBoxColumn Time;
-        private DataGridViewTextBoxColumn Operation;
-        private DataGridViewTextBoxColumn Material;
-        private DataGridViewTextBoxColumn recordName;
-        private DataGridViewTextBoxColumn Quantity;
-        private DataGridViewTextBoxColumn warehouse;
-        private DataGridViewTextBoxColumn remark;
         private Label lblRecord;
         private Button button5;
         private DataGridView dataGridView5;
-        private DataGridViewTextBoxColumn ProcurementMaterial;
-        private DataGridViewTextBoxColumn ProcurementSpecificate;
-        private DataGridViewTextBoxColumn ProcurementQuantity;
-        private DataGridViewTextBoxColumn ProcurementPrice;
-        private DataGridViewButtonColumn ProcurementDelete;
         private Label label1;
         private ListBox listBox1;
         private Label label5;
@@ -1245,32 +906,13 @@
         private DataGridView dataGridView6;
         private Label label7;
         private Button button11;
-        private DataGridViewTextBoxColumn internalTransferMaterial;
-        private DataGridViewTextBoxColumn internalTransferDescription;
-        private DataGridViewTextBoxColumn internalTransferSpecificate;
-        private DataGridViewComboBoxColumn internalTransferType;
-        private DataGridViewTextBoxColumn internalTransferQuantity;
-        private DataGridViewButtonColumn internaltransferOperation;
         private DataGridView dataGridView7;
         private Button button12;
         private Label label14;
         private Button button13;
-        private DataGridViewTextBoxColumn demandForecastMaterial;
-        private DataGridViewTextBoxColumn DemandForecastPeriod;
-        private DataGridViewTextBoxColumn DemandForecastPredicted;
-        private DataGridViewTextBoxColumn DemandForecastAuthor;
-        private DataGridViewTextBoxColumn DemandForecastPredictedDate;
-        private DataGridViewButtonColumn DemandForecastOperation;
         private Button button15;
         private Button button14;
         private DataGridView dataGridView8;
-        private DataGridViewTextBoxColumn SupplierNo;
-        private DataGridViewTextBoxColumn SupplierName;
-        private DataGridViewTextBoxColumn SupplierContactPerson;
-        private DataGridViewTextBoxColumn SupplierEmail;
-        private DataGridViewTextBoxColumn SupplierContact;
-        private DataGridViewTextBoxColumn SupplierRate;
-        private DataGridViewButtonColumn SupplierOperation;
         private Label label15;
         private ComboBox comboBox3;
         private TextBox textBox1;

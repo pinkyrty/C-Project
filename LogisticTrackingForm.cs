@@ -56,7 +56,7 @@ namespace C_Project
                             adapter.Fill(LogisticNodeDataTable);
                             dataGridView1.DataSource = LogisticNodeDataTable;
                             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                            dataGridView1.Columns["ID"].ReadOnly = true;
+                            dataGridView1.Columns["NodeID"].ReadOnly = true;
                         }
                     }
 

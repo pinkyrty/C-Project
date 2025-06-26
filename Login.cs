@@ -138,7 +138,7 @@ namespace C_Project
                     targetForm = new ProductionOrderForm();
                     break;
                 case FormType.SCMForm:
-                    targetForm = new LogisticTrackingForm();
+                    targetForm = new LogisticForm();
                     break;
                 case FormType.CSDForm:
                     targetForm = new CustomerServiceForm();
@@ -170,7 +170,7 @@ namespace C_Project
                 csdForm.Username = login.Username;
                 csdForm.DepartmentName = login.DepartmentName;
             }
-            else if (targetForm is LogisticTrackingForm scmForm)
+            else if (targetForm is LogisticForm scmForm)
             {
                 scmForm.Username = login.Username;
                 scmForm.DepartmentName = login.DepartmentName;
@@ -189,6 +189,10 @@ namespace C_Project
             {
                 pdForm.Username = login.Username;
                 pdForm.DepartmentName = login.DepartmentName;
+            else if (targetForm is LogisticTrackingForm DTForm)
+            {
+                DTForm.Username = login.Username;
+                DTForm.DepartmentName = login.DepartmentName;
             }
             if (targetForm != null)
                 targetForm.ShowDialog();

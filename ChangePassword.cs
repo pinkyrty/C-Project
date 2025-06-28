@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
+using System.Data.OleDb;
+using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace C_Project
@@ -15,11 +11,13 @@ namespace C_Project
         public string DepartmentName { get; set; }
         public string Username { get; set; }
         private Form parentForm;
+        private string connStr;
 
-        public ChangePassword(Form parentForm = null)
+        public ChangePassword(Form parentForm = null, string connectionString = null)
         {
             InitializeComponent();
             this.parentForm = parentForm;
+            this.connStr = connectionString;
         }
 
         protected override void OnLoad(EventArgs e)
@@ -29,47 +27,120 @@ namespace C_Project
             label31.Text = DepartmentName;
         }
 
-        private void ChangePassword_Load(object sender, EventArgs e)
+        private string HashPassword(string password)
         {
-
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(password));
+                StringBuilder builder = new StringBuilder();
+                foreach (byte b in bytes)
+                {
+                    builder.Append(b.ToString("x2"));
+                }
+                return builder.ToString();
+            }
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private bool UpdatePassword(string username, string newPassword)
         {
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+                    conn.Open();
+                    string sql = "UPDATE Login_User SET [Password] = @Password WHERE [Username] = @Username";
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Password", newPassword);
+                        cmd.Parameters.AddWithValue("@Username", username);
 
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        return rowsAffected > 0; // 返回是否更新成功
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error updating password: " + ex.Message);
+                return false;
+            }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
 
+        private bool VerifyExistingPassword(string username, string existingPassword)
+        {
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+                    conn.Open();
+                    string sql = "SELECT Password FROM Login_User WHERE Username = @Username";
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Username", username);
+                        object result = cmd.ExecuteScalar();
+
+                        return result != null && existingPassword == result.ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error verifying password: " + ex.Message);
+                return false;
+            }
         }
 
-        private void ConfirmPasswordBox_TextChanged(object sender, EventArgs e)
+        private void UpdatePasswordButton_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(Username))
+            {
+                MessageBox.Show("Username is not set.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-        }
+            // 檢查現有密碼是否正確
+            if (!VerifyExistingPassword(Username, ExistingPasswordBox.Text))
+            {
+                MessageBox.Show("Existing password is incorrect.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-        private void label7_Click(object sender, EventArgs e)
-        {
+            // 檢查新密碼和確認密碼是否匹配
+            if (string.IsNullOrWhiteSpace(NewPasswordBox.Text) || NewPasswordBox.Text != ConfirmPasswordBox.Text)
+            {
+                MessageBox.Show("Passwords do not match or are empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
+            // 檢查新密碼是否與現有密碼相同
+            if (ExistingPasswordBox.Text == NewPasswordBox.Text)
+            {
+                MessageBox.Show("New password cannot be the same as the existing password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // 更新密碼
+            bool success = UpdatePassword(Username, NewPasswordBox.Text); // 使用加密過的新密碼
+
+            if (success)
+            {
+                MessageBox.Show("Password updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Hide();
+                parentForm.Hide(); // 使用 null 條件運算符
+                Login loginForm = new Login();
+                loginForm.ShowDialog();
+                Application.Exit();
+            }
+            else
+            {
+                MessageBox.Show("Failed to update password. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-        }
-
-        private void UpdatePasswordButton_Click(object sender, EventArgs e)
-        {
-            parentForm.Close();
-            this.Hide();
-            if (parentForm != null)
-            {
-                parentForm.Hide();
-            }
-            Login loginForm = new Login();
-            loginForm.ShowDialog();
-            Application.Exit();
         }
     }
 }

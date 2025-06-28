@@ -93,7 +93,6 @@
             label3.Size = new Size(114, 15);
             label3.TabIndex = 4;
             label3.Text = "Change password";
-            label3.Click += label3_Click;
             // 
             // label4
             // 
@@ -142,7 +141,6 @@
             ConfirmPasswordBox.Name = "ConfirmPasswordBox";
             ConfirmPasswordBox.Size = new Size(182, 23);
             ConfirmPasswordBox.TabIndex = 10;
-            ConfirmPasswordBox.TextChanged += ConfirmPasswordBox_TextChanged;
             // 
             // UpdatePasswordButton
             // 
@@ -173,7 +171,6 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 13;
             pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
             // 
             // label30
             // 
@@ -183,7 +180,6 @@
             label30.Size = new Size(49, 15);
             label30.TabIndex = 14;
             label30.Text = "label30";
-            label30.Click += label7_Click;
             // 
             // label31
             // 
@@ -218,7 +214,6 @@
             Controls.Add(label1);
             Name = "ChangePassword";
             Text = "ChangePassword";
-            Load += ChangePassword_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

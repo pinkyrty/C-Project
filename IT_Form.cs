@@ -214,11 +214,10 @@ namespace C_Project
         private void btnUserProfile_click(object sender, EventArgs e)
         {
             MessageBox.Show("btnUserProfile_click");
-            ChangePassword changePasswordForm = new ChangePassword();
+            ChangePassword changePasswordForm = new ChangePassword(this);
             changePasswordForm.Username = Username;
             changePasswordForm.DepartmentName = DepartmentName;
-            changePasswordForm.Show();
-            this.Hide();
+            changePasswordForm.ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -238,6 +237,62 @@ namespace C_Project
             {
                 Application.Exit();
             }
+        }
+
+        //Department Entrance
+        private void RnDbutton_Click(object sender, EventArgs e)
+        {
+            RnD_Form rndForm = new RnD_Form();
+            rndForm.Username = this.Username;
+            rndForm.DepartmentName = this.DepartmentName;
+            rndForm.Show();
+        }
+
+        private void SalesButton_Click(object sender, EventArgs e)
+        {
+            Sales_MarketingForm smdForm = new Sales_MarketingForm();
+            smdForm.Username = this.Username;
+            smdForm.DepartmentName = this.DepartmentName;
+            smdForm.Show();
+        }
+        private void LogisticButton_Click(object sender, EventArgs e)
+        {
+            LogisticTrackingForm DTForm = new LogisticTrackingForm();
+            DTForm.Username = this.Username;
+            DTForm.DepartmentName = this.DepartmentName;
+            DTForm.Show();
+        }
+
+        private void ProductionButton_Click(object sender, EventArgs e)
+        {
+            ProductionOrderForm pdForm = new ProductionOrderForm();
+            pdForm.Username = this.Username;
+            pdForm.DepartmentName = this.DepartmentName;
+            pdForm.Show();
+        }
+
+        private void SupplyChainButton_Click(object sender, EventArgs e)
+        {
+            LogisticForm scmForm = new LogisticForm();
+            scmForm.Username = this.Username;
+            scmForm.DepartmentName = this.DepartmentName;
+            scmForm.Show();
+        }
+
+        private void CustomerServiceButton_Click(object sender, EventArgs e)
+        {
+            CustomerServiceForm csdForm = new CustomerServiceForm();
+            csdForm.Username = this.Username;
+            csdForm.DepartmentName = this.DepartmentName;
+            csdForm.Show();
+        }
+
+        private void FinanceButton_Click(object sender, EventArgs e)
+        {
+            FinanceDepartment fiForm = new FinanceDepartment();
+            fiForm.Username = this.Username;
+            fiForm.DepartmentName = this.DepartmentName;
+            fiForm.Show();
         }
     }
 }

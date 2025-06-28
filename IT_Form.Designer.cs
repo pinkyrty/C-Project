@@ -43,7 +43,7 @@ namespace C_Project
             CustomerServiceButton = new Button();
             SupplyChainButton = new Button();
             ProductionButton = new Button();
-            MarketingButton = new Button();
+            LogisticButton = new Button();
             SalesButton = new Button();
             RnDbutton = new Button();
             UserManagementTabPage = new TabPage();
@@ -178,7 +178,7 @@ namespace C_Project
             DepartmentEntranceTabPage.Controls.Add(CustomerServiceButton);
             DepartmentEntranceTabPage.Controls.Add(SupplyChainButton);
             DepartmentEntranceTabPage.Controls.Add(ProductionButton);
-            DepartmentEntranceTabPage.Controls.Add(MarketingButton);
+            DepartmentEntranceTabPage.Controls.Add(LogisticButton);
             DepartmentEntranceTabPage.Controls.Add(SalesButton);
             DepartmentEntranceTabPage.Controls.Add(RnDbutton);
             DepartmentEntranceTabPage.Location = new Point(4, 24);
@@ -204,6 +204,7 @@ namespace C_Project
             FinanceButton.TabIndex = 6;
             FinanceButton.Text = "Finance";
             FinanceButton.UseVisualStyleBackColor = true;
+            FinanceButton.Click += FinanceButton_Click;
             // 
             // CustomerServiceButton
             // 
@@ -213,6 +214,7 @@ namespace C_Project
             CustomerServiceButton.TabIndex = 5;
             CustomerServiceButton.Text = "Customer Service";
             CustomerServiceButton.UseVisualStyleBackColor = true;
+            CustomerServiceButton.Click += CustomerServiceButton_Click;
             // 
             // SupplyChainButton
             // 
@@ -222,24 +224,28 @@ namespace C_Project
             SupplyChainButton.TabIndex = 4;
             SupplyChainButton.Text = "Supply Chain";
             SupplyChainButton.UseVisualStyleBackColor = true;
+            SupplyChainButton.Click += SupplyChainButton_Click;
             // 
             // ProductionButton
             // 
+            ProductionButton.BackgroundImageLayout = ImageLayout.Center;
             ProductionButton.Location = new Point(110, 309);
             ProductionButton.Name = "ProductionButton";
             ProductionButton.Size = new Size(199, 90);
             ProductionButton.TabIndex = 3;
             ProductionButton.Text = "Production";
             ProductionButton.UseVisualStyleBackColor = true;
+            ProductionButton.Click += ProductionButton_Click;
             // 
-            // MarketingButton
+            // LogisticButton
             // 
-            MarketingButton.Location = new Point(816, 102);
-            MarketingButton.Name = "MarketingButton";
-            MarketingButton.Size = new Size(199, 90);
-            MarketingButton.TabIndex = 2;
-            MarketingButton.Text = "Logistic and  Warehouse";
-            MarketingButton.UseVisualStyleBackColor = true;
+            LogisticButton.Location = new Point(816, 102);
+            LogisticButton.Name = "LogisticButton";
+            LogisticButton.Size = new Size(199, 90);
+            LogisticButton.TabIndex = 2;
+            LogisticButton.Text = "Logistic and  Warehouse";
+            LogisticButton.UseVisualStyleBackColor = true;
+            LogisticButton.Click += LogisticButton_Click;
             // 
             // SalesButton
             // 
@@ -249,6 +255,7 @@ namespace C_Project
             SalesButton.TabIndex = 1;
             SalesButton.Text = "Sales And Marketing";
             SalesButton.UseVisualStyleBackColor = true;
+            SalesButton.Click += SalesButton_Click;
             // 
             // RnDbutton
             // 
@@ -258,6 +265,7 @@ namespace C_Project
             RnDbutton.TabIndex = 0;
             RnDbutton.Text = "RnD";
             RnDbutton.UseVisualStyleBackColor = true;
+            RnDbutton.Click += RnDbutton_Click;
             // 
             // UserManagementTabPage
             // 
@@ -727,8 +735,7 @@ namespace C_Project
             btnLogout.TabIndex = 24;
             btnLogout.Text = "Logout";
             btnLogout.UseVisualStyleBackColor = true;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
-            this.Controls.Add(this.btnLogout);
+            btnLogout.Click += btnLogout_Click;
             // 
             // IT_Form
             // 
@@ -829,7 +836,7 @@ namespace C_Project
         private Button CustomerServiceButton;
         private Button SupplyChainButton;
         private Button ProductionButton;
-        private Button MarketingButton;
+        private Button LogisticButton;
         private Button SalesButton;
         private Button RnDbutton;
         private Microsoft.Data.SqlClient.SqlCommandBuilder sqlCommandBuilder1;

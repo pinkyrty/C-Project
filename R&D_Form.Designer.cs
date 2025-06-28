@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RnD_Form));
             pictureBox1 = new PictureBox();
-            RaDUserPrifileButton = new Button();
+            btnUserProfile = new Button();
             UserNamelabel = new Label();
             dgvProductList = new DataGridView();
             NewProductsButton = new Button();
@@ -117,16 +117,16 @@
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
             // 
-            // RaDUserPrifileButton
+            // btnUserProfile
             // 
-            RaDUserPrifileButton.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
-            RaDUserPrifileButton.Location = new Point(1091, 12);
-            RaDUserPrifileButton.Name = "RaDUserPrifileButton";
-            RaDUserPrifileButton.Size = new Size(59, 38);
-            RaDUserPrifileButton.TabIndex = 33;
-            RaDUserPrifileButton.Text = "User Profile";
-            RaDUserPrifileButton.UseVisualStyleBackColor = true;
-            RaDUserPrifileButton.Click += RaDUserPrifileButton_Click;
+            btnUserProfile.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
+            btnUserProfile.Location = new Point(1091, 12);
+            btnUserProfile.Name = "btnUserProfile";
+            btnUserProfile.Size = new Size(59, 38);
+            btnUserProfile.TabIndex = 33;
+            btnUserProfile.Text = "User Profile";
+            btnUserProfile.UseVisualStyleBackColor = true;
+            btnUserProfile.Click += RaDUserPrifileButton_Click;
             // 
             // UserNamelabel
             // 
@@ -696,7 +696,7 @@
             Controls.Add(NewProductsButton);
             Controls.Add(dgvProductList);
             Controls.Add(UserNamelabel);
-            Controls.Add(RaDUserPrifileButton);
+            Controls.Add(btnUserProfile);
             Controls.Add(pictureBox1);
             Name = "RnD_Form";
             Text = "RnD_Form";
@@ -726,7 +726,7 @@
 
         #endregion
         private PictureBox pictureBox1;
-        private Button RaDUserPrifileButton;
+        private Button btnUserProfile;
         private Label UserNamelabel;
         private DataGridView dgvProductList;
         private Button NewProductsButton;

@@ -152,6 +152,7 @@
             UpdatePasswordButton.TabIndex = 11;
             UpdatePasswordButton.Text = "Update password";
             UpdatePasswordButton.UseVisualStyleBackColor = true;
+            UpdatePasswordButton.Click += UpdatePasswordButton_Click;
             // 
             // CancelButton
             // 
@@ -161,6 +162,7 @@
             CancelButton.TabIndex = 12;
             CancelButton.Text = "Cancel";
             CancelButton.UseVisualStyleBackColor = true;
+            CancelButton.Click += CancelButton_Click;
             // 
             // pictureBox1
             // 

@@ -324,16 +324,6 @@ namespace C_Project
 
         }
 
-        private void btnUserProfile_click(object sender, EventArgs e)
-        {
-            MessageBox.Show("btnUserProfile_click");
-            ChangePassword changePasswordForm = new ChangePassword();
-            changePasswordForm.Username = Username;
-            changePasswordForm.DepartmentName = DepartmentName;
-            changePasswordForm.Show();
-            this.Hide();
-        }
-
         private void btnLogout_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -347,5 +337,15 @@ namespace C_Project
                 Application.Exit();
             }
         }
+
+        private void btnUserProfile_click(object sender, EventArgs e)
+        {
+            MessageBox.Show("btnUserProfile_click");
+            ChangePassword changePasswordForm = new ChangePassword(this);
+            changePasswordForm.Username = Username;
+            changePasswordForm.DepartmentName = DepartmentName;
+            changePasswordForm.ShowDialog();
+        }
+
     }
 }

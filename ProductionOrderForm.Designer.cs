@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductionOrderForm));
-            button8 = new Button();
+            btnUserProfile = new Button();
             label19 = new Label();
             label18 = new Label();
             pictureBox1 = new PictureBox();
@@ -78,14 +78,15 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
             // 
-            // button8
+            // btnUserProfile
             // 
-            button8.Location = new Point(1091, 12);
-            button8.Name = "button8";
-            button8.Size = new Size(59, 38);
-            button8.TabIndex = 18;
-            button8.Text = "User Profile";
-            button8.UseVisualStyleBackColor = true;
+            btnUserProfile.Location = new Point(1091, 12);
+            btnUserProfile.Name = "btnUserProfile";
+            btnUserProfile.Size = new Size(59, 38);
+            btnUserProfile.TabIndex = 18;
+            btnUserProfile.Text = "User Profile";
+            btnUserProfile.UseVisualStyleBackColor = true;
+            btnUserProfile.Click += btnUserProfile_Click;
             // 
             // label19
             // 
@@ -452,7 +453,7 @@
             Controls.Add(label2);
             Controls.Add(textBox1);
             Controls.Add(label1);
-            Controls.Add(button8);
+            Controls.Add(btnUserProfile);
             Controls.Add(label19);
             Controls.Add(label18);
             Controls.Add(pictureBox1);
@@ -476,7 +477,7 @@
 
         #endregion
 
-        private Button button8;
+        private Button btnUserProfile;
         private Label label19;
         private Label label18;
         private PictureBox pictureBox1;

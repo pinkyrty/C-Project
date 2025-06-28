@@ -14,9 +14,12 @@ namespace C_Project
     {
         public string DepartmentName { get; set; }
         public string Username { get; set; }
-        public ChangePassword()
+        private Form parentForm;
+
+        public ChangePassword(Form parentForm = null)
         {
             InitializeComponent();
+            this.parentForm = parentForm;
         }
 
         protected override void OnLoad(EventArgs e)
@@ -45,16 +48,28 @@ namespace C_Project
         {
 
         }
-        private void ConfirmPassworButton_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Password Changed!");
-            this.Close();
-        }
-
 
         private void label7_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void UpdatePasswordButton_Click(object sender, EventArgs e)
+        {
+            parentForm.Close();
+            this.Hide();
+            if (parentForm != null)
+            {
+                parentForm.Hide();
+            }
+            Login loginForm = new Login();
+            loginForm.ShowDialog();
+            Application.Exit();
         }
     }
 }

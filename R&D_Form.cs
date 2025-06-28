@@ -322,11 +322,6 @@ namespace C_Project
 
         }
 
-        private void RaDUserPrifileButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void RequirementTextBox_TextChanged(object sender, EventArgs e)
         {
 
@@ -363,14 +358,21 @@ namespace C_Project
             Login loginForm = new Login();
             if (loginForm.ShowDialog() == DialogResult.OK)
             {
-                // 重新登入後，根據部門再開啟對應表單
                 Login.OpenDepartmentForm(loginForm);
             }
             else
             {
-                // 如果沒登入成功，直接關閉應用程式
                 Application.Exit();
             }
+        }
+
+        private void RaDUserPrifileButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("btnUserProfile_click");
+            ChangePassword changePasswordForm = new ChangePassword(this);
+            changePasswordForm.Username = Username;
+            changePasswordForm.DepartmentName = DepartmentName;
+            changePasswordForm.ShowDialog();
         }
     }
 }

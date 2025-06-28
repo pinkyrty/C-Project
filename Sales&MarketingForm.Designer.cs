@@ -34,7 +34,7 @@
             UserName = new Label();
             label2 = new Label();
             Department = new Label();
-            RaDUserPrifileButton = new Button();
+            btnUserProfile = new Button();
             tabControl = new TabControl();
             QuotationTabPage = new TabPage();
             splitContainer1 = new SplitContainer();
@@ -182,15 +182,16 @@
             Department.Size = new Size(0, 15);
             Department.TabIndex = 4;
             // 
-            // RaDUserPrifileButton
+            // btnUserProfile
             // 
-            RaDUserPrifileButton.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
-            RaDUserPrifileButton.Location = new Point(1091, 12);
-            RaDUserPrifileButton.Name = "RaDUserPrifileButton";
-            RaDUserPrifileButton.Size = new Size(59, 38);
-            RaDUserPrifileButton.TabIndex = 34;
-            RaDUserPrifileButton.Text = "User Profile";
-            RaDUserPrifileButton.UseVisualStyleBackColor = true;
+            btnUserProfile.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
+            btnUserProfile.Location = new Point(1091, 12);
+            btnUserProfile.Name = "btnUserProfile";
+            btnUserProfile.Size = new Size(59, 38);
+            btnUserProfile.TabIndex = 34;
+            btnUserProfile.Text = "User Profile";
+            btnUserProfile.UseVisualStyleBackColor = true;
+            btnUserProfile.Click += btnUserProfile_Click;
             // 
             // tabControl
             // 
@@ -930,7 +931,7 @@
             Controls.Add(label31);
             Controls.Add(label30);
             Controls.Add(tabControl);
-            Controls.Add(RaDUserPrifileButton);
+            Controls.Add(btnUserProfile);
             Controls.Add(Department);
             Controls.Add(label2);
             Controls.Add(UserName);
@@ -980,7 +981,7 @@
         private Label UserName;
         private Label label2;
         private Label Department;
-        private Button RaDUserPrifileButton;
+        private Button btnUserProfile;
         private TabControl tabControl;
         private TabPage QuotationTabPage;
         private SplitContainer splitContainer1;

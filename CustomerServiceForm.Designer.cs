@@ -464,6 +464,7 @@
             RaDUserPrifileButton.TabIndex = 70;
             RaDUserPrifileButton.Text = "User Profile";
             RaDUserPrifileButton.UseVisualStyleBackColor = true;
+            RaDUserPrifileButton.Click += RaDUserPrifileButton_Click;
             // 
             // label31
             // 

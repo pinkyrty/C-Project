@@ -51,6 +51,7 @@
             button2 = new Button();
             label31 = new Label();
             label30 = new Label();
+            btnLogout = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -179,6 +180,7 @@
             button8.TabIndex = 20;
             button8.Text = "User Profile";
             button8.UseVisualStyleBackColor = true;
+            button8.Click += btnUserProfile_Click;
             // 
             // label19
             // 
@@ -254,12 +256,23 @@
             label30.Text = "label30";
             label30.Click += label30_Click;
             // 
+            // btnLogout
+            // 
+            btnLogout.Location = new Point(1028, 12);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(57, 38);
+            btnLogout.TabIndex = 24;
+            btnLogout.Text = "Logout";
+            btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
+            // 
             // LogisticTrackingForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightBlue;
             ClientSize = new Size(1153, 858);
+            Controls.Add(btnLogout);
             Controls.Add(label31);
             Controls.Add(label30);
             Controls.Add(button2);
@@ -315,5 +328,6 @@
         private Button button2;
         private Label label31;
         private Label label30;
+        private Button btnLogout;
     }
 }

@@ -70,13 +70,13 @@ namespace C_Project
                                 }
                                 MessageBox.Show($"Login successful! Department Name: {departmentName}, User: {fullname}");
                                 SetDepartmentForm(department);
-                                this.Hide(); // 先隱藏 Login Form
-                                OpenDepartmentForm(this); // 開啟部門表單（ShowDialog）
-                                this.Close(); // 部門表單關閉後，結束 Login Form
+                                this.Hide();
+                                OpenDepartmentForm(this);
+                                this.Close();
                             }
                             else
                             {
-                                MessageBox.Show("�Τ�W�٩αK�X���~");
+                                MessageBox.Show("Error!Wrong password!");
                             }
                         }
                     }
@@ -154,7 +154,6 @@ namespace C_Project
                     break;
             }
 
-            // 傳遞 Username 和 DepartmentName
             if (targetForm is IT_Form itForm)
             {
                 itForm.Username = login.Username;
@@ -199,7 +198,6 @@ namespace C_Project
                 targetForm.ShowDialog();
         }
 
-        // The remaining control event handlers can be kept
         private void txtPassword_TextChanged(object sender, EventArgs e) { }
         private void txtUsername_TextChanged(object sender, EventArgs e) { }
         private void Form1_Load(object sender, EventArgs e) { }

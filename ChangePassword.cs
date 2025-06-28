@@ -99,35 +99,31 @@ namespace C_Project
                 return;
             }
 
-            // 檢查現有密碼是否正確
             if (!VerifyExistingPassword(Username, ExistingPasswordBox.Text))
             {
                 MessageBox.Show("Existing password is incorrect.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // 檢查新密碼和確認密碼是否匹配
             if (string.IsNullOrWhiteSpace(NewPasswordBox.Text) || NewPasswordBox.Text != ConfirmPasswordBox.Text)
             {
                 MessageBox.Show("Passwords do not match or are empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // 檢查新密碼是否與現有密碼相同
             if (ExistingPasswordBox.Text == NewPasswordBox.Text)
             {
                 MessageBox.Show("New password cannot be the same as the existing password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // 更新密碼
-            bool success = UpdatePassword(Username, NewPasswordBox.Text); // 使用加密過的新密碼
+            bool success = UpdatePassword(Username, NewPasswordBox.Text);
 
             if (success)
             {
                 MessageBox.Show("Password updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Hide();
-                parentForm.Hide(); // 使用 null 條件運算符
+                parentForm.Hide();
                 Login loginForm = new Login();
                 loginForm.ShowDialog();
                 Application.Exit();

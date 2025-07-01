@@ -328,10 +328,9 @@ namespace C_Project
                     conn.Open();
                     foreach (DataRow row in dt.Rows)
                     {
-                        if (row.RowState == DataRowState.Added || row.RowState == DataRowState.Modified)
+                        if (row.RowState == DataRowState.Modified)
                         {
-                            string query = "INSERT INTO FI_Budget (FiscalYear, BudgetIncome, BudgetExpense, ForecastIncome, ForecastExpense, Remark) VALUES (?, ?, ?, ?, ?, ?)";
-
+                            string query = "UPDATE FI_Budget SET FiscalYear = ?, BudgetIncome = ?, BudgetExpense = ?, ForecastIncome = ?, ForecastExpense = ?, Remark = ? WHERE ID = ?";
                             using (OleDbCommand cmd = new OleDbCommand(query, conn))
                             {
                                 cmd.Parameters.AddWithValue("?", row["FiscalYear"] != DBNull.Value ? row["FiscalYear"] : "");
@@ -340,6 +339,7 @@ namespace C_Project
                                 cmd.Parameters.AddWithValue("?", row["ForecastIncome"] != DBNull.Value ? row["ForecastIncome"] : 0);
                                 cmd.Parameters.AddWithValue("?", row["ForecastExpense"] != DBNull.Value ? row["ForecastExpense"] : 0);
                                 cmd.Parameters.AddWithValue("?", row["Remark"] != DBNull.Value ? row["Remark"] : "");
+                                cmd.Parameters.AddWithValue("?", row["ID"]);
 
                                 cmd.ExecuteNonQuery();
                             }
@@ -355,6 +355,20 @@ namespace C_Project
             {
                 MessageBox.Show($"Error saving data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btn_Add_Click(object sender, EventArgs e)
+        {
+            DataRow newRow = budgetDataTable.NewRow();
+
+            newRow["FiscalYear"] = "";
+            newRow["BudgetIncome"] = 0;
+            newRow["BudgetExpense"] = 0;
+            newRow["ForecastIncome"] = 0;
+            newRow["ForecastExpense"] = 0;
+            newRow["Remark"] = "";
+
+            budgetDataTable.Rows.Add(newRow);
         }
 
         private void label30_Click(object sender, EventArgs e)
@@ -383,7 +397,6 @@ namespace C_Project
 
         private void btnUserProfile_click(object sender, EventArgs e)
         {
-            MessageBox.Show("btnUserProfile_click");
             ChangePassword changePasswordForm = new ChangePassword(this, connStr);
             changePasswordForm.Username = Username;
             changePasswordForm.DepartmentName = DepartmentName;

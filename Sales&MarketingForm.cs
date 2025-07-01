@@ -62,7 +62,6 @@ namespace C_Project
                     string sql = "SELECT * FROM SMD_Quotation";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
-                        MessageBox.Show("Connect Success");
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
                             quotationDetailDataTable = new System.Data.DataTable();
@@ -97,7 +96,6 @@ namespace C_Project
                     string sql = "SELECT * FROM SMD_QuotationDetail";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
-                        MessageBox.Show("Connect Success");
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
                             quotationDetailDataTable = new System.Data.DataTable();
@@ -132,7 +130,6 @@ namespace C_Project
                     string sql = "SELECT * FROM SMD_ProdOrderMat";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
-                        MessageBox.Show("Connect Success");
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
                             quotationDetailDataTable = new System.Data.DataTable();
@@ -167,7 +164,6 @@ namespace C_Project
                     string sql = "SELECT * FROM SMD_OrderFile";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
-                        MessageBox.Show("Connect Success");
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
                             orderFileDataTable = new System.Data.DataTable();
@@ -202,7 +198,6 @@ namespace C_Project
                     string sql = "SELECT * FROM SMD_OrderFile";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
-                        MessageBox.Show("Connect Success");
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
                             prodOrderMatDataTable = new System.Data.DataTable();
@@ -400,7 +395,6 @@ namespace C_Project
 
         private void btnUserProfile_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("btnUserProfile_click_SM");
             ChangePassword changePasswordForm = new ChangePassword(this, connStr);
             changePasswordForm.Username = Username;
             changePasswordForm.DepartmentName = DepartmentName;

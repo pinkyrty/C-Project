@@ -60,7 +60,6 @@ namespace C_Project
                     string sql = "SELECT ProductID, Name FROM RND_Cert";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
-                        MessageBox.Show("Connect Success");
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
                             productDataTable = new System.Data.DataTable();
@@ -95,7 +94,6 @@ namespace C_Project
                     string sql = "SELECT Type, Name, Desc, Qty FROM RND_MaterialList";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
-                        MessageBox.Show("Connect Success");
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
                             materialListDataTable = new System.Data.DataTable();
@@ -129,7 +127,6 @@ namespace C_Project
                     string sql = "SELECT ProductID, Content, Equip, Time, Staff FROM RND_Process";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
-                        MessageBox.Show("Connect Success");
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
                             processDataTable = new System.Data.DataTable();
@@ -163,7 +160,6 @@ namespace C_Project
                     string sql = "SELECT Type, Condition, Standard FROM RND_Test";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
-                        MessageBox.Show("Connect Success");
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
                             testDataTable = new System.Data.DataTable();
@@ -197,7 +193,6 @@ namespace C_Project
                     string sql = "SELECT Name, Content FROM RND_Cert";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
-                        MessageBox.Show("Connect Success");
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
                             certDataTable = new System.Data.DataTable();
@@ -368,7 +363,6 @@ namespace C_Project
 
         private void RaDUserPrifileButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("btnUserProfile_click");
             ChangePassword changePasswordForm = new ChangePassword(this, connStr);
             changePasswordForm.Username = Username;
             changePasswordForm.DepartmentName = DepartmentName;

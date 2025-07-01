@@ -57,7 +57,6 @@ namespace C_Project
                     string sql = "SELECT * FROM PD_OrderStep";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
-                        MessageBox.Show("Connect Success");
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
                             orderStepDataTable = new DataTable();
@@ -92,7 +91,6 @@ namespace C_Project
                     string sql = "SELECT * FROM PD_OrderPlan";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
-                        MessageBox.Show("Connect Success");
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
                             materialDataTable = new DataTable();
@@ -126,7 +124,6 @@ namespace C_Project
                     string sql = "SELECT * FROM PD_MRFDetail";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
-                        MessageBox.Show("Connect Success");
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
                             processDataTable = new DataTable();
@@ -160,7 +157,6 @@ namespace C_Project
                     string sql = "SELECT * FROM PD_MaterialRequestForm";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
-                        MessageBox.Show("Connect Success");
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
                             requsetDataTable = new DataTable();
@@ -218,7 +214,6 @@ namespace C_Project
 
         private void btnUserProfile_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("btnUserProfile_click");
             ChangePassword changePasswordForm = new ChangePassword(this, connStr);
             changePasswordForm.Username = Username;
             changePasswordForm.DepartmentName = DepartmentName;

@@ -49,7 +49,6 @@ namespace C_Project
                     string sql = "SELECT * FROM DT_LogisticsNode";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
-                        MessageBox.Show("Connect Success");
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
                             LogisticNodeDataTable = new DataTable();
@@ -94,7 +93,6 @@ namespace C_Project
 
         private void btnUserProfile_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("btnUserProfile_click");
             ChangePassword changePasswordForm = new ChangePassword(this, connStr);
             changePasswordForm.Username = Username;
             changePasswordForm.DepartmentName = DepartmentName;

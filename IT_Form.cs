@@ -213,7 +213,6 @@ namespace C_Project
 
         private void btnUserProfile_click(object sender, EventArgs e)
         {
-            MessageBox.Show("btnUserProfile_click");
             ChangePassword changePasswordForm = new ChangePassword(this, connStr);
             changePasswordForm.Username = Username;
             changePasswordForm.DepartmentName = DepartmentName;

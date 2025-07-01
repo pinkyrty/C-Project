@@ -52,7 +52,6 @@ namespace C_Project
                     string sql = "SELECT ID, Date, CustomerName, Channel FROM CSD_InteractionLog";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
-                        MessageBox.Show("Connect Success");
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
                             interactionLogDataTable = new DataTable();
@@ -86,7 +85,6 @@ namespace C_Project
                     string sql = "SELECT * FROM CSD_RefundCase";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
-                        MessageBox.Show("Connect Success");
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
                             returnDataTable = new DataTable();
@@ -140,7 +138,6 @@ namespace C_Project
 
         private void RaDUserPrifileButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("btnUserProfile_click");
             ChangePassword changePasswordForm = new ChangePassword(this);
             changePasswordForm.Username = Username;
             changePasswordForm.DepartmentName = DepartmentName;

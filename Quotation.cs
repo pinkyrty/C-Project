@@ -14,18 +14,16 @@ namespace C_Project
 {
     public partial class Quotation : Form
     {
-        private string dbPath;          // 資料庫文件路徑
+        private string dbPath;          
         private Button btnConnect;
-        private string connectionString; // 連接字符串
+        private string connectionString;
         public Quotation()
         {
             InitializeComponent();
-            // 初始化資料庫路徑同連接字符串
             dbPath = Path.Combine(Application.StartupPath, "ToySystem.accdb");
             connectionString = $"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={dbPath};";
         }
 
-        // 按鈕點擊事件（您可以根據需要改用其他事件）
         private void btnConnect_Click(object sender, EventArgs e)
         {
             try
@@ -34,7 +32,6 @@ namespace C_Project
                 {
                     connection.Open();
 
-                    MessageBox.Show("資料庫連接成功！");
                     string sqlQuery = "SELECT * FROM Quotation";
                     using (OleDbCommand command = new OleDbCommand(sqlQuery, connection))
                     {
@@ -74,7 +71,7 @@ namespace C_Project
             }
             catch (Exception ex)
             {
-                MessageBox.Show("連接失敗：" + ex.Message);
+                MessageBox.Show("Connect Fail：" + ex.Message);
             }
         }
 

@@ -63,7 +63,6 @@ namespace C_Project
                     string sql = "SELECT * FROM SCM_Material";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
-                        MessageBox.Show("Connect Success");
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
                             logisticInventoryDataTable = new DataTable();
@@ -96,7 +95,6 @@ namespace C_Project
                     string sql = "SELECT * FROM SCM_Material";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
-                        MessageBox.Show("Connect Success");
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
                             logisticInventoryInDataTable = new DataTable();
@@ -129,7 +127,6 @@ namespace C_Project
                     string sql = "SELECT * FROM SCM_Material";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
-                        MessageBox.Show("Connect Success");
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
                             logisticInventoryOutDataTable = new DataTable();
@@ -162,7 +159,6 @@ namespace C_Project
                     string sql = "SELECT * FROM SCM_StockTrans";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
-                        MessageBox.Show("Connect Success");
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
                             logisticInventoryRecordDataTable = new DataTable();
@@ -195,7 +191,6 @@ namespace C_Project
                     string sql = "SELECT * FROM SCM_PODetail";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
-                        MessageBox.Show("Connect Success");
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
                             logisticProcurementDataTable = new DataTable();
@@ -380,7 +375,6 @@ namespace C_Project
 
         private void btnUserProfile_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("btnUserProfile_click_SCM");
             ChangePassword changePasswordForm = new ChangePassword(this, connStr);
             changePasswordForm.Username = Username;
             changePasswordForm.DepartmentName = DepartmentName;

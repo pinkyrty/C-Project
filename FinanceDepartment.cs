@@ -68,12 +68,21 @@ namespace C_Project
 
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
+                            dataGridView1.AllowUserToResizeColumns = false;
+                            dataGridView1.AllowUserToAddRows = true;
+                            dataGridView1.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
+
                             budgetDataTable = new DataTable();
                             adapter.Fill(budgetDataTable);
                             dataGridView1.DataSource = budgetDataTable;
-                            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-                            dataGridView1.AllowUserToResizeColumns = false;
+                            dataGridView1.Columns[1].HeaderText = "Financial Year";
+                            dataGridView1.Columns[2].HeaderText = "Budget Income";
+                            dataGridView1.Columns[3].HeaderText = "Budget Expense";
+                            dataGridView1.Columns[4].HeaderText = "Forecast Income";
+                            dataGridView1.Columns[5].HeaderText = "Forecast Expense";
+                            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                             dataGridView1.Columns["ID"].ReadOnly = true;
+
                         }
                     }
 
@@ -227,13 +236,6 @@ namespace C_Project
             }
         }
 
-
-        //private void Form_Load(object sender, EventArgs e)
-        //{
-        //    LoadBudgetTable();
-        //    dataGridView1.Width = (int)(this.ClientSize.Width * 0.8);
-        //}
-
         //private void InsertBudgetTable()
         //{
         //    try
@@ -312,6 +314,47 @@ namespace C_Project
         private void btn_Save_Click(object sender, EventArgs e)
         {
             //InsertBudgetTable();
+            try
+            {
+                DataTable dt = (DataTable)dataGridView1.DataSource;
+                if (dt == null || dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("No data to save.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+                    conn.Open();
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        if (row.RowState == DataRowState.Added || row.RowState == DataRowState.Modified)
+                        {
+                            string query = "INSERT INTO FI_Budget (FiscalYear, BudgetIncome, BudgetExpense, ForecastIncome, ForecastExpense, Remark) VALUES (?, ?, ?, ?, ?, ?)";
+
+                            using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                            {
+                                cmd.Parameters.AddWithValue("?", row["FiscalYear"] != DBNull.Value ? row["FiscalYear"] : "");
+                                cmd.Parameters.AddWithValue("?", row["BudgetIncome"] != DBNull.Value ? row["BudgetIncome"] : 0);
+                                cmd.Parameters.AddWithValue("?", row["BudgetExpense"] != DBNull.Value ? row["BudgetExpense"] : 0);
+                                cmd.Parameters.AddWithValue("?", row["ForecastIncome"] != DBNull.Value ? row["ForecastIncome"] : 0);
+                                cmd.Parameters.AddWithValue("?", row["ForecastExpense"] != DBNull.Value ? row["ForecastExpense"] : 0);
+                                cmd.Parameters.AddWithValue("?", row["Remark"] != DBNull.Value ? row["Remark"] : "");
+
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                    dt.AcceptChanges();
+                }
+
+                MessageBox.Show("Data saved to database successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dataGridView1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void label30_Click(object sender, EventArgs e)
@@ -341,7 +384,7 @@ namespace C_Project
         private void btnUserProfile_click(object sender, EventArgs e)
         {
             MessageBox.Show("btnUserProfile_click");
-            ChangePassword changePasswordForm = new ChangePassword(this);
+            ChangePassword changePasswordForm = new ChangePassword(this, connStr);
             changePasswordForm.Username = Username;
             changePasswordForm.DepartmentName = DepartmentName;
             changePasswordForm.ShowDialog();

@@ -103,10 +103,6 @@ namespace C_Project
             {
                 using (OleDbConnection conn = new OleDbConnection(connStr))
                 {
-                    dataGridView1.AllowUserToResizeColumns = false;
-                    dataGridView1.AllowUserToAddRows = true;
-                    dataGridView1.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
-
                     conn.Open();
 
                     string sql = "SELECT * FROM FI_CashFlow";

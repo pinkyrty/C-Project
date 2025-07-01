@@ -29,26 +29,23 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogisticForm));
-            dataGridView1 = new DataGridView();
-            gbOperation = new GroupBox();
-            btn_Add2 = new Button();
-            btn_Save5 = new Button();
-            button2 = new Button();
-            button1 = new Button();
-            dataGridView2 = new DataGridView();
-            groupBox1 = new GroupBox();
-            btn_Add3 = new Button();
-            btn_Save6 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            dataGridView3 = new DataGridView();
             dataGridView4 = new DataGridView();
             btn_Add6 = new TabControl();
             Inventory = new TabPage();
+            textBox8 = new TextBox();
+            label29 = new Label();
+            textBox7 = new TextBox();
+            textBox6 = new TextBox();
+            label28 = new Label();
+            label27 = new Label();
+            label26 = new Label();
+            label25 = new Label();
+            label24 = new Label();
+            comboBox8 = new ComboBox();
+            comboBox7 = new ComboBox();
+            textBox2 = new TextBox();
             btn_Add4 = new Button();
             btn_Save7 = new Button();
-            btn_Add1 = new Button();
-            btn_Save4 = new Button();
             lblRecord = new Label();
             Procurement = new TabPage();
             btn_Add5 = new Button();
@@ -105,7 +102,6 @@
             btn_Add = new Button();
             btn_Save = new Button();
             button15 = new Button();
-            button14 = new Button();
             dataGridView8 = new DataGridView();
             label15 = new Label();
             label18 = new Label();
@@ -117,11 +113,6 @@
             label30 = new Label();
             label31 = new Label();
             btnLogout = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            gbOperation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
-            groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView4).BeginInit();
             btn_Add6.SuspendLayout();
             Inventory.SuspendLayout();
@@ -136,145 +127,13 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
-            // dataGridView1
-            // 
-            dataGridView1.BackgroundColor = SystemColors.GradientInactiveCaption;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(0, 0);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(1040, 158);
-            dataGridView1.TabIndex = 3;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // gbOperation
-            // 
-            gbOperation.Controls.Add(btn_Add2);
-            gbOperation.Controls.Add(btn_Save5);
-            gbOperation.Controls.Add(button2);
-            gbOperation.Controls.Add(button1);
-            gbOperation.Controls.Add(dataGridView2);
-            gbOperation.Location = new Point(0, 175);
-            gbOperation.Name = "gbOperation";
-            gbOperation.Size = new Size(559, 203);
-            gbOperation.TabIndex = 4;
-            gbOperation.TabStop = false;
-            gbOperation.Text = "In Warehousing Operation";
-            gbOperation.Enter += gbOperation_Enter;
-            // 
-            // btn_Add2
-            // 
-            btn_Add2.Location = new Point(381, 145);
-            btn_Add2.Name = "btn_Add2";
-            btn_Add2.Size = new Size(75, 23);
-            btn_Add2.TabIndex = 27;
-            btn_Add2.Text = "Add";
-            btn_Add2.UseVisualStyleBackColor = true;
-            // 
-            // btn_Save5
-            // 
-            btn_Save5.Location = new Point(381, 174);
-            btn_Save5.Name = "btn_Save5";
-            btn_Save5.Size = new Size(75, 23);
-            btn_Save5.TabIndex = 28;
-            btn_Save5.Text = "Save";
-            btn_Save5.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(6, 145);
-            button2.Name = "button2";
-            button2.Size = new Size(98, 29);
-            button2.TabIndex = 2;
-            button2.Text = "New Column";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(462, 157);
-            button1.Name = "button1";
-            button1.Size = new Size(85, 39);
-            button1.TabIndex = 1;
-            button1.Text = "Confirm In";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView2
-            // 
-            dataGridView2.BackgroundColor = SystemColors.GradientInactiveCaption;
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(6, 22);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(541, 117);
-            dataGridView2.TabIndex = 0;
-            dataGridView2.CellContentClick += dataGridView2_CellContentClick;
-            // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(btn_Add3);
-            groupBox1.Controls.Add(btn_Save6);
-            groupBox1.Controls.Add(button3);
-            groupBox1.Controls.Add(button4);
-            groupBox1.Controls.Add(dataGridView3);
-            groupBox1.Location = new Point(565, 175);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(556, 203);
-            groupBox1.TabIndex = 5;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Out Warehousing Operation";
-            // 
-            // btn_Add3
-            // 
-            btn_Add3.Location = new Point(376, 145);
-            btn_Add3.Name = "btn_Add3";
-            btn_Add3.Size = new Size(75, 23);
-            btn_Add3.TabIndex = 27;
-            btn_Add3.Text = "Add";
-            btn_Add3.UseVisualStyleBackColor = true;
-            // 
-            // btn_Save6
-            // 
-            btn_Save6.Location = new Point(376, 174);
-            btn_Save6.Name = "btn_Save6";
-            btn_Save6.Size = new Size(75, 23);
-            btn_Save6.TabIndex = 28;
-            btn_Save6.Text = "Save";
-            btn_Save6.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            button3.Location = new Point(6, 145);
-            button3.Name = "button3";
-            button3.Size = new Size(91, 29);
-            button3.TabIndex = 2;
-            button3.Text = "New Collum";
-            button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            button4.Location = new Point(457, 157);
-            button4.Name = "button4";
-            button4.Size = new Size(85, 39);
-            button4.TabIndex = 1;
-            button4.Text = "Confirm Out";
-            button4.UseVisualStyleBackColor = true;
-            button4.Click += button4_Click;
-            // 
-            // dataGridView3
-            // 
-            dataGridView3.BackgroundColor = SystemColors.GradientInactiveCaption;
-            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Location = new Point(6, 22);
-            dataGridView3.Name = "dataGridView3";
-            dataGridView3.Size = new Size(536, 117);
-            dataGridView3.TabIndex = 0;
-            // 
             // dataGridView4
             // 
             dataGridView4.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView4.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView4.Location = new Point(0, 416);
+            dataGridView4.Location = new Point(12, 98);
             dataGridView4.Name = "dataGridView4";
-            dataGridView4.Size = new Size(1040, 288);
+            dataGridView4.Size = new Size(1037, 288);
             dataGridView4.TabIndex = 6;
             // 
             // btn_Add6
@@ -293,14 +152,21 @@
             // 
             // Inventory
             // 
+            Inventory.Controls.Add(textBox8);
+            Inventory.Controls.Add(label29);
+            Inventory.Controls.Add(textBox7);
+            Inventory.Controls.Add(textBox6);
+            Inventory.Controls.Add(label28);
+            Inventory.Controls.Add(label27);
+            Inventory.Controls.Add(label26);
+            Inventory.Controls.Add(label25);
+            Inventory.Controls.Add(label24);
+            Inventory.Controls.Add(comboBox8);
+            Inventory.Controls.Add(comboBox7);
+            Inventory.Controls.Add(textBox2);
             Inventory.Controls.Add(btn_Add4);
             Inventory.Controls.Add(btn_Save7);
-            Inventory.Controls.Add(btn_Add1);
-            Inventory.Controls.Add(btn_Save4);
             Inventory.Controls.Add(lblRecord);
-            Inventory.Controls.Add(dataGridView1);
-            Inventory.Controls.Add(gbOperation);
-            Inventory.Controls.Add(groupBox1);
             Inventory.Controls.Add(dataGridView4);
             Inventory.Location = new Point(4, 24);
             Inventory.Name = "Inventory";
@@ -311,47 +177,130 @@
             Inventory.UseVisualStyleBackColor = true;
             Inventory.Click += tabPage1_Click;
             // 
+            // textBox8
+            // 
+            textBox8.Location = new Point(609, 42);
+            textBox8.Name = "textBox8";
+            textBox8.Size = new Size(359, 23);
+            textBox8.TabIndex = 44;
+            // 
+            // label29
+            // 
+            label29.AutoSize = true;
+            label29.Location = new Point(609, 24);
+            label29.Name = "label29";
+            label29.Size = new Size(50, 15);
+            label29.TabIndex = 43;
+            label29.Text = "Remark";
+            // 
+            // textBox7
+            // 
+            textBox7.Location = new Point(139, 43);
+            textBox7.Name = "textBox7";
+            textBox7.Size = new Size(100, 23);
+            textBox7.TabIndex = 42;
+            // 
+            // textBox6
+            // 
+            textBox6.Location = new Point(266, 43);
+            textBox6.Name = "textBox6";
+            textBox6.Size = new Size(100, 23);
+            textBox6.TabIndex = 41;
+            // 
+            // label28
+            // 
+            label28.AutoSize = true;
+            label28.Location = new Point(478, 24);
+            label28.Name = "label28";
+            label28.Size = new Size(71, 15);
+            label28.TabIndex = 40;
+            label28.Text = "Warehouse";
+            // 
+            // label27
+            // 
+            label27.AutoSize = true;
+            label27.Location = new Point(372, 24);
+            label27.Name = "label27";
+            label27.Size = new Size(55, 15);
+            label27.TabIndex = 39;
+            label27.Text = "Quantity";
+            // 
+            // label26
+            // 
+            label26.AutoSize = true;
+            label26.Location = new Point(266, 24);
+            label26.Name = "label26";
+            label26.Size = new Size(42, 15);
+            label26.TabIndex = 38;
+            label26.Text = "Name";
+            // 
+            // label25
+            // 
+            label25.AutoSize = true;
+            label25.Location = new Point(139, 24);
+            label25.Name = "label25";
+            label25.Size = new Size(54, 15);
+            label25.TabIndex = 37;
+            label25.Text = "Material";
+            // 
+            // label24
+            // 
+            label24.AutoSize = true;
+            label24.Location = new Point(12, 24);
+            label24.Name = "label24";
+            label24.Size = new Size(56, 15);
+            label24.TabIndex = 36;
+            label24.Text = "In or Out";
+            // 
+            // comboBox8
+            // 
+            comboBox8.FormattingEnabled = true;
+            comboBox8.Items.AddRange(new object[] { "Thailand ", "Hong Kong", "Vietnam", "Mainland China" });
+            comboBox8.Location = new Point(478, 42);
+            comboBox8.Name = "comboBox8";
+            comboBox8.Size = new Size(121, 23);
+            comboBox8.TabIndex = 35;
+            // 
+            // comboBox7
+            // 
+            comboBox7.FormattingEnabled = true;
+            comboBox7.Items.AddRange(new object[] { "In", "Out" });
+            comboBox7.Location = new Point(12, 42);
+            comboBox7.Name = "comboBox7";
+            comboBox7.Size = new Size(121, 23);
+            comboBox7.TabIndex = 34;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(372, 42);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(100, 23);
+            textBox2.TabIndex = 33;
+            // 
             // btn_Add4
             // 
-            btn_Add4.Location = new Point(1043, 416);
+            btn_Add4.Location = new Point(974, 42);
             btn_Add4.Name = "btn_Add4";
             btn_Add4.Size = new Size(75, 23);
             btn_Add4.TabIndex = 29;
             btn_Add4.Text = "Add";
             btn_Add4.UseVisualStyleBackColor = true;
+            btn_Add4.Click += btn_Add4_Click;
             // 
             // btn_Save7
             // 
-            btn_Save7.Location = new Point(1043, 445);
+            btn_Save7.Location = new Point(14, 392);
             btn_Save7.Name = "btn_Save7";
             btn_Save7.Size = new Size(75, 23);
             btn_Save7.TabIndex = 30;
             btn_Save7.Text = "Save";
             btn_Save7.UseVisualStyleBackColor = true;
-            // 
-            // btn_Add1
-            // 
-            btn_Add1.Location = new Point(1046, 6);
-            btn_Add1.Name = "btn_Add1";
-            btn_Add1.Size = new Size(75, 23);
-            btn_Add1.TabIndex = 27;
-            btn_Add1.Text = "Add";
-            btn_Add1.UseVisualStyleBackColor = true;
-            // 
-            // btn_Save4
-            // 
-            btn_Save4.Location = new Point(1046, 35);
-            btn_Save4.Name = "btn_Save4";
-            btn_Save4.Size = new Size(75, 23);
-            btn_Save4.TabIndex = 28;
-            btn_Save4.Text = "Save";
-            btn_Save4.UseVisualStyleBackColor = true;
-            btn_Save4.Click += btn_Save4_Click;
+            btn_Save7.Click += btn_Save7_Click;
             // 
             // lblRecord
             // 
             lblRecord.AutoSize = true;
-            lblRecord.Location = new Point(6, 398);
+            lblRecord.Location = new Point(12, 80);
             lblRecord.Name = "lblRecord";
             lblRecord.Size = new Size(93, 15);
             lblRecord.TabIndex = 7;
@@ -862,7 +811,6 @@
             Supplier.Controls.Add(btn_Add);
             Supplier.Controls.Add(btn_Save);
             Supplier.Controls.Add(button15);
-            Supplier.Controls.Add(button14);
             Supplier.Controls.Add(dataGridView8);
             Supplier.Controls.Add(label15);
             Supplier.Location = new Point(4, 24);
@@ -890,6 +838,7 @@
             btn_Save.TabIndex = 28;
             btn_Save.Text = "Save";
             btn_Save.UseVisualStyleBackColor = true;
+            btn_Save.Click += btn_Save_Click;
             // 
             // button15
             // 
@@ -899,15 +848,6 @@
             button15.TabIndex = 3;
             button15.Text = "Save";
             button15.UseVisualStyleBackColor = true;
-            // 
-            // button14
-            // 
-            button14.Location = new Point(27, 102);
-            button14.Name = "button14";
-            button14.Size = new Size(114, 25);
-            button14.TabIndex = 2;
-            button14.Text = "New Supplier";
-            button14.UseVisualStyleBackColor = true;
             // 
             // dataGridView8
             // 
@@ -1032,11 +972,6 @@
             Name = "LogisticForm";
             Text = "LogisticForm";
             Load += LogisticForm_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            gbOperation.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
-            groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView4).EndInit();
             btn_Add6.ResumeLayout(false);
             Inventory.ResumeLayout(false);
@@ -1059,15 +994,6 @@
         }
 
         #endregion
-        private DataGridView dataGridView1;
-        private GroupBox gbOperation;
-        private Button button2;
-        private Button button1;
-        private DataGridView dataGridView2;
-        private GroupBox groupBox1;
-        private Button button3;
-        private Button button4;
-        private DataGridView dataGridView3;
         private DataGridView dataGridView4;
         private TabControl btn_Add6;
         private TabPage Inventory;
@@ -1101,7 +1027,6 @@
         private Label label14;
         private Button button13;
         private Button button15;
-        private Button button14;
         private DataGridView dataGridView8;
         private Label label15;
         private ComboBox comboBox3;
@@ -1135,17 +1060,23 @@
         private Button btn_Save;
         private Button btn_Add8;
         private Button btn_Save1;
-        private Button btn_Add2;
-        private Button btn_Save5;
-        private Button btn_Add3;
-        private Button btn_Save6;
         private Button btn_Add4;
         private Button btn_Save7;
-        private Button btn_Add1;
-        private Button btn_Save4;
         private Button btn_Add5;
         private Button btn_Save3;
         private Button btn_Add7;
         private Button btn_Save2;
+        private ComboBox comboBox7;
+        private TextBox textBox2;
+        private Label label28;
+        private Label label27;
+        private Label label26;
+        private Label label25;
+        private Label label24;
+        private ComboBox comboBox8;
+        private TextBox textBox6;
+        private TextBox textBox7;
+        private TextBox textBox8;
+        private Label label29;
     }
 }

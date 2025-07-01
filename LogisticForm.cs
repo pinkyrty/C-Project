@@ -16,9 +16,6 @@ namespace C_Project
         public string DepartmentName { get; set; }
         public string Username { get; set; }
         private string connStr;
-        private static DataTable logisticInventoryDataTable;
-        private static DataTable logisticInventoryInDataTable;
-        private static DataTable logisticInventoryOutDataTable;
         private static DataTable logisticInventoryRecordDataTable;
         private static DataTable logisticProcurementDataTable;
         private static DataTable logisticTransferDataTable;
@@ -34,9 +31,7 @@ namespace C_Project
             }
             string dbPath = Path.Combine(projectRoot, "ToySystem.accdb");
             connStr = $@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={dbPath};";
-            this.LoadLogisticInventoryTable();
-            this.LoadLogisticInventoryInTable();
-            this.LoadLogisticInventoryOutTable();
+
             this.LoadLogisticInventoryRecordTable();
             this.LoadLogisticProcurementTable();
             this.LoadLogisticTransferTable();
@@ -49,102 +44,6 @@ namespace C_Project
             base.OnLoad(e);
             label30.Text = Username;
             label31.Text = DepartmentName;
-        }
-        //First Tab
-        private void LoadLogisticInventoryTable()
-        {
-            try
-            {
-                using (OleDbConnection conn = new OleDbConnection(connStr))
-                {
-
-                    conn.Open();
-
-                    string sql = "SELECT * FROM SCM_Material";
-                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
-                    {
-                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
-                        {
-                            logisticInventoryDataTable = new DataTable();
-                            adapter.Fill(logisticInventoryDataTable);
-                            dataGridView1.DataSource = logisticInventoryDataTable;
-                            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                            dataGridView1.Columns["MaterialID"].ReadOnly = true;
-                        }
-                    }
-
-                    conn.Close();
-
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error connecting to database!\n" + ex.Message);
-            }
-        }
-        //in ware
-        private void LoadLogisticInventoryInTable()
-        {
-            try
-            {
-                using (OleDbConnection conn = new OleDbConnection(connStr))
-                {
-
-                    conn.Open();
-
-                    string sql = "SELECT * FROM SCM_Material";
-                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
-                    {
-                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
-                        {
-                            logisticInventoryInDataTable = new DataTable();
-                            adapter.Fill(logisticInventoryInDataTable);
-                            dataGridView2.DataSource = logisticInventoryInDataTable;
-                            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                            dataGridView2.Columns["MaterialID"].ReadOnly = true;
-                        }
-                    }
-
-                    conn.Close();
-
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error connecting to database!\n" + ex.Message);
-            }
-        }
-        //Out ware
-        private void LoadLogisticInventoryOutTable()
-        {
-            try
-            {
-                using (OleDbConnection conn = new OleDbConnection(connStr))
-                {
-
-                    conn.Open();
-
-                    string sql = "SELECT * FROM SCM_Material";
-                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
-                    {
-                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
-                        {
-                            logisticInventoryOutDataTable = new DataTable();
-                            adapter.Fill(logisticInventoryOutDataTable);
-                            dataGridView3.DataSource = logisticInventoryOutDataTable;
-                            dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                            dataGridView3.Columns["MaterialID"].ReadOnly = true;
-                        }
-                    }
-
-                    conn.Close();
-
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error connecting to database!\n" + ex.Message);
-            }
         }
         //Record
         private void LoadLogisticInventoryRecordTable()
@@ -195,9 +94,9 @@ namespace C_Project
                         {
                             logisticProcurementDataTable = new DataTable();
                             adapter.Fill(logisticProcurementDataTable);
-                            dataGridView4.DataSource = logisticProcurementDataTable;
-                            dataGridView4.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                            dataGridView4.Columns["PODetailID"].ReadOnly = true;
+                            dataGridView5.DataSource = logisticProcurementDataTable;
+                            dataGridView5.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                            dataGridView5.Columns["PODetailID"].ReadOnly = true;
                         }
                     }
 
@@ -358,12 +257,12 @@ namespace C_Project
         {
 
         }
-        private void btn_Save4_Click(object sender, EventArgs e)
+        private void btn_Save7_Click(object sender, EventArgs e)
         {
-            //LoadLogisticInventoryTable();
+            //RecordTable();
             try
             {
-                DataTable dt = (DataTable)dataGridView1.DataSource;
+                DataTable dt = (DataTable)dataGridView4.DataSource;
                 if (dt == null || dt.Rows.Count == 0)
                 {
                     MessageBox.Show("No data to save.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -377,28 +276,30 @@ namespace C_Project
                     {
                         if (row.RowState == DataRowState.Added)
                         {
-                            string query = "INSERT INTO SCM_Material (Name, Spec, Type, Unit, Warehouse) VALUES (?, ?, ?, ?, ?)";
+                            string query = "INSERT INTO SCM_StockTrans (Time, Optype, MaterialID, Qty, Warehouse, Remark) VALUES (?, ?, ?, ?, ?, ?)";
                             using (OleDbCommand cmd = new OleDbCommand(query, conn))
                             {
-                                cmd.Parameters.AddWithValue("?", row["Name"] != DBNull.Value ? row["Name"] : "");
-                                cmd.Parameters.AddWithValue("?", row["Spec"] != DBNull.Value ? row["Spec"] : "");
-                                cmd.Parameters.AddWithValue("?", row["Type"] != DBNull.Value ? row["Type"] : "");
-                                cmd.Parameters.AddWithValue("?", row["Unit"] != DBNull.Value ? row["Unit"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Time"] != DBNull.Value ? row["Time"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Optype"] != DBNull.Value ? row["Optype"] : "");
+                                cmd.Parameters.AddWithValue("?", row["MaterialID"] != DBNull.Value ? row["MaterialID"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Qty"] != DBNull.Value ? row["Qty"] : "");
                                 cmd.Parameters.AddWithValue("?", row["Warehouse"] != DBNull.Value ? row["Warehouse"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Remark"] != DBNull.Value ? row["Remark"] : "");
                                 cmd.ExecuteNonQuery();
                             }
                         }
                         else if (row.RowState == DataRowState.Modified)
                         {
-                            string query = "UPDATE SCM_Material SET Name = ?, Spec = ?, Type = ?, Unit = ?, Warehouse = ? WHERE ID = ?";
+                            string query = "UPDATE SCM_StockTrans SET Time = ?, Optype = ?, MaterialID = ?, Qty = ?, Warehouse = ?, Remark = ? WHERE ID = ?";
                             using (OleDbCommand cmd = new OleDbCommand(query, conn))
                             {
-                                cmd.Parameters.AddWithValue("?", row["Name"] != DBNull.Value ? row["Name"] : "");
-                                cmd.Parameters.AddWithValue("?", row["Spec"] != DBNull.Value ? row["Spec"] : "");
-                                cmd.Parameters.AddWithValue("?", row["Type"] != DBNull.Value ? row["Type"] : "");
-                                cmd.Parameters.AddWithValue("?", row["Unit"] != DBNull.Value ? row["Unit"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Time"] != DBNull.Value ? row["Time"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Optype"] != DBNull.Value ? row["Optype"] : "");
+                                cmd.Parameters.AddWithValue("?", row["MaterialID"] != DBNull.Value ? row["MaterialID"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Qty"] != DBNull.Value ? row["Qty"] : "");
                                 cmd.Parameters.AddWithValue("?", row["Warehouse"] != DBNull.Value ? row["Warehouse"] : "");
-                                cmd.Parameters.AddWithValue("?", row["MaterialID"]);
+                                cmd.Parameters.AddWithValue("?", row["Remark"] != DBNull.Value ? row["Remark"] : "");
+                                cmd.Parameters.AddWithValue("?", row["TransID"]);
 
                                 cmd.ExecuteNonQuery();
                             }
@@ -408,7 +309,7 @@ namespace C_Project
                 }
 
                 MessageBox.Show("Data saved to database successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                dataGridView1.Refresh();
+                dataGridView4.Refresh();
             }
             catch (Exception ex)
             {
@@ -418,16 +319,91 @@ namespace C_Project
 
         private void btn_Add1_Click(object sender, EventArgs e)
         {
-            DataRow newRow = logisticInventoryDataTable.NewRow();
+            DataRow newRow = logisticInventoryRecordDataTable.NewRow();
 
-            newRow["Name"] = "";
-            newRow["Spec"] = "";
-            newRow["Type"] = "";
-            newRow["Unit"] = "";
+            newRow["Time"] = "";
+            newRow["Optype"] = "";
+            newRow["MaterialID"] = "";
+            newRow["Qty"] = "";
             newRow["Warehouse"] = "";
+            newRow["Remark"] = "";
 
-            logisticInventoryDataTable.Rows.Add(newRow);
+            logisticInventoryRecordDataTable.Rows.Add(newRow);
         }
+        //suppliertable
+        private void btn_Save_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                DataTable dt = (DataTable)dataGridView8.DataSource;
+                if (dt == null || dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("No data to save.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+                    conn.Open();
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        if (row.RowState == DataRowState.Added)
+                        {
+                            string query = "INSERT INTO SCM_Supplier (Name, Contact, Phone, Email, Rating) VALUES (?, ?, ?, ?, ?)";
+                            using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                            {
+                                cmd.Parameters.AddWithValue("?", row["Name"] != DBNull.Value ? row["Name"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Contact"] != DBNull.Value ? row["Contact"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Phone"] != DBNull.Value ? row["Phone"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Email"] != DBNull.Value ? row["Email"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Rating"] != DBNull.Value ? row["Rating"] : "");
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                        else if (row.RowState == DataRowState.Modified)
+                        {
+                            string query = "UPDATE SCM_Supplier SET Name = ?, Contact = ?, Phone = ?, Email = ?, Rating = ? WHERE ID = ?";
+                            using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                            {
+                                cmd.Parameters.AddWithValue("?", row["Name"] != DBNull.Value ? row["Name"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Contact"] != DBNull.Value ? row["Contact"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Phone"] != DBNull.Value ? row["Phone"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Email"] != DBNull.Value ? row["Email"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Rating"] != DBNull.Value ? row["Rating"] : "");
+                                cmd.Parameters.AddWithValue("?", row["TransID"]);
+
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                    dt.AcceptChanges();
+                }
+
+                MessageBox.Show("Data saved to database successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dataGridView4.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btn_Add_Click(object sender, EventArgs e)
+        {
+            DataRow newRow = logisticInventoryRecordDataTable.NewRow();
+
+            newRow["Time"] = "";
+            newRow["Optype"] = "";
+            newRow["MaterialID"] = "";
+            newRow["Qty"] = "";
+            newRow["Warehouse"] = "";
+            newRow["Remark"] = "";
+
+            logisticInventoryRecordDataTable.Rows.Add(newRow);
+        }
+
+
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
@@ -449,6 +425,11 @@ namespace C_Project
             changePasswordForm.Username = Username;
             changePasswordForm.DepartmentName = DepartmentName;
             changePasswordForm.ShowDialog();
+
+        }
+
+        private void btn_Add4_Click(object sender, EventArgs e)
+        {
 
         }
     }

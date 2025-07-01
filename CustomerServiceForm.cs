@@ -87,9 +87,19 @@ namespace C_Project
                     {
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
+                            dataGridView2.AllowUserToResizeColumns = false;
+                            dataGridView2.AllowUserToAddRows = true;
+                            dataGridView2.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
+
                             returnDataTable = new DataTable();
                             adapter.Fill(returnDataTable);
                             dataGridView2.DataSource = returnDataTable;
+                            dataGridView2.Columns[1].HeaderText = "ApplyDate";
+                            dataGridView2.Columns[2].HeaderText = "CustomerName";
+                            dataGridView2.Columns[3].HeaderText = "Product";
+                            dataGridView2.Columns[4].HeaderText = "Reason";
+                            dataGridView2.Columns[5].HeaderText = "Status";
+                            dataGridView2.Columns[6].HeaderText = "Remark";
                             dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                             dataGridView2.Columns["ID"].ReadOnly = true;
                         }
@@ -105,7 +115,80 @@ namespace C_Project
             }
         }
 
+        private void btn_Save_Click(object sender, EventArgs e)
+        {
+            //InsertBudgetTable();
+            try
+            {
+                DataTable dt = (DataTable)dataGridView2.DataSource;
+                if (dt == null || dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("No data to save.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+                    conn.Open();
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        if (row.RowState == DataRowState.Added)
+                        {
+                            string query = "INSERT INTO CSD_RefundCase (ApplyDate, CustomerName, Product, Reason, Status, Remark) VALUES (?, ?, ?, ?, ?, ?)";
+                            using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                            {
+                                cmd.Parameters.AddWithValue("?", row["ApplyDate"] != DBNull.Value ? row["ApplyDate"] : "");
+                                cmd.Parameters.AddWithValue("?", row["CustomerName"] != DBNull.Value ? row["CustomerName"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Product"] != DBNull.Value ? row["Product"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Reason"] != DBNull.Value ? row["Reason"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Status"] != DBNull.Value ? row["Status"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Remark"] != DBNull.Value ? row["Remark"] : "");
+
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                        else if (row.RowState == DataRowState.Modified)
+                        {
+                            string query = "UPDATE CSD_RefundCase SET ApplyDate = ?, CustomerName = ?, Product = ?, Reason = ?, Status = ?, Remark = ? WHERE ID = ?";
+                            using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                            {
+                                cmd.Parameters.AddWithValue("?", row["ApplyDate"] != DBNull.Value ? row["ApplyDate  "] : "");
+                                cmd.Parameters.AddWithValue("?", row["CustomerName"] != DBNull.Value ? row["CustomerName"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Product"] != DBNull.Value ? row["Product"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Reason"] != DBNull.Value ? row["Reason"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Status"] != DBNull.Value ? row["Status"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Remark"] != DBNull.Value ? row["Remark"] : "");
+                                cmd.Parameters.AddWithValue("?", row["ID"]);
+
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                    dt.AcceptChanges();
+                }
+
+                MessageBox.Show("Data saved to database successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dataGridView2.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btn_Add_Click(object sender, EventArgs e)
+        {
+            DataRow newRow = returnDataTable.NewRow();
+
+            newRow["ApplyDate"] = "";
+            newRow["CustomerName"] = "";
+            newRow["Product"] = "";
+            newRow["Reason"] = "";
+            newRow["Status"] = "";
+            newRow["Remark"] = "";
+
+            returnDataTable.Rows.Add(newRow);
+        }
 
         private void label11_Click(object sender, EventArgs e)
         {

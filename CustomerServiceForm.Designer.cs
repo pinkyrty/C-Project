@@ -58,7 +58,6 @@
             label4 = new Label();
             label3 = new Label();
             ReturnAndExchangeAreaTabPage = new TabPage();
-            RaEaSaveButton = new Button();
             dataGridView2 = new DataGridView();
             label14 = new Label();
             label2 = new Label();
@@ -71,6 +70,8 @@
             label31 = new Label();
             label30 = new Label();
             btnLogout = new Button();
+            btn_Add = new Button();
+            btn_Save = new Button();
             tabMain.SuspendLayout();
             InteractionRecordsTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
@@ -361,7 +362,8 @@
             // 
             // ReturnAndExchangeAreaTabPage
             // 
-            ReturnAndExchangeAreaTabPage.Controls.Add(RaEaSaveButton);
+            ReturnAndExchangeAreaTabPage.Controls.Add(btn_Add);
+            ReturnAndExchangeAreaTabPage.Controls.Add(btn_Save);
             ReturnAndExchangeAreaTabPage.Controls.Add(dataGridView2);
             ReturnAndExchangeAreaTabPage.Controls.Add(label14);
             ReturnAndExchangeAreaTabPage.Location = new Point(4, 24);
@@ -372,20 +374,11 @@
             ReturnAndExchangeAreaTabPage.Text = "Return and Exchange Area";
             ReturnAndExchangeAreaTabPage.UseVisualStyleBackColor = true;
             // 
-            // RaEaSaveButton
-            // 
-            RaEaSaveButton.Location = new Point(3, 671);
-            RaEaSaveButton.Name = "RaEaSaveButton";
-            RaEaSaveButton.Size = new Size(75, 23);
-            RaEaSaveButton.TabIndex = 2;
-            RaEaSaveButton.Text = "Save";
-            RaEaSaveButton.UseVisualStyleBackColor = true;
-            // 
             // dataGridView2
             // 
             dataGridView2.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(13, 21);
+            dataGridView2.Location = new Point(3, 21);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.Size = new Size(1121, 644);
             dataGridView2.TabIndex = 1;
@@ -494,6 +487,26 @@
             btnLogout.UseVisualStyleBackColor = true;
             btnLogout.Click += btnLogout_Click;
             // 
+            // btn_Add
+            // 
+            btn_Add.Location = new Point(6, 668);
+            btn_Add.Name = "btn_Add";
+            btn_Add.Size = new Size(75, 23);
+            btn_Add.TabIndex = 27;
+            btn_Add.Text = "Add";
+            btn_Add.UseVisualStyleBackColor = true;
+            btn_Add.Click += btn_Add_Click;
+            // 
+            // btn_Save
+            // 
+            btn_Save.Location = new Point(87, 668);
+            btn_Save.Name = "btn_Save";
+            btn_Save.Size = new Size(75, 23);
+            btn_Save.TabIndex = 28;
+            btn_Save.Text = "Save";
+            btn_Save.UseVisualStyleBackColor = true;
+            btn_Save.Click += btn_Save_Click;
+            // 
             // CustomerServiceForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -570,11 +583,12 @@
         private TextBox textBox5;
         private TextBox textBox4;
         private ComboBox comboBox3;
-        private Button RaEaSaveButton;
         private DataGridView dataGridView2;
         private Label label14;
         private Label label31;
         private Label label30;
         private Button btnLogout;
+        private Button btn_Add;
+        private Button btn_Save;
     }
 }

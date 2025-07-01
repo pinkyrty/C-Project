@@ -50,10 +50,12 @@
             label3 = new Label();
             label1 = new Label();
             BillofMaterialsTabPage = new TabPage();
-            AddMaterialButton = new Button();
+            btn_Add = new Button();
+            btn_Save = new Button();
             dgvMaterials = new DataGridView();
             ManufacturingInstructionsTabPage = new TabPage();
-            AddNewStepButton = new Button();
+            btn_Add1 = new Button();
+            btn_Save2 = new Button();
             dgvManufacturing = new DataGridView();
             PackagingInformationTabPage = new TabPage();
             txtPackLabel = new TextBox();
@@ -306,7 +308,8 @@
             // 
             // BillofMaterialsTabPage
             // 
-            BillofMaterialsTabPage.Controls.Add(AddMaterialButton);
+            BillofMaterialsTabPage.Controls.Add(btn_Add);
+            BillofMaterialsTabPage.Controls.Add(btn_Save);
             BillofMaterialsTabPage.Controls.Add(dgvMaterials);
             BillofMaterialsTabPage.Location = new Point(4, 24);
             BillofMaterialsTabPage.Name = "BillofMaterialsTabPage";
@@ -315,15 +318,27 @@
             BillofMaterialsTabPage.TabIndex = 1;
             BillofMaterialsTabPage.Text = "Bill of Materials";
             BillofMaterialsTabPage.UseVisualStyleBackColor = true;
+            BillofMaterialsTabPage.Click += BillofMaterialsTabPage_Click;
             // 
-            // AddMaterialButton
+            // btn_Add
             // 
-            AddMaterialButton.Location = new Point(3, 56);
-            AddMaterialButton.Name = "AddMaterialButton";
-            AddMaterialButton.Size = new Size(126, 30);
-            AddMaterialButton.TabIndex = 52;
-            AddMaterialButton.Text = "＋Add Material";
-            AddMaterialButton.UseVisualStyleBackColor = true;
+            btn_Add.Location = new Point(3, 537);
+            btn_Add.Name = "btn_Add";
+            btn_Add.Size = new Size(75, 23);
+            btn_Add.TabIndex = 53;
+            btn_Add.Text = "Add";
+            btn_Add.UseVisualStyleBackColor = true;
+            btn_Add.Click += btn_Add_Click;
+            // 
+            // btn_Save
+            // 
+            btn_Save.Location = new Point(87, 537);
+            btn_Save.Name = "btn_Save";
+            btn_Save.Size = new Size(75, 23);
+            btn_Save.TabIndex = 54;
+            btn_Save.Text = "Save";
+            btn_Save.UseVisualStyleBackColor = true;
+            btn_Save.Click += btn_Save_Click;
             // 
             // dgvMaterials
             // 
@@ -331,13 +346,14 @@
             dgvMaterials.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvMaterials.Location = new Point(0, 0);
             dgvMaterials.Name = "dgvMaterials";
-            dgvMaterials.Size = new Size(790, 566);
+            dgvMaterials.Size = new Size(788, 531);
             dgvMaterials.TabIndex = 0;
             dgvMaterials.CellContentClick += dgvMaterials_CellContentClick;
             // 
             // ManufacturingInstructionsTabPage
             // 
-            ManufacturingInstructionsTabPage.Controls.Add(AddNewStepButton);
+            ManufacturingInstructionsTabPage.Controls.Add(btn_Add1);
+            ManufacturingInstructionsTabPage.Controls.Add(btn_Save2);
             ManufacturingInstructionsTabPage.Controls.Add(dgvManufacturing);
             ManufacturingInstructionsTabPage.Location = new Point(4, 24);
             ManufacturingInstructionsTabPage.Name = "ManufacturingInstructionsTabPage";
@@ -347,14 +363,25 @@
             ManufacturingInstructionsTabPage.Text = "Manufacturing Instructions";
             ManufacturingInstructionsTabPage.UseVisualStyleBackColor = true;
             // 
-            // AddNewStepButton
+            // btn_Add1
             // 
-            AddNewStepButton.Location = new Point(3, 69);
-            AddNewStepButton.Name = "AddNewStepButton";
-            AddNewStepButton.Size = new Size(115, 30);
-            AddNewStepButton.TabIndex = 52;
-            AddNewStepButton.Text = "＋Add new step";
-            AddNewStepButton.UseVisualStyleBackColor = true;
+            btn_Add1.Location = new Point(5, 536);
+            btn_Add1.Name = "btn_Add1";
+            btn_Add1.Size = new Size(75, 23);
+            btn_Add1.TabIndex = 55;
+            btn_Add1.Text = "Add";
+            btn_Add1.UseVisualStyleBackColor = true;
+            btn_Add1.Click += btn_Add1_Click;
+            // 
+            // btn_Save2
+            // 
+            btn_Save2.Location = new Point(89, 536);
+            btn_Save2.Name = "btn_Save2";
+            btn_Save2.Size = new Size(75, 23);
+            btn_Save2.TabIndex = 56;
+            btn_Save2.Text = "Save";
+            btn_Save2.UseVisualStyleBackColor = true;
+            btn_Save2.Click += btn_Save2_Click;
             // 
             // dgvManufacturing
             // 
@@ -362,7 +389,7 @@
             dgvManufacturing.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvManufacturing.Location = new Point(0, 0);
             dgvManufacturing.Name = "dgvManufacturing";
-            dgvManufacturing.Size = new Size(790, 566);
+            dgvManufacturing.Size = new Size(790, 530);
             dgvManufacturing.TabIndex = 0;
             dgvManufacturing.CellContentClick += dgvManufacturing_CellContentClick;
             // 
@@ -751,9 +778,7 @@
         private Label RaDStatuslabel;
         private Label Requirementlabel;
         private DataGridView dgvMaterials;
-        private Button AddMaterialButton;
         private DataGridView dgvManufacturing;
-        private Button AddNewStepButton;
         private TextBox txtPackLabel;
         private TextBox txtPackMaterial;
         private TextBox txtPackDimensions;
@@ -784,5 +809,9 @@
         private Label label31;
         private Label label30;
         private Button btnLogout;
+        private Button btn_Add;
+        private Button btn_Save;
+        private Button btn_Add1;
+        private Button btn_Save2;
     }
 }

@@ -91,16 +91,26 @@ namespace C_Project
 
                     conn.Open();
 
-                    string sql = "SELECT Type, Name, Desc, Qty FROM RND_MaterialList";
+                    string sql = "SELECT * FROM RND_MaterialList";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
+                            dgvMaterials.AllowUserToResizeColumns = false;
+                            dgvMaterials.AllowUserToAddRows = true;
+                            dgvMaterials.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
+
                             materialListDataTable = new System.Data.DataTable();
                             adapter.Fill(materialListDataTable);
+                            dgvMaterials.Columns[1].HeaderText = "ProductID";
+                            dgvMaterials.Columns[2].HeaderText = "Type";
+                            dgvMaterials.Columns[3].HeaderText = "Name";
+                            dgvMaterials.Columns[4].HeaderText = "Desc";
+                            dgvMaterials.Columns[5].HeaderText = "Qty";
                             dgvMaterials.DataSource = materialListDataTable;
                             dgvMaterials.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                             dgvMaterials.AllowUserToResizeColumns = false;
+                            dgvMaterials.Columns["MaterialID"].ReadOnly = true;
                         }
                     }
 
@@ -129,8 +139,17 @@ namespace C_Project
                     {
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
+                            dgvManufacturing.AllowUserToResizeColumns = false;
+                            dgvManufacturing.AllowUserToAddRows = true;
+                            dgvManufacturing.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
+
                             processDataTable = new System.Data.DataTable();
                             adapter.Fill(processDataTable);
+                            dgvManufacturing.Columns[1].HeaderText = "ProductID";
+                            dgvManufacturing.Columns[2].HeaderText = "Content";
+                            dgvManufacturing.Columns[3].HeaderText = "Equip";
+                            dgvManufacturing.Columns[4].HeaderText = "Time";
+                            dgvManufacturing.Columns[5].HeaderText = "Staff";
                             dgvManufacturing.DataSource = processDataTable;
                             dgvManufacturing.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                             dgvManufacturing.AllowUserToResizeColumns = false;
@@ -213,7 +232,148 @@ namespace C_Project
             }
         }
 
+        private void btn_Save_Click(object sender, EventArgs e)
+        {
+            //LoadMaterialListTable();
+            try
+            {
+                DataTable dt = (DataTable)dgvMaterials.DataSource;
+                if (dt == null || dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("No data to save.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+                    conn.Open();
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        if (row.RowState == DataRowState.Added)
+                        {
+                            string query = "INSERT INTO RND_MaterialList (ProductID, Type, Name, Desc, Qty) VALUES (?, ?, ?, ?, ?)";
+                            using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                            {
+                                cmd.Parameters.AddWithValue("?", row["ProductID"] != DBNull.Value ? row["ProductID"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Type"] != DBNull.Value ? row["Type"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Name"] != DBNull.Value ? row["Name"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Desc"] != DBNull.Value ? row["Desc"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Qty"] != DBNull.Value ? row["Qty"] : 0);
+
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                        else if (row.RowState == DataRowState.Modified)
+                        {
+                            string query = "UPDATE RND_MaterialList SET ProductID = ?, Type = ?, Name = ?, Desc = ?, Qty = ?, WHERE MaterialID = ?";
+                            using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                            {
+                                cmd.Parameters.AddWithValue("?", row["ProductID"] != DBNull.Value ? row["ProductID"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Type"] != DBNull.Value ? row["Type"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Name"] != DBNull.Value ? row["Name"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Desc"] != DBNull.Value ? row["Desc"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Qty"] != DBNull.Value ? row["Qty"] : 0); ;
+                                cmd.Parameters.AddWithValue("?", row["MaterialID"]);
+
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                    dt.AcceptChanges();
+                }
+
+                MessageBox.Show("Data saved to database successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dgvMaterials.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btn_Add_Click(object sender, EventArgs e)
+        {
+            DataRow newRow = materialListDataTable.NewRow();
+
+            newRow["ProductID"] = "";
+            newRow["Type"] = "";
+            newRow["Name"] = "";
+            newRow["Desc"] = "";
+            newRow["Qty"] = 0;
+
+            materialListDataTable.Rows.Add(newRow);
+        }
+
+        private void btn_Add1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable dt = (DataTable)dgvManufacturing.DataSource;
+                if (dt == null || dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("No data to save.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+                    conn.Open();
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        if (row.RowState == DataRowState.Added)
+                        {
+                            string query = "INSERT INTO RND_MaterialList (ProductID, Content, Equip, Time, Staff) VALUES (?, ?, ?, ?, ?)";
+                            using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                            {
+                                cmd.Parameters.AddWithValue("?", row["ProductID"] != DBNull.Value ? row["ProductID"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Content"] != DBNull.Value ? row["Content"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Equip"] != DBNull.Value ? row["Equip"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Time"] != DBNull.Value ? row["Time"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Staff"] != DBNull.Value ? row["Staff"] : 0);
+
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                        else if (row.RowState == DataRowState.Modified)
+                        {
+                            string query = "UPDATE CSD_RefundCase SET ProductID = ?, Content = ?, Equip = ?, Time = ?, Staff = ?, WHERE MaterialID = ?";
+                            using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                            {
+                                cmd.Parameters.AddWithValue("?", row["ProductID"] != DBNull.Value ? row["ProductID"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Content"] != DBNull.Value ? row["Content"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Equip"] != DBNull.Value ? row["Equip"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Time"] != DBNull.Value ? row["Time"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Staff"] != DBNull.Value ? row["Staff"] : 0); ;
+                                cmd.Parameters.AddWithValue("?", row["MaterialID"]);
+
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                    dt.AcceptChanges();
+                }
+
+                MessageBox.Show("Data saved to database successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dgvMaterials.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btn_Save2_Click(object sender, EventArgs e)
+        {
+            DataRow newRow = processDataTable.NewRow();
+
+            newRow["ProductID"] = "";
+            newRow["Type"] = "";
+            newRow["Name"] = "";
+            newRow["Desc"] = "";
+            newRow["Qty"] = 0;
+
+            processDataTable.Rows.Add(newRow);
+        }
         // Product data structure
         public class Product
         {
@@ -368,5 +528,11 @@ namespace C_Project
             changePasswordForm.DepartmentName = DepartmentName;
             changePasswordForm.ShowDialog();
         }
+
+        private void BillofMaterialsTabPage_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

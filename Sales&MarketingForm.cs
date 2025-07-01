@@ -400,8 +400,8 @@ namespace C_Project
 
         private void btnUserProfile_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("btnUserProfile_click");
-            ChangePassword changePasswordForm = new ChangePassword(this);
+            MessageBox.Show("btnUserProfile_click_SM");
+            ChangePassword changePasswordForm = new ChangePassword(this, connStr);
             changePasswordForm.Username = Username;
             changePasswordForm.DepartmentName = DepartmentName;
             changePasswordForm.ShowDialog();

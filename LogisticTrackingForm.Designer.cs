@@ -52,6 +52,8 @@
             label31 = new Label();
             label30 = new Label();
             btnLogout = new Button();
+            btn_Add = new Button();
+            btn_Save = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -168,7 +170,7 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(14, 548);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(1127, 164);
+            dataGridView1.Size = new Size(1031, 164);
             dataGridView1.TabIndex = 15;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -266,12 +268,32 @@
             btnLogout.UseVisualStyleBackColor = true;
             btnLogout.Click += btnLogout_Click;
             // 
+            // btn_Add
+            // 
+            btn_Add.Location = new Point(1051, 548);
+            btn_Add.Name = "btn_Add";
+            btn_Add.Size = new Size(75, 23);
+            btn_Add.TabIndex = 27;
+            btn_Add.Text = "Add";
+            btn_Add.UseVisualStyleBackColor = true;
+            // 
+            // btn_Save
+            // 
+            btn_Save.Location = new Point(1051, 577);
+            btn_Save.Name = "btn_Save";
+            btn_Save.Size = new Size(75, 23);
+            btn_Save.TabIndex = 28;
+            btn_Save.Text = "Save";
+            btn_Save.UseVisualStyleBackColor = true;
+            // 
             // LogisticTrackingForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightBlue;
             ClientSize = new Size(1153, 858);
+            Controls.Add(btn_Add);
+            Controls.Add(btn_Save);
             Controls.Add(btnLogout);
             Controls.Add(label31);
             Controls.Add(label30);
@@ -329,5 +351,7 @@
         private Label label31;
         private Label label30;
         private Button btnLogout;
+        private Button btn_Add;
+        private Button btn_Save;
     }
 }

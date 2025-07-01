@@ -30,12 +30,12 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FinanceDepartment));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             btnUserProfile = new Button();
             label19 = new Label();
             label18 = new Label();
@@ -49,6 +49,8 @@
             label2 = new Label();
             label1 = new Label();
             tabPage2 = new TabPage();
+            btn_Income_Add = new Button();
+            btn_Income_Save = new Button();
             chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             label4 = new Label();
             dataGridView2 = new DataGridView();
@@ -220,16 +222,16 @@
             // 
             // chart3
             // 
-            chartArea3.Name = "ChartArea1";
-            chart3.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            chart3.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            chart3.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            chart3.Legends.Add(legend1);
             chart3.Location = new Point(347, 361);
             chart3.Name = "chart3";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            chart3.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            chart3.Series.Add(series1);
             chart3.Size = new Size(300, 300);
             chart3.TabIndex = 24;
             chart3.Text = "chart3";
@@ -256,6 +258,8 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(btn_Income_Add);
+            tabPage2.Controls.Add(btn_Income_Save);
             tabPage2.Controls.Add(chart1);
             tabPage2.Controls.Add(label4);
             tabPage2.Controls.Add(dataGridView2);
@@ -268,18 +272,38 @@
             tabPage2.Text = "Income and Expenditure and Cash Flow";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // btn_Income_Add
+            // 
+            btn_Income_Add.Location = new Point(1040, 29);
+            btn_Income_Add.Name = "btn_Income_Add";
+            btn_Income_Add.Size = new Size(75, 23);
+            btn_Income_Add.TabIndex = 28;
+            btn_Income_Add.Text = "Add";
+            btn_Income_Add.UseVisualStyleBackColor = true;
+            btn_Income_Add.Click += btn_Income_Add_Click;
+            // 
+            // btn_Income_Save
+            // 
+            btn_Income_Save.Location = new Point(1040, 59);
+            btn_Income_Save.Name = "btn_Income_Save";
+            btn_Income_Save.Size = new Size(75, 23);
+            btn_Income_Save.TabIndex = 27;
+            btn_Income_Save.Text = "Save";
+            btn_Income_Save.UseVisualStyleBackColor = true;
+            btn_Income_Save.Click += btn_Income_Save_Click;
+            // 
             // chart1
             // 
-            chartArea4.Name = "ChartArea1";
-            chart1.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            chart1.Legends.Add(legend4);
+            chartArea2.Name = "ChartArea1";
+            chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            chart1.Legends.Add(legend2);
             chart1.Location = new Point(333, 320);
             chart1.Name = "chart1";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            chart1.Series.Add(series4);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            chart1.Series.Add(series2);
             chart1.Size = new Size(300, 300);
             chart1.TabIndex = 3;
             chart1.Text = "chart1";
@@ -300,7 +324,7 @@
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Location = new Point(6, 29);
             dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(1106, 219);
+            dataGridView2.Size = new Size(1031, 219);
             dataGridView2.TabIndex = 1;
             dataGridView2.CellContentClick += dataGridView2_CellContentClick;
             // 
@@ -844,5 +868,7 @@
         private Label label30;
         private Label label31;
         private Button btnLogout;
+        private Button btn_Income_Save;
+        private Button btn_Income_Add;
     }
 }

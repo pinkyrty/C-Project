@@ -420,16 +420,15 @@ namespace C_Project
                     dt.AcceptChanges();
                 }
 
+                LoadCashFlowTable();
+
                 MessageBox.Show("Data saved to database successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                dataGridView1.Refresh();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error saving data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
-
         private void btn_Income_Add_Click(object sender, EventArgs e)
         {
             DataRow newRow = cashFlowDataTable.NewRow();

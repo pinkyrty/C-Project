@@ -27,20 +27,6 @@ namespace C_Project
             label31.Text = DepartmentName;
         }
 
-        private string HashPassword(string password)
-        {
-            using (SHA256 sha256Hash = SHA256.Create())
-            {
-                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(password));
-                StringBuilder builder = new StringBuilder();
-                foreach (byte b in bytes)
-                {
-                    builder.Append(b.ToString("x2"));
-                }
-                return builder.ToString();
-            }
-        }
-
         private bool UpdatePassword(string username, string newPassword)
         {
             try
@@ -55,7 +41,7 @@ namespace C_Project
                         cmd.Parameters.AddWithValue("@Username", username);
 
                         int rowsAffected = cmd.ExecuteNonQuery();
-                        return rowsAffected > 0; // 返回是否更新成功
+                        return rowsAffected > 0;
                     }
                 }
             }
@@ -117,6 +103,13 @@ namespace C_Project
                 return;
             }
 
+            // 新增密碼驗證
+            if (!IsValidPassword(NewPasswordBox.Text))
+            {
+                MessageBox.Show("New password must be at least 8 characters long, start with an uppercase letter, and contain at least one uppercase letter.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             bool success = UpdatePassword(Username, NewPasswordBox.Text);
 
             if (success)
@@ -133,7 +126,11 @@ namespace C_Project
                 MessageBox.Show("Failed to update password. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        // 新增密碼驗證方法
+        private bool IsValidPassword(string password)
+        {
+            return password.Length >= 8 && password.Any(char.IsUpper);
+        }
         private void CancelButton_Click(object sender, EventArgs e)
         {
             this.Hide();

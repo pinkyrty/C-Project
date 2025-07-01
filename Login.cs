@@ -32,9 +32,9 @@ namespace C_Project
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
 
-            if (username == "" || password == "")
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("Please enter your username and password!");
+                MessageBox.Show("Please enter your username and password!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -42,11 +42,22 @@ namespace C_Project
             {
                 using (OleDbConnection conn = new OleDbConnection(connStr))
                 {
-
                     conn.Open();
 
-                    // Change to check Department
-                    string sql = "SELECT * FROM Login_User WHERE Username=@username AND Password=@password";
+                    string checkUserSql = "SELECT COUNT(*) FROM Login_User WHERE Username = @username";
+                    using (OleDbCommand checkUserCmd = new OleDbCommand(checkUserSql, conn))
+                    {
+                        checkUserCmd.Parameters.AddWithValue("@username", username);
+                        int userCount = Convert.ToInt32(checkUserCmd.ExecuteScalar());
+
+                        if (userCount == 0)
+                        {
+                            MessageBox.Show("Account inactive!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+
+                    string sql = "SELECT FullName, Department FROM Login_User WHERE Username = @username AND Password = @password";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
                         cmd.Parameters.AddWithValue("@username", username);
@@ -68,7 +79,7 @@ namespace C_Project
                                     departmentName = cmd2.ExecuteScalar()?.ToString() ?? "";
                                     DepartmentName = departmentName;
                                 }
-                                MessageBox.Show($"Login successful! Department Name: {departmentName}, User: {fullname}");
+                                MessageBox.Show($"Login successful! Department Name: {departmentName}, User: {fullname}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 SetDepartmentForm(department);
                                 this.Hide();
                                 OpenDepartmentForm(this);
@@ -76,18 +87,17 @@ namespace C_Project
                             }
                             else
                             {
-                                MessageBox.Show("Error!Wrong password!");
+                                MessageBox.Show("Invalid password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                     }
 
                     conn.Close();
-
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error connecting to database!\n" + ex.Message);
+                MessageBox.Show($"Error connecting to database!\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -358,6 +358,76 @@ namespace C_Project
         {
 
         }
+        private void btn_Save4_Click(object sender, EventArgs e)
+        {
+            //LoadLogisticInventoryTable();
+            try
+            {
+                DataTable dt = (DataTable)dataGridView1.DataSource;
+                if (dt == null || dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("No data to save.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+                    conn.Open();
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        if (row.RowState == DataRowState.Added)
+                        {
+                            string query = "INSERT INTO SCM_Material (Name, Spec, Type, Unit, Warehouse) VALUES (?, ?, ?, ?, ?)";
+                            using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                            {
+                                cmd.Parameters.AddWithValue("?", row["Name"] != DBNull.Value ? row["Name"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Spec"] != DBNull.Value ? row["Spec"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Type"] != DBNull.Value ? row["Type"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Unit"] != DBNull.Value ? row["Unit"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Warehouse"] != DBNull.Value ? row["Warehouse"] : "");
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                        else if (row.RowState == DataRowState.Modified)
+                        {
+                            string query = "UPDATE SCM_Material SET Name = ?, Spec = ?, Type = ?, Unit = ?, Warehouse = ? WHERE ID = ?";
+                            using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                            {
+                                cmd.Parameters.AddWithValue("?", row["Name"] != DBNull.Value ? row["Name"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Spec"] != DBNull.Value ? row["Spec"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Type"] != DBNull.Value ? row["Type"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Unit"] != DBNull.Value ? row["Unit"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Warehouse"] != DBNull.Value ? row["Warehouse"] : "");
+                                cmd.Parameters.AddWithValue("?", row["MaterialID"]);
+
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                    dt.AcceptChanges();
+                }
+
+                MessageBox.Show("Data saved to database successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dataGridView1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btn_Add1_Click(object sender, EventArgs e)
+        {
+            DataRow newRow = logisticInventoryDataTable.NewRow();
+
+            newRow["Name"] = "";
+            newRow["Spec"] = "";
+            newRow["Type"] = "";
+            newRow["Unit"] = "";
+            newRow["Warehouse"] = "";
+
+            logisticInventoryDataTable.Rows.Add(newRow);
+        }
 
         private void btnLogout_Click(object sender, EventArgs e)
         {

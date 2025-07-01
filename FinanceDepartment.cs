@@ -103,6 +103,9 @@ namespace C_Project
             {
                 using (OleDbConnection conn = new OleDbConnection(connStr))
                 {
+                    dataGridView1.AllowUserToResizeColumns = false;
+                    dataGridView1.AllowUserToAddRows = true;
+                    dataGridView1.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
 
                     conn.Open();
 
@@ -112,10 +115,19 @@ namespace C_Project
 
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
+                            dataGridView2.AllowUserToResizeColumns = false;
+                            dataGridView2.AllowUserToAddRows = true;
+                            dataGridView2.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
+
                             cashFlowDataTable = new DataTable();
                             adapter.Fill(cashFlowDataTable);
                             dataGridView2.DataSource = cashFlowDataTable;
-                            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+                            dataGridView2.Columns[1].HeaderText = "Transaction Date";
+                            dataGridView2.Columns[2].HeaderText = "Type";
+                            dataGridView2.Columns[3].HeaderText = "Amount";
+                            dataGridView2.Columns[4].HeaderText = "Summary";
+                            dataGridView2.Columns[4].HeaderText = "Status";
+                            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                             dataGridView2.AllowUserToResizeColumns = false;
                             dataGridView2.Columns["ID"].ReadOnly = true;
                         }
@@ -236,60 +248,6 @@ namespace C_Project
             }
         }
 
-        //private void InsertBudgetTable()
-        //{
-        //    try
-        //    {
-        //        using (OleDbConnection conn = new OleDbConnection(connStr))
-        //        {
-
-        //            conn.Open();
-
-        //            string sql = "INSERT INTO FI_Budget (FiscalYear, BudgetIncome, BudgetExpense, ForecastIncome, ForecastExpense, Remark) VALUES (?, ?, ?, ?, ?, ?)";
-        //            using (OleDbCommand cmd = new OleDbCommand(sql, conn))
-        //            {
-        //                int rowsInserted = 0;
-        //                foreach (DataRow row in dataTable.Rows)
-        //                {
-        //                    if ((row.RowState == DataRowState.Added))
-        //                    {
-        //                        string fiscalYear = row["FiscalYear"].ToString().Trim();
-        //                        string budgetIncome = row["BudgetIncome"].ToString().Trim();
-        //                        string BudgetExpense = row["BudgetExpense"].ToString().Trim();
-        //                        string ForecastIncome = row["ForecastIncome"].ToString().Trim();
-        //                        string ForecastExpense = row["ForecastExpense"].ToString().Trim();
-        //                        string Remark = row["Remark"].ToString().Trim();
-
-        //                        cmd.Parameters.Clear();
-        //                        cmd.Parameters.AddWithValue("?", fiscalYear);
-        //                        cmd.Parameters.AddWithValue("?", budgetIncome);
-        //                        cmd.Parameters.AddWithValue("?", BudgetExpense);
-        //                        cmd.Parameters.AddWithValue("?", ForecastIncome);
-        //                        cmd.Parameters.AddWithValue("?", ForecastExpense);
-        //                        cmd.Parameters.AddWithValue("?", Remark);
-        //                        int rowsAffected = cmd.ExecuteNonQuery();
-        //                        if (rowsAffected > 0)
-        //                        {
-        //                            rowsInserted++;
-
-        //                        }
-        //                    }
-        //                }
-        //                if (rowsInserted > 0)
-        //                {
-        //                    dataTable.AcceptChanges();
-        //                    MessageBox.Show("Success Insert");
-        //                    LoadBudgetTable();
-        //                }
-        //            }
-        //            conn.Close();
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Error connecting to database!\n" + ex.Message);
-        //    }
-        //}
 
         private void chart1_Click(object sender, EventArgs e)
         {
@@ -310,10 +268,16 @@ namespace C_Project
         {
 
         }
+        private void btnUserProfile_click(object sender, EventArgs e)
+        {
+            ChangePassword changePasswordForm = new ChangePassword(this, connStr);
+            changePasswordForm.Username = Username;
+            changePasswordForm.DepartmentName = DepartmentName;
+            changePasswordForm.ShowDialog();
+        }
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
-            //InsertBudgetTable();
             try
             {
                 DataTable dt = (DataTable)dataGridView1.DataSource;
@@ -410,13 +374,77 @@ namespace C_Project
             }
         }
 
-        private void btnUserProfile_click(object sender, EventArgs e)
+
+        private void btn_Income_Save_Click(object sender, EventArgs e)
         {
-            ChangePassword changePasswordForm = new ChangePassword(this, connStr);
-            changePasswordForm.Username = Username;
-            changePasswordForm.DepartmentName = DepartmentName;
-            changePasswordForm.ShowDialog();
+            try
+            {
+                DataTable dt = (DataTable)dataGridView2.DataSource;
+                if (dt == null || dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("No data to save.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+                    conn.Open();
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        if (row.RowState == DataRowState.Added)
+                        {
+                            string query = "INSERT INTO FI_CashFlow (TransDate, Type, Amount, Summary, Status) VALUES (?, ?, ?, ?, ?)";
+                            using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                            {
+                                cmd.Parameters.AddWithValue("?", row["TransDate"] != DBNull.Value ? row["TransDate"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Type"] != DBNull.Value ? row["Type"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Amount"] != DBNull.Value ? row["Amount"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Summary"] != DBNull.Value ? row["Summary"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Status"] != DBNull.Value ? row["Status"] : "");
+
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                        else if (row.RowState == DataRowState.Modified)
+                        {
+                            string query = "UPDATE FI_CashFlow SET TransDate = ?, Type = ?, Amount = ?, Summary = ?, Status = ? WHERE ID = ?";
+                            using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                            {
+                                cmd.Parameters.AddWithValue("?", row["TransDate"] != DBNull.Value ? row["TransDate"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Type"] != DBNull.Value ? row["Type"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Amount"] != DBNull.Value ? row["Amount"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Summary"] != DBNull.Value ? row["Summary"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Status"] != DBNull.Value ? row["Status"] : "");
+                                cmd.Parameters.AddWithValue("?", row["ID"]);
+
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                    dt.AcceptChanges();
+                }
+
+                MessageBox.Show("Data saved to database successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dataGridView1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
+        private void btn_Income_Add_Click(object sender, EventArgs e)
+        {
+            DataRow newRow = cashFlowDataTable.NewRow();
+
+            newRow["TransDate"] = "";
+            newRow["Type"] = "";
+            newRow["Amount"] = "";
+            newRow["Summary"] = "";
+            newRow["Status"] = "";
+
+            cashFlowDataTable.Rows.Add(newRow);
+        }
     }
 }

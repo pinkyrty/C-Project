@@ -47,24 +47,16 @@ namespace C_Project
             SalesButton = new Button();
             RnDbutton = new Button();
             UserManagementTabPage = new TabPage();
-            AddNewUserButton = new Button();
-            ActiveComboBox = new ComboBox();
-            FullNameTextBox = new TextBox();
-            DepartmentComboBox = new ComboBox();
-            UserNameTextBox = new TextBox();
-            UserIDTextBox = new TextBox();
-            label19 = new Label();
-            label18 = new Label();
-            label17 = new Label();
-            label16 = new Label();
-            label15 = new Label();
+            btn_UserSave = new Button();
+            btn_UserAdd = new Button();
             dataGridView1 = new DataGridView();
             RepairSupportTabPage = new TabPage();
-            AddNewButton = new Button();
-            StatusComboBox = new ComboBox();
-            SubmitterTextBox = new TextBox();
-            SubjectTextBox = new TextBox();
-            TicketNumberTextBox = new TextBox();
+            btn_RepairSave = new Button();
+            btn_RepairAdd = new Button();
+            repairStatusCombo = new ComboBox();
+            repairSubText = new TextBox();
+            repairSubjectText = new TextBox();
+            repairTicketNoText = new TextBox();
             label10 = new Label();
             label9 = new Label();
             label8 = new Label();
@@ -269,17 +261,8 @@ namespace C_Project
             // 
             // UserManagementTabPage
             // 
-            UserManagementTabPage.Controls.Add(AddNewUserButton);
-            UserManagementTabPage.Controls.Add(ActiveComboBox);
-            UserManagementTabPage.Controls.Add(FullNameTextBox);
-            UserManagementTabPage.Controls.Add(DepartmentComboBox);
-            UserManagementTabPage.Controls.Add(UserNameTextBox);
-            UserManagementTabPage.Controls.Add(UserIDTextBox);
-            UserManagementTabPage.Controls.Add(label19);
-            UserManagementTabPage.Controls.Add(label18);
-            UserManagementTabPage.Controls.Add(label17);
-            UserManagementTabPage.Controls.Add(label16);
-            UserManagementTabPage.Controls.Add(label15);
+            UserManagementTabPage.Controls.Add(btn_UserSave);
+            UserManagementTabPage.Controls.Add(btn_UserAdd);
             UserManagementTabPage.Controls.Add(dataGridView1);
             UserManagementTabPage.Location = new Point(4, 24);
             UserManagementTabPage.Name = "UserManagementTabPage";
@@ -288,96 +271,25 @@ namespace C_Project
             UserManagementTabPage.Text = "User Management";
             UserManagementTabPage.UseVisualStyleBackColor = true;
             // 
-            // AddNewUserButton
+            // btn_UserSave
             // 
-            AddNewUserButton.Location = new Point(564, 661);
-            AddNewUserButton.Name = "AddNewUserButton";
-            AddNewUserButton.Size = new Size(121, 23);
-            AddNewUserButton.TabIndex = 11;
-            AddNewUserButton.Text = "+ Add New User";
-            AddNewUserButton.UseVisualStyleBackColor = true;
+            btn_UserSave.Location = new Point(1041, 32);
+            btn_UserSave.Name = "btn_UserSave";
+            btn_UserSave.Size = new Size(75, 23);
+            btn_UserSave.TabIndex = 28;
+            btn_UserSave.Text = "Save";
+            btn_UserSave.UseVisualStyleBackColor = true;
+            btn_UserSave.Click += btn_UserSave_Click;
             // 
-            // ActiveComboBox
+            // btn_UserAdd
             // 
-            ActiveComboBox.FormattingEnabled = true;
-            ActiveComboBox.Location = new Point(378, 661);
-            ActiveComboBox.Name = "ActiveComboBox";
-            ActiveComboBox.Size = new Size(134, 23);
-            ActiveComboBox.TabIndex = 10;
-            // 
-            // FullNameTextBox
-            // 
-            FullNameTextBox.Location = new Point(78, 661);
-            FullNameTextBox.Name = "FullNameTextBox";
-            FullNameTextBox.Size = new Size(164, 23);
-            FullNameTextBox.TabIndex = 9;
-            // 
-            // DepartmentComboBox
-            // 
-            DepartmentComboBox.FormattingEnabled = true;
-            DepartmentComboBox.Location = new Point(861, 622);
-            DepartmentComboBox.Name = "DepartmentComboBox";
-            DepartmentComboBox.Size = new Size(242, 23);
-            DepartmentComboBox.TabIndex = 8;
-            // 
-            // UserNameTextBox
-            // 
-            UserNameTextBox.Location = new Point(381, 622);
-            UserNameTextBox.Name = "UserNameTextBox";
-            UserNameTextBox.Size = new Size(341, 23);
-            UserNameTextBox.TabIndex = 7;
-            // 
-            // UserIDTextBox
-            // 
-            UserIDTextBox.Location = new Point(67, 622);
-            UserIDTextBox.Name = "UserIDTextBox";
-            UserIDTextBox.Size = new Size(209, 23);
-            UserIDTextBox.TabIndex = 6;
-            // 
-            // label19
-            // 
-            label19.AutoSize = true;
-            label19.Location = new Point(331, 664);
-            label19.Name = "label19";
-            label19.Size = new Size(41, 15);
-            label19.TabIndex = 5;
-            label19.Text = "Active";
-            // 
-            // label18
-            // 
-            label18.AutoSize = true;
-            label18.Location = new Point(11, 664);
-            label18.Name = "label18";
-            label18.Size = new Size(67, 15);
-            label18.TabIndex = 4;
-            label18.Text = "FullName: ";
-            // 
-            // label17
-            // 
-            label17.AutoSize = true;
-            label17.Location = new Point(774, 625);
-            label17.Name = "label17";
-            label17.Size = new Size(81, 15);
-            label17.TabIndex = 3;
-            label17.Text = "Department: ";
-            // 
-            // label16
-            // 
-            label16.AutoSize = true;
-            label16.Location = new Point(305, 625);
-            label16.Name = "label16";
-            label16.Size = new Size(70, 15);
-            label16.TabIndex = 2;
-            label16.Text = "Username: ";
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.Location = new Point(11, 625);
-            label15.Name = "label15";
-            label15.Size = new Size(50, 15);
-            label15.TabIndex = 1;
-            label15.Text = "UserID: ";
+            btn_UserAdd.Location = new Point(1041, 3);
+            btn_UserAdd.Name = "btn_UserAdd";
+            btn_UserAdd.Size = new Size(75, 23);
+            btn_UserAdd.TabIndex = 27;
+            btn_UserAdd.Text = "Add";
+            btn_UserAdd.UseVisualStyleBackColor = true;
+            btn_UserAdd.Click += btn_UserAdd_Click;
             // 
             // dataGridView1
             // 
@@ -385,17 +297,18 @@ namespace C_Project
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(0, 0);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(1143, 616);
+            dataGridView1.Size = new Size(1035, 686);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // RepairSupportTabPage
             // 
-            RepairSupportTabPage.Controls.Add(AddNewButton);
-            RepairSupportTabPage.Controls.Add(StatusComboBox);
-            RepairSupportTabPage.Controls.Add(SubmitterTextBox);
-            RepairSupportTabPage.Controls.Add(SubjectTextBox);
-            RepairSupportTabPage.Controls.Add(TicketNumberTextBox);
+            RepairSupportTabPage.Controls.Add(btn_RepairSave);
+            RepairSupportTabPage.Controls.Add(btn_RepairAdd);
+            RepairSupportTabPage.Controls.Add(repairStatusCombo);
+            RepairSupportTabPage.Controls.Add(repairSubText);
+            RepairSupportTabPage.Controls.Add(repairSubjectText);
+            RepairSupportTabPage.Controls.Add(repairTicketNoText);
             RepairSupportTabPage.Controls.Add(label10);
             RepairSupportTabPage.Controls.Add(label9);
             RepairSupportTabPage.Controls.Add(label8);
@@ -409,48 +322,61 @@ namespace C_Project
             RepairSupportTabPage.Text = "Repair Support";
             RepairSupportTabPage.UseVisualStyleBackColor = true;
             // 
-            // AddNewButton
+            // btn_RepairSave
             // 
-            AddNewButton.Location = new Point(185, 660);
-            AddNewButton.Name = "AddNewButton";
-            AddNewButton.Size = new Size(91, 23);
-            AddNewButton.TabIndex = 9;
-            AddNewButton.Text = "+ Add New";
-            AddNewButton.UseVisualStyleBackColor = true;
+            btn_RepairSave.Location = new Point(1043, 74);
+            btn_RepairSave.Name = "btn_RepairSave";
+            btn_RepairSave.Size = new Size(75, 23);
+            btn_RepairSave.TabIndex = 29;
+            btn_RepairSave.Text = "Save";
+            btn_RepairSave.UseVisualStyleBackColor = true;
+            btn_RepairSave.Click += btn_RepairSave_Click;
             // 
-            // StatusComboBox
+            // btn_RepairAdd
             // 
-            StatusComboBox.FormattingEnabled = true;
-            StatusComboBox.Location = new Point(56, 661);
-            StatusComboBox.Name = "StatusComboBox";
-            StatusComboBox.Size = new Size(121, 23);
-            StatusComboBox.TabIndex = 8;
+            btn_RepairAdd.Location = new Point(186, 44);
+            btn_RepairAdd.Name = "btn_RepairAdd";
+            btn_RepairAdd.Size = new Size(79, 23);
+            btn_RepairAdd.TabIndex = 9;
+            btn_RepairAdd.Text = "Add";
+            btn_RepairAdd.UseVisualStyleBackColor = true;
+            btn_RepairAdd.Click += btn_RepairAdd_Click;
             // 
-            // SubmitterTextBox
+            // repairStatusCombo
             // 
-            SubmitterTextBox.Location = new Point(829, 622);
-            SubmitterTextBox.Name = "SubmitterTextBox";
-            SubmitterTextBox.Size = new Size(243, 23);
-            SubmitterTextBox.TabIndex = 7;
+            repairStatusCombo.FormattingEnabled = true;
+            repairStatusCombo.Items.AddRange(new object[] { "Pending", "Processing", "Resolved" });
+            repairStatusCombo.Location = new Point(53, 45);
+            repairStatusCombo.Name = "repairStatusCombo";
+            repairStatusCombo.Size = new Size(121, 23);
+            repairStatusCombo.TabIndex = 8;
             // 
-            // SubjectTextBox
+            // repairSubText
             // 
-            SubjectTextBox.Location = new Point(399, 622);
-            SubjectTextBox.Name = "SubjectTextBox";
-            SubjectTextBox.Size = new Size(303, 23);
-            SubjectTextBox.TabIndex = 6;
+            repairSubText.Enabled = false;
+            repairSubText.Location = new Point(873, 6);
+            repairSubText.Name = "repairSubText";
+            repairSubText.Size = new Size(228, 23);
+            repairSubText.TabIndex = 7;
             // 
-            // TicketNumberTextBox
+            // repairSubjectText
             // 
-            TicketNumberTextBox.Location = new Point(107, 622);
-            TicketNumberTextBox.Name = "TicketNumberTextBox";
-            TicketNumberTextBox.Size = new Size(174, 23);
-            TicketNumberTextBox.TabIndex = 5;
+            repairSubjectText.Location = new Point(396, 6);
+            repairSubjectText.Name = "repairSubjectText";
+            repairSubjectText.Size = new Size(362, 23);
+            repairSubjectText.TabIndex = 6;
+            // 
+            // repairTicketNoText
+            // 
+            repairTicketNoText.Location = new Point(104, 6);
+            repairTicketNoText.Name = "repairTicketNoText";
+            repairTicketNoText.Size = new Size(174, 23);
+            repairTicketNoText.TabIndex = 5;
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(11, 664);
+            label10.Location = new Point(8, 48);
             label10.Name = "label10";
             label10.Size = new Size(47, 15);
             label10.TabIndex = 4;
@@ -459,7 +385,7 @@ namespace C_Project
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(761, 625);
+            label9.Location = new Point(805, 9);
             label9.Name = "label9";
             label9.Size = new Size(68, 15);
             label9.TabIndex = 3;
@@ -469,7 +395,7 @@ namespace C_Project
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(344, 625);
+            label8.Location = new Point(341, 9);
             label8.Name = "label8";
             label8.Size = new Size(55, 15);
             label8.TabIndex = 2;
@@ -478,7 +404,7 @@ namespace C_Project
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(11, 625);
+            label7.Location = new Point(8, 9);
             label7.Name = "label7";
             label7.Size = new Size(93, 15);
             label7.TabIndex = 1;
@@ -488,10 +414,11 @@ namespace C_Project
             // 
             dataGridView2.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(0, 0);
+            dataGridView2.Location = new Point(3, 74);
             dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(1143, 616);
+            dataGridView2.Size = new Size(1035, 615);
             dataGridView2.TabIndex = 0;
+            dataGridView2.CellClick += dataGridView2_CellClick;
             // 
             // AssetManagementTabPage
             // 
@@ -761,7 +688,6 @@ namespace C_Project
             DepartmentEntranceTabPage.ResumeLayout(false);
             DepartmentEntranceTabPage.PerformLayout();
             UserManagementTabPage.ResumeLayout(false);
-            UserManagementTabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             RepairSupportTabPage.ResumeLayout(false);
             RepairSupportTabPage.PerformLayout();
@@ -789,16 +715,16 @@ namespace C_Project
         private TabPage UserManagementTabPage;
         private TabPage MaintenanceLogTabPage;
         private TabPage DepartmentEntranceTabPage;
-        private ComboBox StatusComboBox;
-        private TextBox SubmitterTextBox;
-        private TextBox SubjectTextBox;
-        private TextBox TicketNumberTextBox;
+        private ComboBox repairStatusCombo;
+        private TextBox repairSubText;
+        private TextBox repairSubjectText;
+        private TextBox repairTicketNoText;
         private Label label10;
         private Label label9;
         private Label label8;
         private Label label7;
         private DataGridView dataGridView2;
-        private Button AddNewButton;
+        private Button btn_RepairAdd;
         private Button AddNewAssetButton;
         private ComboBox AssetStatusComboBox;
         private TextBox TypeTextBox;
@@ -809,17 +735,6 @@ namespace C_Project
         private Label label12;
         private Label label11;
         private DataGridView dataGridView3;
-        private Button AddNewUserButton;
-        private ComboBox ActiveComboBox;
-        private TextBox FullNameTextBox;
-        private ComboBox DepartmentComboBox;
-        private TextBox UserNameTextBox;
-        private TextBox UserIDTextBox;
-        private Label label19;
-        private Label label18;
-        private Label label17;
-        private Label label16;
-        private Label label15;
         private DataGridView dataGridView1;
         private DateTimePicker dateTimePicker2;
         private Label label23;
@@ -844,5 +759,8 @@ namespace C_Project
         private Label label30;
         private Label label31;
         private System.Windows.Forms.Button btnLogout;
+        private Button btn_UserAdd;
+        private Button btn_UserSave;
+        private Button btn_RepairSave;
     }
 }

@@ -40,7 +40,7 @@
             label19 = new Label();
             label18 = new Label();
             pictureBox1 = new PictureBox();
-            tabControl1 = new TabControl();
+            ad = new TabControl();
             tabPage1 = new TabPage();
             btn_Add = new Button();
             btn_Save = new Button();
@@ -57,29 +57,30 @@
             label3 = new Label();
             tabPage3 = new TabPage();
             dataGridView3 = new DataGridView();
-            button3 = new Button();
+            btn_Report_Add = new Button();
             label13 = new Label();
-            button2 = new Button();
+            btn_ReportUpload = new Button();
             label12 = new Label();
-            textBox1 = new TextBox();
+            riskPeriodText = new TextBox();
             label11 = new Label();
-            comboBox1 = new ComboBox();
+            riskReportTypeText = new ComboBox();
             label10 = new Label();
             label9 = new Label();
             tabPage4 = new TabPage();
-            textBox8 = new TextBox();
+            riskTypeText = new TextBox();
             dataGridView4 = new DataGridView();
-            button4 = new Button();
-            textBox3 = new TextBox();
+            btn_Risk_Add = new Button();
+            riskMitiText = new TextBox();
             label20 = new Label();
-            textBox2 = new TextBox();
+            riskDescText = new TextBox();
             label17 = new Label();
-            comboBox3 = new ComboBox();
+            riskLevelCombo = new ComboBox();
             label16 = new Label();
             label15 = new Label();
             label14 = new Label();
             tabPage5 = new TabPage();
-            button5 = new Button();
+            btn_Invest_Save = new Button();
+            btn_Invest_Add = new Button();
             dataGridView5 = new DataGridView();
             textBox7 = new TextBox();
             label25 = new Label();
@@ -102,7 +103,7 @@
             label31 = new Label();
             btnLogout = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            tabControl1.SuspendLayout();
+            ad.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)chart3).BeginInit();
@@ -161,18 +162,18 @@
             pictureBox1.TabIndex = 13;
             pictureBox1.TabStop = false;
             // 
-            // tabControl1
+            // ad
             // 
-            tabControl1.Controls.Add(tabPage1);
-            tabControl1.Controls.Add(tabPage2);
-            tabControl1.Controls.Add(tabPage3);
-            tabControl1.Controls.Add(tabPage4);
-            tabControl1.Controls.Add(tabPage5);
-            tabControl1.Location = new Point(15, 108);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1126, 738);
-            tabControl1.TabIndex = 20;
+            ad.Controls.Add(tabPage1);
+            ad.Controls.Add(tabPage2);
+            ad.Controls.Add(tabPage3);
+            ad.Controls.Add(tabPage4);
+            ad.Controls.Add(tabPage5);
+            ad.Location = new Point(15, 108);
+            ad.Name = "ad";
+            ad.SelectedIndex = 0;
+            ad.Size = new Size(1126, 738);
+            ad.TabIndex = 20;
             // 
             // tabPage1
             // 
@@ -232,9 +233,9 @@
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             chart3.Series.Add(series1);
-            chart3.Size = new Size(300, 300);
+            chart3.Size = new Size(800, 400);
             chart3.TabIndex = 24;
-            chart3.Text = "chart3";
+            chart3.Text = "budgetChart";
             // 
             // label2
             // 
@@ -341,13 +342,13 @@
             // tabPage3
             // 
             tabPage3.Controls.Add(dataGridView3);
-            tabPage3.Controls.Add(button3);
+            tabPage3.Controls.Add(btn_Report_Add);
             tabPage3.Controls.Add(label13);
-            tabPage3.Controls.Add(button2);
+            tabPage3.Controls.Add(btn_ReportUpload);
             tabPage3.Controls.Add(label12);
-            tabPage3.Controls.Add(textBox1);
+            tabPage3.Controls.Add(riskPeriodText);
             tabPage3.Controls.Add(label11);
-            tabPage3.Controls.Add(comboBox1);
+            tabPage3.Controls.Add(riskReportTypeText);
             tabPage3.Controls.Add(label10);
             tabPage3.Controls.Add(label9);
             tabPage3.Location = new Point(4, 24);
@@ -367,14 +368,15 @@
             dataGridView3.Size = new Size(1109, 508);
             dataGridView3.TabIndex = 9;
             // 
-            // button3
+            // btn_Report_Add
             // 
-            button3.Location = new Point(92, 151);
-            button3.Name = "button3";
-            button3.Size = new Size(75, 23);
-            button3.TabIndex = 8;
-            button3.Text = "Upload";
-            button3.UseVisualStyleBackColor = true;
+            btn_Report_Add.Location = new Point(48, 151);
+            btn_Report_Add.Name = "btn_Report_Add";
+            btn_Report_Add.Size = new Size(75, 23);
+            btn_Report_Add.TabIndex = 8;
+            btn_Report_Add.Text = "Add";
+            btn_Report_Add.UseVisualStyleBackColor = true;
+            btn_Report_Add.Click += btn_Report_Add_Click;
             // 
             // label13
             // 
@@ -385,14 +387,15 @@
             label13.TabIndex = 7;
             label13.Text = "No file selected";
             // 
-            // button2
+            // btn_ReportUpload
             // 
-            button2.Location = new Point(131, 109);
-            button2.Name = "button2";
-            button2.Size = new Size(82, 23);
-            button2.TabIndex = 6;
-            button2.Text = "Choose File";
-            button2.UseVisualStyleBackColor = true;
+            btn_ReportUpload.Location = new Point(131, 109);
+            btn_ReportUpload.Name = "btn_ReportUpload";
+            btn_ReportUpload.Size = new Size(82, 23);
+            btn_ReportUpload.TabIndex = 6;
+            btn_ReportUpload.Text = "Choose File";
+            btn_ReportUpload.UseVisualStyleBackColor = true;
+            btn_ReportUpload.Click += btn_ReportUpload_Click;
             // 
             // label12
             // 
@@ -404,30 +407,30 @@
             label12.Text = "Upload File :";
             label12.Click += label12_Click;
             // 
-            // textBox1
+            // riskPeriodText
             // 
-            textBox1.Location = new Point(92, 75);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(121, 23);
-            textBox1.TabIndex = 4;
+            riskPeriodText.Location = new Point(92, 75);
+            riskPeriodText.Name = "riskPeriodText";
+            riskPeriodText.Size = new Size(121, 23);
+            riskPeriodText.TabIndex = 4;
             // 
             // label11
             // 
             label11.AutoSize = true;
             label11.Location = new Point(40, 78);
             label11.Name = "label11";
-            label11.Size = new Size(46, 15);
+            label11.Size = new Size(50, 15);
             label11.TabIndex = 3;
-            label11.Text = "Perior :";
+            label11.Text = "Period :";
             // 
-            // comboBox1
+            // riskReportTypeText
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Income Statement", "Balance Sheet", "Cash Flow Statement" });
-            comboBox1.Location = new Point(92, 45);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 2;
+            riskReportTypeText.FormattingEnabled = true;
+            riskReportTypeText.Items.AddRange(new object[] { "Income Statement", "Balance Sheet", "Cash Flow Statement" });
+            riskReportTypeText.Location = new Point(92, 45);
+            riskReportTypeText.Name = "riskReportTypeText";
+            riskReportTypeText.Size = new Size(121, 23);
+            riskReportTypeText.TabIndex = 2;
             // 
             // label10
             // 
@@ -450,14 +453,14 @@
             // 
             // tabPage4
             // 
-            tabPage4.Controls.Add(textBox8);
+            tabPage4.Controls.Add(riskTypeText);
             tabPage4.Controls.Add(dataGridView4);
-            tabPage4.Controls.Add(button4);
-            tabPage4.Controls.Add(textBox3);
+            tabPage4.Controls.Add(btn_Risk_Add);
+            tabPage4.Controls.Add(riskMitiText);
             tabPage4.Controls.Add(label20);
-            tabPage4.Controls.Add(textBox2);
+            tabPage4.Controls.Add(riskDescText);
             tabPage4.Controls.Add(label17);
-            tabPage4.Controls.Add(comboBox3);
+            tabPage4.Controls.Add(riskLevelCombo);
             tabPage4.Controls.Add(label16);
             tabPage4.Controls.Add(label15);
             tabPage4.Controls.Add(label14);
@@ -469,12 +472,13 @@
             tabPage4.Text = "Risk Management";
             tabPage4.UseVisualStyleBackColor = true;
             // 
-            // textBox8
+            // riskTypeText
             // 
-            textBox8.Location = new Point(98, 46);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(133, 23);
-            textBox8.TabIndex = 11;
+            riskTypeText.Location = new Point(98, 46);
+            riskTypeText.Name = "riskTypeText";
+            riskTypeText.Size = new Size(133, 23);
+            riskTypeText.TabIndex = 11;
+            riskTypeText.Text = "min";
             // 
             // dataGridView4
             // 
@@ -485,37 +489,38 @@
             dataGridView4.Size = new Size(1109, 486);
             dataGridView4.TabIndex = 10;
             // 
-            // button4
+            // btn_Risk_Add
             // 
-            button4.Location = new Point(92, 174);
-            button4.Name = "button4";
-            button4.Size = new Size(75, 23);
-            button4.TabIndex = 9;
-            button4.Text = "Add";
-            button4.UseVisualStyleBackColor = true;
+            btn_Risk_Add.Location = new Point(17, 171);
+            btn_Risk_Add.Name = "btn_Risk_Add";
+            btn_Risk_Add.Size = new Size(75, 23);
+            btn_Risk_Add.TabIndex = 9;
+            btn_Risk_Add.Text = "Add";
+            btn_Risk_Add.UseVisualStyleBackColor = true;
+            btn_Risk_Add.Click += btn_Risk_Add_Click;
             // 
-            // textBox3
+            // riskMitiText
             // 
-            textBox3.Location = new Point(98, 129);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(365, 23);
-            textBox3.TabIndex = 8;
+            riskMitiText.Location = new Point(98, 129);
+            riskMitiText.Name = "riskMitiText";
+            riskMitiText.Size = new Size(365, 23);
+            riskMitiText.TabIndex = 8;
             // 
             // label20
             // 
             label20.AutoSize = true;
-            label20.Location = new Point(32, 132);
+            label20.Location = new Point(20, 132);
             label20.Name = "label20";
-            label20.Size = new Size(60, 15);
+            label20.Size = new Size(72, 15);
             label20.TabIndex = 7;
-            label20.Text = "Solution :";
+            label20.Text = "Mitigation :";
             // 
-            // textBox2
+            // riskDescText
             // 
-            textBox2.Location = new Point(98, 89);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(365, 23);
-            textBox2.TabIndex = 6;
+            riskDescText.Location = new Point(98, 89);
+            riskDescText.Name = "riskDescText";
+            riskDescText.Size = new Size(365, 23);
+            riskDescText.TabIndex = 6;
             // 
             // label17
             // 
@@ -526,14 +531,14 @@
             label17.TabIndex = 5;
             label17.Text = "Description :";
             // 
-            // comboBox3
+            // riskLevelCombo
             // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Items.AddRange(new object[] { "Low", "Medium", "High" });
-            comboBox3.Location = new Point(342, 46);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(121, 23);
-            comboBox3.TabIndex = 4;
+            riskLevelCombo.FormattingEnabled = true;
+            riskLevelCombo.Items.AddRange(new object[] { "Low", "Medium", "High" });
+            riskLevelCombo.Location = new Point(342, 46);
+            riskLevelCombo.Name = "riskLevelCombo";
+            riskLevelCombo.Size = new Size(121, 23);
+            riskLevelCombo.TabIndex = 4;
             // 
             // label16
             // 
@@ -565,7 +570,8 @@
             // 
             // tabPage5
             // 
-            tabPage5.Controls.Add(button5);
+            tabPage5.Controls.Add(btn_Invest_Save);
+            tabPage5.Controls.Add(btn_Invest_Add);
             tabPage5.Controls.Add(dataGridView5);
             tabPage5.Controls.Add(textBox7);
             tabPage5.Controls.Add(label25);
@@ -585,14 +591,25 @@
             tabPage5.UseVisualStyleBackColor = true;
             tabPage5.Click += tabPage5_Click;
             // 
-            // button5
+            // btn_Invest_Save
             // 
-            button5.Location = new Point(92, 191);
-            button5.Name = "button5";
-            button5.Size = new Size(75, 23);
-            button5.TabIndex = 10;
-            button5.Text = "Add";
-            button5.UseVisualStyleBackColor = true;
+            btn_Invest_Save.Location = new Point(1040, 41);
+            btn_Invest_Save.Name = "btn_Invest_Save";
+            btn_Invest_Save.Size = new Size(75, 23);
+            btn_Invest_Save.TabIndex = 27;
+            btn_Invest_Save.Text = "Save";
+            btn_Invest_Save.UseVisualStyleBackColor = true;
+            btn_Invest_Save.Click += btn_Invest_Save_Click;
+            // 
+            // btn_Invest_Add
+            // 
+            btn_Invest_Add.Location = new Point(1040, 11);
+            btn_Invest_Add.Name = "btn_Invest_Add";
+            btn_Invest_Add.Size = new Size(75, 23);
+            btn_Invest_Add.TabIndex = 10;
+            btn_Invest_Add.Text = "Add";
+            btn_Invest_Add.UseVisualStyleBackColor = true;
+            btn_Invest_Add.Click += btn_Invest_Add_Click;
             // 
             // dataGridView5
             // 
@@ -600,7 +617,7 @@
             dataGridView5.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView5.Location = new Point(3, 3);
             dataGridView5.Name = "dataGridView5";
-            dataGridView5.Size = new Size(1112, 704);
+            dataGridView5.Size = new Size(1031, 704);
             dataGridView5.TabIndex = 9;
             // 
             // textBox7
@@ -768,7 +785,7 @@
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
-            Controls.Add(tabControl1);
+            Controls.Add(ad);
             Controls.Add(btnUserProfile);
             Controls.Add(label19);
             Controls.Add(label18);
@@ -777,7 +794,7 @@
             Text = "FinanceDepartment";
             Load += FinanceDepartment_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            tabControl1.ResumeLayout(false);
+            ad.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -826,25 +843,25 @@
         private Label label8;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
         private Label label12;
-        private TextBox textBox1;
+        private TextBox riskPeriodText;
         private Label label11;
-        private ComboBox comboBox1;
+        private ComboBox riskReportTypeText;
         private Label label10;
         private Label label9;
-        private Button button2;
+        private Button btn_ReportUpload;
         private DataGridView dataGridView3;
-        private Button button3;
+        private Button btn_Report_Add;
         private Label label13;
-        private ComboBox comboBox3;
+        private ComboBox riskLevelCombo;
         private Label label16;
         private Label label15;
         private Label label14;
         private Label label17;
         private DataGridView dataGridView4;
-        private Button button4;
-        private TextBox textBox3;
+        private Button btn_Risk_Add;
+        private TextBox riskMitiText;
         private Label label20;
-        private TextBox textBox2;
+        private TextBox riskDescText;
         private DataGridView dataGridView5;
         private TextBox textBox7;
         private Label label25;
@@ -856,8 +873,8 @@
         private Label label22;
         private Label label21;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private Button button5;
-        private TextBox textBox8;
+        private Button btn_Invest_Add;
+        private TextBox riskTypeText;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
         private BindingSource financeDepartmentBindingSource;
         private BindingSource financeDepartmentBindingSource1;
@@ -870,5 +887,7 @@
         private Button btnLogout;
         private Button btn_Income_Save;
         private Button btn_Income_Add;
+        private Button btn_Invest_Save;
+        private TabControl ad;
     }
 }

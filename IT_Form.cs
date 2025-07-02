@@ -1,4 +1,6 @@
-﻿using Microsoft.Office.Interop.Word;
+﻿using Microsoft.Office.Interop.Excel;
+using Microsoft.Office.Interop.Word;
+using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -348,7 +350,9 @@ namespace C_Project
         {
             try
             {
-                System.Data.DataTable dt = (System.Data.DataTable)dataGridView2.DataSource;
+                dataGridView1.EndEdit();
+
+                System.Data.DataTable dt = (System.Data.DataTable)dataGridView1.DataSource;
                 if (dt == null || dt.Rows.Count == 0)
                 {
                     MessageBox.Show("No data to save.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -362,36 +366,34 @@ namespace C_Project
                     {
                         if (row.RowState == DataRowState.Added)
                         {
-                            string query = "INSERT INTO IT_Ticket (TicketNo, Title, Submitter, Status, CreateDate) VALUES (?, ?, ?, ?, ?)";
+                            string query = "INSERT INTO Login_User (Username, [Password], Department, FullName, Active) VALUES (?, ?, ?, ?, ?)";
                             using (OleDbCommand cmd = new OleDbCommand(query, conn))
                             {
-                                cmd.Parameters.Add("?", OleDbType.VarChar).Value = row["TicketNo"] != DBNull.Value ? row["TicketNo"] : "";
-                                cmd.Parameters.Add("?", OleDbType.VarChar).Value = row["Title"] != DBNull.Value ? row["Title"] : "";
-                                cmd.Parameters.Add("?", OleDbType.Integer).Value = row["Submitter"] != DBNull.Value ? row["Submitter"] : "";
-                                cmd.Parameters.Add("?", OleDbType.VarChar).Value = row["Status"] != DBNull.Value ? row["Status"] : "";
-                                cmd.Parameters.Add("?", OleDbType.Boolean).Value = row["CreateDate"] != DBNull.Value ? row["CreateDate"] : "";
+                                cmd.Parameters.Add("?", OleDbType.VarChar).Value = row["Username"] != DBNull.Value ? row["Username"] : "";
+                                cmd.Parameters.Add("?", OleDbType.VarChar).Value = row["Password"] != DBNull.Value ? row["Password"] : "";
+                                cmd.Parameters.Add("?", OleDbType.VarChar).Value = row["Department"] != DBNull.Value ? row["Department"] : "";
+                                cmd.Parameters.Add("?", OleDbType.VarChar).Value = row["FullName"] != DBNull.Value ? row["FullName"] : "";
+                                cmd.Parameters.Add("?", OleDbType.Boolean).Value = row["Active"] != DBNull.Value ? Convert.ToBoolean(row["Active"]) : false;
 
                                 cmd.ExecuteNonQuery();
                             }
                         }
                         else if (row.RowState == DataRowState.Modified)
                         {
-                            string query = "UPDATE IT_Ticket SET TicketNo = ?, Title = ?, Submitter = ?, Status = ?, CreateDate = ? WHERE ID = ?";
+                            string query = "UPDATE Login_User SET Username = ?, [Password] = ?, Department = ?, FullName = ?, Active = ? WHERE UserID = ?";
                             using (OleDbCommand cmd = new OleDbCommand(query, conn))
                             {
-                                cmd.Parameters.Add("?", OleDbType.VarChar).Value = row["TicketNo"] != DBNull.Value ? row["TicketNo"] : "";
-                                cmd.Parameters.Add("?", OleDbType.VarChar).Value = row["Title"] != DBNull.Value ? row["Title"] : "";
-                                cmd.Parameters.Add("?", OleDbType.Integer).Value = row["Status"] != DBNull.Value ? row["Status"] : "";
+                                cmd.Parameters.Add("?", OleDbType.VarChar).Value = row["Username"] != DBNull.Value ? row["Username"] : "";
+                                cmd.Parameters.Add("?", OleDbType.VarChar).Value = row["Password"] != DBNull.Value ? row["Password"] : "";
+                                cmd.Parameters.Add("?", OleDbType.VarChar).Value = row["Department"] != DBNull.Value ? row["Department"] : "";
                                 cmd.Parameters.Add("?", OleDbType.VarChar).Value = row["FullName"] != DBNull.Value ? row["FullName"] : "";
-                                cmd.Parameters.Add("?", OleDbType.Boolean).Value = row["CreateDate"] != DBNull.Value ? row["CreateDate"] : "";
-                                cmd.Parameters.Add("?", OleDbType.Integer).Value = row["ID"];
+                                cmd.Parameters.Add("?", OleDbType.Boolean).Value = row["Active"] != DBNull.Value ? Convert.ToBoolean(row["Active"]) : false;
+                                cmd.Parameters.Add("?", OleDbType.Integer).Value = Convert.ToInt32(row["UserID"]);
 
                                 cmd.ExecuteNonQuery();
                             }
                         }
                     }
-                    dt.AcceptChanges();
-                    conn.Close();
                 }
 
                 MessageBox.Show("Data saved to database successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -399,10 +401,9 @@ namespace C_Project
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error saving data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error saving data: {ex.Message}\n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btn_RepairAdd_Click(object sender, EventArgs e)
         {
             string repairTicketNo = repairTicketNoText.Text.Trim();

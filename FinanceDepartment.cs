@@ -870,6 +870,7 @@ namespace C_Project
                 MessageBox.Show(riskType + riskLevel + riskDesc + riskMiti);
                 try
                 {
+                    System.Data.DataTable dt = (System.Data.DataTable)dataGridView4.DataSource;
                     using (OleDbConnection conn = new OleDbConnection(connStr))
                     {
                         conn.Open();
@@ -896,7 +897,7 @@ namespace C_Project
                         conn.Close();
                     }
 
-                    statementTable();
+                    riskMgmtTable();
                     MessageBox.Show("Data updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     dataGridView4.Refresh();
                 }

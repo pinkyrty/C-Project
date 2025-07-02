@@ -171,17 +171,31 @@ namespace C_Project
                     {
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
-                            assetManDataTable = new System.Data.DataTable();
-                            adapter.Fill(assetManDataTable);
-                            dataGridView3.DataSource = assetManDataTable;
-                            dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                            dataGridView3.AllowUserToResizeColumns = false;
-                            dataGridView3.Columns["ID"].ReadOnly = true;
+                            repairSupportDataTable = new System.Data.DataTable();
+                            adapter.Fill(repairSupportDataTable);
+                            dataGridView3.DataSource = repairSupportDataTable;
+
+                            if (dataGridView3.Columns.Count >= 5)
+                            {
+                                dataGridView3.Columns[1].HeaderText = "Asset No";
+                                dataGridView3.Columns[2].HeaderText = "Name";
+                                dataGridView3.Columns[3].HeaderText = "Type";
+                                dataGridView3.Columns[4].HeaderText = "Status";
+                                dataGridView3.ReadOnly = true;
+
+                                dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                                dataGridView3.AllowUserToResizeColumns = false;
+                                dataGridView3.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
+
+                                clearInputData();
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Expected at least 5 columns, but got: {dataGridView2.Columns.Count}");
+                            }
                         }
                     }
-
                     conn.Close();
-
                 }
             }
             catch (Exception ex)
@@ -447,8 +461,6 @@ namespace C_Project
             {
                 MessageBox.Show($"Error adding risk: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
         }
 
         private void clearInputData()
@@ -457,8 +469,8 @@ namespace C_Project
             dataGridView2.CurrentCell = null;
             repairTicketNoText.Text = "";
             repairSubjectText.Text = "";
-            repairSubText.Text =  "";
-            repairStatusCombo.Text =  "";
+            repairSubText.Text = "";
+            repairStatusCombo.Text = "";
         }
 
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -533,6 +545,125 @@ namespace C_Project
             {
                 MessageBox.Show($"Error updating data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btn_AssetSave_Click(object sender, EventArgs e)
+        {
+            if (dataGridView3.SelectedCells.Count != 1)
+            {
+                MessageBox.Show("Please select a row to update!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            DataGridViewCell selectedCell = dataGridView3.SelectedCells[0];
+            DataGridViewRow row = selectedCell.OwningRow;
+            string assetId = row.Cells["ID"].Value.ToString() ?? "";
+
+            string assetNumber = assetNumberText.Text.Trim();
+            string assetName = assetNameText.Text.Trim();
+            string assetType = assetTypeText.Text.Trim();
+            string assetStatus = assetStatusCombo.Text.Trim();
+
+            if (string.IsNullOrEmpty(assetNumber) || string.IsNullOrEmpty(assetName) ||
+                string.IsNullOrEmpty(assetType) || string.IsNullOrEmpty(assetStatus))
+            {
+                MessageBox.Show("Please fill in all fields!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+                    conn.Open();
+
+                    string query = "UPDATE IT_Asset SET AssetNo = ?, Name = ?, Type = ?, Status = ? WHERE ID = ?";
+                    using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                    {
+                        cmd.Parameters.Add("?", OleDbType.VarChar).Value = assetNumber;
+                        cmd.Parameters.Add("?", OleDbType.VarChar).Value = assetName;
+                        cmd.Parameters.Add("?", OleDbType.VarChar).Value = assetType;
+                        cmd.Parameters.Add("?", OleDbType.VarChar).Value = assetStatus;
+                        cmd.Parameters.Add("?", OleDbType.VarChar).Value = assetId;
+
+
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        if (rowsAffected == 0)
+                        {
+                            MessageBox.Show("No record was updated. Please check if the ticket ID exists.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                        clearInputData();
+                    }
+
+                    conn.Close();
+                }
+
+                AssetManTable();
+                MessageBox.Show("Data updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error updating data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dataGridView3_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < dataGridView3.Rows.Count)
+            {
+                DataGridViewRow row = dataGridView3.Rows[e.RowIndex];
+
+                assetNumberText.Text = row.Cells["AssetNo"].Value?.ToString() ?? "";
+                assetNameText.Text = row.Cells["Name"].Value?.ToString() ?? "";
+                assetTypeText.Text = row.Cells["Type"].Value?.ToString() ?? "";
+                assetStatusCombo.Text = row.Cells["Status"].Value?.ToString() ?? "";
+            }
+        }
+
+        private void btn_AssetAdd_Click(object sender, EventArgs e)
+        {
+            string assetNumber = assetNumberText.Text.Trim();
+            string assetName = assetNameText.Text.Trim();
+            string assetType = assetTypeText.Text.Trim();
+            string assetStatus = assetStatusCombo.Text.Trim();
+
+            if (string.IsNullOrEmpty(assetNumber) || string.IsNullOrEmpty(assetName) ||
+            string.IsNullOrEmpty(assetType) || string.IsNullOrEmpty(assetStatus))
+            {
+                MessageBox.Show("Please fill in all fields!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+                    conn.Open();
+
+                    string query = "INSERT INTO IT_Asset (AssetNo, Name, Type, Status) VALUES (?, ?, ?, ?)";
+                    using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                    {
+                        cmd.Parameters.Add("?", OleDbType.VarChar).Value = assetNumber;
+                        cmd.Parameters.Add("?", OleDbType.VarChar).Value = assetName;
+                        cmd.Parameters.Add("?", OleDbType.VarChar).Value = assetType;
+                        cmd.Parameters.Add("?", OleDbType.VarChar).Value = assetStatus;
+
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    conn.Close();
+                }
+
+                AssetManTable();
+
+                MessageBox.Show("Added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dataGridView3.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error adding risk: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }

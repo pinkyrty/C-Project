@@ -63,11 +63,12 @@ namespace C_Project
             label7 = new Label();
             dataGridView2 = new DataGridView();
             AssetManagementTabPage = new TabPage();
-            AddNewAssetButton = new Button();
-            AssetStatusComboBox = new ComboBox();
-            TypeTextBox = new TextBox();
-            NameTextBox = new TextBox();
-            AssetNumberTextBox = new TextBox();
+            btn_AssetSave = new Button();
+            btn_AssetAdd = new Button();
+            assetStatusCombo = new ComboBox();
+            assetTypeText = new TextBox();
+            assetNameText = new TextBox();
+            assetNumberText = new TextBox();
             label14 = new Label();
             label13 = new Label();
             label12 = new Label();
@@ -422,11 +423,12 @@ namespace C_Project
             // 
             // AssetManagementTabPage
             // 
-            AssetManagementTabPage.Controls.Add(AddNewAssetButton);
-            AssetManagementTabPage.Controls.Add(AssetStatusComboBox);
-            AssetManagementTabPage.Controls.Add(TypeTextBox);
-            AssetManagementTabPage.Controls.Add(NameTextBox);
-            AssetManagementTabPage.Controls.Add(AssetNumberTextBox);
+            AssetManagementTabPage.Controls.Add(btn_AssetSave);
+            AssetManagementTabPage.Controls.Add(btn_AssetAdd);
+            AssetManagementTabPage.Controls.Add(assetStatusCombo);
+            AssetManagementTabPage.Controls.Add(assetTypeText);
+            AssetManagementTabPage.Controls.Add(assetNameText);
+            AssetManagementTabPage.Controls.Add(assetNumberText);
             AssetManagementTabPage.Controls.Add(label14);
             AssetManagementTabPage.Controls.Add(label13);
             AssetManagementTabPage.Controls.Add(label12);
@@ -439,48 +441,60 @@ namespace C_Project
             AssetManagementTabPage.Text = "Asset Management";
             AssetManagementTabPage.UseVisualStyleBackColor = true;
             // 
-            // AddNewAssetButton
+            // btn_AssetSave
             // 
-            AddNewAssetButton.Location = new Point(185, 660);
-            AddNewAssetButton.Name = "AddNewAssetButton";
-            AddNewAssetButton.Size = new Size(91, 23);
-            AddNewAssetButton.TabIndex = 9;
-            AddNewAssetButton.Text = "+ Add New";
-            AddNewAssetButton.UseVisualStyleBackColor = true;
+            btn_AssetSave.Location = new Point(1043, 80);
+            btn_AssetSave.Name = "btn_AssetSave";
+            btn_AssetSave.Size = new Size(75, 23);
+            btn_AssetSave.TabIndex = 30;
+            btn_AssetSave.Text = "Save";
+            btn_AssetSave.UseVisualStyleBackColor = true;
+            btn_AssetSave.Click += btn_AssetSave_Click;
             // 
-            // AssetStatusComboBox
+            // btn_AssetAdd
             // 
-            AssetStatusComboBox.FormattingEnabled = true;
-            AssetStatusComboBox.Location = new Point(56, 661);
-            AssetStatusComboBox.Name = "AssetStatusComboBox";
-            AssetStatusComboBox.Size = new Size(121, 23);
-            AssetStatusComboBox.TabIndex = 8;
+            btn_AssetAdd.Location = new Point(186, 50);
+            btn_AssetAdd.Name = "btn_AssetAdd";
+            btn_AssetAdd.Size = new Size(74, 23);
+            btn_AssetAdd.TabIndex = 9;
+            btn_AssetAdd.Text = "Add";
+            btn_AssetAdd.UseVisualStyleBackColor = true;
+            btn_AssetAdd.Click += btn_AssetAdd_Click;
             // 
-            // TypeTextBox
+            // assetStatusCombo
             // 
-            TypeTextBox.Location = new Point(829, 622);
-            TypeTextBox.Name = "TypeTextBox";
-            TypeTextBox.Size = new Size(243, 23);
-            TypeTextBox.TabIndex = 7;
+            assetStatusCombo.FormattingEnabled = true;
+            assetStatusCombo.Items.AddRange(new object[] { "In use", "Repair", "Scrapped" });
+            assetStatusCombo.Location = new Point(56, 51);
+            assetStatusCombo.Name = "assetStatusCombo";
+            assetStatusCombo.Size = new Size(121, 23);
+            assetStatusCombo.TabIndex = 8;
             // 
-            // NameTextBox
+            // assetTypeText
             // 
-            NameTextBox.Location = new Point(399, 622);
-            NameTextBox.Name = "NameTextBox";
-            NameTextBox.Size = new Size(303, 23);
-            NameTextBox.TabIndex = 6;
+            assetTypeText.Location = new Point(829, 12);
+            assetTypeText.Name = "assetTypeText";
+            assetTypeText.Size = new Size(243, 23);
+            assetTypeText.TabIndex = 7;
             // 
-            // AssetNumberTextBox
+            // assetNameText
             // 
-            AssetNumberTextBox.Location = new Point(107, 622);
-            AssetNumberTextBox.Name = "AssetNumberTextBox";
-            AssetNumberTextBox.Size = new Size(174, 23);
-            AssetNumberTextBox.TabIndex = 5;
+            assetNameText.Location = new Point(399, 12);
+            assetNameText.Name = "assetNameText";
+            assetNameText.Size = new Size(303, 23);
+            assetNameText.TabIndex = 6;
+            // 
+            // assetNumberText
+            // 
+            assetNumberText.Location = new Point(107, 12);
+            assetNumberText.Name = "assetNumberText";
+            assetNumberText.Size = new Size(174, 23);
+            assetNumberText.TabIndex = 5;
             // 
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(11, 664);
+            label14.Location = new Point(11, 54);
             label14.Name = "label14";
             label14.Size = new Size(47, 15);
             label14.TabIndex = 4;
@@ -489,7 +503,7 @@ namespace C_Project
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(782, 625);
+            label13.Location = new Point(782, 15);
             label13.Name = "label13";
             label13.Size = new Size(41, 15);
             label13.TabIndex = 3;
@@ -499,7 +513,7 @@ namespace C_Project
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(345, 625);
+            label12.Location = new Point(345, 15);
             label12.Name = "label12";
             label12.Size = new Size(48, 15);
             label12.TabIndex = 2;
@@ -508,7 +522,7 @@ namespace C_Project
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(11, 625);
+            label11.Location = new Point(11, 15);
             label11.Name = "label11";
             label11.Size = new Size(92, 15);
             label11.TabIndex = 1;
@@ -518,10 +532,11 @@ namespace C_Project
             // 
             dataGridView3.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Location = new Point(0, 0);
+            dataGridView3.Location = new Point(3, 80);
             dataGridView3.Name = "dataGridView3";
-            dataGridView3.Size = new Size(1143, 616);
+            dataGridView3.Size = new Size(1034, 606);
             dataGridView3.TabIndex = 0;
+            dataGridView3.CellClick += dataGridView3_CellClick;
             // 
             // MaintenanceLogTabPage
             // 
@@ -725,11 +740,11 @@ namespace C_Project
         private Label label7;
         private DataGridView dataGridView2;
         private Button btn_RepairAdd;
-        private Button AddNewAssetButton;
-        private ComboBox AssetStatusComboBox;
-        private TextBox TypeTextBox;
-        private TextBox NameTextBox;
-        private TextBox AssetNumberTextBox;
+        private Button btn_AssetAdd;
+        private ComboBox assetStatusCombo;
+        private TextBox assetTypeText;
+        private TextBox assetNameText;
+        private TextBox assetNumberText;
         private Label label14;
         private Label label13;
         private Label label12;
@@ -762,5 +777,6 @@ namespace C_Project
         private Button btn_UserAdd;
         private Button btn_UserSave;
         private Button btn_RepairSave;
+        private Button btn_AssetSave;
     }
 }

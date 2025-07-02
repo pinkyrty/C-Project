@@ -75,11 +75,12 @@ namespace C_Project
             label11 = new Label();
             dataGridView3 = new DataGridView();
             MaintenanceLogTabPage = new TabPage();
-            AddNewLogButton = new Button();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
-            dateTimePicker2 = new DateTimePicker();
+            btn_MainSave = new Button();
+            btn_MainAdd = new Button();
+            mainRemarkText = new TextBox();
+            mainPersonText = new TextBox();
+            mainContentText = new TextBox();
+            mainDate = new DateTimePicker();
             label23 = new Label();
             label22 = new Label();
             label21 = new Label();
@@ -540,11 +541,12 @@ namespace C_Project
             // 
             // MaintenanceLogTabPage
             // 
-            MaintenanceLogTabPage.Controls.Add(AddNewLogButton);
-            MaintenanceLogTabPage.Controls.Add(textBox3);
-            MaintenanceLogTabPage.Controls.Add(textBox2);
-            MaintenanceLogTabPage.Controls.Add(textBox1);
-            MaintenanceLogTabPage.Controls.Add(dateTimePicker2);
+            MaintenanceLogTabPage.Controls.Add(btn_MainSave);
+            MaintenanceLogTabPage.Controls.Add(btn_MainAdd);
+            MaintenanceLogTabPage.Controls.Add(mainRemarkText);
+            MaintenanceLogTabPage.Controls.Add(mainPersonText);
+            MaintenanceLogTabPage.Controls.Add(mainContentText);
+            MaintenanceLogTabPage.Controls.Add(mainDate);
             MaintenanceLogTabPage.Controls.Add(label23);
             MaintenanceLogTabPage.Controls.Add(label22);
             MaintenanceLogTabPage.Controls.Add(label21);
@@ -557,47 +559,58 @@ namespace C_Project
             MaintenanceLogTabPage.Text = "Maintenance Log";
             MaintenanceLogTabPage.UseVisualStyleBackColor = true;
             // 
-            // AddNewLogButton
+            // btn_MainSave
             // 
-            AddNewLogButton.Location = new Point(605, 661);
-            AddNewLogButton.Name = "AddNewLogButton";
-            AddNewLogButton.Size = new Size(121, 23);
-            AddNewLogButton.TabIndex = 9;
-            AddNewLogButton.Text = "+ Add New Log";
-            AddNewLogButton.UseVisualStyleBackColor = true;
+            btn_MainSave.Location = new Point(1043, 80);
+            btn_MainSave.Name = "btn_MainSave";
+            btn_MainSave.Size = new Size(75, 23);
+            btn_MainSave.TabIndex = 31;
+            btn_MainSave.Text = "Save";
+            btn_MainSave.UseVisualStyleBackColor = true;
+            btn_MainSave.Click += btn_MainSave_Click;
             // 
-            // textBox3
+            // btn_MainAdd
             // 
-            textBox3.Location = new Point(78, 661);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(516, 23);
-            textBox3.TabIndex = 8;
+            btn_MainAdd.Location = new Point(607, 51);
+            btn_MainAdd.Name = "btn_MainAdd";
+            btn_MainAdd.Size = new Size(73, 23);
+            btn_MainAdd.TabIndex = 9;
+            btn_MainAdd.Text = "Add";
+            btn_MainAdd.UseVisualStyleBackColor = true;
+            btn_MainAdd.Click += btn_MainAdd_Click;
             // 
-            // textBox2
+            // mainRemarkText
             // 
-            textBox2.Location = new Point(882, 622);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(194, 23);
-            textBox2.TabIndex = 7;
+            mainRemarkText.Location = new Point(80, 51);
+            mainRemarkText.Name = "mainRemarkText";
+            mainRemarkText.Size = new Size(516, 23);
+            mainRemarkText.TabIndex = 8;
             // 
-            // textBox1
+            // mainPersonText
             // 
-            textBox1.Location = new Point(321, 622);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(385, 23);
-            textBox1.TabIndex = 6;
+            mainPersonText.Location = new Point(884, 12);
+            mainPersonText.Name = "mainPersonText";
+            mainPersonText.Size = new Size(194, 23);
+            mainPersonText.TabIndex = 7;
             // 
-            // dateTimePicker2
+            // mainContentText
             // 
-            dateTimePicker2.Location = new Point(57, 619);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(141, 23);
-            dateTimePicker2.TabIndex = 5;
+            mainContentText.Location = new Point(323, 12);
+            mainContentText.Name = "mainContentText";
+            mainContentText.Size = new Size(385, 23);
+            mainContentText.TabIndex = 6;
+            // 
+            // mainDate
+            // 
+            mainDate.Location = new Point(59, 9);
+            mainDate.Name = "mainDate";
+            mainDate.Size = new Size(141, 23);
+            mainDate.TabIndex = 5;
             // 
             // label23
             // 
             label23.AutoSize = true;
-            label23.Location = new Point(11, 664);
+            label23.Location = new Point(13, 54);
             label23.Name = "label23";
             label23.Size = new Size(61, 15);
             label23.TabIndex = 4;
@@ -606,7 +619,7 @@ namespace C_Project
             // label22
             // 
             label22.AutoSize = true;
-            label22.Location = new Point(776, 625);
+            label22.Location = new Point(778, 15);
             label22.Name = "label22";
             label22.Size = new Size(106, 15);
             label22.TabIndex = 3;
@@ -615,7 +628,7 @@ namespace C_Project
             // label21
             // 
             label21.AutoSize = true;
-            label21.Location = new Point(263, 625);
+            label21.Location = new Point(265, 15);
             label21.Name = "label21";
             label21.Size = new Size(58, 15);
             label21.TabIndex = 2;
@@ -625,7 +638,7 @@ namespace C_Project
             // label20
             // 
             label20.AutoSize = true;
-            label20.Location = new Point(11, 625);
+            label20.Location = new Point(13, 15);
             label20.Name = "label20";
             label20.Size = new Size(40, 15);
             label20.TabIndex = 1;
@@ -635,10 +648,11 @@ namespace C_Project
             // 
             dataGridView4.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView4.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView4.Location = new Point(0, 0);
+            dataGridView4.Location = new Point(3, 80);
             dataGridView4.Name = "dataGridView4";
-            dataGridView4.Size = new Size(1143, 613);
+            dataGridView4.Size = new Size(1034, 606);
             dataGridView4.TabIndex = 0;
+            dataGridView4.CellClick += dataGridView4_CellClick;
             // 
             // btnUserProfile
             // 
@@ -751,16 +765,16 @@ namespace C_Project
         private Label label11;
         private DataGridView dataGridView3;
         private DataGridView dataGridView1;
-        private DateTimePicker dateTimePicker2;
+        private DateTimePicker mainDate;
         private Label label23;
         private Label label22;
         private Label label21;
         private Label label20;
         private DataGridView dataGridView4;
-        private Button AddNewLogButton;
-        private TextBox textBox3;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private Button btn_MainAdd;
+        private TextBox mainRemarkText;
+        private TextBox mainPersonText;
+        private TextBox mainContentText;
         private Label label29;
         private Button FinanceButton;
         private Button CustomerServiceButton;
@@ -778,5 +792,6 @@ namespace C_Project
         private Button btn_UserSave;
         private Button btn_RepairSave;
         private Button btn_AssetSave;
+        private Button btn_MainSave;
     }
 }

@@ -219,17 +219,31 @@ namespace C_Project
                     {
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
-                            MaintenanceLogDataTable = new System.Data.DataTable();
-                            adapter.Fill(MaintenanceLogDataTable);
-                            dataGridView4.DataSource = MaintenanceLogDataTable;
-                            dataGridView4.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                            dataGridView4.AllowUserToResizeColumns = false;
-                            dataGridView4.Columns["ID"].ReadOnly = true;
+                            repairSupportDataTable = new System.Data.DataTable();
+                            adapter.Fill(repairSupportDataTable);
+                            dataGridView4.DataSource = repairSupportDataTable;
+
+                            if (dataGridView4.Columns.Count >= 5)
+                            {
+                                dataGridView4.Columns[1].HeaderText = "Log Date";
+                                dataGridView4.Columns[2].HeaderText = "Content";
+                                dataGridView4.Columns[3].HeaderText = "Owner";
+                                dataGridView4.Columns[4].HeaderText = "Remark";
+                                dataGridView4.ReadOnly = true;
+
+                                dataGridView4.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                                dataGridView4.AllowUserToResizeColumns = false;
+                                dataGridView4.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
+
+                                clearInputData();
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Expected at least 5 columns, but got: {dataGridView2.Columns.Count}");
+                            }
                         }
                     }
-
                     conn.Close();
-
                 }
             }
             catch (Exception ex)
@@ -662,6 +676,126 @@ namespace C_Project
             catch (Exception ex)
             {
                 MessageBox.Show($"Error adding risk: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dataGridView4_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < dataGridView4.Rows.Count)
+            {
+                DataGridViewRow row = dataGridView4.Rows[e.RowIndex];
+
+                mainDate.Text = row.Cells["LogDate"].Value?.ToString() ?? "";
+                mainContentText.Text = row.Cells["Content"].Value?.ToString() ?? "";
+                mainPersonText.Text = row.Cells["Owner"].Value?.ToString() ?? "";
+                mainRemarkText.Text = row.Cells["Remark"].Value?.ToString() ?? "";
+            }
+        }
+
+        private void btn_MainAdd_Click(object sender, EventArgs e)
+        {
+            string mainDate1 = mainDate.Text.Trim();
+            string mainContent = mainContentText.Text.Trim();
+            string mainPerson = mainPersonText.Text.Trim();
+            string mainRemark = mainRemarkText.Text.Trim();
+
+            if (string.IsNullOrEmpty(mainDate1) || string.IsNullOrEmpty(mainContent) ||
+            string.IsNullOrEmpty(mainPerson) || string.IsNullOrEmpty(mainRemark))
+            {
+                MessageBox.Show("Please fill in all fields!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+                    conn.Open();
+
+                    string query = "INSERT INTO IT_Maintenance (LogDate, Content, Owner, Remark) VALUES (?, ?, ?, ?)";
+                    using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                    {
+                        cmd.Parameters.Add("?", OleDbType.VarChar).Value = mainDate1;
+                        cmd.Parameters.Add("?", OleDbType.VarChar).Value = mainContent;
+                        cmd.Parameters.Add("?", OleDbType.VarChar).Value = mainPerson;
+                        cmd.Parameters.Add("?", OleDbType.VarChar).Value = mainRemark;
+
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    conn.Close();
+                }
+
+                MaintenanceLogTable();
+
+                MessageBox.Show("Added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dataGridView4.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error adding risk: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void btn_MainSave_Click(object sender, EventArgs e)
+        {
+            if (dataGridView4.SelectedCells.Count != 1)
+            {
+                MessageBox.Show("Please select a row to update!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            DataGridViewCell selectedCell = dataGridView4.SelectedCells[0];
+            DataGridViewRow row = selectedCell.OwningRow;
+            string mainId = row.Cells["ID"].Value.ToString() ?? "";
+
+            string mainDate1 = mainDate.Text.Trim();
+            string mainContent = mainContentText.Text.Trim();
+            string mainPerson = mainPersonText.Text.Trim();
+            string mainRemark = mainRemarkText.Text.Trim();
+
+            if (string.IsNullOrEmpty(mainDate1) || string.IsNullOrEmpty(mainContent) ||
+                string.IsNullOrEmpty(mainPerson) || string.IsNullOrEmpty(mainRemark))
+            {
+                MessageBox.Show("Please fill in all fields!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+                    conn.Open();
+
+                    string query = "UPDATE IT_Maintenance SET LogDate = ?, Content = ?, Owner = ?, Remark = ? WHERE ID = ?";
+                    using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                    {
+                        cmd.Parameters.Add("?", OleDbType.VarChar).Value = mainDate1;
+                        cmd.Parameters.Add("?", OleDbType.VarChar).Value = mainContent;
+                        cmd.Parameters.Add("?", OleDbType.VarChar).Value = mainPerson;
+                        cmd.Parameters.Add("?", OleDbType.VarChar).Value = mainRemark;
+                        cmd.Parameters.Add("?", OleDbType.VarChar).Value = mainId;
+
+
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        if (rowsAffected == 0)
+                        {
+                            MessageBox.Show("No record was updated. Please check if the ticket ID exists.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                        clearInputData();
+                    }
+
+                    conn.Close();
+                }
+
+                MaintenanceLogTable();
+                MessageBox.Show("Data updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dataGridView4.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error updating data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }

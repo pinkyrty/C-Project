@@ -229,14 +229,13 @@ namespace C_Project
                             adapter.Fill(statementDataTable);
                             dataGridView3.DataSource = statementDataTable;
 
-                            if (dataGridView3.Columns.Count >= 6)
+                            if (dataGridView4.Columns.Count >= 6)
                             {
                                 dataGridView3.Columns[1].HeaderText = "Report Type";
                                 dataGridView3.Columns[2].HeaderText = "Period";
                                 dataGridView3.Columns[3].HeaderText = "File Name";
                                 dataGridView3.Columns[4].HeaderText = "Upload Date";
                                 dataGridView3.Columns[5].HeaderText = "Uploader";
-                                dataGridView3.Columns[5].Width = 100;
                                 dataGridView3.Columns["ID"].ReadOnly = true;
                                 dataGridView3.Columns["UploadDate"].ReadOnly = true;
                             }
@@ -293,13 +292,14 @@ namespace C_Project
                             dataGridView4.Columns[3].HeaderText = "Description";
                             dataGridView4.Columns[4].HeaderText = "Mitigation";
                             dataGridView4.Columns[5].HeaderText = "Created Date";
-                            dataGridView4.Columns["ID"].ReadOnly = true;
-                            dataGridView4.Columns["CreatedDate"].ReadOnly = true;
+                            dataGridView4.ReadOnly = true;
 
                             dataGridView4.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                             dataGridView4.AllowUserToResizeColumns = false;
                             dataGridView4.AllowUserToAddRows = true;
                             dataGridView4.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
+
+                            clearInputData();
                         }
                     }
 
@@ -347,7 +347,6 @@ namespace C_Project
                     }
 
                     conn.Close();
-
                 }
             }
             catch (Exception ex)
@@ -557,10 +556,10 @@ namespace C_Project
             DataRow newRow = investmentDataTable.NewRow();
 
             newRow["ProjectName"] = "";
-            newRow["Amount"] = "";
+            newRow["Amount"] = 0;
             newRow["ROI"] = "0";
             newRow["Description"] = "";
-            newRow["CreatedDate"] = "";
+            newRow["CreatedDate"] = DateTime.Today;
 
             investmentDataTable.Rows.Add(newRow);
         }
@@ -617,6 +616,7 @@ namespace C_Project
                 LoadCashFlowTable();
 
                 MessageBox.Show("Data saved to database successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dataGridView5.Refresh();
             }
             catch (Exception ex)
             {
@@ -817,6 +817,94 @@ namespace C_Project
             catch (Exception ex)
             {
                 MessageBox.Show($"Error selecting PDF file: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void clearInputData()
+        {
+            dataGridView4.ClearSelection();
+            dataGridView4.CurrentCell = null;
+            riskTypeText.Text = "";
+            riskLevelCombo.Text = "";
+            riskDescText.Text = "";
+            riskMitiText.Text = "";
+        }
+
+        private void dataGridView4_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < dataGridView4.Rows.Count)
+            {
+                DataGridViewRow row = dataGridView4.Rows[e.RowIndex];
+
+                riskTypeText.Text = row.Cells["RiskType"].Value?.ToString() ?? "";
+                riskLevelCombo.Text = row.Cells["RiskLevel"].Value?.ToString() ?? "";
+                riskDescText.Text = row.Cells["Description"].Value?.ToString() ?? "";
+                riskMitiText.Text = row.Cells["Mitigation"].Value?.ToString() ?? "";
+            }
+        }
+
+        private void btn_RiskSave_Click(object sender, EventArgs e)
+        {
+            {
+                if (dataGridView4.SelectedCells.Count != 1)
+                {
+                    MessageBox.Show("Please select a row to update!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                DataGridViewCell selectedCell = dataGridView4.SelectedCells[0];
+                DataGridViewRow row = selectedCell.OwningRow;
+                string riskId = row.Cells["ID"].Value.ToString() ?? "";
+
+                string riskType = riskTypeText.Text.Trim();
+                string riskLevel = riskLevelCombo.Text.Trim();
+                string riskDesc = riskDescText.Text.Trim();
+                string riskMiti = riskMitiText.Text.Trim();
+
+                if (string.IsNullOrEmpty(riskType) || string.IsNullOrEmpty(riskLevel) ||
+                    string.IsNullOrEmpty(riskDesc) || string.IsNullOrEmpty(riskMiti))
+                {
+                    MessageBox.Show("Please fill in all fields!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                MessageBox.Show(riskType + riskLevel + riskDesc + riskMiti);
+                try
+                {
+                    using (OleDbConnection conn = new OleDbConnection(connStr))
+                    {
+                        conn.Open();
+
+                        string query = "UPDATE FI_RiskMgmt SET RiskType = ?, RiskLevel = ?, Description = ?, Mitigation = ? WHERE ID = ?";
+                        using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                        {
+                            cmd.Parameters.Add("?", OleDbType.VarChar).Value = riskType;
+                            cmd.Parameters.Add("?", OleDbType.VarChar).Value = riskLevel;
+                            cmd.Parameters.Add("?", OleDbType.VarChar).Value = riskDesc;
+                            cmd.Parameters.Add("?", OleDbType.VarChar).Value = riskMiti;
+                            cmd.Parameters.Add("?", OleDbType.VarChar).Value = riskId;
+
+
+                            int rowsAffected = cmd.ExecuteNonQuery();
+                            if (rowsAffected == 0)
+                            {
+                                MessageBox.Show("No record was updated. Please check if the ticket ID exists.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return;
+                            }
+                            clearInputData();
+                        }
+
+                        conn.Close();
+                    }
+
+                    statementTable();
+                    MessageBox.Show("Data updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dataGridView4.Refresh();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error updating data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
         }
     }

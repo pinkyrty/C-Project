@@ -33,9 +33,6 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             btnUserProfile = new Button();
             label19 = new Label();
             label18 = new Label();
@@ -67,6 +64,7 @@
             label10 = new Label();
             label9 = new Label();
             tabPage4 = new TabPage();
+            btn_RiskSave = new Button();
             riskTypeText = new TextBox();
             dataGridView4 = new DataGridView();
             btn_Risk_Add = new Button();
@@ -223,16 +221,8 @@
             // 
             // chart3
             // 
-            //chartArea1.Name = "ChartArea1";
-            //chart3.ChartAreas.Add(chartArea1);
-            //legend1.Name = "Legend1";
-            //chart3.Legends.Add(legend1);
             chart3.Location = new Point(20, 355);
             chart3.Name = "chart3";
-            //series1.ChartArea = "ChartArea1";
-            //series1.Legend = "Legend1";
-            //series1.Name = "Series1";
-            //chart3.Series.Add(series1);
             chart3.Size = new Size(800, 200);
             chart3.TabIndex = 24;
             chart3.Text = "budgetChart";
@@ -295,16 +285,16 @@
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            chart1.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            chart1.Legends.Add(legend1);
             chart1.Location = new Point(333, 320);
             chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            chart1.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            chart1.Series.Add(series1);
             chart1.Size = new Size(300, 300);
             chart1.TabIndex = 3;
             chart1.Text = "chart1";
@@ -453,6 +443,7 @@
             // 
             // tabPage4
             // 
+            tabPage4.Controls.Add(btn_RiskSave);
             tabPage4.Controls.Add(riskTypeText);
             tabPage4.Controls.Add(dataGridView4);
             tabPage4.Controls.Add(btn_Risk_Add);
@@ -472,22 +463,32 @@
             tabPage4.Text = "Risk Management";
             tabPage4.UseVisualStyleBackColor = true;
             // 
+            // btn_RiskSave
+            // 
+            btn_RiskSave.Location = new Point(1040, 200);
+            btn_RiskSave.Name = "btn_RiskSave";
+            btn_RiskSave.Size = new Size(75, 23);
+            btn_RiskSave.TabIndex = 30;
+            btn_RiskSave.Text = "Save";
+            btn_RiskSave.UseVisualStyleBackColor = true;
+            btn_RiskSave.Click += btn_RiskSave_Click;
+            // 
             // riskTypeText
             // 
             riskTypeText.Location = new Point(98, 46);
             riskTypeText.Name = "riskTypeText";
             riskTypeText.Size = new Size(133, 23);
             riskTypeText.TabIndex = 11;
-            riskTypeText.Text = "min";
             // 
             // dataGridView4
             // 
             dataGridView4.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView4.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView4.Location = new Point(3, 218);
+            dataGridView4.Location = new Point(6, 200);
             dataGridView4.Name = "dataGridView4";
-            dataGridView4.Size = new Size(1109, 486);
+            dataGridView4.Size = new Size(1028, 507);
             dataGridView4.TabIndex = 10;
+            dataGridView4.CellClick += dataGridView4_CellClick;
             // 
             // btn_Risk_Add
             // 
@@ -889,5 +890,6 @@
         private Button btn_Income_Add;
         private Button btn_Invest_Save;
         private TabControl ad;
+        private Button btn_RiskSave;
     }
 }

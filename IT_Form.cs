@@ -172,7 +172,7 @@ namespace C_Project
                             assetManDataTable = new System.Data.DataTable();
                             adapter.Fill(assetManDataTable);
                             dataGridView3.DataSource = assetManDataTable;
-                            dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+                            dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                             dataGridView3.AllowUserToResizeColumns = false;
                             dataGridView3.Columns["ID"].ReadOnly = true;
                         }
@@ -206,7 +206,7 @@ namespace C_Project
                             MaintenanceLogDataTable = new System.Data.DataTable();
                             adapter.Fill(MaintenanceLogDataTable);
                             dataGridView4.DataSource = MaintenanceLogDataTable;
-                            dataGridView4.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+                            dataGridView4.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                             dataGridView4.AllowUserToResizeColumns = false;
                             dataGridView4.Columns["ID"].ReadOnly = true;
                         }
@@ -411,7 +411,7 @@ namespace C_Project
             string repairStatus = repairStatusCombo.Text.Trim();
 
             if (string.IsNullOrEmpty(repairTicketNo) || string.IsNullOrEmpty(repairSubject) ||
-    string.IsNullOrEmpty(repairSub) || string.IsNullOrEmpty(repairStatus))
+            string.IsNullOrEmpty(repairSub) || string.IsNullOrEmpty(repairStatus))
             {
                 MessageBox.Show("Please fill in all fields!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -466,7 +466,6 @@ namespace C_Project
             {
                 DataGridViewRow row = dataGridView2.Rows[e.RowIndex];
 
-                // 提取行數據並顯示喺 TextBox 同 ComboBox
                 repairTicketNoText.Text = row.Cells["TicketNo"].Value?.ToString() ?? "";
                 repairSubjectText.Text = row.Cells["Title"].Value?.ToString() ?? "";
                 repairSubText.Text = row.Cells["Submitter"].Value?.ToString() ?? "";
@@ -533,7 +532,6 @@ namespace C_Project
             {
                 MessageBox.Show($"Error updating data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
     }
 }

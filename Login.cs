@@ -1,3 +1,4 @@
+using Microsoft.Data.SqlClient;
 using System;
 using System.Data.OleDb;
 using System.Windows.Forms;
@@ -6,7 +7,7 @@ namespace C_Project
 {
     public partial class Login : Form
     {
-        private string connStr = $@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ToySystem.accdb")};";
+        private string connStr = $@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\ToySystem.accdb")};";
         public enum FormType
         {
             LoginForm,
@@ -25,6 +26,7 @@ namespace C_Project
         public Login()
         {
             InitializeComponent();
+            SqlConnection.ClearAllPools();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)

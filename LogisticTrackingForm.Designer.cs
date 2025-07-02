@@ -48,7 +48,6 @@
             label8 = new Label();
             label9 = new Label();
             button1 = new Button();
-            button2 = new Button();
             label31 = new Label();
             label30 = new Label();
             btnLogout = new Button();
@@ -151,14 +150,14 @@
             textBox3.Location = new Point(83, 186);
             textBox3.Multiline = true;
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(1000, 95);
+            textBox3.Size = new Size(963, 95);
             textBox3.TabIndex = 11;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
-            label7.Location = new Point(14, 530);
+            label7.Location = new Point(15, 387);
             label7.Name = "label7";
             label7.Size = new Size(117, 15);
             label7.TabIndex = 14;
@@ -168,7 +167,7 @@
             // 
             dataGridView1.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(14, 548);
+            dataGridView1.Location = new Point(15, 405);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(1031, 164);
             dataGridView1.TabIndex = 15;
@@ -223,21 +222,12 @@
             // 
             // button1
             // 
-            button1.Location = new Point(30, 736);
+            button1.Location = new Point(1052, 186);
             button1.Name = "button1";
-            button1.Size = new Size(89, 42);
+            button1.Size = new Size(60, 42);
             button1.TabIndex = 23;
             button1.Text = "Save";
             button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(30, 607);
-            button2.Name = "button2";
-            button2.Size = new Size(101, 23);
-            button2.TabIndex = 24;
-            button2.Text = "New Station";
-            button2.UseVisualStyleBackColor = true;
             // 
             // label31
             // 
@@ -270,21 +260,23 @@
             // 
             // btn_Add
             // 
-            btn_Add.Location = new Point(1051, 548);
+            btn_Add.Location = new Point(1052, 405);
             btn_Add.Name = "btn_Add";
             btn_Add.Size = new Size(75, 23);
             btn_Add.TabIndex = 27;
             btn_Add.Text = "Add";
             btn_Add.UseVisualStyleBackColor = true;
+            btn_Add.Click += btn_Add_Click;
             // 
             // btn_Save
             // 
-            btn_Save.Location = new Point(1051, 577);
+            btn_Save.Location = new Point(1052, 434);
             btn_Save.Name = "btn_Save";
             btn_Save.Size = new Size(75, 23);
             btn_Save.TabIndex = 28;
             btn_Save.Text = "Save";
             btn_Save.UseVisualStyleBackColor = true;
+            btn_Save.Click += btn_Save_Click;
             // 
             // LogisticTrackingForm
             // 
@@ -297,7 +289,6 @@
             Controls.Add(btnLogout);
             Controls.Add(label31);
             Controls.Add(label30);
-            Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(label9);
             Controls.Add(label8);
@@ -347,7 +338,6 @@
         private Label label8;
         private Label label9;
         private Button button1;
-        private Button button2;
         private Label label31;
         private Label label30;
         private Button btnLogout;

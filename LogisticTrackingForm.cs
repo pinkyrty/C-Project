@@ -55,7 +55,7 @@ namespace C_Project
                             adapter.Fill(LogisticNodeDataTable);
                             dataGridView1.DataSource = LogisticNodeDataTable;
                             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                            dataGridView1.Columns["NodeID"].ReadOnly = true;
+                            //dataGridView1.Columns["NodeID"].ReadOnly = true;
                         }
                     }
 
@@ -91,6 +91,78 @@ namespace C_Project
 
         }
 
+        private void btn_Save_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                DataTable dt = (DataTable)dataGridView1.DataSource;
+                if (dt == null || dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("No data to save.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+                    conn.Open();
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        if (row.RowState == DataRowState.Added)
+                        {
+                            string query = "INSERT INTO DT_LogisticsNode (TrackID, NodeName, NodeTime, NodeStatus, Remark) VALUES (?, ?, ?, ?, ?)";
+                            using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                            {
+                                string supplierID = Guid.NewGuid().ToString();
+                                cmd.Parameters.AddWithValue("?", supplierID);
+                                cmd.Parameters.AddWithValue("?", row["TrackID"] != DBNull.Value ? row["TrackID"] : "");
+                                cmd.Parameters.AddWithValue("?", row["NodeName"] != DBNull.Value ? row["NodeName"] : "");
+                                cmd.Parameters.AddWithValue("?", row["NodeTime"] != DBNull.Value ? row["NodeTime"] : "");
+                                cmd.Parameters.AddWithValue("?", row["NodeStatus"] != DBNull.Value ? row["NodeStatus"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Remark"] != DBNull.Value ? row["Remark"] : "");
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                        else if (row.RowState == DataRowState.Modified)
+                        {
+                            string query = "UPDATE SCM_Supplier SET TrackID = ?, NodeName = ?, NodeTime = ?, NodeStatus = ?, Remark = ? WHERE NodeID = ?";
+                            using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                            {
+                                cmd.Parameters.AddWithValue("?", row["TrackID"] != DBNull.Value ? row["TrackID"] : "");
+                                cmd.Parameters.AddWithValue("?", row["NodeName"] != DBNull.Value ? row["NodeName"] : "");
+                                cmd.Parameters.AddWithValue("?", row["NodeTime"] != DBNull.Value ? row["NodeTime"] : "");
+                                cmd.Parameters.AddWithValue("?", row["NodeStatus"] != DBNull.Value ? row["NodeStatus"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Remark"] != DBNull.Value ? row["Remark"] : "");
+                                cmd.Parameters.AddWithValue("?", row["NodeID"]);
+
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                    dt.AcceptChanges();
+                }
+
+                MessageBox.Show("Data saved to database successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dataGridView1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btn_Add_Click(object sender, EventArgs e)
+        {
+            DataRow newRow = LogisticNodeDataTable.NewRow();
+
+            newRow["TrackID"] = "";
+            newRow["NodeName"] = "";
+            newRow["NodeTime"] = "";
+            newRow["NodeStatus"] = "";
+            newRow["Remark"] = "";
+
+            LogisticNodeDataTable.Rows.Add(newRow);
+        }
         private void btnUserProfile_Click(object sender, EventArgs e)
         {
             ChangePassword changePasswordForm = new ChangePassword(this, connStr);
@@ -113,5 +185,6 @@ namespace C_Project
                 Application.Exit();
             }
         }
+
     }
 }

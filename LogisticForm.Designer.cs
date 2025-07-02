@@ -32,9 +32,9 @@
             dataGridView4 = new DataGridView();
             btn_Add6 = new TabControl();
             Inventory = new TabPage();
+            comboBox5 = new ComboBox();
             textBox8 = new TextBox();
             label29 = new Label();
-            textBox7 = new TextBox();
             textBox6 = new TextBox();
             label28 = new Label();
             label27 = new Label();
@@ -61,8 +61,6 @@
             dateTimePicker2 = new DateTimePicker();
             dateTimePicker1 = new DateTimePicker();
             label2 = new Label();
-            button6 = new Button();
-            button5 = new Button();
             dataGridView5 = new DataGridView();
             label1 = new Label();
             listBox1 = new ListBox();
@@ -85,7 +83,6 @@
             label9 = new Label();
             label8 = new Label();
             textBox1 = new TextBox();
-            button11 = new Button();
             button9 = new Button();
             label13 = new Label();
             dataGridView6 = new DataGridView();
@@ -95,7 +92,6 @@
             btn_Add8 = new Button();
             btn_Save1 = new Button();
             label14 = new Label();
-            button13 = new Button();
             button12 = new Button();
             dataGridView7 = new DataGridView();
             Supplier = new TabPage();
@@ -113,6 +109,7 @@
             label30 = new Label();
             label31 = new Label();
             btnLogout = new Button();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView4).BeginInit();
             btn_Add6.SuspendLayout();
             Inventory.SuspendLayout();
@@ -131,7 +128,7 @@
             // 
             dataGridView4.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView4.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView4.Location = new Point(12, 98);
+            dataGridView4.Location = new Point(8, 125);
             dataGridView4.Name = "dataGridView4";
             dataGridView4.Size = new Size(1037, 288);
             dataGridView4.TabIndex = 6;
@@ -152,9 +149,9 @@
             // 
             // Inventory
             // 
+            Inventory.Controls.Add(comboBox5);
             Inventory.Controls.Add(textBox8);
             Inventory.Controls.Add(label29);
-            Inventory.Controls.Add(textBox7);
             Inventory.Controls.Add(textBox6);
             Inventory.Controls.Add(label28);
             Inventory.Controls.Add(label27);
@@ -177,9 +174,17 @@
             Inventory.UseVisualStyleBackColor = true;
             Inventory.Click += tabPage1_Click;
             // 
+            // comboBox5
+            // 
+            comboBox5.FormattingEnabled = true;
+            comboBox5.Location = new Point(135, 28);
+            comboBox5.Name = "comboBox5";
+            comboBox5.Size = new Size(121, 23);
+            comboBox5.TabIndex = 45;
+            // 
             // textBox8
             // 
-            textBox8.Location = new Point(609, 42);
+            textBox8.Location = new Point(605, 28);
             textBox8.Name = "textBox8";
             textBox8.Size = new Size(359, 23);
             textBox8.TabIndex = 44;
@@ -187,22 +192,15 @@
             // label29
             // 
             label29.AutoSize = true;
-            label29.Location = new Point(609, 24);
+            label29.Location = new Point(605, 10);
             label29.Name = "label29";
             label29.Size = new Size(50, 15);
             label29.TabIndex = 43;
             label29.Text = "Remark";
             // 
-            // textBox7
-            // 
-            textBox7.Location = new Point(139, 43);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(100, 23);
-            textBox7.TabIndex = 42;
-            // 
             // textBox6
             // 
-            textBox6.Location = new Point(266, 43);
+            textBox6.Location = new Point(262, 29);
             textBox6.Name = "textBox6";
             textBox6.Size = new Size(100, 23);
             textBox6.TabIndex = 41;
@@ -210,7 +208,7 @@
             // label28
             // 
             label28.AutoSize = true;
-            label28.Location = new Point(478, 24);
+            label28.Location = new Point(474, 10);
             label28.Name = "label28";
             label28.Size = new Size(71, 15);
             label28.TabIndex = 40;
@@ -219,7 +217,7 @@
             // label27
             // 
             label27.AutoSize = true;
-            label27.Location = new Point(372, 24);
+            label27.Location = new Point(368, 10);
             label27.Name = "label27";
             label27.Size = new Size(55, 15);
             label27.TabIndex = 39;
@@ -228,7 +226,7 @@
             // label26
             // 
             label26.AutoSize = true;
-            label26.Location = new Point(266, 24);
+            label26.Location = new Point(262, 10);
             label26.Name = "label26";
             label26.Size = new Size(42, 15);
             label26.TabIndex = 38;
@@ -237,7 +235,7 @@
             // label25
             // 
             label25.AutoSize = true;
-            label25.Location = new Point(139, 24);
+            label25.Location = new Point(135, 10);
             label25.Name = "label25";
             label25.Size = new Size(54, 15);
             label25.TabIndex = 37;
@@ -246,7 +244,7 @@
             // label24
             // 
             label24.AutoSize = true;
-            label24.Location = new Point(12, 24);
+            label24.Location = new Point(8, 10);
             label24.Name = "label24";
             label24.Size = new Size(56, 15);
             label24.TabIndex = 36;
@@ -256,7 +254,7 @@
             // 
             comboBox8.FormattingEnabled = true;
             comboBox8.Items.AddRange(new object[] { "Thailand ", "Hong Kong", "Vietnam", "Mainland China" });
-            comboBox8.Location = new Point(478, 42);
+            comboBox8.Location = new Point(474, 28);
             comboBox8.Name = "comboBox8";
             comboBox8.Size = new Size(121, 23);
             comboBox8.TabIndex = 35;
@@ -265,21 +263,21 @@
             // 
             comboBox7.FormattingEnabled = true;
             comboBox7.Items.AddRange(new object[] { "In", "Out" });
-            comboBox7.Location = new Point(12, 42);
+            comboBox7.Location = new Point(8, 28);
             comboBox7.Name = "comboBox7";
             comboBox7.Size = new Size(121, 23);
             comboBox7.TabIndex = 34;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(372, 42);
+            textBox2.Location = new Point(368, 28);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(100, 23);
             textBox2.TabIndex = 33;
             // 
             // btn_Add4
             // 
-            btn_Add4.Location = new Point(974, 42);
+            btn_Add4.Location = new Point(970, 28);
             btn_Add4.Name = "btn_Add4";
             btn_Add4.Size = new Size(75, 23);
             btn_Add4.TabIndex = 29;
@@ -289,7 +287,7 @@
             // 
             // btn_Save7
             // 
-            btn_Save7.Location = new Point(14, 392);
+            btn_Save7.Location = new Point(8, 432);
             btn_Save7.Name = "btn_Save7";
             btn_Save7.Size = new Size(75, 23);
             btn_Save7.TabIndex = 30;
@@ -300,7 +298,7 @@
             // lblRecord
             // 
             lblRecord.AutoSize = true;
-            lblRecord.Location = new Point(12, 80);
+            lblRecord.Location = new Point(8, 107);
             lblRecord.Name = "lblRecord";
             lblRecord.Size = new Size(93, 15);
             lblRecord.TabIndex = 7;
@@ -321,8 +319,6 @@
             Procurement.Controls.Add(dateTimePicker2);
             Procurement.Controls.Add(dateTimePicker1);
             Procurement.Controls.Add(label2);
-            Procurement.Controls.Add(button6);
-            Procurement.Controls.Add(button5);
             Procurement.Controls.Add(dataGridView5);
             Procurement.Controls.Add(label1);
             Procurement.Controls.Add(listBox1);
@@ -351,6 +347,7 @@
             btn_Save3.TabIndex = 28;
             btn_Save3.Text = "Save";
             btn_Save3.UseVisualStyleBackColor = true;
+            btn_Save3.Click += btn_Save3_Click;
             // 
             // label22
             // 
@@ -447,24 +444,6 @@
             label2.TabIndex = 5;
             label2.Text = "Supplier :";
             // 
-            // button6
-            // 
-            button6.Location = new Point(1018, 668);
-            button6.Name = "button6";
-            button6.Size = new Size(97, 36);
-            button6.TabIndex = 4;
-            button6.Text = "Save";
-            button6.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            button5.Location = new Point(27, 400);
-            button5.Name = "button5";
-            button5.Size = new Size(96, 31);
-            button5.TabIndex = 3;
-            button5.Text = "New Detail";
-            button5.UseVisualStyleBackColor = true;
-            // 
             // dataGridView5
             // 
             dataGridView5.BackgroundColor = SystemColors.GradientInactiveCaption;
@@ -496,6 +475,7 @@
             // InternalTransferOrder
             // 
             InternalTransferOrder.BackgroundImageLayout = ImageLayout.None;
+            InternalTransferOrder.Controls.Add(button1);
             InternalTransferOrder.Controls.Add(btn_Add7);
             InternalTransferOrder.Controls.Add(btn_Save2);
             InternalTransferOrder.Controls.Add(label23);
@@ -514,7 +494,6 @@
             InternalTransferOrder.Controls.Add(label9);
             InternalTransferOrder.Controls.Add(label8);
             InternalTransferOrder.Controls.Add(textBox1);
-            InternalTransferOrder.Controls.Add(button11);
             InternalTransferOrder.Controls.Add(button9);
             InternalTransferOrder.Controls.Add(label13);
             InternalTransferOrder.Controls.Add(dataGridView6);
@@ -527,6 +506,7 @@
             InternalTransferOrder.TabIndex = 2;
             InternalTransferOrder.Text = "Internal Transfer Order";
             InternalTransferOrder.UseVisualStyleBackColor = true;
+            InternalTransferOrder.Click += InternalTransferOrder_Click;
             // 
             // btn_Add7
             // 
@@ -545,6 +525,7 @@
             btn_Save2.TabIndex = 50;
             btn_Save2.Text = "Save";
             btn_Save2.UseVisualStyleBackColor = true;
+            btn_Save2.Click += btn_Save2_Click;
             // 
             // label23
             // 
@@ -678,15 +659,6 @@
             textBox1.Size = new Size(714, 23);
             textBox1.TabIndex = 32;
             // 
-            // button11
-            // 
-            button11.Location = new Point(31, 354);
-            button11.Name = "button11";
-            button11.Size = new Size(106, 24);
-            button11.TabIndex = 31;
-            button11.Text = "New Detail";
-            button11.UseVisualStyleBackColor = true;
-            // 
             // button9
             // 
             button9.Location = new Point(990, 468);
@@ -740,7 +712,6 @@
             DemandForecast.Controls.Add(btn_Add8);
             DemandForecast.Controls.Add(btn_Save1);
             DemandForecast.Controls.Add(label14);
-            DemandForecast.Controls.Add(button13);
             DemandForecast.Controls.Add(button12);
             DemandForecast.Controls.Add(dataGridView7);
             DemandForecast.Location = new Point(4, 24);
@@ -768,6 +739,7 @@
             btn_Save1.TabIndex = 28;
             btn_Save1.Text = "Save";
             btn_Save1.UseVisualStyleBackColor = true;
+            btn_Save1.Click += btn_Save1_Click;
             // 
             // label14
             // 
@@ -778,15 +750,6 @@
             label14.Size = new Size(156, 15);
             label14.TabIndex = 3;
             label14.Text = "Demand Forecast History";
-            // 
-            // button13
-            // 
-            button13.Location = new Point(26, 101);
-            button13.Name = "button13";
-            button13.Size = new Size(75, 23);
-            button13.TabIndex = 2;
-            button13.Text = "New";
-            button13.UseVisualStyleBackColor = true;
             // 
             // button12
             // 
@@ -953,6 +916,15 @@
             btnLogout.UseVisualStyleBackColor = true;
             btnLogout.Click += btnLogout_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(673, 255);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 51;
+            button1.Text = "Save";
+            button1.UseVisualStyleBackColor = true;
+            // 
             // LogisticForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1002,7 +974,6 @@
         private TabPage DemandForecast;
         private TabPage Supplier;
         private Label lblRecord;
-        private Button button5;
         private DataGridView dataGridView5;
         private Label label1;
         private ListBox listBox1;
@@ -1013,7 +984,6 @@
         private DateTimePicker dateTimePicker2;
         private DateTimePicker dateTimePicker1;
         private Label label2;
-        private Button button6;
         private Button button7;
         private Label label6;
         private ListBox listBox2;
@@ -1021,11 +991,9 @@
         private Label label13;
         private DataGridView dataGridView6;
         private Label label7;
-        private Button button11;
         private DataGridView dataGridView7;
         private Button button12;
         private Label label14;
-        private Button button13;
         private Button button15;
         private DataGridView dataGridView8;
         private Label label15;
@@ -1075,8 +1043,9 @@
         private Label label24;
         private ComboBox comboBox8;
         private TextBox textBox6;
-        private TextBox textBox7;
         private TextBox textBox8;
         private Label label29;
+        private ComboBox comboBox5;
+        private Button button1;
     }
 }

@@ -58,7 +58,7 @@
             tabPage3 = new TabPage();
             dataGridView3 = new DataGridView();
             btn_Report_Add = new Button();
-            label13 = new Label();
+            uploadFileText = new Label();
             btn_ReportUpload = new Button();
             label12 = new Label();
             riskPeriodText = new TextBox();
@@ -223,17 +223,17 @@
             // 
             // chart3
             // 
-            chartArea1.Name = "ChartArea1";
-            chart3.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            chart3.Legends.Add(legend1);
-            chart3.Location = new Point(347, 361);
+            //chartArea1.Name = "ChartArea1";
+            //chart3.ChartAreas.Add(chartArea1);
+            //legend1.Name = "Legend1";
+            //chart3.Legends.Add(legend1);
+            chart3.Location = new Point(20, 355);
             chart3.Name = "chart3";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            chart3.Series.Add(series1);
-            chart3.Size = new Size(800, 400);
+            //series1.ChartArea = "ChartArea1";
+            //series1.Legend = "Legend1";
+            //series1.Name = "Series1";
+            //chart3.Series.Add(series1);
+            chart3.Size = new Size(800, 200);
             chart3.TabIndex = 24;
             chart3.Text = "budgetChart";
             // 
@@ -343,7 +343,7 @@
             // 
             tabPage3.Controls.Add(dataGridView3);
             tabPage3.Controls.Add(btn_Report_Add);
-            tabPage3.Controls.Add(label13);
+            tabPage3.Controls.Add(uploadFileText);
             tabPage3.Controls.Add(btn_ReportUpload);
             tabPage3.Controls.Add(label12);
             tabPage3.Controls.Add(riskPeriodText);
@@ -378,14 +378,14 @@
             btn_Report_Add.UseVisualStyleBackColor = true;
             btn_Report_Add.Click += btn_Report_Add_Click;
             // 
-            // label13
+            // uploadFileText
             // 
-            label13.AutoSize = true;
-            label13.Location = new Point(212, 113);
-            label13.Name = "label13";
-            label13.Size = new Size(95, 15);
-            label13.TabIndex = 7;
-            label13.Text = "No file selected";
+            uploadFileText.AutoSize = true;
+            uploadFileText.Location = new Point(212, 113);
+            uploadFileText.Name = "uploadFileText";
+            uploadFileText.Size = new Size(95, 15);
+            uploadFileText.TabIndex = 7;
+            uploadFileText.Text = "No file selected";
             // 
             // btn_ReportUpload
             // 
@@ -851,7 +851,7 @@
         private Button btn_ReportUpload;
         private DataGridView dataGridView3;
         private Button btn_Report_Add;
-        private Label label13;
+        private Label uploadFileText;
         private ComboBox riskLevelCombo;
         private Label label16;
         private Label label15;

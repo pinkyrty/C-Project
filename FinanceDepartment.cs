@@ -105,6 +105,7 @@ namespace C_Project
         {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea = new System.Windows.Forms.DataVisualization.Charting.ChartArea("FinancialChart");
             chart3.ChartAreas.Add(chartArea);
+            chart3.Series.Clear();
 
             System.Windows.Forms.DataVisualization.Charting.Series budgetIncomeSeries = new System.Windows.Forms.DataVisualization.Charting.Series("Budget Income")
             {
@@ -112,21 +113,30 @@ namespace C_Project
                 XValueType = ChartValueType.String
             };
 
-            chart3.Series.Clear();
+            System.Windows.Forms.DataVisualization.Charting.Series budgetExpenseSeries = new System.Windows.Forms.DataVisualization.Charting.Series("Budget Expense")
+            {
+                ChartType = SeriesChartType.Column,
+                XValueType = ChartValueType.String
+            };
+
             chart3.Series.Add(budgetIncomeSeries);
+            chart3.Series.Add(budgetExpenseSeries);
 
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 if (!row.IsNewRow)
                 {
                     string financialYear = row.Cells["FiscalYear"].Value?.ToString();
-                    //string budgetIncome = row.Cells["BudgetIncome"].Value.ToString();
-                    bool isValid = double.TryParse(row.Cells["BudgetIncome"].Value?.ToString(), out double budgetIncome);
+                    bool isIncomeValid = int.TryParse(row.Cells["BudgetIncome"].Value?.ToString(), out int budgetIncome);
+                    bool isExpenseValid = int.TryParse(row.Cells["BudgetExpense"].Value?.ToString(), out int budgetExpense);
 
-                    if (isValid)
+                    if (isIncomeValid)
                     {
                         budgetIncomeSeries.Points.AddXY(financialYear, budgetIncome);
-
+                    }
+                    if (isExpenseValid)
+                    {
+                        budgetExpenseSeries.Points.AddXY(financialYear, budgetExpense);
                     }
                 }
             }
@@ -139,15 +149,22 @@ namespace C_Project
             chartArea.AxisX.LabelStyle.Enabled = true;
 
             chartArea.AxisY.Minimum = 0;
+            chartArea.AxisY.Minimum = double.NaN;
 
             chartArea.AxisX.Interval = 1;
-            chartArea.AxisX.IsLabelAutoFit = true;
+            //chartArea.AxisX.IsLabelAutoFit = true;
+            chartArea.AxisX.LabelStyle.IsStaggered = false;
+            chartArea.AxisX.Minimum = double.NaN;
+            chartArea.AxisX.Maximum = double.NaN;
 
             budgetIncomeSeries["PointWidth"] = "0.2";
-
             budgetIncomeSeries["DrawSideBySide"] = "true";
 
+            budgetExpenseSeries["PointWidth"] = "0.2";
+            budgetExpenseSeries["DrawSideBySide"] = "true";
+
             chart3.Invalidate();
+            chart3.Update();
         }
 
         //Second Tab
@@ -203,7 +220,7 @@ namespace C_Project
                     conn.Open();
 
                     // 查詢附件檔案名稱
-                    string sql = "SELECT ID, ReportType, Period, FileAttachment.FileName AS FileAttachment, UploadDate, Uploader FROM FI_FinanceReport";
+                    string sql = "SELECT ID, ReportType, Period, FileName, UploadDate, Uploader FROM FI_FinanceReport";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
@@ -216,7 +233,7 @@ namespace C_Project
                             {
                                 dataGridView3.Columns[1].HeaderText = "Report Type";
                                 dataGridView3.Columns[2].HeaderText = "Period";
-                                dataGridView3.Columns[3].HeaderText = "File Attachment";
+                                dataGridView3.Columns[3].HeaderText = "File Name";
                                 dataGridView3.Columns[4].HeaderText = "Upload Date";
                                 dataGridView3.Columns[5].HeaderText = "Uploader";
                                 dataGridView3.Columns[5].Width = 100;
@@ -672,44 +689,56 @@ namespace C_Project
                     conn.Open();
 
                     // 插入非附件欄位
-                    string query = "INSERT INTO FI_FinanceReport (ReportType, Period, UploadDate, Uploader) VALUES (?, ?, ?, ?)";
+                    string query = "INSERT INTO FI_FinanceReport (ReportType, Period, UploadDate, Uploader, FileAttachments, FileName) VALUES (?, ?, ?, ?, ?, ?)";
                     int newId;
                     using (OleDbCommand cmd = new OleDbCommand(query, conn))
                     {
                         cmd.Parameters.Add("?", OleDbType.VarChar).Value = reportType;
                         cmd.Parameters.Add("?", OleDbType.VarChar).Value = reportPeriod;
+
                         cmd.Parameters.Add("?", OleDbType.Date).Value = DateTime.Today;
                         cmd.Parameters.Add("?", OleDbType.VarChar).Value = Username ?? "Unknown";
+
+                        // 如果有選擇 PDF，插入附件
+                        if (!string.IsNullOrEmpty(fileAttachmentPath))
+                        {
+                            if (!File.Exists(fileAttachmentPath))
+                            {
+                                MessageBox.Show($"Uploaded file not found: {fileAttachmentPath}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                fileAttachmentPath = string.Empty;
+                                return;
+                            }
+
+                            byte[] fileData = null;
+                            try
+                            {
+                                fileData = File.ReadAllBytes(fileAttachmentPath);
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show($"Error reading file: {ex.Message}\nPath: {fileAttachmentPath}");
+                            }
+                            if (fileData != null)
+                            {
+                                cmd.Parameters.Add("?", OleDbType.Binary).Value = fileData;
+                                cmd.Parameters.Add("?", Path.GetFileName(fileAttachmentPath));
+                            }
+
+                        }
+                        else
+                        {
+                            cmd.Parameters.Add("?", OleDbType.Binary).Value = DBNull.Value;
+                            cmd.Parameters.Add("?", "");
+                        }
+
+
                         cmd.ExecuteNonQuery();
 
-                        // 獲取新插入記錄的 ID
-                        using (OleDbCommand idCmd = new OleDbCommand("SELECT @@IDENTITY", conn))
-                        {
-                            newId = Convert.ToInt32(idCmd.ExecuteScalar());
-                        }
-                    }
-
-                    // 如果有選擇 PDF，插入附件
-                    if (!string.IsNullOrEmpty(fileAttachmentPath))
-                    {
-                        if (!File.Exists(fileAttachmentPath))
-                        {
-                            MessageBox.Show($"Uploaded file not found: {fileAttachmentPath}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            fileAttachmentPath = string.Empty;
-                            return;
-                        }
-
-                        // 插入附件到 FileAttachment 子表
-                        string attachmentTable = "FI_FinanceReport.FileAttachment";
-                        string attachmentQuery = $"INSERT INTO {attachmentTable} (ParentID, FileData, FileName) VALUES (?, ?, ?)";
-                        using (OleDbCommand attachmentCmd = new OleDbCommand(attachmentQuery, conn))
-                        {
-                            byte[] fileData = File.ReadAllBytes(fileAttachmentPath);
-                            attachmentCmd.Parameters.Add("?", OleDbType.Integer).Value = newId;
-                            attachmentCmd.Parameters.Add("?", OleDbType.Binary).Value = fileData;
-                            attachmentCmd.Parameters.Add("?", OleDbType.VarChar).Value = Path.GetFileName(fileAttachmentPath);
-                            attachmentCmd.ExecuteNonQuery();
-                        }
+                        //// 獲取新插入記錄的 ID
+                        //using (OleDbCommand idCmd = new OleDbCommand("SELECT @@IDENTITY", conn))
+                        //{
+                        //    newId = Convert.ToInt32(idCmd.ExecuteScalar());
+                        //}
                     }
 
                     conn.Close();
@@ -718,6 +747,11 @@ namespace C_Project
                 fileAttachmentPath = string.Empty; // 重置
                 statementTable();
                 MessageBox.Show("Report added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                //Clear input data
+                uploadFileText.Text = string.Empty;
+                riskReportTypeText.Text = string.Empty;
+                riskPeriodText.Text = string.Empty;
             }
             catch (Exception ex)
             {
@@ -775,7 +809,9 @@ namespace C_Project
                     }
 
                     fileAttachmentPath = destinationPath; // 儲存複製後的檔案路徑
-                    MessageBox.Show("PDF file selected and copied successfully! Click 'Add Report' to save to database.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    uploadFileText.Text = Path.GetFileName(fileAttachmentPath);
+
+                    MessageBox.Show("PDF file selected and copied successfully! Click 'Add Report' to save to database." + destinationPath, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)

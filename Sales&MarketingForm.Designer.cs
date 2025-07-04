@@ -39,7 +39,7 @@
             QuotationTabPage = new TabPage();
             splitContainer1 = new SplitContainer();
             dgvQuoteList = new DataGridView();
-            AddNewOrdersButton = new Button();
+            btn_quoAdd = new Button();
             label4 = new Label();
             NotesOrtermsTextBox = new TextBox();
             label20 = new Label();
@@ -223,7 +223,7 @@
             // splitContainer1.Panel1
             // 
             splitContainer1.Panel1.Controls.Add(dgvQuoteList);
-            splitContainer1.Panel1.Controls.Add(AddNewOrdersButton);
+            splitContainer1.Panel1.Controls.Add(btn_quoAdd);
             splitContainer1.Panel1.Controls.Add(label4);
             splitContainer1.Panel1.Paint += splitContainer1_Panel1_Paint;
             // 
@@ -259,14 +259,15 @@
             dgvQuoteList.TabIndex = 2;
             dgvQuoteList.CellContentClick += dgvQuoteList_CellContentClick;
             // 
-            // AddNewOrdersButton
+            // btn_quoAdd
             // 
-            AddNewOrdersButton.Location = new Point(4, 25);
-            AddNewOrdersButton.Name = "AddNewOrdersButton";
-            AddNewOrdersButton.Size = new Size(76, 23);
-            AddNewOrdersButton.TabIndex = 1;
-            AddNewOrdersButton.Text = "＋Add new";
-            AddNewOrdersButton.UseVisualStyleBackColor = true;
+            btn_quoAdd.Location = new Point(4, 25);
+            btn_quoAdd.Name = "btn_quoAdd";
+            btn_quoAdd.Size = new Size(76, 23);
+            btn_quoAdd.TabIndex = 1;
+            btn_quoAdd.Text = "Add";
+            btn_quoAdd.UseVisualStyleBackColor = true;
+            btn_quoAdd.Click += btn_quoAdd_Click;
             // 
             // label4
             // 
@@ -988,7 +989,7 @@
         private TabPage ProductionorderTabPage;
         private SplitContainer splitContainer2;
         private DataGridView dgvQuoteList;
-        private Button AddNewOrdersButton;
+        private Button btn_quoAdd;
         private Label label3;
         private DataGridView dgvProdOrderList;
         private Button button1;

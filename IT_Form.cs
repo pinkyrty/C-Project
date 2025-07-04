@@ -171,9 +171,9 @@ namespace C_Project
                     {
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
-                            repairSupportDataTable = new System.Data.DataTable();
-                            adapter.Fill(repairSupportDataTable);
-                            dataGridView3.DataSource = repairSupportDataTable;
+                            assetManDataTable = new System.Data.DataTable();
+                            adapter.Fill(assetManDataTable);
+                            dataGridView3.DataSource = assetManDataTable;
 
                             if (dataGridView3.Columns.Count >= 5)
                             {
@@ -219,9 +219,9 @@ namespace C_Project
                     {
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
-                            repairSupportDataTable = new System.Data.DataTable();
-                            adapter.Fill(repairSupportDataTable);
-                            dataGridView4.DataSource = repairSupportDataTable;
+                            MaintenanceLogDataTable = new System.Data.DataTable();
+                            adapter.Fill(MaintenanceLogDataTable);
+                            dataGridView4.DataSource = MaintenanceLogDataTable;
 
                             if (dataGridView4.Columns.Count >= 5)
                             {

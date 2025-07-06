@@ -186,5 +186,46 @@ namespace C_Project
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedIndex < 0)
+            {
+                MessageBox.Show("Please Select on state");
+                return;
+            }
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+                    conn.Open();
+                    string _sql = "INSERT INTO DT_Logistics(RefOrder,Carrier,Status,Receiver,Phone,Address) VALUES (@RefOrder,@Carrier,@Status,@Receiver,@Phone,@Address)";
+
+                    using (OleDbCommand cmd = new OleDbCommand(_sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@RefOrder", textBox1.Text);
+                        cmd.Parameters.AddWithValue("@Carrier", textBox2.Text);
+                        cmd.Parameters.AddWithValue("@Status", comboBox1.SelectedText);
+                        cmd.Parameters.AddWithValue("@Receiver", "");
+                        cmd.Parameters.AddWithValue("@Phone", "");
+                        cmd.Parameters.AddWithValue("@Address", textBox3.Text);
+
+                        int r = cmd.ExecuteNonQuery();
+                        if (r == 0)
+                        {
+                            MessageBox.Show("Add Error");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Add Success");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+        }
     }
 }

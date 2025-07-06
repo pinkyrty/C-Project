@@ -53,6 +53,9 @@
             btnLogout = new Button();
             btn_Add = new Button();
             btn_Save = new Button();
+            textBox4 = new TextBox();
+            textBox5 = new TextBox();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -80,7 +83,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(294, 124);
+            label2.Location = new Point(312, 124);
             label2.Name = "label2";
             label2.Size = new Size(67, 15);
             label2.TabIndex = 3;
@@ -228,6 +231,7 @@
             button1.TabIndex = 23;
             button1.Text = "Save";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // label31
             // 
@@ -278,12 +282,38 @@
             btn_Save.UseVisualStyleBackColor = true;
             btn_Save.Click += btn_Save_Click;
             // 
+            // textBox4
+            // 
+            textBox4.Location = new Point(97, 122);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(149, 23);
+            textBox4.TabIndex = 29;
+            // 
+            // textBox5
+            // 
+            textBox5.Location = new Point(390, 122);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(149, 23);
+            textBox5.TabIndex = 30;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(256, 122);
+            button2.Name = "button2";
+            button2.Size = new Size(60, 20);
+            button2.TabIndex = 31;
+            button2.Text = "New";
+            button2.UseVisualStyleBackColor = true;
+            // 
             // LogisticTrackingForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightBlue;
             ClientSize = new Size(1153, 858);
+            Controls.Add(button2);
+            Controls.Add(textBox5);
+            Controls.Add(textBox4);
             Controls.Add(btn_Add);
             Controls.Add(btn_Save);
             Controls.Add(btnLogout);
@@ -343,5 +373,8 @@
         private Button btnLogout;
         private Button btn_Add;
         private Button btn_Save;
+        private TextBox textBox4;
+        private TextBox textBox5;
+        private Button button2;
     }
 }

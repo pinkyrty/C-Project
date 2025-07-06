@@ -100,8 +100,19 @@ namespace C_Project
                         }
                     }
 
-                    conn.Close();
+                    sql = "SELECT DISTINCT SupplierID FROM SCM_PO";
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                    {
+                        using (OleDbDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                comboBox3.Items.Add(reader.GetString(0));
+                            }
+                        }
 
+                        conn.Close();
+                    }
                 }
             }
             catch (Exception ex)
@@ -316,6 +327,67 @@ namespace C_Project
                 MessageBox.Show($"Error saving data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void btn_Add4_Click(object sender, EventArgs e)
+        {
+            string InandOut = InOutCombo.Text.Trim();
+            string Material = MaterialBox.Text.Trim();
+            string Quantity = QuantityBox.Text.Trim();
+            string Warehouse = WarehouseBox.Text.Trim();
+            string Remark = RemarkBox.Text.Trim();
+
+            if (string.IsNullOrEmpty(InandOut) || string.IsNullOrEmpty(Material) ||
+    string.IsNullOrEmpty(Quantity) || string.IsNullOrEmpty(Warehouse))
+            {
+                MessageBox.Show("Please fill in all fields!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+                    conn.Open();
+
+                    string query = "INSERT INTO SCM_StockTrans ([Time], OpType, MaterialID, Qty, Warehouse, Remark) VALUES (?, ?, ?, ?, ?, ?)";
+                    using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                    {
+                        cmd.Parameters.Add("?", OleDbType.Date).Value = DateTime.Today;
+                        cmd.Parameters.Add("?", OleDbType.VarChar).Value = InandOut;
+                        cmd.Parameters.Add("?", OleDbType.VarChar).Value = Material;
+                        cmd.Parameters.Add("?", OleDbType.VarChar).Value = Quantity;
+                        cmd.Parameters.Add("?", OleDbType.VarChar).Value = Warehouse;
+                        cmd.Parameters.Add("?", OleDbType.VarChar).Value = Remark;
+
+
+
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    conn.Close();
+                }
+
+                LoadLogisticInventoryRecordTable();
+
+                MessageBox.Show("Added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error adding risk: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+        }
+
+        private void clearInputData()
+        {
+            dataGridView4.ClearSelection();
+            dataGridView4.CurrentCell = null;
+            InOutCombo.Text = "";
+            MaterialBox.Text = "";
+            QuantityBox.Text = "";
+            WarehouseBox.Text = "";
+            RemarkBox.Text = "";
+        }
 
         private void btn_Add1_Click(object sender, EventArgs e)
         {
@@ -329,6 +401,19 @@ namespace C_Project
             newRow["Remark"] = "";
 
             logisticInventoryRecordDataTable.Rows.Add(newRow);
+        }
+        private void dataGridView4_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < dataGridView4.Rows.Count)
+            {
+                DataGridViewRow row = dataGridView4.Rows[e.RowIndex];
+
+                InOutCombo.Text = row.Cells["OpType"].Value?.ToString() ?? "";
+                MaterialBox.Text = row.Cells["MaterialID"].Value?.ToString() ?? "";
+                QuantityBox.Text = row.Cells["Qty"].Value?.ToString() ?? "";
+                WarehouseBox.Text = row.Cells["Warehouse"].Value?.ToString() ?? "";
+                RemarkBox.Text = row.Cells["Remark"].Value?.ToString() ?? "";
+            }
         }
         //suppliertable
         private void btn_Save_Click(object sender, EventArgs e)
@@ -481,7 +566,7 @@ namespace C_Project
 
             try
             {
-                DataTable dt = (DataTable)dataGridView6.DataSource;
+                DataTable dt = (DataTable)dataGridView4.DataSource;
                 if (dt == null || dt.Rows.Count == 0)
                 {
                     MessageBox.Show("No data to save.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -555,7 +640,7 @@ namespace C_Project
 
             try
             {
-                DataTable dt = (DataTable)dataGridView6.DataSource;
+                DataTable dt = (DataTable)dataGridView5.DataSource;
                 if (dt == null || dt.Rows.Count == 0)
                 {
                     MessageBox.Show("No data to save.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -569,7 +654,7 @@ namespace C_Project
                     {
                         if (row.RowState == DataRowState.Added)
                         {
-                            string query = "INSERT INTO SCM_PODetail (POID, MaterialID, Spec, Qty, Price) VALUES (?, ?, ?, ?, ?)";
+                            string query = "INSERT INTO SCM_PODetail (POID, MaterialID, Spec, Qty, Price, SupplierID, PODate, ETA, Status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
                             using (OleDbCommand cmd = new OleDbCommand(query, conn))
                             {
                                 cmd.Parameters.AddWithValue("?", row["POID"] != DBNull.Value ? row["POID"] : "");
@@ -577,12 +662,16 @@ namespace C_Project
                                 cmd.Parameters.AddWithValue("?", row["Spec"] != DBNull.Value ? row["Spec"] : "");
                                 cmd.Parameters.AddWithValue("?", row["Qty"] != DBNull.Value ? row["Qty"] : "");
                                 cmd.Parameters.AddWithValue("?", row["Price"] != DBNull.Value ? row["Price"] : "");
+                                cmd.Parameters.AddWithValue("?", row["SupplierID"] != DBNull.Value ? row["SupplierID"] : "");
+                                cmd.Parameters.AddWithValue("?", row["PODate"] != DBNull.Value ? row["PODate"] : "");
+                                cmd.Parameters.AddWithValue("?", row["ETA"] != DBNull.Value ? row["ETA"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Status"] != DBNull.Value ? row["Status"] : "");
                                 cmd.ExecuteNonQuery();
                             }
                         }
                         else if (row.RowState == DataRowState.Modified)
                         {
-                            string query = "UPDATE SCM_PODetail SET MaterialID = ?, Period = ?, Qty = ?, Person = ?, FDate = ? WHERE ID = ?";
+                            string query = "UPDATE SCM_PODetail SET POID = ?, MaterialID = ?, Spec = ?, Qty = ?, Price = ?, SupplierID = ?, PODate = ?, ETA = ?, Status = ? WHERE PODetailID = ?";
                             using (OleDbCommand cmd = new OleDbCommand(query, conn))
                             {
                                 cmd.Parameters.AddWithValue("?", row["POID"] != DBNull.Value ? row["POID"] : "");
@@ -590,6 +679,10 @@ namespace C_Project
                                 cmd.Parameters.AddWithValue("?", row["Spec"] != DBNull.Value ? row["Spec"] : "");
                                 cmd.Parameters.AddWithValue("?", row["Qty"] != DBNull.Value ? row["Qty"] : "");
                                 cmd.Parameters.AddWithValue("?", row["Price"] != DBNull.Value ? row["Price"] : "");
+                                cmd.Parameters.AddWithValue("?", row["SupplierID"] != DBNull.Value ? row["SupplierID"] : "");
+                                cmd.Parameters.AddWithValue("?", row["PODate"] != DBNull.Value ? row["PODate"] : "");
+                                cmd.Parameters.AddWithValue("?", row["ETA"] != DBNull.Value ? row["ETA"] : "");
+                                cmd.Parameters.AddWithValue("?", row["Status"] != DBNull.Value ? row["Status"] : "");
                                 cmd.Parameters.AddWithValue("?", row["PODetailID"]);
 
                                 cmd.ExecuteNonQuery();
@@ -617,6 +710,10 @@ namespace C_Project
             newRow["Spec"] = "";
             newRow["Qty"] = "";
             newRow["Price"] = "";
+            newRow["SupplierID"] = "";
+            newRow["PODate"] = "";
+            newRow["ETA"] = "";
+            newRow["Status"] = "";
 
             logisticProcurementDataTable.Rows.Add(newRow);
         }
@@ -645,14 +742,128 @@ namespace C_Project
 
         }
 
-        private void btn_Add4_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void InternalTransferOrder_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Procurement_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView5_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Add5_Click_1(object sender, EventArgs e)
+        {
+            if (textBox2.Text == string.Empty)
+            {
+                MessageBox.Show("Please enter...");
+                return;
+            }
+            if (comboBox1.Text == string.Empty || comboBox3.Text == string.Empty)
+            {
+                MessageBox.Show("Please Select...");
+                return;
+            }
+
+
+
+            using (OleDbConnection conn = new OleDbConnection(connStr))
+            {
+                try
+                {
+                    conn.Open();
+                    string _sql = "INSERT INTO SCM_PO(POID,SupplierID,PODate,ETA,Status) VALUES (@POID,@SupplierID,@PODate,@ETA,@Status)";
+                    using (OleDbCommand cmd = new OleDbCommand(_sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@POID", textBox2.Text);
+                        cmd.Parameters.AddWithValue("@SupplierID", comboBox3.Text);
+                        cmd.Parameters.Add("@PODate", OleDbType.DBDate).Value = dateTimePicker1.Value;
+                        cmd.Parameters.Add("@ETA", OleDbType.DBDate).Value = dateTimePicker2.Value;
+                        cmd.Parameters.AddWithValue("@Status", comboBox1.Text);
+
+                        int r = cmd.ExecuteNonQuery();
+                        if (r == 0)
+                        {
+                            MessageBox.Show("Add Error");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Add Successful");
+                            LoadLogisticProcurementTable();
+                        }
+                    }
+                }
+
+                catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+
+            }
+
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (comboBox2.Text == string.Empty || comboBox4.Text == string.Empty) { MessageBox.Show("Please"); return; }
+            if (textBox3.Text == string.Empty || textBox4.Text == string.Empty || textBox5.Text == string.Empty) { MessageBox.Show("Please"); return; }
+
+            using (OleDbConnection conn = new OleDbConnection(connStr))
+            {
+                try
+                {
+                    conn.Open();
+                    string _sql = "INSERT INTO SCM_Transfer([Date],[FromDept],[ToDept],[OrderNo],[Reason],[Manager],[Remark]) VALUES (@Date,@FromDept,@ToDept,@OrderNo,@Reason,@Manager,@Remark)";
+                    using (OleDbCommand cmd = new OleDbCommand(_sql, conn))
+                    {
+                        cmd.Parameters.Add("@Date", OleDbType.DBDate).Value = dateTimePicker3.Value;
+                        cmd.Parameters.AddWithValue("@FromDept", comboBox2.Text);
+                        cmd.Parameters.AddWithValue("@ToDept", comboBox4.Text);
+                        cmd.Parameters.AddWithValue("@OrderNo", textBox3.Text);
+                        cmd.Parameters.AddWithValue("@Reason", textBox4.Text);
+                        cmd.Parameters.AddWithValue("@Manager", textBox5.Text);
+                        cmd.Parameters.AddWithValue("@Remark", "");
+                        int r = cmd.ExecuteNonQuery();
+                        if (r == 0)
+                        {
+                            MessageBox.Show("Error");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Success");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    Console.WriteLine(ex.ToString());
+                }
+            }
         }
     }
 }

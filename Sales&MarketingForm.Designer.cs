@@ -243,9 +243,11 @@
             dgvQuoteList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvQuoteList.Location = new Point(4, 54);
             dgvQuoteList.Name = "dgvQuoteList";
+            dgvQuoteList.ReadOnly = true;
             dgvQuoteList.Size = new Size(365, 645);
             dgvQuoteList.TabIndex = 2;
             dgvQuoteList.CellContentClick += dgvQuoteList_CellContentClick;
+            dgvQuoteList.CellClick += dgvQuoteList_CellClick;
             // 
             // btn_quoAdd
             // 
@@ -276,16 +278,16 @@
             // label20
             // 
             label20.AutoSize = true;
-            label20.Location = new Point(8, 527);
+            label20.Location = new Point(11, 526);
             label20.Name = "label20";
-            label20.Size = new Size(77, 15);
+            label20.Size = new Size(85, 15);
             label20.TabIndex = 16;
-            label20.Text = "Notes/terms";
+            label20.Text = "Special Offers";
             label20.Click += label20_Click;
             // 
             // DiscountsOrOffersTextBox
             // 
-            DiscountsOrOffersTextBox.Location = new Point(414, 487);
+            DiscountsOrOffersTextBox.Location = new Point(414, 484);
             DiscountsOrOffersTextBox.Name = "DiscountsOrOffersTextBox";
             DiscountsOrOffersTextBox.Size = new Size(141, 23);
             DiscountsOrOffersTextBox.TabIndex = 15;
@@ -293,11 +295,11 @@
             // label19
             // 
             label19.AutoSize = true;
-            label19.Location = new Point(270, 487);
+            label19.Location = new Point(347, 487);
             label19.Name = "label19";
-            label19.Size = new Size(98, 15);
+            label19.Size = new Size(61, 15);
             label19.TabIndex = 14;
-            label19.Text = "Discounts/offers";
+            label19.Text = "Discounts";
             // 
             // PaymentTermsTextBox
             // 
@@ -341,7 +343,7 @@
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new Point(8, 452);
+            label16.Location = new Point(16, 452);
             label16.Name = "label16";
             label16.Size = new Size(80, 15);
             label16.TabIndex = 8;
@@ -359,11 +361,11 @@
             // 
             // GenPDFButton
             // 
-            GenPDFButton.Location = new Point(8, 561);
+            GenPDFButton.Location = new Point(8, 560);
             GenPDFButton.Name = "GenPDFButton";
-            GenPDFButton.Size = new Size(75, 23);
+            GenPDFButton.Size = new Size(90, 23);
             GenPDFButton.TabIndex = 4;
-            GenPDFButton.Text = "Gen PDF";
+            GenPDFButton.Text = "Gen to PDF";
             GenPDFButton.UseVisualStyleBackColor = true;
             GenPDFButton.Click += genPDF_Click;
             // 
@@ -418,7 +420,7 @@
             // 
             // TelephoneTextBox
             // 
-            TelephoneTextBox.Location = new Point(442, 89);
+            TelephoneTextBox.Location = new Point(449, 91);
             TelephoneTextBox.Name = "TelephoneTextBox";
             TelephoneTextBox.Size = new Size(152, 23);
             TelephoneTextBox.TabIndex = 11;
@@ -434,15 +436,15 @@
             // 
             // ContactPersonTextBox
             // 
-            ContactPersonTextBox.Location = new Point(161, 89);
+            ContactPersonTextBox.Location = new Point(159, 89);
             ContactPersonTextBox.Name = "ContactPersonTextBox";
-            ContactPersonTextBox.Size = new Size(101, 23);
+            ContactPersonTextBox.Size = new Size(145, 23);
             ContactPersonTextBox.TabIndex = 9;
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(57, 89);
+            label9.Location = new Point(62, 92);
             label9.Name = "label9";
             label9.Size = new Size(92, 15);
             label9.TabIndex = 8;
@@ -450,7 +452,7 @@
             // 
             // AddressTextBox
             // 
-            AddressTextBox.Location = new Point(442, 56);
+            AddressTextBox.Location = new Point(449, 58);
             AddressTextBox.Name = "AddressTextBox";
             AddressTextBox.Size = new Size(152, 23);
             AddressTextBox.TabIndex = 7;
@@ -459,7 +461,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(375, 59);
+            label8.Location = new Point(384, 59);
             label8.Name = "label8";
             label8.Size = new Size(52, 15);
             label8.TabIndex = 6;
@@ -467,9 +469,9 @@
             // 
             // CustomerNameTextBox
             // 
-            CustomerNameTextBox.Location = new Point(162, 55);
+            CustomerNameTextBox.Location = new Point(160, 56);
             CustomerNameTextBox.Name = "CustomerNameTextBox";
-            CustomerNameTextBox.Size = new Size(100, 23);
+            CustomerNameTextBox.Size = new Size(144, 23);
             CustomerNameTextBox.TabIndex = 5;
             // 
             // label7
@@ -485,7 +487,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(375, 29);
+            label6.Location = new Point(402, 29);
             label6.Name = "label6";
             label6.Size = new Size(34, 15);
             label6.TabIndex = 3;
@@ -493,7 +495,7 @@
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(442, 26);
+            dateTimePicker1.Location = new Point(449, 28);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(152, 23);
             dateTimePicker1.TabIndex = 2;
@@ -501,10 +503,10 @@
             // QuoteNumberTextBox
             // 
             QuoteNumberTextBox.Enabled = false;
-            QuoteNumberTextBox.Location = new Point(162, 26);
+            QuoteNumberTextBox.Location = new Point(161, 22);
             QuoteNumberTextBox.Name = "QuoteNumberTextBox";
             QuoteNumberTextBox.ReadOnly = true;
-            QuoteNumberTextBox.Size = new Size(100, 23);
+            QuoteNumberTextBox.Size = new Size(143, 23);
             QuoteNumberTextBox.TabIndex = 1;
             // 
             // label5
@@ -707,13 +709,15 @@
             // 
             // dateTimePicker3
             // 
+            dateTimePicker3.Format = DateTimePickerFormat.Short;
             dateTimePicker3.Location = new Point(752, 32);
             dateTimePicker3.Name = "dateTimePicker3";
-            dateTimePicker3.Size = new Size(113, 23);
+            dateTimePicker3.Size = new Size(115, 23);
             dateTimePicker3.TabIndex = 6;
             // 
             // dateTimePicker4
             // 
+            dateTimePicker4.Format = DateTimePickerFormat.Short;
             dateTimePicker4.Location = new Point(752, 80);
             dateTimePicker4.Name = "dateTimePicker4";
             dateTimePicker4.Size = new Size(115, 23);
@@ -814,6 +818,7 @@
             // 
             // OrderNoTextBox
             // 
+            OrderNoTextBox.Enabled = false;
             OrderNoTextBox.Location = new Point(106, 32);
             OrderNoTextBox.Name = "OrderNoTextBox";
             OrderNoTextBox.ReadOnly = true;

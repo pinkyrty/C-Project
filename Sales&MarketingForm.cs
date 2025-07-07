@@ -4,12 +4,14 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 using System.Windows.Forms;
 using static C_Project.RnD_Form;
 using static System.ComponentModel.Design.ObjectSelectorEditor;
@@ -41,6 +43,8 @@ namespace C_Project
             connStr = $@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={dbPath};";
             this.LoadQuotationlTable();
             this.LoadProdOrderTable();
+            dgvProdOrderList.CellClick += new DataGridViewCellEventHandler(dgvProdOrderList_CellClick);
+            dgvQuoteList.CellClick += new DataGridViewCellEventHandler(dgvQuoteList_CellClick);
             this.LoadOrderFileTable();
             this.LoadOrderTable();
             InitializeQuotationDetailTable();
@@ -62,7 +66,7 @@ namespace C_Project
                 {
                     conn.Open();
 
-                    string sql = "SELECT QuotationNumber, QDate, ClientName FROM SMD_Quotation";
+                    string sql = "SELECT * FROM SMD_Quotation";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
@@ -75,6 +79,14 @@ namespace C_Project
                             dgvQuoteList.Columns["ClientName"].HeaderText = "Client Name";
                             dgvQuoteList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                             dgvQuoteList.AllowUserToResizeColumns = false;
+
+                            foreach (DataGridViewColumn column in dgvQuoteList.Columns)
+                            {
+                                if (column.Name != "QuotationNumber" && column.Name != "QDate" && column.Name != "ClientName")
+                                {
+                                    column.Visible = false;
+                                }
+                            }
                         }
                     }
 
@@ -97,52 +109,138 @@ namespace C_Project
             quotationDetailDataTable.Columns.Add("Amount", typeof(decimal));
 
             dataGridView2.DataSource = quotationDetailDataTable;
-            ConfigureQuotationDetailTable();
+            ConfigureQuotationDetailColumns();
         }
-        private void ConfigureQuotationDetailTable()
-        {
-            if (dataGridView2.Columns.Contains("ProductName"))
-                dataGridView2.Columns["ProductName"].HeaderText = "Product Name";
-            if (dataGridView2.Columns.Contains("Qty"))
-                dataGridView2.Columns["Qty"].HeaderText = "Quantity";
-            if (dataGridView2.Columns.Contains("UnitPrice"))
-                dataGridView2.Columns["UnitPrice"].HeaderText = "Unit Price";
-            if (dataGridView2.Columns.Contains("Amount"))
-                dataGridView2.Columns["Amount"].HeaderText = "Amount";
-            if (dataGridView2.Columns.Contains("ProductID"))
-                dataGridView2.Columns["ProductID"].Visible = false;
 
+        private void ConfigureQuotationDetailColumns()
+        {
+            // 确保列名与查询结果匹配，并设置显示名称
+            dataGridView2.AutoGenerateColumns = false; // 禁用自动生成列
+            dataGridView2.Columns.Clear();
+
+            // 添加列并设置属性
+            dataGridView2.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "ProductName",
+                HeaderText = "Product Name",
+                Name = "ProductName"
+            });
+            dataGridView2.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Qty",
+                HeaderText = "Quantity",
+                Name = "Qty"
+            });
+            dataGridView2.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "UnitPrice",
+                HeaderText = "Unit Price",
+                Name = "UnitPrice",
+                DefaultCellStyle = new DataGridViewCellStyle { Format = "C2" } // 货币格式
+            });
+            dataGridView2.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Amount",
+                HeaderText = "Amount",
+                Name = "Amount",
+                DefaultCellStyle = new DataGridViewCellStyle { Format = "C2" } // 货币格式
+            });
             dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView2.AllowUserToResizeColumns = false;
         }
 
-        //third Tab
+        private void LoadQuotationDetailTable(string quotationID)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(quotationID))
+                {
+                    MessageBox.Show("No valid Quotation ID selected.");
+                    dataGridView2.DataSource = null;
+                    return;
+                }
+
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+                    conn.Open();
+
+                    // Updated SQL query to properly reference tables and aliases
+                    string sql = @"
+                        SELECT 
+                            RND_Product.Name AS ProductName,
+                            SMD_QuotationDetail.Qty,
+                            SMD_QuotationDetail.UnitPrice,
+                            SMD_QuotationDetail.Amount
+                        FROM SMD_QuotationDetail
+                        INNER JOIN RND_Product ON (SMD_QuotationDetail.ProductID = RND_Product.ProductID)
+                        WHERE SMD_QuotationDetail.QuotationID = ?";
+
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                    {
+                        cmd.Parameters.Add("QuotationID", OleDbType.Integer).Value = Convert.ToInt32(quotationID);
+
+                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
+                        {
+                            quotationDetailDataTable = new System.Data.DataTable();
+                            adapter.Fill(quotationDetailDataTable);
+                            dataGridView2.DataSource = quotationDetailDataTable;
+                            ConfigureQuotationDetailColumns();
+                            dataGridView2.Refresh();
+                        }
+                    }
+
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading quotation details!\nMessage: {ex.Message}\nStack Trace: {ex.StackTrace}");
+            }
+        }        //third Tab
         private void LoadProdOrderTable()
         {
             try
             {
                 using (OleDbConnection conn = new OleDbConnection(connStr))
                 {
-
                     conn.Open();
-
-                    string sql = "SELECT OrderNumber, ODate FROM SMD_ProdOrder";
+                    MessageBox.Show("LoadProdOrderTable");
+                    // SQL query to include all relevant columns
+                    string sql = "SELECT OrderID, OrderNumber, ODate, ProductID, RefQuotation, Qty, Remark, ESD, EED FROM SMD_ProdOrder";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
-                            quotationlDataTable = new System.Data.DataTable();
-                            adapter.Fill(quotationlDataTable);
-                            dgvProdOrderList.DataSource = quotationlDataTable;
+                            prodOrderDataTable = new System.Data.DataTable();
+                            adapter.Fill(prodOrderDataTable);
+                            dgvProdOrderList.DataSource = prodOrderDataTable;
+
+                            // Configure visible columns
                             dgvProdOrderList.Columns["OrderNumber"].HeaderText = "Order Number";
                             dgvProdOrderList.Columns["ODate"].HeaderText = "Order Date";
+
+                            // Hide columns that shouldn't be displayed
+                            dgvProdOrderList.Columns["OrderID"].Visible = false;
+                            dgvProdOrderList.Columns["ProductID"].Visible = false;
+                            dgvProdOrderList.Columns["RefQuotation"].Visible = false;
+                            dgvProdOrderList.Columns["Qty"].Visible = false;
+                            dgvProdOrderList.Columns["Remark"].Visible = false;
+                            dgvProdOrderList.Columns["ESD"].Visible = false;
+                            dgvProdOrderList.Columns["EED"].Visible = false;
+
+                            // Configure DataGridView properties
                             dgvProdOrderList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                             dgvProdOrderList.AllowUserToResizeColumns = false;
+
+                            // Enable row selection, ensure headers are not highlighted
+                            dgvProdOrderList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                            dgvProdOrderList.MultiSelect = false;
+                            dgvProdOrderList.EnableHeadersVisualStyles = true; // Ensures headers use default visual style (no highlight)
+                            dgvProdOrderList.ColumnHeadersDefaultCellStyle.SelectionBackColor = dgvProdOrderList.ColumnHeadersDefaultCellStyle.BackColor; // Prevent header highlight
                         }
                     }
 
                     conn.Close();
-
                 }
             }
             catch (Exception ex)
@@ -151,6 +249,42 @@ namespace C_Project
             }
         }
 
+        // Event handler for cell click to highlight row (not headers) and populate textboxes and DateTimePickers
+        private void dgvProdOrderList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Check if a valid row is clicked (ignore header clicks)
+            if (e.RowIndex >= 0)
+            {
+                // Get the selected row
+                DataGridViewRow row = dgvProdOrderList.Rows[e.RowIndex];
+
+                // Populate textboxes with data from the selected row
+                OrderNoTextBox.Text = row.Cells["OrderNumber"].Value?.ToString() ?? "";
+                productIdText.Text = row.Cells["ProductID"].Value?.ToString() ?? "";
+                CustomerNameTextBox.Text = row.Cells["ProductID"].Value?.ToString() ?? ""; // Adjust if CustomerName is from another table
+                dateTimePicker2.Value = Convert.ToDateTime(row.Cells["ODate"].Value ?? DateTime.Now);
+                PoQtyText.Text = row.Cells["Qty"].Value?.ToString() ?? "";
+                ReferenceQuoteTextBox.Text = row.Cells["RefQuotation"].Value?.ToString() ?? "";
+                NotesOrInstructionsTextBox.Text = row.Cells["Remark"].Value?.ToString() ?? "";
+
+                // Populate ESD and EED DateTimePickers
+                try
+                {
+                    dateTimePicker3.Value = row.Cells["ESD"].Value != null && row.Cells["ESD"].Value != DBNull.Value
+                        ? Convert.ToDateTime(row.Cells["ESD"].Value)
+                        : DateTime.Now; // Default to current date if null
+                    dateTimePicker4.Value = row.Cells["EED"].Value != null && row.Cells["EED"].Value != DBNull.Value
+                        ? Convert.ToDateTime(row.Cells["EED"].Value)
+                        : DateTime.Now; // Default to current date if null
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error setting ESD or EED dates: {ex.Message}");
+                    dateTimePicker3.Value = DateTime.Now;
+                    dateTimePicker4.Value = DateTime.Now;
+                }
+            }
+        }
         //fourth Tab
         private void LoadOrderFileTable()
         {
@@ -325,13 +459,31 @@ namespace C_Project
             string address = AddressTextBox.Text;
             string contactPerson = ContactPersonTextBox.Text;
             string telephone = TelephoneTextBox.Text;
+            string deliveryTime = DeliveryTimeTextBox.Text;
+            string transport = TransportationMethodTextBox.Text;
+            string discount = DiscountsOrOffersTextBox.Text;
+            string payment = PaymentTermsTextBox.Text;
+            string offers = NotesOrtermsTextBox.Text;
 
             worksheet.Cells[8, 3].Value = customerName;
             worksheet.Cells[8, 6].Value = quotationNum;
             worksheet.Cells[10, 3].Value = address;
             worksheet.Cells[10, 6].Value = date;
             worksheet.Cells[12, 3].Value = contactPerson;
+            worksheet.Cells[32, 3].Value = deliveryTime;
+            worksheet.Cells[32, 6].Value = transport;
+            worksheet.Cells[28, 6].Value = discount;
+            worksheet.Cells[34, 3].Value = payment;
+            worksheet.Cells[30, 4].Value = offers;
+            worksheet.Cells[12, 6].Value = telephone;
 
+            for (int i = 0; i < quotationDetailDataTable.Rows.Count; i++)
+            {
+                worksheet.Cells[i + 17, 2] = quotationDetailDataTable.Rows[i][1]; // ProductName
+                worksheet.Cells[i + 17, 4] = quotationDetailDataTable.Rows[i][2]; // Qty
+                worksheet.Cells[i + 17, 5] = quotationDetailDataTable.Rows[i][3]; // UnitPrice
+                worksheet.Cells[i + 17, 6] = quotationDetailDataTable.Rows[i][4]; // Amount
+            }
         }
 
         private string GetSaveFilePath(string title, string defaultFileName)
@@ -473,32 +625,73 @@ namespace C_Project
                 {
                     conn.Open();
 
-                    // Insert quotation data (exclude QuotationID as it's AutoNumber)
-                    string insertQuery = "INSERT INTO SMD_Quotation (QuotationNumber, QDate, ClientName, Address, Contact, Phone, Delivery, Shipping, Payment, Discount, Remark) " +
-                                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                    using (OleDbCommand insertCmd = new OleDbCommand(insertQuery, conn))
-                    {
-                        insertCmd.Parameters.Add("QuotationNumber", OleDbType.VarChar).Value = QuoteNumberTextBox.Text;
-                        insertCmd.Parameters.Add("QDate", OleDbType.Date).Value = dateTimePicker1.Value.ToString("MM/dd/yyyy");
-                        insertCmd.Parameters.Add("ClientName", OleDbType.VarChar).Value = CustomerNameTextBox.Text;
-                        insertCmd.Parameters.Add("Address", OleDbType.VarChar).Value = AddressTextBox.Text;
-                        insertCmd.Parameters.Add("Contact", OleDbType.VarChar).Value = ContactPersonTextBox.Text;
-                        insertCmd.Parameters.Add("Phone", OleDbType.VarChar).Value = TelephoneTextBox.Text;
-                        insertCmd.Parameters.Add("Delivery", OleDbType.VarChar).Value = DeliveryTimeTextBox.Text;
-                        insertCmd.Parameters.Add("Shipping", OleDbType.VarChar).Value = TransportationMethodTextBox.Text;
-                        insertCmd.Parameters.Add("Payment", OleDbType.VarChar).Value = PaymentTermsTextBox.Text;
-                        insertCmd.Parameters.Add("Discount", OleDbType.VarChar).Value = DiscountsOrOffersTextBox.Text;
-                        insertCmd.Parameters.Add("Remark", OleDbType.VarChar).Value = NotesOrtermsTextBox.Text;
+                    OleDbTransaction transaction = conn.BeginTransaction();
 
-                        insertCmd.ExecuteNonQuery();
+                    try
+                    {
+                        // Insert quotation data (exclude QuotationID as it's AutoNumber)
+                        string insertQuery = "INSERT INTO SMD_Quotation (QuotationNumber, QDate, ClientName, Address, Contact, Phone, Delivery, Shipping, Payment, Discount, Remark) " +
+                                            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                        int newQuotationId;
+                        using (OleDbCommand insertCmd = new OleDbCommand(insertQuery, conn, transaction))
+                        {
+                            insertCmd.Parameters.Add("QuotationNumber", OleDbType.VarChar).Value = QuoteNumberTextBox.Text;
+                            insertCmd.Parameters.Add("QDate", OleDbType.Date).Value = dateTimePicker1.Value.ToString("MM/dd/yyyy");
+                            insertCmd.Parameters.Add("ClientName", OleDbType.VarChar).Value = CustomerNameTextBox.Text;
+                            insertCmd.Parameters.Add("Address", OleDbType.VarChar).Value = AddressTextBox.Text;
+                            insertCmd.Parameters.Add("Contact", OleDbType.VarChar).Value = ContactPersonTextBox.Text;
+                            insertCmd.Parameters.Add("Phone", OleDbType.VarChar).Value = TelephoneTextBox.Text;
+                            insertCmd.Parameters.Add("Delivery", OleDbType.VarChar).Value = DeliveryTimeTextBox.Text;
+                            insertCmd.Parameters.Add("Shipping", OleDbType.VarChar).Value = TransportationMethodTextBox.Text;
+                            insertCmd.Parameters.Add("Payment", OleDbType.VarChar).Value = PaymentTermsTextBox.Text;
+                            insertCmd.Parameters.Add("Discount", OleDbType.VarChar).Value = DiscountsOrOffersTextBox.Text;
+                            insertCmd.Parameters.Add("Remark", OleDbType.VarChar).Value = NotesOrtermsTextBox.Text;
+
+                            insertCmd.ExecuteNonQuery();
+
+                            // 获取新插入的 ID
+                            string idQuery = "SELECT @@IDENTITY;";
+                            using (OleDbCommand idCmd = new OleDbCommand(idQuery, conn, transaction))
+                            {
+                                newQuotationId = Convert.ToInt32(idCmd.ExecuteScalar());
+                            }
+
+                            string insertDetailQuery = "INSERT INTO SMD_QuotationDetail (QuotationNumber, QuotationID, ProductID, Qty, UnitPrice, Amount) " + "VALUES (?, ?, ?, ?, ?, ?)";
+                            foreach (DataGridViewRow row in dataGridView2.Rows)
+                            {
+                                // 跳过空行或新行
+                                if (row.IsNewRow || row.Cells[0].Value == null) continue;
+
+                                using (OleDbCommand detailCmd = new OleDbCommand(insertDetailQuery, conn, transaction))
+                                {
+                                    // 添加参数
+                                    detailCmd.Parameters.Add("QuotationNumber", OleDbType.VarChar).Value = QuoteNumberTextBox.Text;
+                                    detailCmd.Parameters.Add("QuotationID", OleDbType.Integer).Value = newQuotationId;
+                                    detailCmd.Parameters.Add("ProductID", OleDbType.VarChar).Value = row.Cells["ProductID"].Value?.ToString() ?? "";
+                                    detailCmd.Parameters.Add("Qty", OleDbType.VarChar).Value = row.Cells["Qty"].Value?.ToString() ?? "";
+                                    detailCmd.Parameters.Add("UnitPrice", OleDbType.Currency).Value = Convert.ToDecimal(row.Cells["UnitPrice"].Value ?? 0.0m);
+                                    detailCmd.Parameters.Add("Amount", OleDbType.Currency).Value = Convert.ToDecimal(row.Cells["Amount"].Value ?? 0.0m);
+
+                                    // 执行插入
+                                    detailCmd.ExecuteNonQuery();
+                                }
+                            }
+
+                            transaction.Commit();
+                        }
+
+                        conn.Close();
+
+                        dgvQuoteList.Refresh();
+                        LoadQuotationlTable();
+
+                        MessageBox.Show("Quotation saved successfully!");
+                    } catch (Exception ex)
+                    {
+                        transaction?.Rollback();
+                        throw new Exception("保存报价或明细时出错：" + ex.Message);
                     }
 
-                    conn.Close();
-
-                    dgvQuoteList.Refresh();
-                    LoadQuotationlTable();
-
-                    MessageBox.Show("Quotation saved successfully!");
                 }
             }
             catch (Exception ex)
@@ -656,6 +849,38 @@ namespace C_Project
             }
         }
 
+        private void dgvQuoteList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // Ensure a valid row is clicked
+            {
+                // Highlight the selected row
+                dgvQuoteList.Rows[e.RowIndex].Selected = true;
+
+                // Get the selected row from the DataTable
+                if (quotationlDataTable.Rows.Count > e.RowIndex)
+                {
+                    DataRow selectedRow = quotationlDataTable.Rows[e.RowIndex];
+
+                    // Populate the textboxes with the selected row's data
+                    QuoteNumberTextBox.Text = selectedRow["QuotationNumber"].ToString();
+                    dateTimePicker1.Text = selectedRow["QDate"].ToString();
+                    CustomerNameTextBox.Text = selectedRow["ClientName"].ToString();
+                    AddressTextBox.Text = selectedRow["Address"].ToString();
+                    ContactPersonTextBox.Text = selectedRow["Contact"].ToString();
+                    TelephoneTextBox.Text = selectedRow["Phone"].ToString();
+                    DeliveryTimeTextBox.Text = selectedRow["Delivery"].ToString();
+                    TransportationMethodTextBox.Text = selectedRow["Shipping"].ToString();
+                    PaymentTermsTextBox.Text = selectedRow["Payment"].ToString();
+                    DiscountsOrOffersTextBox.Text = selectedRow["Discount"].ToString();
+                    NotesOrtermsTextBox.Text = selectedRow["Remark"].ToString();
+
+                    // Load the quotation details into dataGridView2 using QuotationID
+                    string quotationID = selectedRow["QuotationID"].ToString();
+                    LoadQuotationDetailTable(quotationID);
+                }
+
+            }
+        }
     }
 }
 

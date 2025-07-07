@@ -98,6 +98,7 @@ namespace C_Project
                 MessageBox.Show("Error connecting to database!\n" + ex.Message);
             }
         }
+
         //second Tab
         private void InitializeQuotationDetailTable()
         {
@@ -118,6 +119,12 @@ namespace C_Project
             dataGridView2.AutoGenerateColumns = false; // 禁用自动生成列
             dataGridView2.Columns.Clear();
 
+            dataGridView2.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "ProductID",
+                HeaderText = "Product ID",
+                Name = "ProductID"
+            });
             // 添加列并设置属性
             dataGridView2.Columns.Add(new DataGridViewTextBoxColumn
             {
@@ -145,6 +152,7 @@ namespace C_Project
                 Name = "Amount",
                 DefaultCellStyle = new DataGridViewCellStyle { Format = "C2" } // 货币格式
             });
+            dataGridView2.Columns["ProductID"].Visible = false;
             dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView2.AllowUserToResizeColumns = false;
         }
@@ -167,6 +175,7 @@ namespace C_Project
                     // Updated SQL query to properly reference tables and aliases
                     string sql = @"
                         SELECT 
+                            SMD_QuotationDetail.ProductID,
                             RND_Product.Name AS ProductName,
                             SMD_QuotationDetail.Qty,
                             SMD_QuotationDetail.UnitPrice,
@@ -564,7 +573,6 @@ namespace C_Project
 
         private void clearFormData()
         {
-            // Clear form fields
             CustomerNameTextBox.Clear();
             dateTimePicker1.Value = DateTime.Now;
             AddressTextBox.Clear();
@@ -582,7 +590,6 @@ namespace C_Project
             try
             {
                 clearFormData();
-                // Generate temporary QuotationNumber for UI display
                 int tempQuoteNumber;
                 using (OleDbConnection conn = new OleDbConnection(connStr))
                 {
@@ -596,11 +603,7 @@ namespace C_Project
                     }
                     conn.Close();
                 }
-                // Update UI
                 QuoteNumberTextBox.Text = $"Q{tempQuoteNumber:D5}";
-
-                // Load related details (if needed)
-                //LoadQuotationDetailTable();
 
                 MessageBox.Show("Quotation data prepared. Click Save to store in database.");
             }
@@ -620,7 +623,6 @@ namespace C_Project
                     return;
                 }
 
-
                 using (OleDbConnection conn = new OleDbConnection(connStr))
                 {
                     conn.Open();
@@ -629,56 +631,101 @@ namespace C_Project
 
                     try
                     {
-                        // Insert quotation data (exclude QuotationID as it's AutoNumber)
-                        string insertQuery = "INSERT INTO SMD_Quotation (QuotationNumber, QDate, ClientName, Address, Contact, Phone, Delivery, Shipping, Payment, Discount, Remark) " +
-                                            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                        int newQuotationId;
-                        using (OleDbCommand insertCmd = new OleDbCommand(insertQuery, conn, transaction))
+                        // Check if QuotationNumber already exists
+                        string checkQuery = "SELECT QuotationID FROM SMD_Quotation WHERE QuotationNumber = ?";
+                        int? existingQuotationId = null;
+                        using (OleDbCommand checkCmd = new OleDbCommand(checkQuery, conn, transaction))
                         {
-                            insertCmd.Parameters.Add("QuotationNumber", OleDbType.VarChar).Value = QuoteNumberTextBox.Text;
-                            insertCmd.Parameters.Add("QDate", OleDbType.Date).Value = dateTimePicker1.Value.ToString("MM/dd/yyyy");
-                            insertCmd.Parameters.Add("ClientName", OleDbType.VarChar).Value = CustomerNameTextBox.Text;
-                            insertCmd.Parameters.Add("Address", OleDbType.VarChar).Value = AddressTextBox.Text;
-                            insertCmd.Parameters.Add("Contact", OleDbType.VarChar).Value = ContactPersonTextBox.Text;
-                            insertCmd.Parameters.Add("Phone", OleDbType.VarChar).Value = TelephoneTextBox.Text;
-                            insertCmd.Parameters.Add("Delivery", OleDbType.VarChar).Value = DeliveryTimeTextBox.Text;
-                            insertCmd.Parameters.Add("Shipping", OleDbType.VarChar).Value = TransportationMethodTextBox.Text;
-                            insertCmd.Parameters.Add("Payment", OleDbType.VarChar).Value = PaymentTermsTextBox.Text;
-                            insertCmd.Parameters.Add("Discount", OleDbType.VarChar).Value = DiscountsOrOffersTextBox.Text;
-                            insertCmd.Parameters.Add("Remark", OleDbType.VarChar).Value = NotesOrtermsTextBox.Text;
-
-                            insertCmd.ExecuteNonQuery();
-
-                            // 获取新插入的 ID
-                            string idQuery = "SELECT @@IDENTITY;";
-                            using (OleDbCommand idCmd = new OleDbCommand(idQuery, conn, transaction))
+                            checkCmd.Parameters.Add("QuotationNumber", OleDbType.VarChar).Value = QuoteNumberTextBox.Text;
+                            var result = checkCmd.ExecuteScalar();
+                            if (result != null && result != DBNull.Value)
                             {
-                                newQuotationId = Convert.ToInt32(idCmd.ExecuteScalar());
+                                existingQuotationId = Convert.ToInt32(result);
+                            }
+                        }
+
+                        int newQuotationId;
+                        if (existingQuotationId.HasValue)
+                        {
+                            // QuotationNumber exists, update the existing record
+                            string updateQuery = "UPDATE SMD_Quotation SET QDate = ?, ClientName = ?, Address = ?, Contact = ?, Phone = ?, Delivery = ?, Shipping = ?, Payment = ?, Discount = ?, Remark = ? WHERE QuotationNumber = ?";
+                            using (OleDbCommand updateCmd = new OleDbCommand(updateQuery, conn, transaction))
+                            {
+                                updateCmd.Parameters.Add("QDate", OleDbType.Date).Value = dateTimePicker1.Value.ToString("MM/dd/yyyy");
+                                updateCmd.Parameters.Add("ClientName", OleDbType.VarChar).Value = CustomerNameTextBox.Text;
+                                updateCmd.Parameters.Add("Address", OleDbType.VarChar).Value = AddressTextBox.Text;
+                                updateCmd.Parameters.Add("Contact", OleDbType.VarChar).Value = ContactPersonTextBox.Text;
+                                updateCmd.Parameters.Add("Phone", OleDbType.VarChar).Value = TelephoneTextBox.Text;
+                                updateCmd.Parameters.Add("Delivery", OleDbType.VarChar).Value = DeliveryTimeTextBox.Text;
+                                updateCmd.Parameters.Add("Shipping", OleDbType.VarChar).Value = TransportationMethodTextBox.Text;
+                                updateCmd.Parameters.Add("Payment", OleDbType.VarChar).Value = PaymentTermsTextBox.Text;
+                                updateCmd.Parameters.Add("Discount", OleDbType.VarChar).Value = DiscountsOrOffersTextBox.Text;
+                                updateCmd.Parameters.Add("Remark", OleDbType.VarChar).Value = NotesOrtermsTextBox.Text;
+                                updateCmd.Parameters.Add("QuotationNumber", OleDbType.VarChar).Value = QuoteNumberTextBox.Text;
+
+                                updateCmd.ExecuteNonQuery();
                             }
 
-                            string insertDetailQuery = "INSERT INTO SMD_QuotationDetail (QuotationNumber, QuotationID, ProductID, Qty, UnitPrice, Amount) " + "VALUES (?, ?, ?, ?, ?, ?)";
-                            foreach (DataGridViewRow row in dataGridView2.Rows)
+                            newQuotationId = existingQuotationId.Value;
+
+                            // Optionally, delete existing details to avoid duplicates
+                            string deleteDetailQuery = "DELETE FROM SMD_QuotationDetail WHERE QuotationID = ?";
+                            using (OleDbCommand deleteCmd = new OleDbCommand(deleteDetailQuery, conn, transaction))
                             {
-                                // 跳过空行或新行
-                                if (row.IsNewRow || row.Cells[0].Value == null) continue;
+                                deleteCmd.Parameters.Add("QuotationID", OleDbType.Integer).Value = newQuotationId;
+                                deleteCmd.ExecuteNonQuery();
+                            }
+                        }
+                        else
+                        {
+                            // QuotationNumber does not exist, insert new record
+                            string insertQuery = "INSERT INTO SMD_Quotation (QuotationNumber, QDate, ClientName, Address, Contact, Phone, Delivery, Shipping, Payment, Discount, Remark) " +
+                                                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                            using (OleDbCommand insertCmd = new OleDbCommand(insertQuery, conn, transaction))
+                            {
+                                insertCmd.Parameters.Add("QuotationNumber", OleDbType.VarChar).Value = QuoteNumberTextBox.Text;
+                                insertCmd.Parameters.Add("QDate", OleDbType.Date).Value = dateTimePicker1.Value.ToString("MM/dd/yyyy");
+                                insertCmd.Parameters.Add("ClientName", OleDbType.VarChar).Value = CustomerNameTextBox.Text;
+                                insertCmd.Parameters.Add("Address", OleDbType.VarChar).Value = AddressTextBox.Text;
+                                insertCmd.Parameters.Add("Contact", OleDbType.VarChar).Value = ContactPersonTextBox.Text;
+                                insertCmd.Parameters.Add("Phone", OleDbType.VarChar).Value = TelephoneTextBox.Text;
+                                insertCmd.Parameters.Add("Delivery", OleDbType.VarChar).Value = DeliveryTimeTextBox.Text;
+                                insertCmd.Parameters.Add("Shipping", OleDbType.VarChar).Value = TransportationMethodTextBox.Text;
+                                insertCmd.Parameters.Add("Payment", OleDbType.VarChar).Value = PaymentTermsTextBox.Text;
+                                insertCmd.Parameters.Add("Discount", OleDbType.VarChar).Value = DiscountsOrOffersTextBox.Text;
+                                insertCmd.Parameters.Add("Remark", OleDbType.VarChar).Value = NotesOrtermsTextBox.Text;
 
-                                using (OleDbCommand detailCmd = new OleDbCommand(insertDetailQuery, conn, transaction))
+                                insertCmd.ExecuteNonQuery();
+
+                                string idQuery = "SELECT @@IDENTITY;";
+                                using (OleDbCommand idCmd = new OleDbCommand(idQuery, conn, transaction))
                                 {
-                                    // 添加参数
-                                    detailCmd.Parameters.Add("QuotationNumber", OleDbType.VarChar).Value = QuoteNumberTextBox.Text;
-                                    detailCmd.Parameters.Add("QuotationID", OleDbType.Integer).Value = newQuotationId;
-                                    detailCmd.Parameters.Add("ProductID", OleDbType.VarChar).Value = row.Cells["ProductID"].Value?.ToString() ?? "";
-                                    detailCmd.Parameters.Add("Qty", OleDbType.VarChar).Value = row.Cells["Qty"].Value?.ToString() ?? "";
-                                    detailCmd.Parameters.Add("UnitPrice", OleDbType.Currency).Value = Convert.ToDecimal(row.Cells["UnitPrice"].Value ?? 0.0m);
-                                    detailCmd.Parameters.Add("Amount", OleDbType.Currency).Value = Convert.ToDecimal(row.Cells["Amount"].Value ?? 0.0m);
-
-                                    // 执行插入
-                                    detailCmd.ExecuteNonQuery();
+                                    newQuotationId = Convert.ToInt32(idCmd.ExecuteScalar());
                                 }
                             }
-
-                            transaction.Commit();
                         }
+
+                        // Insert details for the quotation
+                        string insertDetailQuery = "INSERT INTO SMD_QuotationDetail (QuotationNumber, QuotationID, ProductID, Qty, UnitPrice, Amount) " +
+                                                  "VALUES (?, ?, ?, ?, ?, ?)";
+                        foreach (DataGridViewRow row in dataGridView2.Rows)
+                        {
+                            if (row.IsNewRow || row.Cells[0].Value == null) continue;
+
+                            using (OleDbCommand detailCmd = new OleDbCommand(insertDetailQuery, conn, transaction))
+                            {
+                                detailCmd.Parameters.Add("QuotationNumber", OleDbType.VarChar).Value = QuoteNumberTextBox.Text;
+                                detailCmd.Parameters.Add("QuotationID", OleDbType.Integer).Value = newQuotationId;
+                                detailCmd.Parameters.Add("ProductID", OleDbType.VarChar).Value = row.Cells["ProductID"].Value?.ToString() ?? "";
+                                detailCmd.Parameters.Add("Qty", OleDbType.VarChar).Value = row.Cells["Qty"].Value?.ToString() ?? "";
+                                detailCmd.Parameters.Add("UnitPrice", OleDbType.Currency).Value = Convert.ToDecimal(row.Cells["UnitPrice"].Value ?? 0.0m);
+                                detailCmd.Parameters.Add("Amount", OleDbType.Currency).Value = Convert.ToDecimal(row.Cells["Amount"].Value ?? 0.0m);
+
+                                detailCmd.ExecuteNonQuery();
+                            }
+                        }
+
+                        transaction.Commit();
 
                         conn.Close();
 
@@ -686,12 +733,12 @@ namespace C_Project
                         LoadQuotationlTable();
 
                         MessageBox.Show("Quotation saved successfully!");
-                    } catch (Exception ex)
+                    }
+                    catch (Exception ex)
                     {
                         transaction?.Rollback();
                         throw new Exception("保存报价或明细时出错：" + ex.Message);
                     }
-
                 }
             }
             catch (Exception ex)
@@ -699,7 +746,6 @@ namespace C_Project
                 MessageBox.Show("Error saving quotation to database!\n" + ex.Message);
             }
         }
-
         private void NewProductsButton_Click(object sender, EventArgs e)
         {
             AddProduct addForm = new AddProduct();

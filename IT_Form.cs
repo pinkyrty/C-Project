@@ -75,6 +75,8 @@ namespace C_Project
 
                             dataGridView1.DataSource = userManDataTable;
 
+                            dataGridView1.CellFormatting += MyDataGridView_CellFormatting;
+
                             if (dataGridView1.Columns.Count >= 6)
                             {
                                 dataGridView1.Columns[1].HeaderText = "User Name";
@@ -89,7 +91,6 @@ namespace C_Project
                             {
                                 Console.WriteLine($"Expected at least 6 columns, but got: {dataGridView1.Columns.Count}");
                             }
-
                             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                             dataGridView1.AllowUserToResizeColumns = false;
                             dataGridView1.ReadOnly = false;
@@ -104,6 +105,15 @@ namespace C_Project
             catch (Exception ex)
             {
                 MessageBox.Show($"Error connecting to database!\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void MyDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 2 && e.RowIndex >= 0 && e.RowIndex < dataGridView1.RowCount-1)
+            {
+                e.Value = "*****";
+                e.FormattingApplied = true;
             }
         }
 
@@ -367,7 +377,7 @@ namespace C_Project
             DataRow newRow = userManDataTable.NewRow();
 
             newRow["Username"] = "";
-            newRow["Password"] = "";
+            newRow["Password"] = "1234";
             newRow["Department"] = 0;
             newRow["FullName"] = "";
             newRow["Active"] = false;

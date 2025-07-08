@@ -84,7 +84,6 @@ namespace C_Project
             {
                 using (OleDbConnection conn = new OleDbConnection(connStr))
                 {
-
                     conn.Open();
 
                     string sql = "SELECT * FROM SCM_PODetail";
@@ -97,6 +96,19 @@ namespace C_Project
                             dataGridView5.DataSource = logisticProcurementDataTable;
                             dataGridView5.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                             dataGridView5.Columns["PODetailID"].ReadOnly = true;
+                        }
+                    }
+
+                    sql = "SELECT POID FROM SCM_PO";
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                    {
+                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
+                        {
+                            logisticProcurementDataTable = new DataTable();
+                            adapter.Fill(logisticProcurementDataTable);
+                            dataGridView1.DataSource = logisticProcurementDataTable;
+                            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                            dataGridView1.Columns["POID"].ReadOnly = true;
                         }
                     }
 
@@ -144,6 +156,19 @@ namespace C_Project
                         }
                     }
 
+                    sql = "SELECT TransferID FROM SCM_Transfer";
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                    {
+                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
+                        {
+                            logisticTransferDataTable = new DataTable();
+                            adapter.Fill(logisticTransferDataTable);
+                            dataGridView2.DataSource = logisticTransferDataTable;
+                            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+                            dataGridView2.AllowUserToResizeColumns = false;
+                            dataGridView2.Columns["TransferID"].ReadOnly = true;
+                        }
+                    }
                     conn.Close();
 
                 }
@@ -774,6 +799,56 @@ namespace C_Project
 
         }
 
+        void OnDataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            var cells = dataGridView1.SelectedCells;
+            if (cells == null || cells.Count == 0)
+            {
+                return;
+            }
+            var cell = cells[0];
+            if (cell != null)
+            {
+                //find key
+                string key = cell.Value.ToString();
+                textBox2.Text = key;
+
+                //select
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+                    conn.Open();
+                    string sql = "SELECT * FROM SCM_PO WHERE POID = ?";
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@POID", key);
+                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
+                        {
+                            DataTable table = new DataTable();
+                            try
+                            {
+                                adapter.Fill(table);
+                                if (table.Rows.Count > 0)
+                                {
+                                    DataRow row = table.Rows[0];
+                                    dateTimePicker1.Value = Convert.ToDateTime(row["PODate"]);
+                                    dateTimePicker2.Value = Convert.ToDateTime(row["ETA"]);
+                                    comboBox1.SelectedItem = row["Status"].ToString();
+                                    comboBox3.SelectedItem = row["SupplierID"].ToString();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No record found for the selected key.");
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         private void btn_Add5_Click_1(object sender, EventArgs e)
         {
             if (textBox2.Text == string.Empty)
@@ -822,9 +897,39 @@ namespace C_Project
 
         }
 
+
+        private static readonly Random random = new Random();
+
+
+        public static string GenerateShortTextKey()
+        {
+            return Guid.NewGuid().ToString("N").Substring(0, 8);
+        }
+
+        public static string GenerateRandomString(int length = 8)
+        {
+            if (length > 255) length = 255;
+            if (length <= 0) length = 8;
+
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            char[] result = new char[length];
+
+            for (int i = 0; i < length; i++)
+            {
+                result[i] = chars[random.Next(chars.Length)];
+            }
+
+            return new string(result);
+        }
         private void button2_Click_1(object sender, EventArgs e)
         {
-
+            string key = GenerateShortTextKey();
+            textBox2.Text = key;
+        }
+        private void button10_Click_1(object sender, EventArgs e)
+        {
+            string key = GenerateShortTextKey();
+            textBox6.Text = key;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -855,6 +960,9 @@ namespace C_Project
                         else
                         {
                             MessageBox.Show("Success");
+                            // 刷新
+                            this.LoadLogisticTransferTable();
+                            
                         }
                     }
                 }
@@ -862,6 +970,57 @@ namespace C_Project
                 {
                     MessageBox.Show(ex.ToString());
                     Console.WriteLine(ex.ToString());
+                }
+            }
+        }
+
+        private void dataGridView2_SelectionChanged(object sender, EventArgs e)
+        {
+            var cells = dataGridView2.SelectedCells;
+            if (cells == null || cells.Count == 0)
+            {
+                return;
+            }
+            var cell = cells[0];
+            if (cell != null)
+            {
+                string key = cell.Value.ToString();
+                textBox2.Text = key;
+
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+                    conn.Open();
+                    string sql = "SELECT * FROM SCM_Transfer WHERE TransferID = ?";
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@TransferID", key);
+                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
+                        {
+                            DataTable table = new DataTable();
+                            try
+                            {
+                                adapter.Fill(table);
+                                if (table.Rows.Count > 0)
+                                {
+                                    DataRow row = table.Rows[0];
+                                    textBox6.Text = row["TransferID"].ToString();
+                                    dateTimePicker3.Value = Convert.ToDateTime(row["Date"]);
+                                    comboBox2.Text = row["FromDept"].ToString();
+                                    comboBox4.Text = row["ToDept"].ToString();
+                                    textBox3.Text = row["OrderNo"].ToString();
+                                    textBox4.Text = row["Reason"].ToString();
+                                    textBox5.Text = row["Manager"].ToString();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No record found for the selected key.");
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                            }
+                        }
+                    }
                 }
             }
         }

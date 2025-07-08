@@ -39,6 +39,8 @@ namespace C_Project
             this.LoadProcessTable();
             this.LoadTestTable();
             this.LoadCertTable();
+            this.LoadProductTable2();
+            this.dataGridView2.SelectionChanged += dataGridView2_SelectionChanged;
         }
 
         protected override void OnLoad(EventArgs e)
@@ -159,7 +161,7 @@ namespace C_Project
                             dgvManufacturing.Columns[5].HeaderText = "Staff";
                             dgvManufacturing.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                             dgvManufacturing.AllowUserToResizeColumns = false;
-                            dgvManufacturing.Columns["StepID"].ReadOnly = true;;
+                            dgvManufacturing.Columns["StepID"].ReadOnly = true; ;
                         }
                     }
 
@@ -251,6 +253,39 @@ namespace C_Project
             catch (Exception ex)
             {
                 MessageBox.Show("Error connecting to database!\n" + ex.Message);
+            }
+        }
+        private void LoadProductTable2()
+        {
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+                    conn.Open();
+                    string sql = "SELECT ProductID, Name, MOQ, [Unit Price], Status, Project FROM RND_Product";
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                    {
+                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
+                        {
+                            DataTable dt = new DataTable();
+                            adapter.Fill(dt);
+                            dataGridView2.DataSource = dt;
+
+                            dataGridView2.Columns["ProductID"].HeaderText = "Product Number";
+                            dataGridView2.Columns["Name"].HeaderText = "Product Name";
+                            dataGridView2.Columns["MOQ"].HeaderText = "MOQ";
+                            dataGridView2.Columns["Unit Price"].HeaderText = "Unit Price";
+                            dataGridView2.Columns["Status"].HeaderText = "Status";
+                            dataGridView2.Columns["Project"].HeaderText = "Project";
+                            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        }
+                    }
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading RND_Product: " + ex.Message);
             }
         }
 
@@ -531,62 +566,137 @@ namespace C_Project
         }
         private void btn_Save4_Click(object sender, EventArgs e)
         {
-            //LoadProductTable()
+            string productId = txtProductCode.Text.Trim();
+            string name = txtProductName.Text.Trim();
+            string moqText = txtMOQ.Text.Trim();
+            string unitPriceText = unitPriceTextBox.Text.Trim();
+            string status = cmbStatus.Text.Trim();
+            string project = cmbProject.Text.Trim();
+
+            if (string.IsNullOrEmpty(productId) || string.IsNullOrEmpty(name))
+            {
+                MessageBox.Show("Product Number and Name are required.");
+                return;
+            }
+            if (!int.TryParse(moqText, out int moq))
+            {
+                MessageBox.Show("MOQ must be an integer.");
+                return;
+            }
+            if (!decimal.TryParse(unitPriceText, out decimal unitPrice))
+            {
+                MessageBox.Show("Unit Price must be a number.");
+                return;
+            }
+
             try
             {
-                DataTable dt = (DataTable)dgvProductList.DataSource;
-                if (dt == null || dt.Rows.Count == 0)
-                {
-                    MessageBox.Show("No data to save.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
                 using (OleDbConnection conn = new OleDbConnection(connStr))
                 {
                     conn.Open();
-                    foreach (DataRow row in dt.Rows)
+                    // 檢查是否已存在
+                    string checkSql = "SELECT COUNT(*) FROM RND_Product WHERE ProductID = ?";
+                    using (var checkCmd = new OleDbCommand(checkSql, conn))
                     {
-                        if (row.RowState == DataRowState.Added)
-                        {
-                            string query = "INSERT INTO RND_Cert (Name) VALUES (?)";
-                            using (OleDbCommand cmd = new OleDbCommand(query, conn))
-                            {
-                                cmd.Parameters.AddWithValue("?", row["ProductID"] != DBNull.Value ? row["ProductID"] : "");
+                        checkCmd.Parameters.AddWithValue("?", productId);
+                        int count = (int)checkCmd.ExecuteScalar();
 
+                        if (count > 0)
+                        {
+                            // 更新
+                            string updateSql = @"UPDATE RND_Product SET Name=?, MOQ=?, [Unit Price]=?, Status=?, Project=? WHERE ProductID=?";
+                            using (var cmd = new OleDbCommand(updateSql, conn))
+                            {
+                                cmd.Parameters.AddWithValue("?", name);
+                                cmd.Parameters.AddWithValue("?", moq);
+                                cmd.Parameters.AddWithValue("?", unitPrice);
+                                cmd.Parameters.AddWithValue("?", status);
+                                cmd.Parameters.AddWithValue("?", project);
+                                cmd.Parameters.AddWithValue("?", productId);
                                 cmd.ExecuteNonQuery();
                             }
                         }
-                        else if (row.RowState == DataRowState.Modified)
+                        else
                         {
-                            string query = "UPDATE RND_Cert SET Name = ? WHERE ProductID = ?";
-                            using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                            // 新增
+                            string insertSql = @"INSERT INTO RND_Product (ProductID, Name, MOQ, [Unit Price], Status, Project) VALUES (?, ?, ?, ?, ?, ?)";
+                            using (var cmd = new OleDbCommand(insertSql, conn))
                             {
-                                cmd.Parameters.AddWithValue("?", row["Name"] != DBNull.Value ? row["Name"] : "");
-                                cmd.Parameters.AddWithValue("?", row["ProductID"]);
-
+                                cmd.Parameters.AddWithValue("?", productId);
+                                cmd.Parameters.AddWithValue("?", name);
+                                cmd.Parameters.AddWithValue("?", moq);
+                                cmd.Parameters.AddWithValue("?", unitPrice);
+                                cmd.Parameters.AddWithValue("?", status);
+                                cmd.Parameters.AddWithValue("?", project);
                                 cmd.ExecuteNonQuery();
+                            }
+
+                            // 新增到RND_Cert，Name欄位帶產品名稱
+                            string insertCertSql = @"INSERT INTO RND_Cert (ProductID, Name, Content) VALUES (?, ?, '')";
+                            using (var certCmd = new OleDbCommand(insertCertSql, conn))
+                            {
+                                certCmd.Parameters.AddWithValue("?", productId);
+                                certCmd.Parameters.AddWithValue("?", name);  // 產品名稱
+                                certCmd.ExecuteNonQuery();
                             }
                         }
                     }
-                    dt.AcceptChanges();
+                    conn.Close();
                 }
-
-                MessageBox.Show("Data saved to database successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                dgvMaterials.Refresh();
+                LoadProductTable2();
+                MessageBox.Show("Saved successfully!");
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error saving data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error saving: " + ex.Message);
+            }
+        }
+
+        private void dataGridView2_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView2.CurrentRow != null && dataGridView2.CurrentRow.Index >= 0)
+            {
+                var row = dataGridView2.CurrentRow;
+                string productId = row.Cells["ProductID"].Value?.ToString();
+
+                if (!string.IsNullOrEmpty(productId))
+                {
+                    using (OleDbConnection conn = new OleDbConnection(connStr))
+                    {
+                        conn.Open();
+                        string sql = "SELECT ProductID, Name, MOQ, [Unit Price], Status, Project FROM RND_Product WHERE ProductID = ?";
+                        using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                        {
+                            cmd.Parameters.AddWithValue("?", productId);
+                            using (OleDbDataReader reader = cmd.ExecuteReader())
+                            {
+                                if (reader.Read())
+                                {
+                                    txtProductCode.Text = reader["ProductID"].ToString();
+                                    txtProductName.Text = reader["Name"].ToString();
+                                    txtMOQ.Text = reader["MOQ"].ToString();
+                                    unitPriceTextBox.Text = reader["Unit Price"].ToString();
+                                    cmbStatus.Text = reader["Status"].ToString();
+                                    cmbProject.Text = reader["Project"].ToString();
+                                }
+                            }
+                        }
+                        conn.Close();
+                    }
+                }
             }
         }
 
         private void btn_Add4_Click(object sender, EventArgs e)
         {
-            DataRow newRow = productDataTable.NewRow();
-
-            newRow["Name"] = "";
-
-            productDataTable.Rows.Add(newRow);
+            string newProductId = Guid.NewGuid().ToString(); // 產生 UUID
+            txtProductCode.Text = newProductId;
+            txtProductName.Text = "";
+            txtMOQ.Text = "";
+            unitPriceTextBox.Text = "";
+            cmbStatus.SelectedIndex = -1;
+            cmbProject.SelectedIndex = -1;
+            txtProductCode.Focus();
         }
 
         // Product data structure
@@ -750,6 +860,26 @@ namespace C_Project
         }
 
         private void txtMOQ_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void unitPriceTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_SelectionChanged_1(object sender, EventArgs e)
         {
 
         }

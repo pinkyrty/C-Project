@@ -74,6 +74,8 @@
             UploadImageButton = new Button();
             ProductPictureBox = new PictureBox();
             panel1 = new Panel();
+            unitPriceTextBox = new TextBox();
+            label8 = new Label();
             txtProductName = new TextBox();
             ProductNamelabel = new Label();
             cmbStatus = new ComboBox();
@@ -86,13 +88,13 @@
             Projectlabel = new Label();
             Statuslabel = new Label();
             MOQlabel = new Label();
-            btnSave = new Button();
             label2 = new Label();
             label31 = new Label();
             label30 = new Label();
             btnLogout = new Button();
             btn_Add4 = new Button();
             btn_Save4 = new Button();
+            dataGridView2 = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProductList).BeginInit();
             tabProductDetail.SuspendLayout();
@@ -109,6 +111,7 @@
             ImageAttachmentsTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ProductPictureBox).BeginInit();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
@@ -148,9 +151,9 @@
             // 
             dgvProductList.BackgroundColor = SystemColors.GradientInactiveCaption;
             dgvProductList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvProductList.Location = new Point(12, 114);
+            dgvProductList.Location = new Point(1, 108);
             dgvProductList.Name = "dgvProductList";
-            dgvProductList.Size = new Size(330, 679);
+            dgvProductList.Size = new Size(341, 738);
             dgvProductList.TabIndex = 49;
             dgvProductList.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -163,10 +166,10 @@
             tabProductDetail.Controls.Add(PackagingInformationTabPage);
             tabProductDetail.Controls.Add(TestingACertificationTabPage);
             tabProductDetail.Controls.Add(ImageAttachmentsTabPage);
-            tabProductDetail.Location = new Point(352, 187);
+            tabProductDetail.Location = new Point(352, 361);
             tabProductDetail.Name = "tabProductDetail";
             tabProductDetail.SelectedIndex = 0;
-            tabProductDetail.Size = new Size(798, 594);
+            tabProductDetail.Size = new Size(803, 485);
             tabProductDetail.TabIndex = 51;
             // 
             // ProductSpecificationsTabPage
@@ -175,7 +178,7 @@
             ProductSpecificationsTabPage.Location = new Point(4, 24);
             ProductSpecificationsTabPage.Name = "ProductSpecificationsTabPage";
             ProductSpecificationsTabPage.Padding = new Padding(3);
-            ProductSpecificationsTabPage.Size = new Size(790, 566);
+            ProductSpecificationsTabPage.Size = new Size(795, 457);
             ProductSpecificationsTabPage.TabIndex = 0;
             ProductSpecificationsTabPage.Text = "Product Specifications";
             ProductSpecificationsTabPage.UseVisualStyleBackColor = true;
@@ -197,7 +200,7 @@
             panel2.Controls.Add(label1);
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(788, 566);
+            panel2.Size = new Size(799, 461);
             panel2.TabIndex = 0;
             // 
             // WarrantySupportTextBox
@@ -306,7 +309,7 @@
             BillofMaterialsTabPage.Location = new Point(4, 24);
             BillofMaterialsTabPage.Name = "BillofMaterialsTabPage";
             BillofMaterialsTabPage.Padding = new Padding(3);
-            BillofMaterialsTabPage.Size = new Size(790, 566);
+            BillofMaterialsTabPage.Size = new Size(795, 457);
             BillofMaterialsTabPage.TabIndex = 1;
             BillofMaterialsTabPage.Text = "Bill of Materials";
             BillofMaterialsTabPage.UseVisualStyleBackColor = true;
@@ -338,7 +341,7 @@
             dgvMaterials.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvMaterials.Location = new Point(0, 0);
             dgvMaterials.Name = "dgvMaterials";
-            dgvMaterials.Size = new Size(706, 566);
+            dgvMaterials.Size = new Size(706, 457);
             dgvMaterials.TabIndex = 0;
             dgvMaterials.CellContentClick += dgvMaterials_CellContentClick;
             // 
@@ -350,7 +353,7 @@
             ManufacturingInstructionsTabPage.Location = new Point(4, 24);
             ManufacturingInstructionsTabPage.Name = "ManufacturingInstructionsTabPage";
             ManufacturingInstructionsTabPage.Padding = new Padding(3);
-            ManufacturingInstructionsTabPage.Size = new Size(790, 566);
+            ManufacturingInstructionsTabPage.Size = new Size(795, 457);
             ManufacturingInstructionsTabPage.TabIndex = 2;
             ManufacturingInstructionsTabPage.Text = "Manufacturing Instructions";
             ManufacturingInstructionsTabPage.UseVisualStyleBackColor = true;
@@ -381,7 +384,7 @@
             dgvManufacturing.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvManufacturing.Location = new Point(0, 0);
             dgvManufacturing.Name = "dgvManufacturing";
-            dgvManufacturing.Size = new Size(703, 566);
+            dgvManufacturing.Size = new Size(703, 457);
             dgvManufacturing.TabIndex = 0;
             dgvManufacturing.CellContentClick += dgvManufacturing_CellContentClick;
             // 
@@ -397,7 +400,7 @@
             PackagingInformationTabPage.Location = new Point(4, 24);
             PackagingInformationTabPage.Name = "PackagingInformationTabPage";
             PackagingInformationTabPage.Padding = new Padding(3);
-            PackagingInformationTabPage.Size = new Size(790, 566);
+            PackagingInformationTabPage.Size = new Size(795, 457);
             PackagingInformationTabPage.TabIndex = 3;
             PackagingInformationTabPage.Text = "Packaging Information";
             // 
@@ -461,14 +464,14 @@
             TestingACertificationTabPage.Location = new Point(4, 24);
             TestingACertificationTabPage.Name = "TestingACertificationTabPage";
             TestingACertificationTabPage.Padding = new Padding(3);
-            TestingACertificationTabPage.Size = new Size(790, 566);
+            TestingACertificationTabPage.Size = new Size(795, 457);
             TestingACertificationTabPage.TabIndex = 4;
             TestingACertificationTabPage.Text = "Testing/Certification";
             TestingACertificationTabPage.UseVisualStyleBackColor = true;
             // 
             // btn_Add3
             // 
-            btn_Add3.Location = new Point(0, 488);
+            btn_Add3.Location = new Point(-4, 425);
             btn_Add3.Name = "btn_Add3";
             btn_Add3.Size = new Size(75, 23);
             btn_Add3.TabIndex = 59;
@@ -478,7 +481,7 @@
             // 
             // btn_Save3
             // 
-            btn_Save3.Location = new Point(81, 488);
+            btn_Save3.Location = new Point(77, 425);
             btn_Save3.Name = "btn_Save3";
             btn_Save3.Size = new Size(75, 23);
             btn_Save3.TabIndex = 60;
@@ -510,18 +513,18 @@
             // 
             dataGridView1.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(0, 232);
+            dataGridView1.Location = new Point(0, 208);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(785, 250);
+            dataGridView1.Size = new Size(785, 211);
             dataGridView1.TabIndex = 53;
             // 
             // dgvTesting
             // 
             dgvTesting.BackgroundColor = SystemColors.GradientInactiveCaption;
             dgvTesting.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvTesting.Location = new Point(0, 0);
+            dgvTesting.Location = new Point(-4, 3);
             dgvTesting.Name = "dgvTesting";
-            dgvTesting.Size = new Size(794, 173);
+            dgvTesting.Size = new Size(798, 170);
             dgvTesting.TabIndex = 0;
             dgvTesting.CellContentClick += dgvTesting_CellContentClick;
             // 
@@ -533,13 +536,13 @@
             ImageAttachmentsTabPage.Location = new Point(4, 24);
             ImageAttachmentsTabPage.Name = "ImageAttachmentsTabPage";
             ImageAttachmentsTabPage.Padding = new Padding(3);
-            ImageAttachmentsTabPage.Size = new Size(790, 566);
+            ImageAttachmentsTabPage.Size = new Size(795, 457);
             ImageAttachmentsTabPage.TabIndex = 5;
             ImageAttachmentsTabPage.Text = "Image Attachments";
             // 
             // UploadImageButton
             // 
-            UploadImageButton.Location = new Point(612, 266);
+            UploadImageButton.Location = new Point(643, 211);
             UploadImageButton.Name = "UploadImageButton";
             UploadImageButton.Size = new Size(123, 50);
             UploadImageButton.TabIndex = 1;
@@ -551,12 +554,14 @@
             ProductPictureBox.BackColor = Color.Gainsboro;
             ProductPictureBox.Location = new Point(9, 6);
             ProductPictureBox.Name = "ProductPictureBox";
-            ProductPictureBox.Size = new Size(540, 554);
+            ProductPictureBox.Size = new Size(597, 451);
             ProductPictureBox.TabIndex = 0;
             ProductPictureBox.TabStop = false;
             // 
             // panel1
             // 
+            panel1.Controls.Add(unitPriceTextBox);
+            panel1.Controls.Add(label8);
             panel1.Controls.Add(txtProductName);
             panel1.Controls.Add(ProductNamelabel);
             panel1.Controls.Add(cmbStatus);
@@ -569,11 +574,29 @@
             panel1.Controls.Add(Projectlabel);
             panel1.Controls.Add(Statuslabel);
             panel1.Controls.Add(MOQlabel);
-            panel1.Location = new Point(352, 39);
+            panel1.Location = new Point(352, 33);
             panel1.Name = "panel1";
-            panel1.Size = new Size(702, 142);
+            panel1.Size = new Size(634, 126);
             panel1.TabIndex = 62;
             panel1.Paint += panel1_Paint;
+            // 
+            // unitPriceTextBox
+            // 
+            unitPriceTextBox.Location = new Point(9, 97);
+            unitPriceTextBox.Name = "unitPriceTextBox";
+            unitPriceTextBox.Size = new Size(100, 23);
+            unitPriceTextBox.TabIndex = 63;
+            unitPriceTextBox.TextChanged += unitPriceTextBox_TextChanged;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(9, 79);
+            label8.Name = "label8";
+            label8.Size = new Size(60, 15);
+            label8.TabIndex = 62;
+            label8.Text = "Unit Price";
+            label8.Click += label8_Click;
             // 
             // txtProductName
             // 
@@ -595,7 +618,7 @@
             // 
             cmbStatus.FormattingEnabled = true;
             cmbStatus.Items.AddRange(new object[] { "Under Development", "In Mass Production", "Discontinued" });
-            cmbStatus.Location = new Point(9, 97);
+            cmbStatus.Location = new Point(204, 97);
             cmbStatus.Name = "cmbStatus";
             cmbStatus.Size = new Size(168, 23);
             cmbStatus.TabIndex = 54;
@@ -612,7 +635,7 @@
             // ProductNumberlabel
             // 
             ProductNumberlabel.AutoSize = true;
-            ProductNumberlabel.Location = new Point(275, 12);
+            ProductNumberlabel.Location = new Point(203, 12);
             ProductNumberlabel.Name = "ProductNumberlabel";
             ProductNumberlabel.Size = new Size(101, 15);
             ProductNumberlabel.TabIndex = 55;
@@ -630,21 +653,21 @@
             // 
             cmbProject.FormattingEnabled = true;
             cmbProject.Items.AddRange(new object[] { "Tailor-made", "Ready-made" });
-            cmbProject.Location = new Point(275, 97);
+            cmbProject.Location = new Point(397, 97);
             cmbProject.Name = "cmbProject";
             cmbProject.Size = new Size(157, 23);
             cmbProject.TabIndex = 61;
             // 
             // txtProductCode
             // 
-            txtProductCode.Location = new Point(275, 33);
+            txtProductCode.Location = new Point(204, 33);
             txtProductCode.Name = "txtProductCode";
             txtProductCode.Size = new Size(131, 23);
             txtProductCode.TabIndex = 56;
             // 
             // txtMOQ
             // 
-            txtMOQ.Location = new Point(514, 33);
+            txtMOQ.Location = new Point(397, 33);
             txtMOQ.Name = "txtMOQ";
             txtMOQ.Size = new Size(97, 23);
             txtMOQ.TabIndex = 58;
@@ -653,7 +676,7 @@
             // Projectlabel
             // 
             Projectlabel.AutoSize = true;
-            Projectlabel.Location = new Point(275, 75);
+            Projectlabel.Location = new Point(397, 79);
             Projectlabel.Name = "Projectlabel";
             Projectlabel.Size = new Size(46, 15);
             Projectlabel.TabIndex = 60;
@@ -662,7 +685,7 @@
             // Statuslabel
             // 
             Statuslabel.AutoSize = true;
-            Statuslabel.Location = new Point(13, 75);
+            Statuslabel.Location = new Point(203, 79);
             Statuslabel.Name = "Statuslabel";
             Statuslabel.Size = new Size(41, 15);
             Statuslabel.TabIndex = 59;
@@ -671,20 +694,11 @@
             // MOQlabel
             // 
             MOQlabel.AutoSize = true;
-            MOQlabel.Location = new Point(514, 12);
+            MOQlabel.Location = new Point(397, 12);
             MOQlabel.Name = "MOQlabel";
             MOQlabel.Size = new Size(39, 15);
             MOQlabel.TabIndex = 57;
             MOQlabel.Text = "MOQ";
-            // 
-            // btnSave
-            // 
-            btnSave.Location = new Point(1047, 804);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(97, 42);
-            btnSave.TabIndex = 52;
-            btnSave.Text = "Save";
-            btnSave.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -726,7 +740,7 @@
             // 
             // btn_Add4
             // 
-            btn_Add4.Location = new Point(12, 799);
+            btn_Add4.Location = new Point(352, 159);
             btn_Add4.Name = "btn_Add4";
             btn_Add4.Size = new Size(75, 23);
             btn_Add4.TabIndex = 61;
@@ -736,13 +750,24 @@
             // 
             // btn_Save4
             // 
-            btn_Save4.Location = new Point(93, 799);
+            btn_Save4.Location = new Point(433, 159);
             btn_Save4.Name = "btn_Save4";
             btn_Save4.Size = new Size(75, 23);
             btn_Save4.TabIndex = 62;
             btn_Save4.Text = "Save";
             btn_Save4.UseVisualStyleBackColor = true;
             btn_Save4.Click += btn_Save4_Click;
+            // 
+            // dataGridView2
+            // 
+            dataGridView2.BackgroundColor = SystemColors.GradientInactiveCaption;
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Location = new Point(352, 187);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.Size = new Size(785, 168);
+            dataGridView2.TabIndex = 66;
+            dataGridView2.CellContentClick += dataGridView2_CellContentClick;
+            dataGridView2.SelectionChanged += dataGridView2_SelectionChanged_1;
             // 
             // RnD_Form
             // 
@@ -751,13 +776,13 @@
             BackColor = Color.LightBlue;
             ClientSize = new Size(1153, 858);
             Controls.Add(btn_Add4);
-            Controls.Add(btn_Save4);
+            Controls.Add(dataGridView2);
             Controls.Add(btnLogout);
+            Controls.Add(btn_Save4);
             Controls.Add(label31);
             Controls.Add(label30);
             Controls.Add(label2);
             Controls.Add(panel1);
-            Controls.Add(btnSave);
             Controls.Add(tabProductDetail);
             Controls.Add(dgvProductList);
             Controls.Add(UserNamelabel);
@@ -785,6 +810,7 @@
             ((System.ComponentModel.ISupportInitialize)ProductPictureBox).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -826,7 +852,6 @@
         private DataGridView dataGridView1;
         private Button UploadImageButton;
         private PictureBox ProductPictureBox;
-        private Button btnSave;
         private Label label2;
         private Panel panel2;
         private Label label4;
@@ -854,5 +879,8 @@
         private Button btn_Save3;
         private Button btn_Add4;
         private Button btn_Save4;
+        private DataGridView dataGridView2;
+        private Label label8;
+        private TextBox unitPriceTextBox;
     }
 }

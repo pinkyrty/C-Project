@@ -244,7 +244,7 @@ namespace C_Project
                             // Enable row selection, ensure headers are not highlighted
                             dgvProdOrderList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                             dgvProdOrderList.MultiSelect = false;
-                            dgvProdOrderList.EnableHeadersVisualStyles = true; // Ensures headers use default visual style (no highlight)
+                            dgvProdOrderList.EnableHeadersVisualStyles = false; // Ensures headers use default visual style (no highlight)
                             dgvProdOrderList.ColumnHeadersDefaultCellStyle.SelectionBackColor = dgvProdOrderList.ColumnHeadersDefaultCellStyle.BackColor; // Prevent header highlight
                         }
                     }
@@ -265,6 +265,7 @@ namespace C_Project
             if (e.RowIndex >= 0)
             {
                 // Get the selected row
+                dgvProdOrderList.Rows[e.RowIndex].Selected = true;
                 DataGridViewRow row = dgvProdOrderList.Rows[e.RowIndex];
 
                 // Populate textboxes with data from the selected row
@@ -417,8 +418,8 @@ namespace C_Project
         private void genPDF_Click(object sender, EventArgs e)
         {
             string baseDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", ".."));
-            string excelFilePath = Path.Combine(baseDirectory, "QuotationTemplate.xlsx"); // 替換為你的 Excel 檔案路徑
-            string excelPdfPath = Path.Combine(baseDirectory, "QuotationTemplateExcel.pdf"); // Excel 轉換後的 PDF 路徑
+            string excelFilePath = Path.Combine(baseDirectory, "QuotationTemplate.xlsx"); 
+            string excelPdfPath = Path.Combine(baseDirectory, "QuotationTemplateExcel.pdf");
 
             excelPdfPath = GetSaveFilePath("Save PDF", CustomerNameTextBox.Text + " - Quotation.pdf");
             if (string.IsNullOrEmpty(excelPdfPath))

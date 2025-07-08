@@ -1,4 +1,6 @@
-﻿namespace C_Project
+﻿using System.Windows.Forms;
+
+namespace C_Project
 {
     partial class Sales_MarketingForm
     {
@@ -76,11 +78,11 @@
             dgvProdOrderList = new DataGridView();
             poList = new DataGridView();
             label29 = new Label();
-            textBox2 = new TextBox();
-            comboBox1 = new ComboBox();
+            materialSpec = new TextBox();
+            materialChoose = new ComboBox();
             materialText = new Label();
             materialQtyText = new Label();
-            textBox1 = new TextBox();
+            materialQty = new TextBox();
             btnPOsave = new Button();
             label23 = new Label();
             dataGridView3 = new DataGridView();
@@ -246,8 +248,8 @@
             dgvQuoteList.ReadOnly = true;
             dgvQuoteList.Size = new Size(365, 645);
             dgvQuoteList.TabIndex = 2;
-            dgvQuoteList.CellContentClick += dgvQuoteList_CellContentClick;
             dgvQuoteList.CellClick += dgvQuoteList_CellClick;
+            dgvQuoteList.CellContentClick += dgvQuoteList_CellContentClick;
             // 
             // btn_quoAdd
             // 
@@ -546,18 +548,18 @@
             // 
             splitContainer2.Panel2.Controls.Add(poList);
             splitContainer2.Panel2.Controls.Add(label29);
-            splitContainer2.Panel2.Controls.Add(textBox2);
-            splitContainer2.Panel2.Controls.Add(comboBox1);
+            splitContainer2.Panel2.Controls.Add(materialSpec);
+            splitContainer2.Panel2.Controls.Add(materialChoose);
             splitContainer2.Panel2.Controls.Add(materialText);
             splitContainer2.Panel2.Controls.Add(materialQtyText);
-            splitContainer2.Panel2.Controls.Add(textBox1);
+            splitContainer2.Panel2.Controls.Add(materialQty);
             splitContainer2.Panel2.Controls.Add(btnPOsave);
             splitContainer2.Panel2.Controls.Add(label23);
             splitContainer2.Panel2.Controls.Add(dataGridView3);
             splitContainer2.Panel2.Controls.Add(groupBox2);
             splitContainer2.Panel2.Controls.Add(NewMaterialsButton);
             splitContainer2.Size = new Size(1124, 702);
-            splitContainer2.SplitterDistance = 191;
+            splitContainer2.SplitterDistance = 213;
             splitContainer2.TabIndex = 0;
             // 
             // btn_POadd
@@ -583,9 +585,13 @@
             // 
             dgvProdOrderList.BackgroundColor = SystemColors.GradientInactiveCaption;
             dgvProdOrderList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProdOrderList.EnableHeadersVisualStyles = false;
             dgvProdOrderList.Location = new Point(4, 54);
+            dgvProdOrderList.MultiSelect = false;
             dgvProdOrderList.Name = "dgvProdOrderList";
-            dgvProdOrderList.Size = new Size(178, 645);
+            dgvProdOrderList.ReadOnly = true;
+            dgvProdOrderList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvProdOrderList.Size = new Size(206, 645);
             dgvProdOrderList.TabIndex = 5;
             dgvProdOrderList.CellContentClick += dgvProdOrderList_CellContentClick;
             // 
@@ -595,7 +601,7 @@
             poList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             poList.Location = new Point(11, 495);
             poList.Name = "poList";
-            poList.Size = new Size(915, 162);
+            poList.Size = new Size(885, 162);
             poList.TabIndex = 8;
             // 
             // label29
@@ -607,21 +613,21 @@
             label29.TabIndex = 15;
             label29.Text = "Spec";
             // 
-            // textBox2
+            // materialSpec
             // 
-            textBox2.Location = new Point(11, 339);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(293, 104);
-            textBox2.TabIndex = 14;
+            materialSpec.Location = new Point(11, 339);
+            materialSpec.Multiline = true;
+            materialSpec.Name = "materialSpec";
+            materialSpec.Size = new Size(293, 104);
+            materialSpec.TabIndex = 14;
             // 
-            // comboBox1
+            // materialChoose
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(11, 230);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(293, 23);
-            comboBox1.TabIndex = 13;
+            materialChoose.FormattingEnabled = true;
+            materialChoose.Location = new Point(11, 230);
+            materialChoose.Name = "materialChoose";
+            materialChoose.Size = new Size(293, 23);
+            materialChoose.TabIndex = 13;
             // 
             // materialText
             // 
@@ -641,16 +647,16 @@
             materialQtyText.TabIndex = 11;
             materialQtyText.Text = "Material Quantity";
             // 
-            // textBox1
+            // materialQty
             // 
-            textBox1.Location = new Point(11, 281);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(293, 23);
-            textBox1.TabIndex = 10;
+            materialQty.Location = new Point(11, 281);
+            materialQty.Name = "materialQty";
+            materialQty.Size = new Size(293, 23);
+            materialQty.TabIndex = 10;
             // 
             // btnPOsave
             // 
-            btnPOsave.Location = new Point(829, 663);
+            btnPOsave.Location = new Point(799, 663);
             btnPOsave.Name = "btnPOsave";
             btnPOsave.Size = new Size(97, 36);
             btnPOsave.TabIndex = 9;
@@ -673,7 +679,7 @@
             dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView3.Location = new Point(320, 238);
             dataGridView3.Name = "dataGridView3";
-            dataGridView3.Size = new Size(606, 205);
+            dataGridView3.Size = new Size(576, 205);
             dataGridView3.TabIndex = 1;
             // 
             // groupBox2
@@ -694,15 +700,15 @@
             groupBox2.Controls.Add(label13);
             groupBox2.Controls.Add(OrderNoTextBox);
             groupBox2.Controls.Add(label12);
-            groupBox2.Location = new Point(13, 25);
+            groupBox2.Location = new Point(13, 20);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(913, 181);
+            groupBox2.Size = new Size(883, 186);
             groupBox2.TabIndex = 0;
             groupBox2.TabStop = false;
             // 
             // productIdText
             // 
-            productIdText.Location = new Point(106, 83);
+            productIdText.Location = new Point(106, 73);
             productIdText.Name = "productIdText";
             productIdText.Size = new Size(123, 23);
             productIdText.TabIndex = 13;
@@ -710,7 +716,7 @@
             // dateTimePicker3
             // 
             dateTimePicker3.Format = DateTimePickerFormat.Short;
-            dateTimePicker3.Location = new Point(752, 32);
+            dateTimePicker3.Location = new Point(752, 22);
             dateTimePicker3.Name = "dateTimePicker3";
             dateTimePicker3.Size = new Size(115, 23);
             dateTimePicker3.TabIndex = 6;
@@ -718,21 +724,21 @@
             // dateTimePicker4
             // 
             dateTimePicker4.Format = DateTimePickerFormat.Short;
-            dateTimePicker4.Location = new Point(752, 80);
+            dateTimePicker4.Location = new Point(752, 70);
             dateTimePicker4.Name = "dateTimePicker4";
             dateTimePicker4.Size = new Size(115, 23);
             dateTimePicker4.TabIndex = 7;
             // 
             // PoQtyText
             // 
-            PoQtyText.Location = new Point(106, 134);
+            PoQtyText.Location = new Point(106, 124);
             PoQtyText.Name = "PoQtyText";
             PoQtyText.Size = new Size(123, 23);
             PoQtyText.TabIndex = 12;
             // 
             // NotesOrInstructionsTextBox
             // 
-            NotesOrInstructionsTextBox.Location = new Point(432, 134);
+            NotesOrInstructionsTextBox.Location = new Point(432, 124);
             NotesOrInstructionsTextBox.Multiline = true;
             NotesOrInstructionsTextBox.Name = "NotesOrInstructionsTextBox";
             NotesOrInstructionsTextBox.Size = new Size(435, 41);
@@ -740,7 +746,7 @@
             // 
             // ReferenceQuoteTextBox
             // 
-            ReferenceQuoteTextBox.Location = new Point(432, 84);
+            ReferenceQuoteTextBox.Location = new Point(432, 74);
             ReferenceQuoteTextBox.Name = "ReferenceQuoteTextBox";
             ReferenceQuoteTextBox.Size = new Size(111, 23);
             ReferenceQuoteTextBox.TabIndex = 9;
@@ -748,7 +754,7 @@
             // label22
             // 
             label22.AutoSize = true;
-            label22.Location = new Point(315, 137);
+            label22.Location = new Point(315, 127);
             label22.Name = "label22";
             label22.Size = new Size(109, 15);
             label22.TabIndex = 10;
@@ -757,7 +763,7 @@
             // label27
             // 
             label27.AutoSize = true;
-            label27.Location = new Point(625, 83);
+            label27.Location = new Point(625, 73);
             label27.Name = "label27";
             label27.Size = new Size(121, 15);
             label27.TabIndex = 2;
@@ -767,7 +773,7 @@
             // label21
             // 
             label21.AutoSize = true;
-            label21.Location = new Point(315, 87);
+            label21.Location = new Point(315, 77);
             label21.Name = "label21";
             label21.Size = new Size(103, 15);
             label21.TabIndex = 8;
@@ -776,7 +782,7 @@
             // label25
             // 
             label25.AutoSize = true;
-            label25.Location = new Point(621, 35);
+            label25.Location = new Point(621, 25);
             label25.Name = "label25";
             label25.Size = new Size(125, 15);
             label25.TabIndex = 0;
@@ -785,7 +791,7 @@
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(9, 137);
+            label15.Location = new Point(9, 127);
             label15.Name = "label15";
             label15.Size = new Size(91, 15);
             label15.TabIndex = 6;
@@ -794,7 +800,7 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(34, 86);
+            label14.Location = new Point(34, 76);
             label14.Name = "label14";
             label14.Size = new Size(66, 15);
             label14.TabIndex = 4;
@@ -802,7 +808,7 @@
             // 
             // dateTimePicker2
             // 
-            dateTimePicker2.Location = new Point(432, 33);
+            dateTimePicker2.Location = new Point(432, 23);
             dateTimePicker2.Name = "dateTimePicker2";
             dateTimePicker2.Size = new Size(111, 23);
             dateTimePicker2.TabIndex = 3;
@@ -810,7 +816,7 @@
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(348, 36);
+            label13.Location = new Point(348, 26);
             label13.Name = "label13";
             label13.Size = new Size(70, 15);
             label13.TabIndex = 2;
@@ -819,7 +825,7 @@
             // OrderNoTextBox
             // 
             OrderNoTextBox.Enabled = false;
-            OrderNoTextBox.Location = new Point(106, 32);
+            OrderNoTextBox.Location = new Point(106, 22);
             OrderNoTextBox.Name = "OrderNoTextBox";
             OrderNoTextBox.ReadOnly = true;
             OrderNoTextBox.Size = new Size(123, 23);
@@ -828,7 +834,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(36, 35);
+            label12.Location = new Point(36, 25);
             label12.Name = "label12";
             label12.Size = new Size(64, 15);
             label12.TabIndex = 0;
@@ -990,11 +996,11 @@
         private TextBox PoQtyText;
         private TextBox productIdText;
         private Label label29;
-        private TextBox textBox2;
-        private ComboBox comboBox1;
+        private TextBox materialSpec;
+        private ComboBox materialChoose;
         private Label materialText;
         private Label materialQtyText;
-        private TextBox textBox1;
+        private TextBox materialQty;
         private DataGridView poList;
     }
 }

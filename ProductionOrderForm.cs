@@ -27,6 +27,8 @@ namespace C_Project
         public ProductionOrderForm()
         {
             InitializeComponent();
+            this.dataGridView2.SelectionChanged += dataGridView2_SelectionChanged;
+
             string projectRoot = Directory.GetCurrentDirectory();
             if (projectRoot.Contains("bin\\Debug"))
             {
@@ -54,32 +56,28 @@ namespace C_Project
             {
                 using (OleDbConnection conn = new OleDbConnection(connStr))
                 {
-
                     conn.Open();
-
-                    string sql = "SELECT OrderID, ODate, RefQuotation, Qty FROM SMD_ProdOrder";
+                    string sql = "SELECT OrderID, OrderNumber, ODate, ProductID, RefQuotation, Qty, Remark, ESD, EED FROM SMD_ProdOrder";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
-                            dataGridView2.AllowUserToResizeColumns = false;
-                            dataGridView2.AllowUserToAddRows = true;
-                            dataGridView2.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
-
                             orderStepDataTable = new DataTable();
                             adapter.Fill(orderStepDataTable);
                             dataGridView2.DataSource = orderStepDataTable;
-                            dataGridView2.Rows[0].HeaderCell.Value = "Row 1";
-                            dataGridView2.Rows[1].HeaderCell.Value = "Row 2";
-                            dataGridView2.Rows[2].HeaderCell.Value = "Row 3";
+
+                            // 設定Row Header（避免Index Out Of Range）
+                            for (int i = 0; i < dataGridView2.Rows.Count; i++)
+                            {
+                                if (!dataGridView2.Rows[i].IsNewRow)
+                                    dataGridView2.Rows[i].HeaderCell.Value = $"Row {i + 1}";
+                            }
+
                             dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                             dataGridView2.AllowUserToResizeColumns = false;
-                            MessageBox.Show("first Tab", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
-
                     conn.Close();
-
                 }
             }
             catch (Exception ex)
@@ -95,7 +93,6 @@ namespace C_Project
             {
                 using (OleDbConnection conn = new OleDbConnection(connStr))
                 {
-
                     conn.Open();
 
                     string sql = "SELECT MRFNo, ProductName, ProductSpec, DeliveryDate, Approver, Remark FROM PD_MaterialRequestForm";
@@ -110,20 +107,19 @@ namespace C_Project
                             materialDataTable = new DataTable();
                             adapter.Fill(materialDataTable);
                             dataGridView1.DataSource = materialDataTable;
-                            dataGridView2.Rows[0].HeaderCell.Value = "Row 1";
-                            dataGridView2.Rows[1].HeaderCell.Value = "Row 2";
-                            dataGridView2.Rows[2].HeaderCell.Value = "Row 3";
-                            dataGridView2.Rows[3].HeaderCell.Value = "Row 4";
-                            dataGridView2.Rows[4].HeaderCell.Value = "Row 5";
-                            dataGridView2.Rows[5].HeaderCell.Value = "Row 6";
+
+                            // 正確做法
+                            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                            {
+                                if (!dataGridView1.Rows[i].IsNewRow)
+                                    dataGridView1.Rows[i].HeaderCell.Value = $"Row {i + 1}";
+                            }
+
                             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                             dataGridView1.AllowUserToResizeColumns = false;
-                            MessageBox.Show("second Tab", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
-
                     conn.Close();
-
                 }
             }
             catch (Exception ex)
@@ -160,7 +156,6 @@ namespace C_Project
                             dataGridView3.Columns[4].HeaderText = "Note";
                             dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                             dataGridView3.AllowUserToResizeColumns = false;
-                            MessageBox.Show("third Tab", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
 
@@ -202,7 +197,6 @@ namespace C_Project
                             dataGridView4.Columns[4].HeaderText = "FilePath";
                             dataGridView4.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                             dataGridView4.AllowUserToResizeColumns = false;
-                            MessageBox.Show("fourth Tab", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
 
@@ -242,7 +236,6 @@ namespace C_Project
                             dataGridView5.Columns[3].HeaderText = "Instruction";
                             dataGridView5.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                             dataGridView5.AllowUserToResizeColumns = false;
-                            MessageBox.Show("7 Tab", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
 
@@ -256,127 +249,21 @@ namespace C_Project
             }
         }
 
-        private void btn_Save_Click(object sender, EventArgs e)
-        {
-            //LoadOrderStepTable();
-            try
-            {
-                DataTable dt = (DataTable)dataGridView2.DataSource;
-                if (dt == null || dt.Rows.Count == 0)
-                {
-                    MessageBox.Show("No data to save.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                using (OleDbConnection conn = new OleDbConnection(connStr))
-                {
-                    conn.Open();
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        if (row.RowState == DataRowState.Added)
-                        {
-                            string query = "INSERT INTO SMD_ProdOrder (ODate, RefQuotation, Qty) VALUES (?, ?, ?)";
-                            using (OleDbCommand cmd = new OleDbCommand(query, conn))
-                            {
-                                cmd.Parameters.AddWithValue("?", row["ODate"] != DBNull.Value ? row["ODate"] : "");
-                                cmd.Parameters.AddWithValue("?", row["RefQuotation"] != DBNull.Value ? row["RefQuotation"] : "");
-                                cmd.Parameters.AddWithValue("?", row["Qty"] != DBNull.Value ? row["Qty"] : 0);
-
-                                cmd.ExecuteNonQuery();
-                            }
-                        }
-                        else if (row.RowState == DataRowState.Modified)
-                        {
-                            string query = "UPDATE SMD_ProdOrder SET  ODate = ?, RefQuotation = ?, Qty = ? WHERE OrderID = ?";
-                            using (OleDbCommand cmd = new OleDbCommand(query, conn))
-                            {
-                                cmd.Parameters.AddWithValue("?", row["ODate"] != DBNull.Value ? row["ODate"] : "");
-                                cmd.Parameters.AddWithValue("?", row["RefQuotation"] != DBNull.Value ? row["RefQuotation"] : "");
-                                cmd.Parameters.AddWithValue("?", row["Qty"] != DBNull.Value ? row["Qty"] : "");
-                                cmd.Parameters.AddWithValue("?", row["OrderID"]);
-
-
-                                cmd.ExecuteNonQuery();
-                            }
-                        }
-                    }
-                    dt.AcceptChanges();
-                }
-
-                MessageBox.Show("Data saved to database successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                dataGridView2.Refresh();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error saving data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btn_Add_Click(object sender, EventArgs e)
-        {
-            DataRow newRow = orderStepDataTable.NewRow();
-
-            newRow["ODate"] = "";
-            newRow["RefQuotation"] = "";
-            newRow["Qty"] = "";
-
-            orderStepDataTable.Rows.Add(newRow);
-        }
 
         private void btn_Save1_Click(object sender, EventArgs e)
         {
-            //LoadProcessTable
-            try
+            if (dataGridView2.CurrentRow == null || dataGridView2.CurrentRow.IsNewRow)
+                return;
+
+            var orderIDObj = dataGridView2.CurrentRow.Cells["OrderID"].Value;
+            if (orderIDObj != null)
             {
-                DataTable dt = (DataTable)dataGridView3.DataSource;
-                if (dt == null || dt.Rows.Count == 0)
-                {
-                    MessageBox.Show("No data to save.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                using (OleDbConnection conn = new OleDbConnection(connStr))
-                {
-                    conn.Open();
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        if (row.RowState == DataRowState.Added)
-                        {
-                            string query = "INSERT INTO PD_OrderStep (OrderID, ProcName, Staff, Note) VALUES (?, ?, ?, ?)";
-                            using (OleDbCommand cmd = new OleDbCommand(query, conn))
-                            {
-                                cmd.Parameters.AddWithValue("?", row["OrderID"] != DBNull.Value ? row["OrderID"] : "");
-                                cmd.Parameters.AddWithValue("?", row["ProcName"] != DBNull.Value ? row["ProcName"] : "");
-                                cmd.Parameters.AddWithValue("?", row["Staff"] != DBNull.Value ? row["Staff"] : "");
-                                cmd.Parameters.AddWithValue("?", row["Note"] != DBNull.Value ? row["Note"] : "");
-                                cmd.ExecuteNonQuery();
-                            }
-                        }
-                        else if (row.RowState == DataRowState.Modified)
-                        {
-                            string query = "UPDATE PD_OrderStep SET  OrderID = ?, ProcName = ?, Staff = ?, Note = ? WHERE OStepID = ?";
-                            using (OleDbCommand cmd = new OleDbCommand(query, conn))
-                            {
-                                cmd.Parameters.AddWithValue("?", row["OrderID"] != DBNull.Value ? row["OrderID"] : "");
-                                cmd.Parameters.AddWithValue("?", row["ProcName"] != DBNull.Value ? row["ProcName"] : "");
-                                cmd.Parameters.AddWithValue("?", row["Staff"] != DBNull.Value ? row["Staff"] : "");
-                                cmd.Parameters.AddWithValue("?", row["Note"] != DBNull.Value ? row["Note"] : "");
-                                cmd.Parameters.AddWithValue("?", row["OStepID"]);
-
-
-                                cmd.ExecuteNonQuery();
-                            }
-                        }
-                    }
-                    dt.AcceptChanges();
-                }
-
-                MessageBox.Show("Data saved to database successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                dataGridView2.Refresh();
+                string orderID = orderIDObj.ToString();
+                LoadOrderStepTableByOrderID(orderID);
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show($"Error saving data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dataGridView3.DataSource = null;
             }
         }
 
@@ -394,59 +281,18 @@ namespace C_Project
 
         private void btn_Save2_Click(object sender, EventArgs e)
         {
-            //LoadRequestTable
-            try
+            if (dataGridView2.CurrentRow == null || dataGridView2.CurrentRow.IsNewRow)
+                return;
+
+            var orderIDObj = dataGridView2.CurrentRow.Cells["OrderID"].Value;
+            if (orderIDObj != null)
             {
-                DataTable dt = (DataTable)dataGridView4.DataSource;
-                if (dt == null || dt.Rows.Count == 0)
-                {
-                    MessageBox.Show("No data to save.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                using (OleDbConnection conn = new OleDbConnection(connStr))
-                {
-                    conn.Open();
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        if (row.RowState == DataRowState.Added)
-                        {
-                            string query = "INSERT INTO SMD_OrderFile (FileName, UploadedBy, UploadDate, FilePath) VALUES (?, ?, ?, ?)";
-                            using (OleDbCommand cmd = new OleDbCommand(query, conn))
-                            {
-                                cmd.Parameters.AddWithValue("?", row["FileName"] != DBNull.Value ? row["FileName"] : "");
-                                cmd.Parameters.AddWithValue("?", row["UploadedBy"] != DBNull.Value ? row["UploadedBy"] : "");
-                                cmd.Parameters.AddWithValue("?", row["UploadDate"] != DBNull.Value ? row["UploadDate"] : "");
-                                cmd.Parameters.AddWithValue("?", row["FilePath"] != DBNull.Value ? row["FilePath"] : "");
-
-                                cmd.ExecuteNonQuery();
-                            }
-                        }
-                        else if (row.RowState == DataRowState.Modified)
-                        {
-                            string query = "UPDATE SMD_OrderFile SET  FileName = ?, UploadedBy = ?, UploadDate = ?, FilePath = ? WHERE OFID = ?";
-                            using (OleDbCommand cmd = new OleDbCommand(query, conn))
-                            {
-                                cmd.Parameters.AddWithValue("?", row["FileName"] != DBNull.Value ? row["FileName"] : "");
-                                cmd.Parameters.AddWithValue("?", row["UploadedBy"] != DBNull.Value ? row["UploadedBy"] : "");
-                                cmd.Parameters.AddWithValue("?", row["UploadDate"] != DBNull.Value ? row["UploadDate"] : "");
-                                cmd.Parameters.AddWithValue("?", row["FilePath"] != DBNull.Value ? row["FilePath"] : "");
-                                cmd.Parameters.AddWithValue("?", row["OFID"]);
-
-
-                                cmd.ExecuteNonQuery();
-                            }
-                        }
-                    }
-                    dt.AcceptChanges();
-                }
-
-                MessageBox.Show("Data saved to database successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                dataGridView2.Refresh();
+                string orderID = orderIDObj.ToString();
+                LoadOrderFileTableByOrderID(orderID);
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show($"Error saving data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dataGridView4.DataSource = null;
             }
         }
         private void btn_Save3_Click(object sender, EventArgs e)
@@ -512,7 +358,7 @@ namespace C_Project
 
             newRow["FileName"] = "";
             newRow["UploadedBy"] = "";
-            newRow["UploadDate"] = "";
+            newRow["UploadDate"] = DBNull.Value;
             newRow["FilePath"] = "";
 
             requsetDataTable.Rows.Add(newRow);
@@ -581,45 +427,212 @@ namespace C_Project
         }
         private void btn_Save4_Click(object sender, EventArgs e)
         {
-            DateTime startDateTime = startDateTimePicker.Value;
-            DateTime targetDateTime = targetDateTimePicker.Value;
-            string workInstructionsText = workInstructionsTextBox.Text.Trim();
-
-            if (string.IsNullOrEmpty(workInstructionsText))
-            {
-                MessageBox.Show("Please fill in all fields!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            if (dataGridView2.CurrentRow == null || dataGridView2.CurrentRow.IsNewRow)
                 return;
+
+            var orderIDObj = dataGridView2.CurrentRow.Cells["OrderID"].Value;
+            if (orderIDObj != null)
+            {
+                string orderID = orderIDObj.ToString();
+                LoadOrderPlanTableByOrderID(orderID);
+            }
+            else
+            {
+                dataGridView5.DataSource = null;
+            }
+        }
+
+        private void dataGridView2_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView2.CurrentRow == null || dataGridView2.CurrentRow.IsNewRow)
+                return;
+
+            var row = dataGridView2.CurrentRow;
+
+            orderNumberTextBox.Text = row.Cells["OrderNumber"].Value?.ToString() ?? "";
+            if (row.Cells["ODate"].Value != null && DateTime.TryParse(row.Cells["ODate"].Value.ToString(), out DateTime dt))
+                selectedDate.Value = dt;
+            else
+                selectedDate.Value = DateTime.Now;
+
+            productNameTextBox.Text = row.Cells["RefQuotation"].Value?.ToString() ?? "";
+            productNumberTextBox.Text = row.Cells["ProductID"].Value?.ToString() ?? "";
+            quantityTextBox.Text = row.Cells["Qty"].Value?.ToString() ?? "";
+            remarkTextBox.Text = row.Cells["Remark"].Value?.ToString() ?? "";
+
+            orderNumberTextBox.ReadOnly = true;
+            selectedDate.Enabled = false;
+            productNameTextBox.ReadOnly = true;
+            productNumberTextBox.ReadOnly = true;
+            quantityTextBox.ReadOnly = true;
+            remarkTextBox.ReadOnly = true;
+
+            var orderIDValue = row.Cells["OrderID"].Value;
+            if (orderIDValue != null)
+            {
+                string orderID = orderIDValue.ToString();
+                LoadMaterialTableByOrderID(orderID);
+                LoadOrderStepTableByOrderID(orderID);
+                LoadOrderPlanTableByOrderID(orderID);
+                LoadOrderFileTableByOrderID(orderID);
+            }
+            else
+            {
+                dataGridView1.DataSource = null;
+                dataGridView3.DataSource = null;
+                dataGridView5.DataSource = null;
+                dataGridView4.DataSource = null;
             }
 
+        }
+
+        private void LoadMaterialTableByOrderID(string orderID)
+        {
             try
             {
                 using (OleDbConnection conn = new OleDbConnection(connStr))
                 {
                     conn.Open();
-
-                    string query = "INSERT INTO PD_OrderPlan (PlanStart, PlanEnd, Instruction) VALUES (?, ?, ?)";
-                    using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                    // 用參數化查詢防止 SQL Injection
+                    string sql = "SELECT MRFNo, MRFDate, Dept, Priority, ProductName, ProductSpec, DeliveryDate, Approver, Remark, OrderID " +
+                                 "FROM PD_MaterialRequestForm WHERE OrderID = ?";
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
-                        cmd.Parameters.Add("?", OleDbType.VarChar).Value = this.startDateTimePicker;
-                        cmd.Parameters.Add("?", OleDbType.VarChar).Value = this.targetDateTimePicker;
-                        cmd.Parameters.Add("?", OleDbType.VarChar).Value = quantityTextBox;
+                        cmd.Parameters.AddWithValue("?", orderID);
 
-                        cmd.ExecuteNonQuery();
+                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
+                        {
+                            materialDataTable = new DataTable();
+                            adapter.Fill(materialDataTable);
+                            dataGridView1.DataSource = materialDataTable;
+
+                            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                            {
+                                if (!dataGridView1.Rows[i].IsNewRow)
+                                    dataGridView1.Rows[i].HeaderCell.Value = $"Row {i + 1}";
+                            }
+
+                            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+                            dataGridView1.AllowUserToResizeColumns = false;
+                        }
                     }
-
                     conn.Close();
                 }
-
-                RepairSupportTable();
-
-                MessageBox.Show("Added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error adding risk: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error connecting to PD_MaterialRequestForm!\n" + ex.Message);
             }
         }
 
+        private void LoadOrderStepTableByOrderID(string orderID)
+        {
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+                    conn.Open();
+                    string sql = "SELECT OStepID, OrderID, ProcName, Staff, Note FROM PD_OrderStep WHERE OrderID = ?";
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("?", orderID);
+
+                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
+                        {
+                            processDataTable = new DataTable();
+                            adapter.Fill(processDataTable);
+                            dataGridView3.DataSource = processDataTable;
+
+                            for (int i = 0; i < dataGridView3.Rows.Count; i++)
+                            {
+                                if (!dataGridView3.Rows[i].IsNewRow)
+                                    dataGridView3.Rows[i].HeaderCell.Value = $"Row {i + 1}";
+                            }
+
+                            dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+                            dataGridView3.AllowUserToResizeColumns = false;
+                        }
+                    }
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error connecting to PD_OrderStep!\n" + ex.Message);
+            }
+        }
+        private void LoadOrderPlanTableByOrderID(string orderID)
+        {
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+                    conn.Open();
+                    string sql = "SELECT OPlanID, OrderID, PlanStart, PlanEnd, Instruction FROM PD_OrderPlan WHERE OrderID = ?";
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("?", orderID);
+
+                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
+                        {
+                            orderPlanDataTable = new DataTable();
+                            adapter.Fill(orderPlanDataTable);
+                            dataGridView5.DataSource = orderPlanDataTable;
+
+                            for (int i = 0; i < dataGridView5.Rows.Count; i++)
+                            {
+                                if (!dataGridView5.Rows[i].IsNewRow)
+                                    dataGridView5.Rows[i].HeaderCell.Value = $"Row {i + 1}";
+                            }
+
+                            dataGridView5.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+                            dataGridView5.AllowUserToResizeColumns = false;
+                        }
+                    }
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error connecting to PD_OrderPlan!\n" + ex.Message);
+            }
+        }
+        private void LoadOrderFileTableByOrderID(string orderID)
+        {
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+                    conn.Open();
+                    string sql = "SELECT OFID, OrderID, FileName, UploadedBy, UploadDate, FilePath FROM SMD_OrderFile WHERE OrderID = ?";
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("?", orderID);
+
+                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
+                        {
+                            requsetDataTable = new DataTable();
+                            adapter.Fill(requsetDataTable);
+                            dataGridView4.DataSource = requsetDataTable;
+
+                            for (int i = 0; i < dataGridView4.Rows.Count; i++)
+                            {
+                                if (!dataGridView4.Rows[i].IsNewRow)
+                                    dataGridView4.Rows[i].HeaderCell.Value = $"Row {i + 1}";
+                            }
+
+                            dataGridView4.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+                            dataGridView4.AllowUserToResizeColumns = false;
+                        }
+                    }
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error connecting to SMD_OrderFile!\n" + ex.Message);
+            }
+        }
         private void RepairSupportTable()
         {
             throw new NotImplementedException();

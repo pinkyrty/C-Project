@@ -73,8 +73,6 @@
             label31 = new Label();
             label30 = new Label();
             btnLogout = new Button();
-            btn_Add = new Button();
-            btn_Save = new Button();
             btn_Save3 = new Button();
             btn_Add3 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -505,26 +503,6 @@
             btnLogout.UseVisualStyleBackColor = true;
             btnLogout.Click += btnLogout_Click;
             // 
-            // btn_Add
-            // 
-            btn_Add.Location = new Point(15, 829);
-            btn_Add.Name = "btn_Add";
-            btn_Add.Size = new Size(75, 23);
-            btn_Add.TabIndex = 42;
-            btn_Add.Text = "Add";
-            btn_Add.UseVisualStyleBackColor = true;
-            btn_Add.Click += btn_Add_Click;
-            // 
-            // btn_Save
-            // 
-            btn_Save.Location = new Point(96, 829);
-            btn_Save.Name = "btn_Save";
-            btn_Save.Size = new Size(75, 23);
-            btn_Save.TabIndex = 43;
-            btn_Save.Text = "Save";
-            btn_Save.UseVisualStyleBackColor = true;
-            btn_Save.Click += btn_Save_Click;
-            // 
             // btn_Save3
             // 
             btn_Save3.Location = new Point(1066, 275);
@@ -553,8 +531,6 @@
             ClientSize = new Size(1153, 858);
             Controls.Add(btn_Save3);
             Controls.Add(btn_Add3);
-            Controls.Add(btn_Add);
-            Controls.Add(btn_Save);
             Controls.Add(btnLogout);
             Controls.Add(label31);
             Controls.Add(label30);
@@ -640,8 +616,6 @@
         private Label label31;
         private Label label30;
         private Button btnLogout;
-        private Button btn_Add;
-        private Button btn_Save;
         private Button btn_Save1;
         private Button btn_Add1;
         private Button btn_Save2;

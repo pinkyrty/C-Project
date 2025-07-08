@@ -95,6 +95,8 @@
             btn_Add4 = new Button();
             btn_Save4 = new Button();
             dataGridView2 = new DataGridView();
+            button1 = new Button();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProductList).BeginInit();
             tabProductDetail.SuspendLayout();
@@ -186,6 +188,7 @@
             // panel2
             // 
             panel2.BackColor = SystemColors.GradientInactiveCaption;
+            panel2.Controls.Add(button2);
             panel2.Controls.Add(WarrantySupportTextBox);
             panel2.Controls.Add(UserGuideTextBox);
             panel2.Controls.Add(ComplianceStandardsTextBox);
@@ -391,6 +394,7 @@
             // PackagingInformationTabPage
             // 
             PackagingInformationTabPage.BackColor = SystemColors.GradientInactiveCaption;
+            PackagingInformationTabPage.Controls.Add(button1);
             PackagingInformationTabPage.Controls.Add(txtPackLabel);
             PackagingInformationTabPage.Controls.Add(txtPackMaterial);
             PackagingInformationTabPage.Controls.Add(txtPackDimensions);
@@ -769,6 +773,24 @@
             dataGridView2.CellContentClick += dataGridView2_CellContentClick;
             dataGridView2.SelectionChanged += dataGridView2_SelectionChanged_1;
             // 
+            // button1
+            // 
+            button1.Location = new Point(714, 428);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 59;
+            button1.Text = "Save";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(714, 428);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 57;
+            button2.Text = "Save";
+            button2.UseVisualStyleBackColor = true;
+            // 
             // RnD_Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -882,5 +904,7 @@
         private DataGridView dataGridView2;
         private Label label8;
         private TextBox unitPriceTextBox;
+        private Button button2;
+        private Button button1;
     }
 }

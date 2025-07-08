@@ -33,7 +33,6 @@
             btnUserProfile = new Button();
             UserNamelabel = new Label();
             dgvProductList = new DataGridView();
-            NewProductsButton = new Button();
             tabProductDetail = new TabControl();
             ProductSpecificationsTabPage = new TabPage();
             panel2 = new Panel();
@@ -55,7 +54,7 @@
             dgvMaterials = new DataGridView();
             ManufacturingInstructionsTabPage = new TabPage();
             btn_Add1 = new Button();
-            btn_Save2 = new Button();
+            btn_Save1 = new Button();
             dgvManufacturing = new DataGridView();
             PackagingInformationTabPage = new TabPage();
             txtPackLabel = new TextBox();
@@ -65,9 +64,11 @@
             PackMateriallabel = new Label();
             PackDimensionslabel = new Label();
             TestingACertificationTabPage = new TabPage();
-            NewCertificationButton = new Button();
+            btn_Add3 = new Button();
+            btn_Save3 = new Button();
+            btn_Add2 = new Button();
+            btn_Save2 = new Button();
             dataGridView1 = new DataGridView();
-            AddedTestsButton = new Button();
             dgvTesting = new DataGridView();
             ImageAttachmentsTabPage = new TabPage();
             UploadImageButton = new Button();
@@ -90,6 +91,8 @@
             label31 = new Label();
             label30 = new Label();
             btnLogout = new Button();
+            btn_Add4 = new Button();
+            btn_Save4 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProductList).BeginInit();
             tabProductDetail.SuspendLayout();
@@ -145,22 +148,11 @@
             // 
             dgvProductList.BackgroundColor = SystemColors.GradientInactiveCaption;
             dgvProductList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvProductList.Location = new Point(12, 146);
+            dgvProductList.Location = new Point(12, 114);
             dgvProductList.Name = "dgvProductList";
             dgvProductList.Size = new Size(330, 679);
             dgvProductList.TabIndex = 49;
             dgvProductList.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // NewProductsButton
-            // 
-            NewProductsButton.Location = new Point(12, 110);
-            NewProductsButton.Name = "NewProductsButton";
-            NewProductsButton.Size = new Size(118, 23);
-            NewProductsButton.TabIndex = 50;
-            NewProductsButton.TabStop = false;
-            NewProductsButton.Text = "＋New products";
-            NewProductsButton.UseVisualStyleBackColor = true;
-            NewProductsButton.Click += NewProductsButton_Click;
             // 
             // tabProductDetail
             // 
@@ -322,7 +314,7 @@
             // 
             // btn_Add
             // 
-            btn_Add.Location = new Point(3, 537);
+            btn_Add.Location = new Point(712, 6);
             btn_Add.Name = "btn_Add";
             btn_Add.Size = new Size(75, 23);
             btn_Add.TabIndex = 53;
@@ -332,7 +324,7 @@
             // 
             // btn_Save
             // 
-            btn_Save.Location = new Point(87, 537);
+            btn_Save.Location = new Point(712, 35);
             btn_Save.Name = "btn_Save";
             btn_Save.Size = new Size(75, 23);
             btn_Save.TabIndex = 54;
@@ -346,14 +338,14 @@
             dgvMaterials.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvMaterials.Location = new Point(0, 0);
             dgvMaterials.Name = "dgvMaterials";
-            dgvMaterials.Size = new Size(788, 531);
+            dgvMaterials.Size = new Size(706, 566);
             dgvMaterials.TabIndex = 0;
             dgvMaterials.CellContentClick += dgvMaterials_CellContentClick;
             // 
             // ManufacturingInstructionsTabPage
             // 
             ManufacturingInstructionsTabPage.Controls.Add(btn_Add1);
-            ManufacturingInstructionsTabPage.Controls.Add(btn_Save2);
+            ManufacturingInstructionsTabPage.Controls.Add(btn_Save1);
             ManufacturingInstructionsTabPage.Controls.Add(dgvManufacturing);
             ManufacturingInstructionsTabPage.Location = new Point(4, 24);
             ManufacturingInstructionsTabPage.Name = "ManufacturingInstructionsTabPage";
@@ -365,7 +357,7 @@
             // 
             // btn_Add1
             // 
-            btn_Add1.Location = new Point(5, 536);
+            btn_Add1.Location = new Point(709, 6);
             btn_Add1.Name = "btn_Add1";
             btn_Add1.Size = new Size(75, 23);
             btn_Add1.TabIndex = 55;
@@ -373,15 +365,15 @@
             btn_Add1.UseVisualStyleBackColor = true;
             btn_Add1.Click += btn_Add1_Click;
             // 
-            // btn_Save2
+            // btn_Save1
             // 
-            btn_Save2.Location = new Point(89, 536);
-            btn_Save2.Name = "btn_Save2";
-            btn_Save2.Size = new Size(75, 23);
-            btn_Save2.TabIndex = 56;
-            btn_Save2.Text = "Save";
-            btn_Save2.UseVisualStyleBackColor = true;
-            btn_Save2.Click += btn_Save2_Click;
+            btn_Save1.Location = new Point(709, 35);
+            btn_Save1.Name = "btn_Save1";
+            btn_Save1.Size = new Size(75, 23);
+            btn_Save1.TabIndex = 56;
+            btn_Save1.Text = "Save";
+            btn_Save1.UseVisualStyleBackColor = true;
+            btn_Save1.Click += btn_Save1_Click;
             // 
             // dgvManufacturing
             // 
@@ -389,7 +381,7 @@
             dgvManufacturing.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvManufacturing.Location = new Point(0, 0);
             dgvManufacturing.Name = "dgvManufacturing";
-            dgvManufacturing.Size = new Size(790, 530);
+            dgvManufacturing.Size = new Size(703, 566);
             dgvManufacturing.TabIndex = 0;
             dgvManufacturing.CellContentClick += dgvManufacturing_CellContentClick;
             // 
@@ -460,9 +452,11 @@
             // 
             // TestingACertificationTabPage
             // 
-            TestingACertificationTabPage.Controls.Add(NewCertificationButton);
+            TestingACertificationTabPage.Controls.Add(btn_Add3);
+            TestingACertificationTabPage.Controls.Add(btn_Save3);
+            TestingACertificationTabPage.Controls.Add(btn_Add2);
+            TestingACertificationTabPage.Controls.Add(btn_Save2);
             TestingACertificationTabPage.Controls.Add(dataGridView1);
-            TestingACertificationTabPage.Controls.Add(AddedTestsButton);
             TestingACertificationTabPage.Controls.Add(dgvTesting);
             TestingACertificationTabPage.Location = new Point(4, 24);
             TestingACertificationTabPage.Name = "TestingACertificationTabPage";
@@ -472,14 +466,45 @@
             TestingACertificationTabPage.Text = "Testing/Certification";
             TestingACertificationTabPage.UseVisualStyleBackColor = true;
             // 
-            // NewCertificationButton
+            // btn_Add3
             // 
-            NewCertificationButton.Location = new Point(0, 488);
-            NewCertificationButton.Name = "NewCertificationButton";
-            NewCertificationButton.Size = new Size(133, 30);
-            NewCertificationButton.TabIndex = 54;
-            NewCertificationButton.Text = "+ New certification";
-            NewCertificationButton.UseVisualStyleBackColor = true;
+            btn_Add3.Location = new Point(0, 488);
+            btn_Add3.Name = "btn_Add3";
+            btn_Add3.Size = new Size(75, 23);
+            btn_Add3.TabIndex = 59;
+            btn_Add3.Text = "Add";
+            btn_Add3.UseVisualStyleBackColor = true;
+            btn_Add3.Click += btn_Add3_Click;
+            // 
+            // btn_Save3
+            // 
+            btn_Save3.Location = new Point(81, 488);
+            btn_Save3.Name = "btn_Save3";
+            btn_Save3.Size = new Size(75, 23);
+            btn_Save3.TabIndex = 60;
+            btn_Save3.Text = "Save";
+            btn_Save3.UseVisualStyleBackColor = true;
+            btn_Save3.Click += btn_Save3_Click;
+            // 
+            // btn_Add2
+            // 
+            btn_Add2.Location = new Point(0, 179);
+            btn_Add2.Name = "btn_Add2";
+            btn_Add2.Size = new Size(75, 23);
+            btn_Add2.TabIndex = 57;
+            btn_Add2.Text = "Add";
+            btn_Add2.UseVisualStyleBackColor = true;
+            btn_Add2.Click += btn_Add2_Click;
+            // 
+            // btn_Save2
+            // 
+            btn_Save2.Location = new Point(81, 179);
+            btn_Save2.Name = "btn_Save2";
+            btn_Save2.Size = new Size(75, 23);
+            btn_Save2.TabIndex = 58;
+            btn_Save2.Text = "Save";
+            btn_Save2.UseVisualStyleBackColor = true;
+            btn_Save2.Click += btn_Save2_Click;
             // 
             // dataGridView1
             // 
@@ -489,15 +514,6 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(785, 250);
             dataGridView1.TabIndex = 53;
-            // 
-            // AddedTestsButton
-            // 
-            AddedTestsButton.Location = new Point(0, 179);
-            AddedTestsButton.Name = "AddedTestsButton";
-            AddedTestsButton.Size = new Size(133, 30);
-            AddedTestsButton.TabIndex = 52;
-            AddedTestsButton.Text = "+ New test";
-            AddedTestsButton.UseVisualStyleBackColor = true;
             // 
             // dgvTesting
             // 
@@ -632,6 +648,7 @@
             txtMOQ.Name = "txtMOQ";
             txtMOQ.Size = new Size(97, 23);
             txtMOQ.TabIndex = 58;
+            txtMOQ.TextChanged += txtMOQ_TextChanged;
             // 
             // Projectlabel
             // 
@@ -707,12 +724,34 @@
             btnLogout.UseVisualStyleBackColor = true;
             btnLogout.Click += btnLogout_Click;
             // 
+            // btn_Add4
+            // 
+            btn_Add4.Location = new Point(12, 799);
+            btn_Add4.Name = "btn_Add4";
+            btn_Add4.Size = new Size(75, 23);
+            btn_Add4.TabIndex = 61;
+            btn_Add4.Text = "Add";
+            btn_Add4.UseVisualStyleBackColor = true;
+            btn_Add4.Click += btn_Add4_Click;
+            // 
+            // btn_Save4
+            // 
+            btn_Save4.Location = new Point(93, 799);
+            btn_Save4.Name = "btn_Save4";
+            btn_Save4.Size = new Size(75, 23);
+            btn_Save4.TabIndex = 62;
+            btn_Save4.Text = "Save";
+            btn_Save4.UseVisualStyleBackColor = true;
+            btn_Save4.Click += btn_Save4_Click;
+            // 
             // RnD_Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightBlue;
             ClientSize = new Size(1153, 858);
+            Controls.Add(btn_Add4);
+            Controls.Add(btn_Save4);
             Controls.Add(btnLogout);
             Controls.Add(label31);
             Controls.Add(label30);
@@ -720,7 +759,6 @@
             Controls.Add(panel1);
             Controls.Add(btnSave);
             Controls.Add(tabProductDetail);
-            Controls.Add(NewProductsButton);
             Controls.Add(dgvProductList);
             Controls.Add(UserNamelabel);
             Controls.Add(btnUserProfile);
@@ -756,7 +794,6 @@
         private Button btnUserProfile;
         private Label UserNamelabel;
         private DataGridView dgvProductList;
-        private Button NewProductsButton;
         private TabControl tabProductDetail;
         private TabPage ProductSpecificationsTabPage;
         private TabPage BillofMaterialsTabPage;
@@ -786,8 +823,6 @@
         private Label PackMateriallabel;
         private Label PackDimensionslabel;
         private DataGridView dgvTesting;
-        private Button AddedTestsButton;
-        private Button NewCertificationButton;
         private DataGridView dataGridView1;
         private Button UploadImageButton;
         private PictureBox ProductPictureBox;
@@ -812,6 +847,12 @@
         private Button btn_Add;
         private Button btn_Save;
         private Button btn_Add1;
+        private Button btn_Save1;
+        private Button btn_Add2;
         private Button btn_Save2;
+        private Button btn_Add3;
+        private Button btn_Save3;
+        private Button btn_Add4;
+        private Button btn_Save4;
     }
 }

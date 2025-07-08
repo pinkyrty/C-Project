@@ -109,6 +109,7 @@
             ExistingPasswordBox.Name = "ExistingPasswordBox";
             ExistingPasswordBox.Size = new Size(182, 23);
             ExistingPasswordBox.TabIndex = 6;
+            ExistingPasswordBox.UseSystemPasswordChar = true;
             // 
             // label5
             // 
@@ -125,6 +126,7 @@
             NewPasswordBox.Name = "NewPasswordBox";
             NewPasswordBox.Size = new Size(182, 23);
             NewPasswordBox.TabIndex = 8;
+            NewPasswordBox.UseSystemPasswordChar = true;
             // 
             // label6
             // 
@@ -141,6 +143,7 @@
             ConfirmPasswordBox.Name = "ConfirmPasswordBox";
             ConfirmPasswordBox.Size = new Size(182, 23);
             ConfirmPasswordBox.TabIndex = 10;
+            ConfirmPasswordBox.UseSystemPasswordChar = true;
             // 
             // UpdatePasswordButton
             // 

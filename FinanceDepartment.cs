@@ -27,6 +27,7 @@ namespace C_Project
         private static System.Data.DataTable statementDataTable;
         private static System.Data.DataTable riskMgmtDataTable;
         private static System.Data.DataTable investmentDataTable;
+        private static System.Data.DataTable invoiceDataTable;
 
         public FinanceDepartment()
         {
@@ -88,9 +89,6 @@ namespace C_Project
 
                         }
                     }
-
-                    loadChart();
-
                     conn.Close();
 
                 }
@@ -99,72 +97,6 @@ namespace C_Project
             {
                 MessageBox.Show("Error connecting to database!\n" + ex.Message);
             }
-        }
-
-        private void loadChart()
-        {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea = new System.Windows.Forms.DataVisualization.Charting.ChartArea("FinancialChart");
-            chart3.ChartAreas.Add(chartArea);
-            chart3.Series.Clear();
-
-            System.Windows.Forms.DataVisualization.Charting.Series budgetIncomeSeries = new System.Windows.Forms.DataVisualization.Charting.Series("Budget Income")
-            {
-                ChartType = SeriesChartType.Column,
-                XValueType = ChartValueType.String
-            };
-
-            System.Windows.Forms.DataVisualization.Charting.Series budgetExpenseSeries = new System.Windows.Forms.DataVisualization.Charting.Series("Budget Expense")
-            {
-                ChartType = SeriesChartType.Column,
-                XValueType = ChartValueType.String
-            };
-
-            chart3.Series.Add(budgetIncomeSeries);
-            chart3.Series.Add(budgetExpenseSeries);
-
-            foreach (DataGridViewRow row in dataGridView1.Rows)
-            {
-                if (!row.IsNewRow)
-                {
-                    string financialYear = row.Cells["FiscalYear"].Value?.ToString();
-                    bool isIncomeValid = int.TryParse(row.Cells["BudgetIncome"].Value?.ToString(), out int budgetIncome);
-                    bool isExpenseValid = int.TryParse(row.Cells["BudgetExpense"].Value?.ToString(), out int budgetExpense);
-
-                    if (isIncomeValid)
-                    {
-                        budgetIncomeSeries.Points.AddXY(financialYear, budgetIncome);
-                    }
-                    if (isExpenseValid)
-                    {
-                        budgetExpenseSeries.Points.AddXY(financialYear, budgetExpense);
-                    }
-                }
-            }
-
-            chart3.Titles.Add("Financial Overview by Year");
-            chartArea.AxisX.Title = "Financial Year";
-            chartArea.AxisY.Title = "Amount ($)";
-            chartArea.AxisX.MajorGrid.Enabled = false;
-            chartArea.AxisY.MajorGrid.LineColor = System.Drawing.Color.LightGray;
-            chartArea.AxisX.LabelStyle.Enabled = true;
-
-            chartArea.AxisY.Minimum = 0;
-            chartArea.AxisY.Minimum = double.NaN;
-
-            chartArea.AxisX.Interval = 1;
-            //chartArea.AxisX.IsLabelAutoFit = true;
-            chartArea.AxisX.LabelStyle.IsStaggered = false;
-            chartArea.AxisX.Minimum = double.NaN;
-            chartArea.AxisX.Maximum = double.NaN;
-
-            budgetIncomeSeries["PointWidth"] = "0.2";
-            budgetIncomeSeries["DrawSideBySide"] = "true";
-
-            budgetExpenseSeries["PointWidth"] = "0.2";
-            budgetExpenseSeries["DrawSideBySide"] = "true";
-
-            chart3.Invalidate();
-            chart3.Update();
         }
 
         //Second Tab
@@ -343,6 +275,48 @@ namespace C_Project
                             dataGridView5.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                             dataGridView5.AllowUserToResizeColumns = false;
                             dataGridView5.Columns["ID"].ReadOnly = true;
+                        }
+                    }
+
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error connecting to database!\n" + ex.Message);
+            }
+        }
+
+        //Invoice Tab
+        private void LoadQuotationlTable()
+        {
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+                    conn.Open();
+
+                    string sql = "SELECT * FROM SMD_Quotation";
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                    {
+                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
+                        {
+                            invoiceDataTable = new System.Data.DataTable();
+                            adapter.Fill(invoiceDataTable);
+                            dataGridView6.DataSource = invoiceDataTable;
+                            dataGridView6.Columns["QuotationNumber"].HeaderText = "Quotation Number";
+                            dataGridView6.Columns["QDate"].HeaderText = "Quotation Date";
+                            dataGridView6.Columns["ClientName"].HeaderText = "Client Name";
+                            dataGridView6.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                            dataGridView6.AllowUserToResizeColumns = false;
+
+                            foreach (DataGridViewColumn column in dgvQuoteList.Columns)
+                            {
+                                if (column.Name != "QuotationNumber" && column.Name != "QDate" && column.Name != "ClientName")
+                                {
+                                    column.Visible = false;
+                                }
+                            }
                         }
                     }
 
@@ -908,5 +882,6 @@ namespace C_Project
 
             }
         }
+
     }
 }

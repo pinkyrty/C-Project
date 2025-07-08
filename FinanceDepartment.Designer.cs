@@ -30,26 +30,22 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FinanceDepartment));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             btnUserProfile = new Button();
             label19 = new Label();
             label18 = new Label();
             pictureBox1 = new PictureBox();
             ad = new TabControl();
+            tabPage6 = new TabPage();
+            label2 = new Label();
+            dataGridView6 = new DataGridView();
             tabPage1 = new TabPage();
             btn_Add = new Button();
             btn_Save = new Button();
             dataGridView1 = new DataGridView();
-            chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            label2 = new Label();
             label1 = new Label();
             tabPage2 = new TabPage();
             btn_Income_Add = new Button();
             btn_Income_Save = new Button();
-            chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            label4 = new Label();
             dataGridView2 = new DataGridView();
             label3 = new Label();
             tabPage3 = new TabPage();
@@ -102,11 +98,11 @@
             btnLogout = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ad.SuspendLayout();
+            tabPage6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView6).BeginInit();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)chart3).BeginInit();
             tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
@@ -162,6 +158,7 @@
             // 
             // ad
             // 
+            ad.Controls.Add(tabPage6);
             ad.Controls.Add(tabPage1);
             ad.Controls.Add(tabPage2);
             ad.Controls.Add(tabPage3);
@@ -173,13 +170,42 @@
             ad.Size = new Size(1126, 738);
             ad.TabIndex = 20;
             // 
+            // tabPage6
+            // 
+            tabPage6.BackColor = Color.Transparent;
+            tabPage6.Controls.Add(label2);
+            tabPage6.Controls.Add(dataGridView6);
+            tabPage6.Location = new Point(4, 24);
+            tabPage6.Name = "tabPage6";
+            tabPage6.Padding = new Padding(3);
+            tabPage6.Size = new Size(1118, 710);
+            tabPage6.TabIndex = 5;
+            tabPage6.Text = "Invoice";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
+            label2.Location = new Point(6, 11);
+            label2.Name = "label2";
+            label2.Size = new Size(92, 15);
+            label2.TabIndex = 21;
+            label2.Text = "Create Invoice";
+            // 
+            // dataGridView6
+            // 
+            dataGridView6.BackgroundColor = SystemColors.GradientInactiveCaption;
+            dataGridView6.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView6.Location = new Point(6, 29);
+            dataGridView6.Name = "dataGridView6";
+            dataGridView6.Size = new Size(1106, 675);
+            dataGridView6.TabIndex = 0;
+            // 
             // tabPage1
             // 
             tabPage1.Controls.Add(btn_Add);
             tabPage1.Controls.Add(btn_Save);
             tabPage1.Controls.Add(dataGridView1);
-            tabPage1.Controls.Add(chart3);
-            tabPage1.Controls.Add(label2);
             tabPage1.Controls.Add(label1);
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
@@ -215,27 +241,9 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(6, 29);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(1025, 277);
+            dataGridView1.Size = new Size(1025, 675);
             dataGridView1.TabIndex = 25;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // chart3
-            // 
-            chart3.Location = new Point(20, 355);
-            chart3.Name = "chart3";
-            chart3.Size = new Size(800, 200);
-            chart3.TabIndex = 24;
-            chart3.Text = "budgetChart";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
-            label2.Location = new Point(6, 320);
-            label2.Name = "label2";
-            label2.Size = new Size(232, 15);
-            label2.TabIndex = 22;
-            label2.Text = "Annual budget and actual trend chart";
             // 
             // label1
             // 
@@ -251,8 +259,6 @@
             // 
             tabPage2.Controls.Add(btn_Income_Add);
             tabPage2.Controls.Add(btn_Income_Save);
-            tabPage2.Controls.Add(chart1);
-            tabPage2.Controls.Add(label4);
             tabPage2.Controls.Add(dataGridView2);
             tabPage2.Controls.Add(label3);
             tabPage2.Location = new Point(4, 24);
@@ -283,39 +289,13 @@
             btn_Income_Save.UseVisualStyleBackColor = true;
             btn_Income_Save.Click += btn_Income_Save_Click;
             // 
-            // chart1
-            // 
-            chartArea1.Name = "ChartArea1";
-            chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            chart1.Legends.Add(legend1);
-            chart1.Location = new Point(333, 320);
-            chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            chart1.Series.Add(series1);
-            chart1.Size = new Size(300, 300);
-            chart1.TabIndex = 3;
-            chart1.Text = "chart1";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
-            label4.Location = new Point(3, 259);
-            label4.Name = "label4";
-            label4.Size = new Size(153, 15);
-            label4.TabIndex = 2;
-            label4.Text = "Cash flow monthly trend";
-            // 
             // dataGridView2
             // 
             dataGridView2.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Location = new Point(6, 29);
             dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(1031, 219);
+            dataGridView2.Size = new Size(1031, 675);
             dataGridView2.TabIndex = 1;
             dataGridView2.CellContentClick += dataGridView2_CellContentClick;
             // 
@@ -796,13 +776,14 @@
             Load += FinanceDepartment_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ad.ResumeLayout(false);
+            tabPage6.ResumeLayout(false);
+            tabPage6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView6).EndInit();
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)chart3).EndInit();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
@@ -828,14 +809,12 @@
         private PictureBox pictureBox1;
         private TabControl tabControl1;
         private TabPage tabPage1;
-        private Label label2;
         private Label label1;
         private TabPage tabPage2;
         private TabPage tabPage3;
         private TabPage tabPage4;
         private TabPage tabPage5;
         private Button btn_Add;
-        private Label label4;
         private DataGridView dataGridView2;
         private Label label3;
         private Label label5;
@@ -873,10 +852,8 @@
         private TextBox textBox4;
         private Label label22;
         private Label label21;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private Button btn_Invest_Add;
         private TextBox riskTypeText;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
         private BindingSource financeDepartmentBindingSource;
         private BindingSource financeDepartmentBindingSource1;
         private BindingSource financeDepartmentBindingSource2;
@@ -891,5 +868,8 @@
         private Button btn_Invest_Save;
         private TabControl ad;
         private Button btn_RiskSave;
+        private TabPage tabPage6;
+        private Label label2;
+        private DataGridView dataGridView6;
     }
 }

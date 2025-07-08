@@ -28,6 +28,7 @@ namespace C_Project
         private static System.Data.DataTable prodOrderDataTable;
         private static System.Data.DataTable orderFileDataTable;
         private static System.Data.DataTable orderDataTable;
+        private static System.Data.DataTable materialDataTable;
 
         public string DepartmentName { get; set; }
         public string Username { get; set; }
@@ -157,6 +158,42 @@ namespace C_Project
             dataGridView2.AllowUserToResizeColumns = false;
         }
 
+        private void ConfigureMaterialDetailColumns()
+        {
+            // 确保列名与查询结果匹配，并设置显示名称
+            dataGridView3.AutoGenerateColumns = false; // 禁用自动生成列
+            dataGridView3.Columns.Clear();
+
+            dataGridView3.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "MaterialID",
+                HeaderText = "Material ID",
+                Name = "MaterialID"
+            });
+            // 添加列并设置属性
+            dataGridView3.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Name",
+                HeaderText = "Name",
+                Name = "Name"
+            });
+            dataGridView3.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Spec",
+                HeaderText = "Spec",
+                Name = "Spec"
+            });
+            dataGridView3.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "NeedQty",
+                HeaderText = "Quantity Need",
+                Name = "NeedQty",
+            });
+            dataGridView3.Columns["MaterialID"].Visible = false;
+            dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView3.AllowUserToResizeColumns = false;
+        }
+
         private void LoadQuotationDetailTable(string quotationID)
         {
             try
@@ -277,6 +314,7 @@ namespace C_Project
                 ReferenceQuoteTextBox.Text = row.Cells["RefQuotation"].Value?.ToString() ?? "";
                 NotesOrInstructionsTextBox.Text = row.Cells["Remark"].Value?.ToString() ?? "";
 
+                LoadMaterialDetailTable(row.Cells["OrderID"].Value?.ToString());
                 // Populate ESD and EED DateTimePickers
                 try
                 {
@@ -293,6 +331,55 @@ namespace C_Project
                     dateTimePicker3.Value = DateTime.Now;
                     dateTimePicker4.Value = DateTime.Now;
                 }
+            }
+        }
+
+        private void LoadMaterialDetailTable(string orderID)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(orderID))
+                {
+                    MessageBox.Show("No valid Order ID selected.");
+                    dataGridView3.DataSource = null;
+                    return;
+                }
+
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+                    conn.Open();
+
+                    // Updated SQL query to properly reference tables and aliases
+                    string sql = @"
+                        SELECT
+                            SMD_ProdOrderMat.NeedQty,
+                            SCM_Material.MaterialID,
+                            SCM_Material.Name,
+                            SCM_Material.Spec
+                        FROM SMD_ProdOrderMat
+                        INNER JOIN SCM_Material ON (SMD_ProdOrderMat.MaterialID = SCM_Material.MaterialID)
+                        WHERE SMD_ProdOrderMat.OrderID = ?";
+
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                    {
+                        cmd.Parameters.Add("OrderID", OleDbType.Integer).Value = Convert.ToInt32(orderID);
+
+                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
+                        {
+                            materialDataTable = new System.Data.DataTable();
+                            adapter.Fill(materialDataTable);
+                            dataGridView3.DataSource = materialDataTable;
+                            ConfigureMaterialDetailColumns();
+                            dataGridView3.Refresh();
+                        }
+                    }
+
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading quotation details!\nMessage: {ex.Message}\nStack Trace: {ex.StackTrace}");
             }
         }
         //fourth Tab
@@ -928,6 +1015,73 @@ namespace C_Project
 
             }
         }
+
+        private void LoadMaterialsToComboBox()
+        {
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+                    conn.Open();
+                    string sql = "SELECT Name FROM SCM_Material";
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                    {
+                        using (OleDbDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                materialChoose.Items.Add(reader["Name"].ToString());
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading materials!\n" + ex.Message);
+            }
+        }
+
+        private void materialChooseComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedMaterial = materialChoose.SelectedItem?.ToString();
+            if (!string.IsNullOrEmpty(selectedMaterial))
+            {
+                LoadMaterialSpec(selectedMaterial);
+            }
+        }
+
+        private void LoadMaterialSpec(string materialName)
+        {
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+                    conn.Open();
+                    string sql = "SELECT Spec FROM SCM_Material WHERE Name = ?";
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("?", materialName);
+                        var result = cmd.ExecuteScalar();
+
+                        if (result != null)
+                        {
+                            materialSpec.Text = result.ToString();
+                        }
+                        else
+                        {
+                            materialSpec.Text = "Specification not found.";
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading material specification!\n" + ex.Message);
+            }
+        }
+
+
     }
 }
 

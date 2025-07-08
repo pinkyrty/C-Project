@@ -618,12 +618,14 @@ namespace C_Project
             materialSpec.Location = new Point(11, 339);
             materialSpec.Multiline = true;
             materialSpec.Name = "materialSpec";
+            materialSpec.ReadOnly = true;
             materialSpec.Size = new Size(293, 104);
             materialSpec.TabIndex = 14;
             // 
             // materialChoose
             // 
             materialChoose.FormattingEnabled = true;
+            materialChoose.Items.AddRange(new object[] { "Polyethylene", "Polypropylene", "ABS", "Stainless Steel", "Aluminum", "Copper", "Cotton", "Polyester", "Nylon", "Fiberglass", "Carbon Fiber", "Oak", "Pine", "Plywood", "Tempered Glass", "Laminated Glass" });
             materialChoose.Location = new Point(11, 230);
             materialChoose.Name = "materialChoose";
             materialChoose.Size = new Size(293, 23);
@@ -679,6 +681,7 @@ namespace C_Project
             dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView3.Location = new Point(320, 238);
             dataGridView3.Name = "dataGridView3";
+            dataGridView3.ReadOnly = true;
             dataGridView3.Size = new Size(576, 205);
             dataGridView3.TabIndex = 1;
             // 

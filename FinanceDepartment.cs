@@ -12,7 +12,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
-using System.Windows.Forms.DataVisualization.Charting;
+using Excel = Microsoft.Office.Interop.Excel;
+using Microsoft.Office.Interop.Excel;
+using OfficeOpenXml;
 
 namespace C_Project
 {
@@ -54,6 +56,7 @@ namespace C_Project
             this.statementTable();
             this.riskMgmtTable();
             this.investmentTable();
+            this.LoadQuotationlTable();
         }
 
         //First Tab
@@ -309,14 +312,7 @@ namespace C_Project
                             dataGridView6.Columns["ClientName"].HeaderText = "Client Name";
                             dataGridView6.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                             dataGridView6.AllowUserToResizeColumns = false;
-
-                            foreach (DataGridViewColumn column in dgvQuoteList.Columns)
-                            {
-                                if (column.Name != "QuotationNumber" && column.Name != "QDate" && column.Name != "ClientName")
-                                {
-                                    column.Visible = false;
-                                }
-                            }
+                            dataGridView6.Columns["QuotationID"].Visible = false;
                         }
                     }
 
@@ -883,5 +879,115 @@ namespace C_Project
             }
         }
 
+        private void dataGridView6_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                dataGridView6.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                dataGridView6.Rows[e.RowIndex].Selected = true;
+                DataGridViewRow row = dataGridView6.Rows[e.RowIndex];
+            }
+        }
+
+        private void ExportToExcel()
+        {
+            var selectedRow = dataGridView6.SelectedRows[0];
+            string templatePath = Path.Combine(Environment.CurrentDirectory, "QuotationTemplate.xlsx");
+            string outputPath = "ExportedQuotation.xlsx";
+
+            using (var package = new ExcelPackage(new FileInfo(templatePath)))
+            {
+                var worksheet = package.Workbook.Worksheets[0];
+
+                // 假设你想将以下数据放入特定单元格
+                worksheet.Cells["A1"].Value = selectedRow.Cells["Quotation Number"].Value; // 例如，Quotation Number
+                worksheet.Cells["A2"].Value = selectedRow.Cells["Quotation Date"].Value;   // 例如，Quotation Date
+                worksheet.Cells["A3"].Value = selectedRow.Cells["Client Name"].Value;      // 例如，Client Name
+                worksheet.Cells["A4"].Value = selectedRow.Cells["Contact"].Value;          // 例如，Contact
+                worksheet.Cells["A5"].Value = selectedRow.Cells["Delivery"].Value;         // 例如，Delivery
+
+                // 继续为其他列设置单元格
+                // worksheet.Cells["X1"].Value = selectedRow.Cells["ColumnName"].Value;
+
+                // 保存到新文件
+                package.SaveAs(new FileInfo(outputPath));
+            }
+
+            MessageBox.Show("数据已成功导出到 Excel!");
+        }
+
+        private void GenPDFButton_Click(object sender, EventArgs e)
+        {
+            if (dataGridView6.SelectedRows.Count > 0)
+            {
+                ExportToExcelAndConvertToPDF();
+            }
+            else
+            {
+                MessageBox.Show("请先选择一行数据。");
+            }
+        }
+
+        private void ExportToExcelAndConvertToPDF()
+        {
+            var selectedRow = dataGridView6.SelectedRows[0];
+            string templatePath = "QuotationTemplate.xlsx"; // 确保文件路径正确
+            string outputExcelPath = "ExportedQuotation.xlsx";
+            string outputPdfPath = "ExportedQuotation.pdf";
+
+
+            // 导出到 Excel
+            FileInfo templateFile = new FileInfo(templatePath);
+            using (var package = new ExcelPackage(templateFile))
+            {
+                // 检查工作表数量
+                if (package.Workbook.Worksheets.Count == 0)
+                {
+                    MessageBox.Show("模板文件没有工作表。");
+                    return;
+                }
+
+                var worksheet = package.Workbook.Worksheets[0];
+
+                // 将数据放入特定单元格
+                worksheet.Cells["A1"].Value = selectedRow.Cells["Quotation Number"].Value;
+                worksheet.Cells["A2"].Value = selectedRow.Cells["Quotation Date"].Value;
+                worksheet.Cells["A3"].Value = selectedRow.Cells["Client Name"].Value;
+                worksheet.Cells["A4"].Value = selectedRow.Cells["Contact"].Value;
+                worksheet.Cells["A5"].Value = selectedRow.Cells["Delivery"].Value;
+
+                // 保存到新 Excel 文件
+                package.SaveAs(new FileInfo(outputExcelPath));
+            }
+
+            // 转换 Excel 为 PDF
+            ConvertExcelToPDF(outputExcelPath, outputPdfPath);
+            MessageBox.Show("数据已成功导出到 Excel 并转换为 PDF!");
+        }
+
+        private void ConvertExcelToPDF(string excelFilePath, string pdfFilePath)
+        {
+            Excel.Application excelApp = new Excel.Application();
+            Excel.Workbook workbook = null;
+
+            try
+            {
+                workbook = excelApp.Workbooks.Open(excelFilePath);
+                workbook.ExportAsFixedFormat(Excel.XlFixedFormatType.xlTypePDF, pdfFilePath);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"转换失败: {ex.Message}");
+            }
+            finally
+            {
+                // 关闭工作簿和 Excel 应用程序
+                if (workbook != null)
+                {
+                    workbook.Close(false);
+                }
+                excelApp.Quit();
+            }
+        }
     }
 }

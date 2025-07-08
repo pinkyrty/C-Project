@@ -31,6 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="EPPlus" Version="4.5.3" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.2" />
     <PackageReference Include="System.Data.OleDb" Version="9.0.5" />
     <PackageReference Include="WinForms.DataVisualization" Version="1.10.0" />

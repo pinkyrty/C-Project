@@ -36,6 +36,7 @@
             pictureBox1 = new PictureBox();
             ad = new TabControl();
             tabPage6 = new TabPage();
+            GenPDFButton = new Button();
             label2 = new Label();
             dataGridView6 = new DataGridView();
             tabPage1 = new TabPage();
@@ -173,6 +174,7 @@
             // tabPage6
             // 
             tabPage6.BackColor = Color.Transparent;
+            tabPage6.Controls.Add(GenPDFButton);
             tabPage6.Controls.Add(label2);
             tabPage6.Controls.Add(dataGridView6);
             tabPage6.Location = new Point(4, 24);
@@ -181,6 +183,16 @@
             tabPage6.Size = new Size(1118, 710);
             tabPage6.TabIndex = 5;
             tabPage6.Text = "Invoice";
+            // 
+            // GenPDFButton
+            // 
+            GenPDFButton.Location = new Point(1022, 29);
+            GenPDFButton.Name = "GenPDFButton";
+            GenPDFButton.Size = new Size(90, 41);
+            GenPDFButton.TabIndex = 22;
+            GenPDFButton.Text = "Convert To Invoice";
+            GenPDFButton.UseVisualStyleBackColor = true;
+            GenPDFButton.Click += GenPDFButton_Click;
             // 
             // label2
             // 
@@ -198,7 +210,9 @@
             dataGridView6.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView6.Location = new Point(6, 29);
             dataGridView6.Name = "dataGridView6";
-            dataGridView6.Size = new Size(1106, 675);
+            dataGridView6.ReadOnly = true;
+            dataGridView6.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView6.Size = new Size(1010, 675);
             dataGridView6.TabIndex = 0;
             // 
             // tabPage1
@@ -871,5 +885,6 @@
         private TabPage tabPage6;
         private Label label2;
         private DataGridView dataGridView6;
+        private Button GenPDFButton;
     }
 }

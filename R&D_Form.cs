@@ -639,6 +639,28 @@ namespace C_Project
                                 certCmd.Parameters.AddWithValue("?", name);  // 產品名稱
                                 certCmd.ExecuteNonQuery();
                             }
+
+                            // 新增到RND_Spec（ProductID、ID都寫同一個值）
+                            string checkSpecSql = "SELECT COUNT(*) FROM RND_Spec WHERE ID = ?";
+                            using (var checkSpecCmd = new OleDbCommand(checkSpecSql, conn))
+                            {
+                                checkSpecCmd.Parameters.AddWithValue("?", productId);
+                                int specCount = (int)checkSpecCmd.ExecuteScalar();
+
+                                if (specCount == 0)
+                                {
+                                    string insertSpecSql = @"INSERT INTO RND_Spec 
+                            (ProductID, Size, Color, Des, Standard, Guide, Warranty, ID)
+                            VALUES (?, '', '', '', '', '', '', ?)";
+                                    using (var specCmd = new OleDbCommand(insertSpecSql, conn))
+                                    {
+                                        specCmd.Parameters.AddWithValue("?", productId);
+                                        // 其餘欄位預設空字串
+                                        specCmd.Parameters.AddWithValue("?", productId); // ID 填 ProductID
+                                        specCmd.ExecuteNonQuery();
+                                    }
+                                }
+                            }
                         }
                     }
                     conn.Close();

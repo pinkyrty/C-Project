@@ -135,9 +135,7 @@ namespace C_Project
             {
                 using (OleDbConnection conn = new OleDbConnection(connStr))
                 {
-
                     conn.Open();
-
                     string sql = "SELECT OStepID, OrderID, ProcName, Staff, Note FROM PD_OrderStep";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
@@ -150,17 +148,10 @@ namespace C_Project
                             processDataTable = new DataTable();
                             adapter.Fill(processDataTable);
                             dataGridView3.DataSource = processDataTable;
-                            dataGridView3.Columns[1].HeaderText = "OrderID";
-                            dataGridView3.Columns[2].HeaderText = "ProcName";
-                            dataGridView3.Columns[3].HeaderText = "Staff";
-                            dataGridView3.Columns[4].HeaderText = "Note";
-                            dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-                            dataGridView3.AllowUserToResizeColumns = false;
+                            SetProcessGridReadOnly(); // <--- 加呢句！
                         }
                     }
-
                     conn.Close();
-
                 }
             }
             catch (Exception ex)
@@ -168,6 +159,7 @@ namespace C_Project
                 MessageBox.Show("Error connecting to database Process!\n" + ex.Message);
             }
         }
+
 
         //fourth Tab
         private void LoadRequestTable()
@@ -184,9 +176,9 @@ namespace C_Project
                     {
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
-                            dataGridView2.AllowUserToResizeColumns = false;
-                            dataGridView2.AllowUserToAddRows = true;
-                            dataGridView2.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
+                            dataGridView4.AllowUserToResizeColumns = false;
+                            dataGridView4.AllowUserToAddRows = true;
+                            dataGridView4.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
 
                             requsetDataTable = new DataTable();
                             adapter.Fill(requsetDataTable);
@@ -216,62 +208,105 @@ namespace C_Project
             {
                 using (OleDbConnection conn = new OleDbConnection(connStr))
                 {
-
                     conn.Open();
-
-                    string sql = "SELECT * FROM PD_OrderPlan";
+                    string sql = "SELECT OPlanID, OrderID, PlanStart, PlanEnd, Instruction FROM PD_OrderPlan";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
-                            dataGridView5.AllowUserToResizeColumns = false;
-                            dataGridView5.AllowUserToAddRows = true;
-                            dataGridView5.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
-
                             orderPlanDataTable = new DataTable();
                             adapter.Fill(orderPlanDataTable);
                             dataGridView5.DataSource = orderPlanDataTable;
-                            dataGridView5.Columns[1].HeaderText = "PlanStart";
-                            dataGridView5.Columns[2].HeaderText = "PlanEnd";
-                            dataGridView5.Columns[3].HeaderText = "Instruction";
-                            dataGridView5.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-                            dataGridView5.AllowUserToResizeColumns = false;
                         }
                     }
-
                     conn.Close();
-
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error connecting to database Request!\n" + ex.Message);
+                MessageBox.Show("Error connecting to PD_OrderPlan!\n" + ex.Message);
             }
         }
 
 
         private void btn_Save1_Click(object sender, EventArgs e)
         {
-            if (dataGridView2.CurrentRow == null || dataGridView2.CurrentRow.IsNewRow)
-                return;
+            try
+            {
+                dataGridView3.EndEdit();
 
-            var orderIDObj = dataGridView2.CurrentRow.Cells["OrderID"].Value;
-            if (orderIDObj != null)
-            {
-                string orderID = orderIDObj.ToString();
-                LoadOrderStepTableByOrderID(orderID);
+                DataTable dt = (DataTable)dataGridView3.DataSource;
+                if (dt == null || dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("No data to save.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+                    conn.Open();
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        if (row.RowState == DataRowState.Added)
+                        {
+                            string query = "INSERT INTO PD_OrderStep ([OrderID], [ProcName], [Staff], [Note]) VALUES (?, ?, ?, ?)";
+                            using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                            {
+                                cmd.Parameters.AddWithValue("?", row["OrderID"] ?? DBNull.Value);
+                                cmd.Parameters.AddWithValue("?", row["ProcName"] ?? DBNull.Value);
+                                cmd.Parameters.AddWithValue("?", row["Staff"] ?? DBNull.Value);
+                                cmd.Parameters.AddWithValue("?", row["Note"] ?? DBNull.Value);
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                        else if (row.RowState == DataRowState.Modified)
+                        {
+                            string query = "UPDATE PD_OrderStep SET [OrderID]=?, [ProcName]=?, [Staff]=?, [Note]=? WHERE [OStepID]=?";
+                            using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                            {
+                                cmd.Parameters.AddWithValue("?", row["OrderID"] ?? DBNull.Value);
+                                cmd.Parameters.AddWithValue("?", row["ProcName"] ?? DBNull.Value);
+                                cmd.Parameters.AddWithValue("?", row["Staff"] ?? DBNull.Value);
+                                cmd.Parameters.AddWithValue("?", row["Note"] ?? DBNull.Value);
+                                cmd.Parameters.AddWithValue("?", row["OStepID"]);
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                    dt.AcceptChanges();
+                }
+
+                MessageBox.Show("Data saved to database successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // 儲存完 reload
+                if (dataGridView2.CurrentRow != null && dataGridView2.CurrentRow.Cells["OrderID"].Value != null)
+                {
+                    string orderID = dataGridView2.CurrentRow.Cells["OrderID"].Value.ToString();
+                    LoadOrderStepTableByOrderID(orderID);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                dataGridView3.DataSource = null;
+                MessageBox.Show($"Error saving data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btn_Add1_Click(object sender, EventArgs e)
         {
+            if (processDataTable == null)
+            {
+                MessageBox.Show("工序資料未載入！");
+                return;
+            }
+
             DataRow newRow = processDataTable.NewRow();
 
-            newRow["OrderID"] = "";
+            // 自動帶入左邊 OrderID
+            string orderId = "";
+            if (dataGridView2.CurrentRow != null && dataGridView2.CurrentRow.Cells["OrderID"].Value != null)
+                orderId = dataGridView2.CurrentRow.Cells["OrderID"].Value.ToString();
+
+            newRow["OrderID"] = orderId;   // 自動帶入
             newRow["ProcName"] = "";
             newRow["Staff"] = "";
             newRow["Note"] = "";
@@ -281,18 +316,80 @@ namespace C_Project
 
         private void btn_Save2_Click(object sender, EventArgs e)
         {
-            if (dataGridView2.CurrentRow == null || dataGridView2.CurrentRow.IsNewRow)
-                return;
+            try
+            {
+                dataGridView4.EndEdit();
+                if (dataGridView4.CurrentCell != null)
+                    dataGridView4.CurrentCell = null;
+                this.Validate();
 
-            var orderIDObj = dataGridView2.CurrentRow.Cells["OrderID"].Value;
-            if (orderIDObj != null)
-            {
-                string orderID = orderIDObj.ToString();
-                LoadOrderFileTableByOrderID(orderID);
+                DataTable dt = (DataTable)dataGridView4.DataSource;
+                if (dt == null || dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("No data to save.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+                    conn.Open();
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        object fileName = row["FileName"];
+                        object filePath = row["FilePath"];
+
+                        // 跳過空白行
+                        if (fileName == DBNull.Value || fileName == null || fileName.ToString().Trim() == "")
+                            continue;
+
+                        // 自動填入現時用戶
+                        row["UploadedBy"] = this.Username;
+                        // 自動填入今日日期（只日期部分）
+                        row["UploadDate"] = DateTime.Now.Date;
+
+                        if (row.RowState == DataRowState.Added)
+                        {
+                            string query = "INSERT INTO SMD_OrderFile ([OrderID], [FileName], [UploadedBy], [UploadDate], [FilePath]) VALUES (?, ?, ?, ?, ?)";
+                            using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                            {
+                                cmd.Parameters.AddWithValue("?", row["OrderID"]);
+                                cmd.Parameters.AddWithValue("?", fileName.ToString());
+                                cmd.Parameters.AddWithValue("?", this.Username);
+                                //OleDb會自動將DateTime型別存成日期，不用 ToString("yyyy-MM-dd")
+                                cmd.Parameters.AddWithValue("?", DateTime.Now.Date);
+                                cmd.Parameters.AddWithValue("?", filePath == DBNull.Value ? "" : filePath.ToString());
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                        else if (row.RowState == DataRowState.Modified)
+                        {
+                            string query = "UPDATE SMD_OrderFile SET [FileName]=?, [UploadedBy]=?, [UploadDate]=?, [FilePath]=? WHERE [OFID]=?";
+                            using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                            {
+                                cmd.Parameters.AddWithValue("?", fileName.ToString());
+                                cmd.Parameters.AddWithValue("?", this.Username);
+                                cmd.Parameters.AddWithValue("?", DateTime.Now.Date);
+                                cmd.Parameters.AddWithValue("?", filePath == DBNull.Value ? "" : filePath.ToString());
+                                cmd.Parameters.AddWithValue("?", row["OFID"]);
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                    dt.AcceptChanges();
+                }
+
+                MessageBox.Show("Data saved to database successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // 重新載入
+                if (dataGridView2.CurrentRow != null && dataGridView2.CurrentRow.Cells["OrderID"].Value != null)
+                {
+                    string orderID = dataGridView2.CurrentRow.Cells["OrderID"].Value.ToString();
+                    LoadOrderFileTableByOrderID(orderID);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                dataGridView4.DataSource = null;
+                MessageBox.Show($"Error saving data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void btn_Save3_Click(object sender, EventArgs e)
@@ -354,8 +451,22 @@ namespace C_Project
 
         private void btn_Add2_Click(object sender, EventArgs e)
         {
-            DataRow newRow = requsetDataTable.NewRow();
+            if (requsetDataTable == null)
+            {
+                MessageBox.Show("檔案清單未載入。");
+                return;
+            }
 
+            // 取得左側選中 OrderID
+            string orderId = dataGridView2.CurrentRow?.Cells["OrderID"].Value?.ToString();
+            if (string.IsNullOrWhiteSpace(orderId))
+            {
+                MessageBox.Show("請先選擇訂單。");
+                return;
+            }
+
+            DataRow newRow = requsetDataTable.NewRow();
+            newRow["OrderID"] = orderId; // 自動帶入外鍵
             newRow["FileName"] = "";
             newRow["UploadedBy"] = "";
             newRow["UploadDate"] = DBNull.Value;
@@ -413,35 +524,130 @@ namespace C_Project
         }
         private void btn_Add3_Click(object sender, EventArgs e)
         {
-            DataRow newRow = requsetDataTable.NewRow();
+            if (materialDataTable == null)
+            {
+                MessageBox.Show("PD_MaterialRequestForm 資料尚未載入。");
+                return;
+            }
+            DataRow newRow = materialDataTable.NewRow();
 
             newRow["MRFNo"] = "";
+            newRow["MRFDate"] = DBNull.Value;
+            newRow["Dept"] = "";
+            newRow["Priority"] = "";
             newRow["ProductName"] = "";
             newRow["ProductSpec"] = "";
-            newRow["DeliveryDate"] = "";
-            newRow["CreateDate"] = "";
+            newRow["DeliveryDate"] = DBNull.Value;
             newRow["Approver"] = "";
             newRow["Remark"] = "";
+            newRow["OrderID"] = "";
 
-            requsetDataTable.Rows.Add(newRow);
+            materialDataTable.Rows.Add(newRow);
         }
         private void btn_Save4_Click(object sender, EventArgs e)
         {
-            if (dataGridView2.CurrentRow == null || dataGridView2.CurrentRow.IsNewRow)
-                return;
+            try
+            {
+                dataGridView5.EndEdit();
+                if (dataGridView5.CurrentCell != null)
+                    dataGridView5.CurrentCell = null;
+                this.Validate();
 
-            var orderIDObj = dataGridView2.CurrentRow.Cells["OrderID"].Value;
-            if (orderIDObj != null)
-            {
-                string orderID = orderIDObj.ToString();
-                LoadOrderPlanTableByOrderID(orderID);
+                DataTable dt = (DataTable)dataGridView5.DataSource;
+                if (dt == null || dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("No data to save.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+                    conn.Open();
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        if (row.RowState == DataRowState.Added)
+                        {
+                            // 強力檢查空值和型別
+                            object planStart = row["PlanStart"];
+                            object planEnd = row["PlanEnd"];
+                            object instruction = row["Instruction"];
+
+                            // 跳過完全空白行
+                            if (row["OrderID"] == DBNull.Value ||
+                                planStart == DBNull.Value || planStart == null || planStart.ToString().Trim() == "" ||
+                                planEnd == DBNull.Value || planEnd == null || planEnd.ToString().Trim() == "" ||
+                                instruction == DBNull.Value || instruction == null || instruction.ToString().Trim() == "")
+                            {
+                                continue;
+                            }
+
+                            // 轉型，確保一定係 DateTime
+                            DateTime planStartDate, planEndDate;
+                            if (!DateTime.TryParse(planStart.ToString(), out planStartDate) ||
+                                !DateTime.TryParse(planEnd.ToString(), out planEndDate))
+                            {
+                                MessageBox.Show("請輸入正確的日期格式！");
+                                continue;
+                            }
+
+                            string query = "INSERT INTO PD_OrderPlan ([OrderID], [PlanStart], [PlanEnd], [Instruction]) VALUES (?, ?, ?, ?)";
+                            using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                            {
+                                cmd.Parameters.AddWithValue("?", row["OrderID"].ToString());
+                                cmd.Parameters.AddWithValue("?", planStartDate);
+                                cmd.Parameters.AddWithValue("?", planEndDate);
+                                cmd.Parameters.AddWithValue("?", instruction.ToString());
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                        // 如有需要，這裡可以加修改邏輯
+                    }
+                    dt.AcceptChanges();
+                }
+
+                MessageBox.Show("Data saved to database successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadOrderPlanTable();
             }
-            else
+            catch (Exception ex)
             {
-                dataGridView5.DataSource = null;
+                MessageBox.Show($"Error saving data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void btn_Add4_Click(object sender, EventArgs e)
+        {
+            if (orderPlanDataTable == null)
+            {
+                MessageBox.Show("生產計劃資料未載入。");
+                return;
+            }
 
+            string orderId = dataGridView2.CurrentRow?.Cells["OrderID"].Value?.ToString();
+            if (string.IsNullOrWhiteSpace(orderId))
+            {
+                MessageBox.Show("請先選擇訂單。");
+                return;
+            }
+
+            DataRow newRow = orderPlanDataTable.NewRow();
+            newRow["OrderID"] = orderId;
+
+            // 將上面的輸入框值寫入新行
+            newRow["PlanStart"] = startDateTimePicker.Value;
+            newRow["PlanEnd"] = targetDateTimePicker.Value;
+            newRow["Instruction"] = workInstructionsTextBox.Text.Trim();
+
+            orderPlanDataTable.Rows.Add(newRow);
+
+            // 清空輸入欄（選擇性）
+            // workInstructionsTextBox.Text = "";
+        }
+        private void SetOrderPlanGridReadOnly()
+        {
+            if (dataGridView5.Columns.Contains("OPlanID"))
+                dataGridView5.Columns["OPlanID"].ReadOnly = true;
+            if (dataGridView5.Columns.Contains("OrderID"))
+                dataGridView5.Columns["OrderID"].ReadOnly = true;
+        }
         private void dataGridView2_SelectionChanged(object sender, EventArgs e)
         {
             if (dataGridView2.CurrentRow == null || dataGridView2.CurrentRow.IsNewRow)
@@ -633,6 +839,68 @@ namespace C_Project
                 MessageBox.Show("Error connecting to SMD_OrderFile!\n" + ex.Message);
             }
         }
+
+        // 設定 OStepID、OrderID 唔俾改
+        private void SetProcessGridReadOnly()
+        {
+            if (dataGridView3.Columns.Contains("OStepID"))
+                dataGridView3.Columns["OStepID"].ReadOnly = true;
+            if (dataGridView3.Columns.Contains("OrderID"))
+                dataGridView3.Columns["OrderID"].ReadOnly = true;
+        }
+        private void dataGridView4_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // 檢查是否點擊到 FilePath 欄
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+                return;
+
+            var dgv = dataGridView4;
+            var col = dgv.Columns[e.ColumnIndex];
+
+            if (col.Name == "FilePath")
+            {
+                using (OpenFileDialog ofd = new OpenFileDialog())
+                {
+                    ofd.Title = "選擇上傳檔案";
+                    if (ofd.ShowDialog() == DialogResult.OK)
+                    {
+                        string sourcePath = ofd.FileName;
+                        string fileName = Path.GetFileName(sourcePath);
+
+                        // 建議：存入 App資料夾下 \Uploads\OrderID\ 子資料夾
+                        string orderId = dgv.Rows[e.RowIndex].Cells["OrderID"].Value?.ToString();
+                        string targetFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Uploads", orderId ?? "UnknownOrder");
+                        if (!Directory.Exists(targetFolder))
+                            Directory.CreateDirectory(targetFolder);
+
+                        string targetPath = Path.Combine(targetFolder, fileName);
+
+                        // 防止覆蓋同名檔案
+                        int idx = 1;
+                        string baseName = Path.GetFileNameWithoutExtension(fileName);
+                        string ext = Path.GetExtension(fileName);
+                        while (File.Exists(targetPath))
+                        {
+                            targetPath = Path.Combine(targetFolder, $"{baseName}({idx++}){ext}");
+                        }
+
+                        try
+                        {
+                            File.Copy(sourcePath, targetPath);
+                            // 直接寫入 DataGridView（DataTable 也跟住更新）
+                            dgv.Rows[e.RowIndex].Cells["FilePath"].Value = targetPath;
+                            // 你可選擇自動填 FileName
+                            if (string.IsNullOrWhiteSpace(dgv.Rows[e.RowIndex].Cells["FileName"].Value?.ToString()))
+                                dgv.Rows[e.RowIndex].Cells["FileName"].Value = fileName;
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("檔案複製失敗：" + ex.Message);
+                        }
+                    }
+                }
+            }
+        }
         private void RepairSupportTable()
         {
             throw new NotImplementedException();
@@ -700,5 +968,6 @@ namespace C_Project
         {
 
         }
+
     }
 }

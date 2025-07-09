@@ -52,6 +52,7 @@
             btn_Add1 = new Button();
             dataGridView3 = new DataGridView();
             tabPage2 = new TabPage();
+            btn_Add4 = new Button();
             dataGridView5 = new DataGridView();
             btn_Save4 = new Button();
             workInstructionsTextBox = new TextBox();
@@ -296,6 +297,7 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(btn_Add4);
             tabPage2.Controls.Add(dataGridView5);
             tabPage2.Controls.Add(btn_Save4);
             tabPage2.Controls.Add(workInstructionsTextBox);
@@ -312,6 +314,16 @@
             tabPage2.Text = "Production Plan";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // btn_Add4
+            // 
+            btn_Add4.Location = new Point(640, 6);
+            btn_Add4.Name = "btn_Add4";
+            btn_Add4.Size = new Size(75, 23);
+            btn_Add4.TabIndex = 49;
+            btn_Add4.Text = "Add";
+            btn_Add4.UseVisualStyleBackColor = true;
+            btn_Add4.Click += btn_Add4_Click;
+            // 
             // dataGridView5
             // 
             dataGridView5.BackgroundColor = SystemColors.GradientInactiveCaption;
@@ -324,7 +336,7 @@
             // 
             // btn_Save4
             // 
-            btn_Save4.Location = new Point(637, 6);
+            btn_Save4.Location = new Point(640, 35);
             btn_Save4.Name = "btn_Save4";
             btn_Save4.Size = new Size(75, 23);
             btn_Save4.TabIndex = 47;
@@ -431,6 +443,7 @@
             dataGridView4.Name = "dataGridView4";
             dataGridView4.Size = new Size(705, 159);
             dataGridView4.TabIndex = 0;
+            dataGridView4.CellDoubleClick += new DataGridViewCellEventHandler(this.dataGridView4_CellDoubleClick);
             // 
             // dataGridView2
             // 
@@ -624,5 +637,6 @@
         private Button btn_Add3;
         private Button btn_Save4;
         private DataGridView dataGridView5;
+        private Button btn_Add4;
     }
 }

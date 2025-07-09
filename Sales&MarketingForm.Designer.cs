@@ -593,7 +593,6 @@ namespace C_Project
             dgvProdOrderList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvProdOrderList.Size = new Size(206, 645);
             dgvProdOrderList.TabIndex = 5;
-            dgvProdOrderList.CellContentClick += dgvProdOrderList_CellContentClick;
             // 
             // poList
             // 
@@ -625,11 +624,12 @@ namespace C_Project
             // materialChoose
             // 
             materialChoose.FormattingEnabled = true;
-            materialChoose.Items.AddRange(new object[] { "Polyethylene", "Polypropylene", "ABS", "Stainless Steel", "Aluminum", "Copper", "Cotton", "Polyester", "Nylon", "Fiberglass", "Carbon Fiber", "Oak", "Pine", "Plywood", "Tempered Glass", "Laminated Glass" });
+            //materialChoose.Items.AddRange(new object[] { "Polyethylene", "Polypropylene", "ABS", "Stainless Steel", "Aluminum", "Copper", "Cotton", "Polyester", "Nylon", "Fiberglass", "Carbon Fiber", "Oak", "Pine", "Plywood", "Tempered Glass", "Laminated Glass" });
             materialChoose.Location = new Point(11, 230);
             materialChoose.Name = "materialChoose";
             materialChoose.Size = new Size(293, 23);
             materialChoose.TabIndex = 13;
+            materialChoose.SelectedIndexChanged += materialChoose_SelectedIndexChanged;
             // 
             // materialText
             // 
@@ -851,6 +851,7 @@ namespace C_Project
             NewMaterialsButton.TabIndex = 3;
             NewMaterialsButton.Text = "+ New Materials";
             NewMaterialsButton.UseVisualStyleBackColor = true;
+            NewMaterialsButton.Click += NewMaterialsButton_Click;
             // 
             // label31
             // 

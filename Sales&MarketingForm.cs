@@ -1,5 +1,6 @@
 ﻿using Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Word;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.RefAndLookup;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -43,10 +44,12 @@ namespace C_Project
             string dbPath = Path.Combine(projectRoot, "ToySystem.accdb");
             connStr = $@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={dbPath};";
             this.LoadQuotationlTable();
+            this.LoadOrderFileTable();
             this.LoadProdOrderTable();
+            this.prefillAfterLoadProdOrderTable();
+            this.LoadMaterialsToComboBox();
             dgvProdOrderList.CellClick += new DataGridViewCellEventHandler(dgvProdOrderList_CellClick);
             dgvQuoteList.CellClick += new DataGridViewCellEventHandler(dgvQuoteList_CellClick);
-            this.LoadOrderFileTable();
             this.LoadOrderTable();
             InitializeQuotationDetailTable();
         }
@@ -56,6 +59,8 @@ namespace C_Project
             base.OnLoad(e);
             label30.Text = Username;
             label31.Text = DepartmentName;
+            dgvProdOrderList.ClearSelection();
+            dgvProdOrderList.CurrentCell = null;
         }
 
         //first Tab
@@ -166,6 +171,12 @@ namespace C_Project
 
             dataGridView3.Columns.Add(new DataGridViewTextBoxColumn
             {
+                DataPropertyName = "OMatID",
+                HeaderText = "OMatID",
+                Name = "OMatID"
+            });
+            dataGridView3.Columns.Add(new DataGridViewTextBoxColumn
+            {
                 DataPropertyName = "MaterialID",
                 HeaderText = "Material ID",
                 Name = "MaterialID"
@@ -173,9 +184,9 @@ namespace C_Project
             // 添加列并设置属性
             dataGridView3.Columns.Add(new DataGridViewTextBoxColumn
             {
-                DataPropertyName = "Name",
+                DataPropertyName = "MaterialName",
                 HeaderText = "Name",
-                Name = "Name"
+                Name = "MaterialName"
             });
             dataGridView3.Columns.Add(new DataGridViewTextBoxColumn
             {
@@ -189,6 +200,7 @@ namespace C_Project
                 HeaderText = "Quantity Need",
                 Name = "NeedQty",
             });
+            dataGridView3.Columns["OMatID"].Visible = false;
             dataGridView3.Columns["MaterialID"].Visible = false;
             dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView3.AllowUserToResizeColumns = false;
@@ -242,7 +254,9 @@ namespace C_Project
             {
                 MessageBox.Show($"Error loading quotation details!\nMessage: {ex.Message}\nStack Trace: {ex.StackTrace}");
             }
-        }        //third Tab
+        }
+
+        //third Tab
         private void LoadProdOrderTable()
         {
             try
@@ -250,7 +264,6 @@ namespace C_Project
                 using (OleDbConnection conn = new OleDbConnection(connStr))
                 {
                     conn.Open();
-                    MessageBox.Show("LoadProdOrderTable");
                     // SQL query to include all relevant columns
                     string sql = "SELECT OrderID, OrderNumber, ODate, ProductID, RefQuotation, Qty, Remark, ESD, EED FROM SMD_ProdOrder";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
@@ -280,6 +293,7 @@ namespace C_Project
 
                             // Enable row selection, ensure headers are not highlighted
                             dgvProdOrderList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                            dgvProdOrderList.ClearSelection();
                             dgvProdOrderList.MultiSelect = false;
                             dgvProdOrderList.EnableHeadersVisualStyles = false; // Ensures headers use default visual style (no highlight)
                             dgvProdOrderList.ColumnHeadersDefaultCellStyle.SelectionBackColor = dgvProdOrderList.ColumnHeadersDefaultCellStyle.BackColor; // Prevent header highlight
@@ -295,11 +309,47 @@ namespace C_Project
             }
         }
 
+        private void prefillAfterLoadProdOrderTable()
+        {
+            DataRow selectedRow = prodOrderDataTable.Rows[0];
+            if (selectedRow != null)
+            {
+                //LoadMaterialDetailTable(selectedRow["OrderID"].ToString());
+                // Populate textboxes with data from the selected row
+                OrderNoTextBox.Text = selectedRow["OrderNumber"].ToString() ?? "";
+                productIdText.Text = selectedRow["ProductID"].ToString() ?? "";
+                CustomerNameTextBox.Text = selectedRow["ProductID"].ToString() ?? ""; // Adjust if CustomerName is from another table
+                dateTimePicker2.Value = Convert.ToDateTime(selectedRow["ODate"] ?? DateTime.Now);
+                PoQtyText.Text = selectedRow["Qty"].ToString() ?? "";
+                ReferenceQuoteTextBox.Text = selectedRow["RefQuotation"].ToString() ?? "";
+                NotesOrInstructionsTextBox.Text = selectedRow["Remark"].ToString() ?? "";
+
+                LoadMaterialDetailTable(selectedRow["OrderID"].ToString());
+                // Populate ESD and EED DateTimePickers
+                try
+                {
+                    dateTimePicker3.Value = selectedRow["ESD"] != null && selectedRow["ESD"] != DBNull.Value
+                        ? Convert.ToDateTime(selectedRow["ESD"])
+                        : DateTime.Now; // Default to current date if null
+                    dateTimePicker4.Value = selectedRow["EED"] != null && selectedRow["EED"] != DBNull.Value
+                        ? Convert.ToDateTime(selectedRow["EED"])
+                        : DateTime.Now; // Default to current date if null
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error setting ESD or EED dates: {ex.Message}");
+                    dateTimePicker3.Value = DateTime.Now;
+                    dateTimePicker4.Value = DateTime.Now;
+                }
+            }
+        }
+
         // Event handler for cell click to highlight row (not headers) and populate textboxes and DateTimePickers
         private void dgvProdOrderList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            LoadMaterialsToComboBox();
             // Check if a valid row is clicked (ignore header clicks)
-            if (e.RowIndex >= 0)
+            if (e.RowIndex >= 0 && e.RowIndex <= prodOrderDataTable.Rows.Count - 1)
             {
                 // Get the selected row
                 dgvProdOrderList.Rows[e.RowIndex].Selected = true;
@@ -331,6 +381,7 @@ namespace C_Project
                     dateTimePicker3.Value = DateTime.Now;
                     dateTimePicker4.Value = DateTime.Now;
                 }
+
             }
         }
 
@@ -352,9 +403,10 @@ namespace C_Project
                     // Updated SQL query to properly reference tables and aliases
                     string sql = @"
                         SELECT
+                            SMD_ProdOrderMat.OMatID,
                             SMD_ProdOrderMat.NeedQty,
                             SCM_Material.MaterialID,
-                            SCM_Material.Name,
+                            SCM_Material.Name AS MaterialName,
                             SCM_Material.Spec
                         FROM SMD_ProdOrderMat
                         INNER JOIN SCM_Material ON (SMD_ProdOrderMat.MaterialID = SCM_Material.MaterialID)
@@ -392,7 +444,7 @@ namespace C_Project
 
                     conn.Open();
 
-                    string sql = "SELECT MaterialName, Spec, NeedQty FROM SMD_ProdOrderMat";
+                    string sql = "SELECT OMatID, MaterialID, MaterialName, Spec, NeedQty FROM SMD_ProdOrderMat";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
@@ -400,6 +452,8 @@ namespace C_Project
                             orderFileDataTable = new System.Data.DataTable();
                             adapter.Fill(orderFileDataTable);
                             dataGridView3.DataSource = orderFileDataTable;
+                            dataGridView3.Columns["OMatID"].Visible = false;
+                            dataGridView3.Columns["MaterialID"].Visible = false;
                             dataGridView3.Columns["MaterialName"].HeaderText = "Material";
                             dataGridView3.Columns["NeedQty"].HeaderText = "Quantity Need";
                             dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -499,13 +553,10 @@ namespace C_Project
 
         }
 
-        private void dgvProdOrderList_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-        }
         private void genPDF_Click(object sender, EventArgs e)
         {
             string baseDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", ".."));
-            string excelFilePath = Path.Combine(baseDirectory, "QuotationTemplate.xlsx"); 
+            string excelFilePath = Path.Combine(baseDirectory, "QuotationTemplate.xlsx");
             string excelPdfPath = Path.Combine(baseDirectory, "QuotationTemplateExcel.pdf");
 
             excelPdfPath = GetSaveFilePath("Save PDF", CustomerNameTextBox.Text + " - Quotation.pdf");
@@ -552,7 +603,9 @@ namespace C_Project
         {
             string quotationNum = QuoteNumberTextBox.Text;
             string customerName = CustomerNameTextBox.Text;
-            string date = dateTimePicker1.Text;
+
+            string date = DateTime.Parse(dateTimePicker1.Text).ToString("yyyy-MM-dd");
+
             string address = AddressTextBox.Text;
             string contactPerson = ContactPersonTextBox.Text;
             string telephone = TelephoneTextBox.Text;
@@ -564,9 +617,12 @@ namespace C_Project
 
             worksheet.Cells[8, 3].Value = customerName;
             worksheet.Cells[8, 6].Value = quotationNum;
-            worksheet.Cells[10, 3].Value = address;
+            worksheet.Cells[12, 3].Value = address;
+
+            worksheet.Cells[10, 6].NumberFormat = "@";
             worksheet.Cells[10, 6].Value = date;
-            worksheet.Cells[12, 3].Value = contactPerson;
+
+            worksheet.Cells[10, 3].Value = contactPerson;
             worksheet.Cells[32, 3].Value = deliveryTime;
             worksheet.Cells[32, 6].Value = transport;
             worksheet.Cells[28, 6].Value = discount;
@@ -672,6 +728,16 @@ namespace C_Project
             DiscountsOrOffersTextBox.Clear();
             NotesOrtermsTextBox.Clear();
         }
+
+        private void clearProdOrderFormData()
+        {
+            OrderNoTextBox.Clear();
+            dateTimePicker2.Value = DateTime.Now;
+            dateTimePicker3.Value = DateTime.Now;
+            dateTimePicker4.Value = DateTime.Now;
+            productIdText.Clear();
+        }
+
 
         private void btn_quoAdd_Click(object sender, EventArgs e)
         {
@@ -817,6 +883,7 @@ namespace C_Project
 
                         conn.Close();
 
+                        clearProdOrderFormData();
                         dgvQuoteList.Refresh();
                         LoadQuotationlTable();
 
@@ -912,7 +979,7 @@ namespace C_Project
         {
             try
             {
-                clearFormData();
+                clearProdOrderFormData();
                 int tempPONumber;
                 using (OleDbConnection conn = new OleDbConnection(connStr))
                 {
@@ -948,38 +1015,148 @@ namespace C_Project
                     MessageBox.Show("No refernce quote. Please add a reference quote first.");
                     return;
                 }
+
                 using (OleDbConnection conn = new OleDbConnection(connStr))
                 {
                     conn.Open();
 
-                    string insertQuery = "INSERT INTO SMD_ProdOrder (OrderNumber, ODate, ProductID, RefQuotation, Qty, Remark, ESD, EED) " +
-                                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-                    using (OleDbCommand insertCmd = new OleDbCommand(insertQuery, conn))
+                    OleDbTransaction transaction = conn.BeginTransaction();
+
+                    try
                     {
-                        insertCmd.Parameters.Add("OrderNumber", OleDbType.VarChar).Value = OrderNoTextBox.Text;
-                        insertCmd.Parameters.Add("ODate", OleDbType.Date).Value = dateTimePicker2.Value.ToString("MM/dd/yyyy");
-                        insertCmd.Parameters.Add("ProductID", OleDbType.VarChar).Value = productIdText.Text;
-                        insertCmd.Parameters.Add("RefQuotation", OleDbType.VarChar).Value = ReferenceQuoteTextBox.Text;
-                        insertCmd.Parameters.Add("Qty", OleDbType.VarChar).Value = PoQtyText.Text;
-                        insertCmd.Parameters.Add("Remark", OleDbType.VarChar).Value = NotesOrInstructionsTextBox.Text;
-                        insertCmd.Parameters.Add("ESD", OleDbType.Date).Value = dateTimePicker3.Value.ToString("MM/dd/yyyy");
-                        insertCmd.Parameters.Add("EED", OleDbType.Date).Value = dateTimePicker4.Value.ToString("MM/dd/yyyy");
+                        // Check if QuotationNumber already exists
+                        string checkQuery = "SELECT OrderID FROM SMD_ProdOrder WHERE OrderNumber = ?";
+                        int? existingOrderId = null;
+                        using (OleDbCommand checkCmd = new OleDbCommand(checkQuery, conn, transaction))
+                        {
+                            checkCmd.Parameters.Add("QuotationNumber", OleDbType.VarChar).Value = OrderNoTextBox.Text;
+                            var result = checkCmd.ExecuteScalar();
+                            if (result != null && result != DBNull.Value)
+                            {
+                                existingOrderId = Convert.ToInt32(result);
+                            }
+                        }
 
-                        insertCmd.ExecuteNonQuery();
+                        int newOrderId;
+                        if (existingOrderId.HasValue)
+                        {
+                            newOrderId = existingOrderId.Value;
+                            // QuotationNumber exists, update the existing record
+                            string updateQuery = "UPDATE SMD_ProdOrder SET ODate = ?, ProductID = ?, RefQuotation = ?, Qty = ?, Remark = ?, ESD = ?, EED = ? WHERE OrderID = ?";
+                            using (OleDbCommand updateCmd = new OleDbCommand(updateQuery, conn, transaction))
+                            {
+                                updateCmd.Parameters.Add("ODate", OleDbType.Date).Value = dateTimePicker2.Value.ToString("MM/dd/yyyy");
+                                updateCmd.Parameters.Add("ProductID", OleDbType.VarChar).Value = productIdText.Text;
+                                updateCmd.Parameters.Add("RefQuotation", OleDbType.VarChar).Value = ReferenceQuoteTextBox.Text;
+                                updateCmd.Parameters.Add("Qty", OleDbType.Integer).Value = Convert.ToInt32(PoQtyText.Text);
+                                updateCmd.Parameters.Add("Remark", OleDbType.VarChar).Value = NotesOrInstructionsTextBox.Text;
+                                updateCmd.Parameters.Add("ESD", OleDbType.Date).Value = dateTimePicker3.Value.ToString("MM/dd/yyyy");
+                                updateCmd.Parameters.Add("EED", OleDbType.Date).Value = dateTimePicker4.Value.ToString("MM/dd/yyyy");
+                                updateCmd.Parameters.Add("OrderID", OleDbType.VarChar).Value = newOrderId;
+
+                                updateCmd.ExecuteNonQuery();
+                            }
+
+                        }
+                        else
+                        {
+                            // QuotationNumber does not exist, insert new record
+                            string insertQuery = "INSERT INTO SMD_ProdOrder (OrderNumber, ODate, ProductID, RefQuotation, Qty, Remark, ESD, EED) " +
+                                                "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                            using (OleDbCommand insertCmd = new OleDbCommand(insertQuery, conn, transaction))
+                            {
+                                insertCmd.Parameters.Add("OrderNumber", OleDbType.VarChar).Value = OrderNoTextBox.Text;
+                                insertCmd.Parameters.Add("ODate", OleDbType.Date).Value = dateTimePicker2.Value.ToString("MM/dd/yyyy");
+                                insertCmd.Parameters.Add("ProductID", OleDbType.VarChar).Value = productIdText.Text;
+                                insertCmd.Parameters.Add("RefQuotation", OleDbType.VarChar).Value = ReferenceQuoteTextBox.Text;
+                                insertCmd.Parameters.Add("Qty", OleDbType.Integer).Value = Convert.ToInt32(PoQtyText.Text);
+                                insertCmd.Parameters.Add("Remark", OleDbType.VarChar).Value = NotesOrInstructionsTextBox.Text;
+                                insertCmd.Parameters.Add("ESD", OleDbType.Date).Value = dateTimePicker3.Value.ToString("MM/dd/yyyy");
+                                insertCmd.Parameters.Add("EED", OleDbType.Date).Value = dateTimePicker4.Value.ToString("MM/dd/yyyy");
+
+                                insertCmd.ExecuteNonQuery();
+
+                                string idQuery = "SELECT @@IDENTITY;";
+                                using (OleDbCommand idCmd = new OleDbCommand(idQuery, conn, transaction))
+                                {
+                                    newOrderId = Convert.ToInt32(idCmd.ExecuteScalar());
+                                }
+                            }
+                        }
+
+
+                        transaction.Commit();
+
+                        conn.Close();
+
+                        this.SaveMaterialDataTable(newOrderId);
+
+
+                        clearFormData();
+                        dgvProdOrderList.Refresh();
+                        LoadProdOrderTable();
+
+                        MessageBox.Show("Prod Order saved successfully!");
                     }
-
-                    conn.Close();
-
-                    dgvProdOrderList.Refresh();
-                    LoadProdOrderTable();
-
-                    MessageBox.Show("Product Order saved successfully!");
-
+                    catch (Exception ex)
+                    {
+                        transaction?.Rollback();
+                        throw new Exception("保存报价或明细时出错：" + ex.Message);
+                    }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error saving PO to database!\n" + ex.Message);
+                MessageBox.Show("Error saving quotation to database!\n" + ex.Message);
+            }
+        }
+
+        private void SaveMaterialDataTable(int orderId)
+        {
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+                    conn.Open();
+
+                    foreach (DataRow row in orderFileDataTable.Rows)
+                    {
+                        bool isNewRow = row["OMatID"] == DBNull.Value || Convert.ToInt32(row["OMatID"]) == -1;
+                        if (isNewRow)
+                        {
+                            // 插入新行
+                            string insertSql = "INSERT INTO SMD_ProdOrderMat (OrderID, MaterialID, MaterialName, Spec, NeedQty, StockQty) VALUES (?, ?, ?, ?, ?, ?)";
+                            using (OleDbCommand cmd = new OleDbCommand(insertSql, conn))
+                            {
+                                cmd.Parameters.AddWithValue("?", orderId.ToString());
+                                cmd.Parameters.AddWithValue("?", row["MaterialID"].ToString());
+                                cmd.Parameters.AddWithValue("?", row["MaterialName"].ToString());
+                                cmd.Parameters.AddWithValue("?", row["Spec"].ToString());
+                                cmd.Parameters.AddWithValue("?", Convert.ToInt32(row["NeedQty"]));
+                                cmd.Parameters.AddWithValue("?", 0);
+                                cmd.ExecuteNonQuery();
+                            }
+
+                            //// 可選：獲取新插入的 MaterialID（如果需要）
+                            //string getIdSql = "SELECT @@IDENTITY";
+                            //using (OleDbCommand cmd = new OleDbCommand(getIdSql, conn))
+                            //{
+                            //    materialId = Convert.ToInt32(cmd.ExecuteScalar());
+                            //    row["MaterialID"] = materialId; // 更新 DataTable 中的 MaterialID
+                            //}
+                        }
+                    }
+
+                    conn.Close();
+                    MessageBox.Show("數據已成功保存到資料庫！");
+
+                    // 可選：重新加載數據以刷新 DataGridView
+                    LoadOrderFileTable();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("保存數據時發生錯誤！\n" + ex.Message);
             }
         }
 
@@ -1020,18 +1197,25 @@ namespace C_Project
         {
             try
             {
+                materialChoose.DataSource = null;
+                materialSpec.Text = string.Empty;
+
                 using (OleDbConnection conn = new OleDbConnection(connStr))
                 {
                     conn.Open();
-                    string sql = "SELECT Name FROM SCM_Material";
+                    string sql = "SELECT MaterialID, Name FROM SCM_Material";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
-                        using (OleDbDataReader reader = cmd.ExecuteReader())
+                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
                         {
-                            while (reader.Read())
-                            {
-                                materialChoose.Items.Add(reader["Name"].ToString());
-                            }
+                            System.Data.DataTable dt = new System.Data.DataTable();
+                            adapter.Fill(dt);
+
+                            // 綁定數據到 ComboBox
+                            materialChoose.DataSource = dt;
+                            materialChoose.DisplayMember = "Name"; // 顯示名稱
+                            materialChoose.ValueMember = "MaterialID";    // 值為 ID
+                            materialChoose.SelectedIndex = -1;     // 預設不選擇任何項目
                         }
                     }
                 }
@@ -1042,26 +1226,26 @@ namespace C_Project
             }
         }
 
-        private void materialChooseComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void materialChoose_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string selectedMaterial = materialChoose.SelectedItem?.ToString();
-            if (!string.IsNullOrEmpty(selectedMaterial))
+            if (materialChoose.SelectedValue != null)
             {
+                string selectedMaterial = materialChoose.SelectedValue.ToString();
                 LoadMaterialSpec(selectedMaterial);
             }
         }
 
-        private void LoadMaterialSpec(string materialName)
+        private void LoadMaterialSpec(string materialId)
         {
             try
             {
                 using (OleDbConnection conn = new OleDbConnection(connStr))
                 {
                     conn.Open();
-                    string sql = "SELECT Spec FROM SCM_Material WHERE Name = ?";
+                    string sql = "SELECT Spec FROM SCM_Material WHERE MaterialID = ?";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
-                        cmd.Parameters.AddWithValue("?", materialName);
+                        cmd.Parameters.AddWithValue("?", materialId);
                         var result = cmd.ExecuteScalar();
 
                         if (result != null)
@@ -1081,7 +1265,48 @@ namespace C_Project
             }
         }
 
+        public System.Data.DataTable GetQuotationDetailData()
+        {
+            return quotationDetailDataTable;
+        }
 
+        private void NewMaterialsButton_Click(object sender, EventArgs e)
+        {
+            if (orderFileDataTable == null)
+            {
+                MessageBox.Show("請先加載數據表！");
+                return;
+            }
+
+            if (materialChoose.SelectedValue != null)
+            {
+                // 獲取選中的 ID
+                string selectedId = materialChoose.SelectedValue.ToString();
+                // 獲取選中的名稱
+                string selectedName = materialChoose.Text;
+
+                // 顯示選中的值（或根據需求進行其他操作）
+                MessageBox.Show($"選中的 ID: {selectedId}, 名稱: {selectedName}");
+
+                //// 添加新行
+                DataRow newRow = orderFileDataTable.NewRow();
+                newRow["OMatID"] = -1;
+                newRow["MaterialID"] = selectedId; // 根據需求設置值
+                newRow["MaterialName"] = selectedName; // 可從輸入框獲取
+                newRow["Spec"] = materialSpec.Text; // 可從輸入框獲取
+                newRow["NeedQty"] = materialQty.Text; // 可從輸入框獲取
+                orderFileDataTable.Rows.Add(newRow);
+
+                dataGridView3.DataSource = null;
+                dataGridView3.DataSource = orderFileDataTable;
+                //ConfigureMaterialDetailColumns();
+                dataGridView3.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("請先選擇一個材料！");
+            }
+        }
     }
 }
 

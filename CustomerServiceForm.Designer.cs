@@ -153,6 +153,7 @@
             SaveButton.TabIndex = 1;
             SaveButton.Text = "Save";
             SaveButton.UseVisualStyleBackColor = true;
+            SaveButton.Click += SaveButton_Click;
             // 
             // groupBox1
             // 

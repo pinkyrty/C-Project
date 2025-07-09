@@ -228,43 +228,83 @@ namespace C_Project
 
         }
 
-        //private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    // Check if a valid row is clicked (ignore header clicks)
-        //    if (e.RowIndex >= 0)
-        //    {
-        //        // Get the selected row
-        //        dataGridView1.Rows[e.RowIndex].Selected = true;
-        //        DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Check if a valid row is clicked (ignore header clicks)
+            if (e.RowIndex >= 0)
+            {
+                // Get the selected row
+                dataGridView1.Rows[e.RowIndex].Selected = true;
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
 
-        //        // Populate textboxes with data from the selected row
-        //        dateTimePicker1.Value = row.Cells["Date"].Value != null && row.Cells["Date"].Value != DBNull.Value? Convert.ToDateTime(row.Cells["Date"].Value;
-        //        timeText.Text = row.Cells["Time"].Value?.ToString() ?? "";
-        //        customerNameText.Text = row.Cells["CustomerName"].Value?.ToString() ?? "";
-        //        contactInfoCombo.Text = row.Cells["Channel"].Value?.ToString() ?? "";
-        //        inquiryTypeCombo.Text = row.Cells["InquiryType"].Value?.ToString() ?? "";
-        //        resPersonText.Text = row.Cells["Staff"].Value?.ToString() ?? "";
-        //        contentSumText.Text = row.Cells["Summary"].Value?.ToString() ?? "";
-        //        statusCombo.Text = row.Cells["Status"].Value?.ToString() ?? "";
-        //        solText.Text = row.Cells["Solution"].Value?.ToString() ?? "";
-        //        followUpText.Text = row.Cells["FollowUp"].Value?.ToString() ?? "";
-        //        customerFeedbackText.Text = row.Cells["Feedback"].Value?.ToString() ?? "";
+                // Populate textboxes with data from the selected row
+                dateTimePicker1.Value = Convert.ToDateTime(row.Cells["Date"].Value);
+                timeText.Text = row.Cells["Time"].Value?.ToString() ?? "";
+                customerNameText.Text = row.Cells["CustomerName"].Value?.ToString() ?? "";
+                contactInfoCombo.Text = row.Cells["Channel"].Value?.ToString() ?? "";
+                inquiryTypeCombo.Text = row.Cells["InquiryType"].Value?.ToString() ?? "";
+                resPersonText.Text = row.Cells["Staff"].Value?.ToString() ?? "";
+                contentSumText.Text = row.Cells["Summary"].Value?.ToString() ?? "";
+                statusCombo.Text = row.Cells["Status"].Value?.ToString() ?? "";
+                solText.Text = row.Cells["Solution"].Value?.ToString() ?? "";
+                followUpText.Text = row.Cells["FollowUp"].Value?.ToString() ?? "";
+                customerFeedbackText.Text = row.Cells["Feedback"].Value?.ToString() ?? "";
 
-        //        // Populate ESD and EED DateTimePickers
-        //        try
-        //        {
-        //            dateTimePicker1.Value = row.Cells["Date"].Value != null && row.Cells["Date"].Value != DBNull.Value
-        //                ? Convert.ToDateTime(row.Cells["Date"].Value)
-        //                : DateTime.Now;
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show($"Error setting ESD or EED dates: {ex.Message}");
-        //            dateTimePicker1.Value = DateTime.Now;
-        //        }
-        //    }
-        //}
+                try
+                {
+                    dateTimePicker1.Value = row.Cells["Date"].Value != null && row.Cells["Date"].Value != DBNull.Value
+                        ? Convert.ToDateTime(row.Cells["Date"].Value)
+                        : DateTime.Now;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error setting ESD or EED dates: {ex.Message}");
+                    dateTimePicker1.Value = DateTime.Now;
+                }
+            }
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+                    conn.Open();
+
+                    string insertQuery = "INSERT INTO CSD_interactionLog (Date, Time, CustomerName, Channel, InquiryType, Staff, Summary, Status, Solution, FollowUp, Feedback) " +
+                                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    using (OleDbCommand insertCmd = new OleDbCommand(insertQuery, conn))
+                    {
+                        insertCmd.Parameters.Add("Date", OleDbType.VarChar).Value = dateTimePicker1.Value.ToString("MM/dd/yyyy");
+                        insertCmd.Parameters.Add("Time", OleDbType.Date).Value = timeText.Text;
+                        insertCmd.Parameters.Add("CustomerName", OleDbType.VarChar).Value = customerNameText.Text;
+                        insertCmd.Parameters.Add("Channel", OleDbType.VarChar).Value = contactInfoCombo.Text;
+                        insertCmd.Parameters.Add("InquiryType", OleDbType.VarChar).Value = inquiryTypeCombo.Text;
+                        insertCmd.Parameters.Add("Staff", OleDbType.VarChar).Value = resPersonText.Text;
+                        insertCmd.Parameters.Add("Summary", OleDbType.Date).Value = contentSumText.Text;
+                        insertCmd.Parameters.Add("Status", OleDbType.Date).Value = statusCombo.Text;
+                        insertCmd.Parameters.Add("Solution", OleDbType.Date).Value = solText.Text;
+                        insertCmd.Parameters.Add("FollowUp", OleDbType.Date).Value = followUpText.Text;
+                        insertCmd.Parameters.Add("Feedback", OleDbType.Date).Value = customerFeedbackText.Text;
 
 
+                        insertCmd.ExecuteNonQuery();
+                    }
+
+                    conn.Close();
+
+                    dataGridView1.Refresh();
+                    LoadInteractionLogTable();
+
+                    MessageBox.Show("Product Order saved successfully!");
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error saving customer service detail to database!\n" + ex.Message);
+            }
+        }
     }
 }

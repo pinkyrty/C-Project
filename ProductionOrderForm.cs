@@ -108,15 +108,17 @@ namespace C_Project
                             adapter.Fill(materialDataTable);
                             dataGridView1.DataSource = materialDataTable;
 
-                            // 正確做法
+                            // 設定Row Header
                             for (int i = 0; i < dataGridView1.Rows.Count; i++)
                             {
                                 if (!dataGridView1.Rows[i].IsNewRow)
                                     dataGridView1.Rows[i].HeaderCell.Value = $"Row {i + 1}";
                             }
-
                             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                             dataGridView1.AllowUserToResizeColumns = false;
+
+                            // === 加這行 ===
+                            SetMaterialGridReadOnly();
                         }
                     }
                     conn.Close();
@@ -392,62 +394,7 @@ namespace C_Project
                 MessageBox.Show($"Error saving data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void btn_Save3_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                DataTable dt = (DataTable)dataGridView4.DataSource;
-                if (dt == null || dt.Rows.Count == 0)
-                {
-                    MessageBox.Show("No data to save.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                using (OleDbConnection conn = new OleDbConnection(connStr))
-                {
-                    conn.Open();
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        if (row.RowState == DataRowState.Added)
-                        {
-                            string query = "INSERT INTO PD_OrderPlan (PlanStart, PlanEnd, Instruction) VALUES (?, ?, ?)";
-                            using (OleDbCommand cmd = new OleDbCommand(query, conn))
-                            {
-                                cmd.Parameters.AddWithValue("?", row["FileName"] != DBNull.Value ? row["FileName"] : "");
-                                cmd.Parameters.AddWithValue("?", row["UploadedBy"] != DBNull.Value ? row["UploadedBy"] : "");
-                                cmd.Parameters.AddWithValue("?", row["UploadDate"] != DBNull.Value ? row["UploadDate"] : "");
-                                cmd.Parameters.AddWithValue("?", row["FilePath"] != DBNull.Value ? row["FilePath"] : "");
-
-                                cmd.ExecuteNonQuery();
-                            }
-                        }
-                        else if (row.RowState == DataRowState.Modified)
-                        {
-                            string query = "UPDATE PD_OrderPlan SET  FileName = ?, UploadedBy = ?, UploadDate = ?, FilePath = ? WHERE OFID = ?";
-                            using (OleDbCommand cmd = new OleDbCommand(query, conn))
-                            {
-                                cmd.Parameters.AddWithValue("?", row["FileName"] != DBNull.Value ? row["FileName"] : "");
-                                cmd.Parameters.AddWithValue("?", row["UploadedBy"] != DBNull.Value ? row["UploadedBy"] : "");
-                                cmd.Parameters.AddWithValue("?", row["UploadDate"] != DBNull.Value ? row["UploadDate"] : "");
-                                cmd.Parameters.AddWithValue("?", row["FilePath"] != DBNull.Value ? row["FilePath"] : "");
-                                cmd.Parameters.AddWithValue("?", row["OFID"]);
-
-
-                                cmd.ExecuteNonQuery();
-                            }
-                        }
-                    }
-                    dt.AcceptChanges();
-                }
-
-                MessageBox.Show("Data saved to database successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                dataGridView2.Refresh();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error saving data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        
 
         private void btn_Add2_Click(object sender, EventArgs e)
         {
@@ -477,49 +424,81 @@ namespace C_Project
 
         private void btn_Save3_Click_1(object sender, EventArgs e)
         {
-            string orderNumber = orderNumberTextBox.Text.Trim();
-            string productName = productNameTextBox.Text.Trim();
-            string productNumber = productNumberTextBox.Text.Trim();
-            DateTime selected = selectedDate.Value;
-            string quantity = quantityTextBox.Text.Trim();
-            string remark = remarkTextBox.Text.Trim();
+            dataGridView1.EndEdit();
+            if (dataGridView1.CurrentCell != null)
+                dataGridView1.CurrentCell = null;
+            this.Validate();
 
-            if (string.IsNullOrEmpty(orderNumber) || string.IsNullOrEmpty(productName) ||
-    string.IsNullOrEmpty(productNumber) || string.IsNullOrEmpty(quantity) || string.IsNullOrEmpty(remark))
+            DataTable dt = (DataTable)dataGridView1.DataSource;
+            if (dt == null || dt.Rows.Count == 0)
             {
-                MessageBox.Show("Please fill in all fields!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No data to save.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            try
+            using (OleDbConnection conn = new OleDbConnection(connStr))
             {
-                using (OleDbConnection conn = new OleDbConnection(connStr))
+                conn.Open();
+                foreach (DataRow row in dt.Rows)
                 {
-                    conn.Open();
+                    // 跳過空白行
+                    if (row.RowState == DataRowState.Unchanged) continue;
+                    if (row["OrderID"] == DBNull.Value || string.IsNullOrWhiteSpace(row["OrderID"].ToString()))
+                        continue;
+                    if (row["ProductName"] == DBNull.Value || string.IsNullOrWhiteSpace(row["ProductName"].ToString()))
+                        continue;
 
-                    string query = "INSERT INTO PD_MaterialRequestForm (MRFNo, ProductName, ProductSpec, DeliveryDate, CreateDate, Approver, Remark) VALUES (?, ?, ?, ?, ?, ?)";
-                    using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                    if (row.RowState == DataRowState.Added)
                     {
-                        cmd.Parameters.Add("?", OleDbType.VarChar).Value = orderNumberTextBox;
-                        cmd.Parameters.Add("?", OleDbType.VarChar).Value = productNameTextBox;
-                        cmd.Parameters.Add("?", OleDbType.VarChar).Value = productNumberTextBox;
-                        cmd.Parameters.Add("?", OleDbType.VarChar).Value = this.selectedDate;
-                        cmd.Parameters.Add("?", OleDbType.VarChar).Value = quantityTextBox;
-                        cmd.Parameters.Add("?", OleDbType.VarChar).Value = remarkTextBox;
-
-                        cmd.ExecuteNonQuery();
+                        string sql = @"INSERT INTO PD_MaterialRequestForm 
+                    (MRFDate, Dept, Priority, ProductName, ProductSpec, DeliveryDate, Approver, Remark, OrderID)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                        using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                        {
+                            cmd.Parameters.AddWithValue("?", row["MRFDate"] == DBNull.Value ? (object)DateTime.Now.Date : row["MRFDate"]);
+                            cmd.Parameters.AddWithValue("?", row["Dept"] ?? "");
+                            cmd.Parameters.AddWithValue("?", row["Priority"] ?? "");
+                            cmd.Parameters.AddWithValue("?", row["ProductName"] ?? "");
+                            cmd.Parameters.AddWithValue("?", row["ProductSpec"] ?? "");
+                            cmd.Parameters.AddWithValue("?", row["DeliveryDate"] == DBNull.Value ? (object)DBNull.Value : row["DeliveryDate"]);
+                            cmd.Parameters.AddWithValue("?", row["Approver"] ?? "");
+                            cmd.Parameters.AddWithValue("?", row["Remark"] ?? "");
+                            cmd.Parameters.AddWithValue("?", row["OrderID"]);
+                            cmd.ExecuteNonQuery();
+                        }
                     }
-
-                    conn.Close();
+                    else if (row.RowState == DataRowState.Modified)
+                    {
+                        string sql = @"UPDATE PD_MaterialRequestForm 
+                    SET MRFDate=?, Dept=?, Priority=?, ProductName=?, ProductSpec=?, DeliveryDate=?, Approver=?, Remark=?, OrderID=?
+                    WHERE MRFNo=?";
+                        using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                        {
+                            cmd.Parameters.AddWithValue("?", row["MRFDate"] == DBNull.Value ? (object)DateTime.Now.Date : row["MRFDate"]);
+                            cmd.Parameters.AddWithValue("?", row["Dept"] ?? "");
+                            cmd.Parameters.AddWithValue("?", row["Priority"] ?? "");
+                            cmd.Parameters.AddWithValue("?", row["ProductName"] ?? "");
+                            cmd.Parameters.AddWithValue("?", row["ProductSpec"] ?? "");
+                            cmd.Parameters.AddWithValue("?", row["DeliveryDate"] == DBNull.Value ? (object)DBNull.Value : row["DeliveryDate"]);
+                            cmd.Parameters.AddWithValue("?", row["Approver"] ?? "");
+                            cmd.Parameters.AddWithValue("?", row["Remark"] ?? "");
+                            cmd.Parameters.AddWithValue("?", row["OrderID"]);
+                            cmd.Parameters.AddWithValue("?", row["MRFNo"]);
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
                 }
-
-                RepairSupportTable();
-
-                MessageBox.Show("Added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dt.AcceptChanges();
+                conn.Close();
             }
-            catch (Exception ex)
+
+            MessageBox.Show("Data saved to database successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // Optional: Reload to show latest data
+            if (dataGridView2.CurrentRow != null && dataGridView2.CurrentRow.Cells["OrderID"].Value != null)
             {
-                MessageBox.Show($"Error adding risk: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string orderID = dataGridView2.CurrentRow.Cells["OrderID"].Value.ToString();
+                LoadMaterialTableByOrderID(orderID);
             }
         }
         private void btn_Add3_Click(object sender, EventArgs e)
@@ -529,10 +508,20 @@ namespace C_Project
                 MessageBox.Show("PD_MaterialRequestForm 資料尚未載入。");
                 return;
             }
-            DataRow newRow = materialDataTable.NewRow();
 
-            newRow["MRFNo"] = "";
-            newRow["MRFDate"] = DBNull.Value;
+            // 取左側選中的OrderID
+            string orderId = "";
+            if (dataGridView2.CurrentRow != null && dataGridView2.CurrentRow.Cells["OrderID"].Value != null)
+                orderId = dataGridView2.CurrentRow.Cells["OrderID"].Value.ToString();
+
+            if (string.IsNullOrEmpty(orderId))
+            {
+                MessageBox.Show("請先於左側選擇一張訂單！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DataRow newRow = materialDataTable.NewRow();
+            newRow["MRFDate"] = DateTime.Now.Date; // 或 DBNull.Value
             newRow["Dept"] = "";
             newRow["Priority"] = "";
             newRow["ProductName"] = "";
@@ -540,7 +529,7 @@ namespace C_Project
             newRow["DeliveryDate"] = DBNull.Value;
             newRow["Approver"] = "";
             newRow["Remark"] = "";
-            newRow["OrderID"] = "";
+            newRow["OrderID"] = orderId; // <--- 自動帶入外鍵
 
             materialDataTable.Rows.Add(newRow);
         }
@@ -720,6 +709,7 @@ namespace C_Project
 
                             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                             dataGridView1.AllowUserToResizeColumns = false;
+                            SetMaterialGridReadOnly();
                         }
                     }
                     conn.Close();
@@ -939,7 +929,14 @@ namespace C_Project
                 Application.Exit();
             }
         }
-
+        private void SetMaterialGridReadOnly()
+        {
+            // 設定 materialDataTable 對應 DataGridView1 的欄位只讀
+            if (dataGridView1.Columns.Contains("MRFNo"))
+                dataGridView1.Columns["MRFNo"].ReadOnly = true;
+            if (dataGridView1.Columns.Contains("OrderID"))
+                dataGridView1.Columns["OrderID"].ReadOnly = true;
+        }
         private void btnUserProfile_Click(object sender, EventArgs e)
         {
             ChangePassword changePasswordForm = new ChangePassword(this, connStr);

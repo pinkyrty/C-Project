@@ -571,11 +571,7 @@ namespace C_Project
             try
             {
                 DataTable dt = (DataTable)dataGridView4.DataSource;
-                if (dt == null || dt.Rows.Count == 0)
-                {
-                    MessageBox.Show("No data to save.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+                
 
                 using (OleDbConnection conn = new OleDbConnection(connStr))
                 {
@@ -884,6 +880,21 @@ namespace C_Project
 
             return new string(result);
         }
+        public static string GenerateRandomNumericString(int length = 8)
+        {
+            if (length > 255) length = 255;
+            if (length <= 0) length = 8;
+
+            const string chars = "0123456789";
+            char[] result = new char[length];
+
+            for (int i = 0; i < length; i++)
+            {
+                result[i] = chars[random.Next(chars.Length)];
+            }
+
+            return new string(result);
+        }
         private void button2_Click_1(object sender, EventArgs e)
         {
             string key = GenerateShortTextKey();
@@ -891,7 +902,7 @@ namespace C_Project
         }
         private void button10_Click_1(object sender, EventArgs e)
         {
-            string key = GenerateShortTextKey();
+            string key = GenerateRandomNumericString();
             textBox6.Text = key;
         }
 

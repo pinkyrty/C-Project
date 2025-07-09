@@ -180,7 +180,7 @@ namespace C_Project
                         }
                         else if (row.RowState == DataRowState.Modified)
                         {
-                            string query = "UPDATE DT_LogisticNode SET TrackID = ?, NodeName = ?, NodeTime = ?, NodeStatus = ?, Remark = ? WHERE NodeID = ?";
+                            string query = "UPDATE DT_LogisticsNode SET TrackID = ?, NodeName = ?, NodeTime = ?, NodeStatus = ?, Remark = ? WHERE NodeID = ?";
                             using (OleDbCommand cmd = new OleDbCommand(query, conn))
                             {
                                 cmd.Parameters.AddWithValue("?", row["TrackID"] != DBNull.Value ? row["TrackID"] : "");

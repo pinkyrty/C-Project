@@ -148,7 +148,6 @@ namespace C_Project
         }
         private void btn_Save_Click(object sender, EventArgs e)
         {
-
             try
             {
                 DataTable dt = (DataTable)dataGridView1.DataSource;
@@ -168,13 +167,11 @@ namespace C_Project
                             string query = "INSERT INTO DT_LogisticsNode (TrackID, NodeName, NodeTime, NodeStatus, Remark) VALUES (?, ?, ?, ?, ?)";
                             using (OleDbCommand cmd = new OleDbCommand(query, conn))
                             {
-                                string supplierID = Guid.NewGuid().ToString();
-                                cmd.Parameters.AddWithValue("?", supplierID);
-                                cmd.Parameters.AddWithValue("?", row["TrackID"] != DBNull.Value ? row["TrackID"] : "");
-                                cmd.Parameters.AddWithValue("?", row["NodeName"] != DBNull.Value ? row["NodeName"] : "");
-                                cmd.Parameters.AddWithValue("?", row["NodeTime"] != DBNull.Value ? row["NodeTime"] : "");
-                                cmd.Parameters.AddWithValue("?", row["NodeStatus"] != DBNull.Value ? row["NodeStatus"] : "");
-                                cmd.Parameters.AddWithValue("?", row["Remark"] != DBNull.Value ? row["Remark"] : "");
+                                cmd.Parameters.Add("?", OleDbType.VarChar).Value = row["TrackID"] != DBNull.Value ? row["TrackID"] : Guid.NewGuid().ToString();
+                                cmd.Parameters.Add("?", OleDbType.VarChar).Value = row["NodeName"] != DBNull.Value ? row["NodeName"] : DBNull.Value;
+                                cmd.Parameters.Add("?", OleDbType.Date).Value = row["NodeTime"] != DBNull.Value ? Convert.ToDateTime(row["NodeTime"]) : DBNull.Value;
+                                cmd.Parameters.Add("?", OleDbType.VarChar).Value = row["NodeStatus"] != DBNull.Value ? row["NodeStatus"] : DBNull.Value;
+                                cmd.Parameters.Add("?", OleDbType.VarChar).Value = row["Remark"] != DBNull.Value ? row["Remark"] : DBNull.Value;
                                 cmd.ExecuteNonQuery();
                             }
                         }
@@ -183,13 +180,12 @@ namespace C_Project
                             string query = "UPDATE DT_LogisticsNode SET TrackID = ?, NodeName = ?, NodeTime = ?, NodeStatus = ?, Remark = ? WHERE NodeID = ?";
                             using (OleDbCommand cmd = new OleDbCommand(query, conn))
                             {
-                                cmd.Parameters.AddWithValue("?", row["TrackID"] != DBNull.Value ? row["TrackID"] : "");
-                                cmd.Parameters.AddWithValue("?", row["NodeName"] != DBNull.Value ? row["NodeName"] : "");
-                                cmd.Parameters.AddWithValue("?", row["NodeTime"] != DBNull.Value ? row["NodeTime"] : "");
-                                cmd.Parameters.AddWithValue("?", row["NodeStatus"] != DBNull.Value ? row["NodeStatus"] : "");
-                                cmd.Parameters.AddWithValue("?", row["Remark"] != DBNull.Value ? row["Remark"] : "");
-                                cmd.Parameters.AddWithValue("?", row["NodeID"]);
-
+                                cmd.Parameters.Add("?", OleDbType.VarChar).Value = row["TrackID"] != DBNull.Value ? row["TrackID"] : DBNull.Value;
+                                cmd.Parameters.Add("?", OleDbType.VarChar).Value = row["NodeName"] != DBNull.Value ? row["NodeName"] : DBNull.Value;
+                                cmd.Parameters.Add("?", OleDbType.Date).Value = row["NodeTime"] != DBNull.Value ? Convert.ToDateTime(row["NodeTime"]) : DBNull.Value;
+                                cmd.Parameters.Add("?", OleDbType.VarChar).Value = row["NodeStatus"] != DBNull.Value ? row["NodeStatus"] : DBNull.Value;
+                                cmd.Parameters.Add("?", OleDbType.VarChar).Value = row["Remark"] != DBNull.Value ? row["Remark"] : DBNull.Value;
+                                cmd.Parameters.Add("?", OleDbType.Integer).Value = row["NodeID"] != DBNull.Value ? Convert.ToInt32(row["NodeID"]) : DBNull.Value;
                                 cmd.ExecuteNonQuery();
                             }
                         }
@@ -206,7 +202,7 @@ namespace C_Project
             }
         }
 
-        
+
         private void btnUserProfile_Click(object sender, EventArgs e)
         {
             ChangePassword changePasswordForm = new ChangePassword(this, connStr);

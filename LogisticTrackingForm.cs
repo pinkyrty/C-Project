@@ -180,7 +180,7 @@ namespace C_Project
                         }
                         else if (row.RowState == DataRowState.Modified)
                         {
-                            string query = "UPDATE SCM_Supplier SET TrackID = ?, NodeName = ?, NodeTime = ?, NodeStatus = ?, Remark = ? WHERE NodeID = ?";
+                            string query = "UPDATE DT_LogisticNode SET TrackID = ?, NodeName = ?, NodeTime = ?, NodeStatus = ?, Remark = ? WHERE NodeID = ?";
                             using (OleDbCommand cmd = new OleDbCommand(query, conn))
                             {
                                 cmd.Parameters.AddWithValue("?", row["TrackID"] != DBNull.Value ? row["TrackID"] : "");
@@ -206,18 +206,7 @@ namespace C_Project
             }
         }
 
-        private void btn_Add_Click(object sender, EventArgs e)
-        {
-            DataRow newRow = LogisticNodeDataTable.NewRow();
-
-            newRow["TrackID"] = "";
-            newRow["NodeName"] = "";
-            newRow["NodeTime"] = "";
-            newRow["NodeStatus"] = "";
-            newRow["Remark"] = "";
-
-            LogisticNodeDataTable.Rows.Add(newRow);
-        }
+        
         private void btnUserProfile_Click(object sender, EventArgs e)
         {
             ChangePassword changePasswordForm = new ChangePassword(this, connStr);

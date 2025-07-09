@@ -503,19 +503,7 @@ namespace C_Project
             }
         }
 
-        private void btn_Add_Click(object sender, EventArgs e)
-        {
-            DataRow newRow = logisticSupplierDataTable.NewRow();
-
-            newRow["Time"] = "";
-            newRow["Optype"] = "";
-            newRow["MaterialID"] = "";
-            newRow["Qty"] = "";
-            newRow["Warehouse"] = "";
-            newRow["Remark"] = "";
-
-            logisticSupplierDataTable.Rows.Add(newRow);
-        }
+        
         //Forecasttable
         private void btn_Save1_Click(object sender, EventArgs e)
         {
@@ -575,18 +563,7 @@ namespace C_Project
             }
         }
 
-        private void btn_Add8_Click(object sender, EventArgs e)
-        {
-            DataRow newRow = logisticForecastDataTable.NewRow();
-
-            newRow["MaterialID"] = "";
-            newRow["Period"] = "";
-            newRow["Qty"] = "";
-            newRow["Person"] = "";
-            newRow["FDate"] = "";
-
-            logisticForecastDataTable.Rows.Add(newRow);
-        }
+        
         //Transfertable
         private void btn_Save2_Click(object sender, EventArgs e)
         {
@@ -648,19 +625,7 @@ namespace C_Project
             }
         }
 
-        private void btn_Add7_Click(object sender, EventArgs e)
-        {
-            DataRow newRow = logisticTransferDataTable.NewRow();
-
-            newRow["TransferID"] = "";
-            newRow["MaterialID"] = "";
-            newRow["Desc"] = "";
-            newRow["Spec"] = "";
-            newRow["Type"] = "";
-            newRow["Qty"] = "";
-
-            logisticTransferDataTable.Rows.Add(newRow);
-        }
+        
         //Procurementtable
         private void btn_Save3_Click(object sender, EventArgs e)
         {
@@ -689,7 +654,7 @@ namespace C_Project
                                 cmd.Parameters.AddWithValue("?", row["Spec"] != DBNull.Value ? row["Spec"] : "");
                                 cmd.Parameters.AddWithValue("?", row["Qty"] != DBNull.Value ? row["Qty"] : "");
                                 cmd.Parameters.AddWithValue("?", row["Price"] != DBNull.Value ? row["Price"] : "");
-                  
+
                                 cmd.ExecuteNonQuery();
                             }
                         }
@@ -970,7 +935,7 @@ namespace C_Project
                             MessageBox.Show("Success");
                             // 刷新
                             this.LoadLogisticTransferTable();
-                            
+
                         }
                     }
                 }
@@ -1032,5 +997,7 @@ namespace C_Project
                 }
             }
         }
+
+        
     }
 }

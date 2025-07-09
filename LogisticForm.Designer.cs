@@ -71,7 +71,6 @@ namespace C_Project
             dataGridView2 = new DataGridView();
             textBox6 = new TextBox();
             button1 = new Button();
-            btn_Add7 = new Button();
             btn_Save2 = new Button();
             button10 = new Button();
             dateTimePicker3 = new DateTimePicker();
@@ -90,13 +89,11 @@ namespace C_Project
             dataGridView6 = new DataGridView();
             label7 = new Label();
             DemandForecast = new TabPage();
-            btn_Add8 = new Button();
             btn_Save1 = new Button();
             label14 = new Label();
             button12 = new Button();
             dataGridView7 = new DataGridView();
             Supplier = new TabPage();
-            btn_Add = new Button();
             btn_Save = new Button();
             button15 = new Button();
             dataGridView8 = new DataGridView();
@@ -168,7 +165,7 @@ namespace C_Project
             Inventory.Controls.Add(dataGridView4);
             Inventory.Location = new Point(4, 24);
             Inventory.Name = "Inventory";
-            Inventory.Padding = new Padding(3, 3, 3, 3);
+            Inventory.Padding = new Padding(3);
             Inventory.Size = new Size(1121, 710);
             Inventory.TabIndex = 0;
             Inventory.Text = "Inventory";
@@ -310,7 +307,7 @@ namespace C_Project
             Procurement.Controls.Add(dataGridView5);
             Procurement.Location = new Point(4, 24);
             Procurement.Name = "Procurement";
-            Procurement.Padding = new Padding(3, 3, 3, 3);
+            Procurement.Padding = new Padding(3);
             Procurement.Size = new Size(1121, 710);
             Procurement.TabIndex = 1;
             Procurement.Text = "Procurement";
@@ -468,7 +465,6 @@ namespace C_Project
             InternalTransferOrder.Controls.Add(dataGridView2);
             InternalTransferOrder.Controls.Add(textBox6);
             InternalTransferOrder.Controls.Add(button1);
-            InternalTransferOrder.Controls.Add(btn_Add7);
             InternalTransferOrder.Controls.Add(btn_Save2);
             InternalTransferOrder.Controls.Add(button10);
             InternalTransferOrder.Controls.Add(dateTimePicker3);
@@ -488,7 +484,7 @@ namespace C_Project
             InternalTransferOrder.Controls.Add(label7);
             InternalTransferOrder.Location = new Point(4, 24);
             InternalTransferOrder.Name = "InternalTransferOrder";
-            InternalTransferOrder.Padding = new Padding(3, 3, 3, 3);
+            InternalTransferOrder.Padding = new Padding(3);
             InternalTransferOrder.Size = new Size(1121, 710);
             InternalTransferOrder.TabIndex = 2;
             InternalTransferOrder.Text = "Internal Transfer Order";
@@ -523,18 +519,9 @@ namespace C_Project
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
-            // btn_Add7
-            // 
-            btn_Add7.Location = new Point(1031, 294);
-            btn_Add7.Name = "btn_Add7";
-            btn_Add7.Size = new Size(75, 23);
-            btn_Add7.TabIndex = 49;
-            btn_Add7.Text = "Add";
-            btn_Add7.UseVisualStyleBackColor = true;
-            // 
             // btn_Save2
             // 
-            btn_Save2.Location = new Point(1031, 323);
+            btn_Save2.Location = new Point(1031, 294);
             btn_Save2.Name = "btn_Save2";
             btn_Save2.Size = new Size(75, 23);
             btn_Save2.TabIndex = 50;
@@ -562,6 +549,7 @@ namespace C_Project
             // comboBox4
             // 
             comboBox4.FormattingEnabled = true;
+            comboBox4.Items.AddRange(new object[] { "China Mainland", "Thailand", "Vietnam", "Hong Kong" });
             comboBox4.Location = new Point(501, 101);
             comboBox4.Name = "comboBox4";
             comboBox4.Size = new Size(215, 23);
@@ -570,6 +558,7 @@ namespace C_Project
             // comboBox2
             // 
             comboBox2.FormattingEnabled = true;
+            comboBox2.Items.AddRange(new object[] { "China Mainland", "Thailand", "Vietnam", "Hong Kong" });
             comboBox2.Location = new Point(132, 101);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(256, 23);
@@ -682,31 +671,21 @@ namespace C_Project
             // DemandForecast
             // 
             DemandForecast.BackgroundImageLayout = ImageLayout.None;
-            DemandForecast.Controls.Add(btn_Add8);
             DemandForecast.Controls.Add(btn_Save1);
             DemandForecast.Controls.Add(label14);
             DemandForecast.Controls.Add(button12);
             DemandForecast.Controls.Add(dataGridView7);
             DemandForecast.Location = new Point(4, 24);
             DemandForecast.Name = "DemandForecast";
-            DemandForecast.Padding = new Padding(3, 3, 3, 3);
+            DemandForecast.Padding = new Padding(3);
             DemandForecast.Size = new Size(1121, 710);
             DemandForecast.TabIndex = 3;
             DemandForecast.Text = "Demand Forecast";
             DemandForecast.UseVisualStyleBackColor = true;
             // 
-            // btn_Add8
-            // 
-            btn_Add8.Location = new Point(1046, 29);
-            btn_Add8.Name = "btn_Add8";
-            btn_Add8.Size = new Size(75, 23);
-            btn_Add8.TabIndex = 27;
-            btn_Add8.Text = "Add";
-            btn_Add8.UseVisualStyleBackColor = true;
-            // 
             // btn_Save1
             // 
-            btn_Save1.Location = new Point(1046, 58);
+            btn_Save1.Location = new Point(1046, 29);
             btn_Save1.Name = "btn_Save1";
             btn_Save1.Size = new Size(75, 23);
             btn_Save1.TabIndex = 28;
@@ -745,31 +724,21 @@ namespace C_Project
             // 
             // Supplier
             // 
-            Supplier.Controls.Add(btn_Add);
             Supplier.Controls.Add(btn_Save);
             Supplier.Controls.Add(button15);
             Supplier.Controls.Add(dataGridView8);
             Supplier.Controls.Add(label15);
             Supplier.Location = new Point(4, 24);
             Supplier.Name = "Supplier";
-            Supplier.Padding = new Padding(3, 3, 3, 3);
+            Supplier.Padding = new Padding(3);
             Supplier.Size = new Size(1121, 710);
             Supplier.TabIndex = 4;
             Supplier.Text = "Supplier";
             Supplier.UseVisualStyleBackColor = true;
             // 
-            // btn_Add
-            // 
-            btn_Add.Location = new Point(1043, 29);
-            btn_Add.Name = "btn_Add";
-            btn_Add.Size = new Size(75, 23);
-            btn_Add.TabIndex = 27;
-            btn_Add.Text = "Add";
-            btn_Add.UseVisualStyleBackColor = true;
-            // 
             // btn_Save
             // 
-            btn_Save.Location = new Point(1043, 58);
+            btn_Save.Location = new Point(1043, 29);
             btn_Save.Name = "btn_Save";
             btn_Save.Size = new Size(75, 23);
             btn_Save.TabIndex = 28;
@@ -975,15 +944,12 @@ namespace C_Project
         private Label label30;
         private Label label31;
         private Button btnLogout;
-        private Button btn_Add;
         private Button btn_Save;
-        private Button btn_Add8;
         private Button btn_Save1;
         private Button btn_Add4;
         private Button btn_Save7;
         private Button btn_Add5;
         private Button btn_Save3;
-        private Button btn_Add7;
         private Button btn_Save2;
         private ComboBox InOutCombo;
         private TextBox QuantityBox;

@@ -50,7 +50,6 @@
             label31 = new Label();
             label30 = new Label();
             btnLogout = new Button();
-            btn_Add = new Button();
             btn_Save = new Button();
             textBox4 = new TextBox();
             button2 = new Button();
@@ -255,19 +254,9 @@
             btnLogout.UseVisualStyleBackColor = true;
             btnLogout.Click += btnLogout_Click;
             // 
-            // btn_Add
-            // 
-            btn_Add.Location = new Point(1052, 405);
-            btn_Add.Name = "btn_Add";
-            btn_Add.Size = new Size(75, 23);
-            btn_Add.TabIndex = 27;
-            btn_Add.Text = "Add";
-            btn_Add.UseVisualStyleBackColor = true;
-            btn_Add.Click += btn_Add_Click;
-            // 
             // btn_Save
             // 
-            btn_Save.Location = new Point(1052, 434);
+            btn_Save.Location = new Point(1052, 405);
             btn_Save.Name = "btn_Save";
             btn_Save.Size = new Size(75, 23);
             btn_Save.TabIndex = 28;
@@ -320,7 +309,6 @@
             Controls.Add(comboBox2);
             Controls.Add(button2);
             Controls.Add(textBox4);
-            Controls.Add(btn_Add);
             Controls.Add(btn_Save);
             Controls.Add(btnLogout);
             Controls.Add(label31);
@@ -375,7 +363,6 @@
         private Label label31;
         private Label label30;
         private Button btnLogout;
-        private Button btn_Add;
         private Button btn_Save;
         private TextBox textBox4;
         private Button button2;

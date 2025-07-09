@@ -68,11 +68,11 @@
             UserName = new Label();
             UserNamelabel = new Label();
             pictureBox1 = new PictureBox();
-            ExportToExcelButton = new Button();
             RaDUserPrifileButton = new Button();
             label31 = new Label();
             label30 = new Label();
             btnLogout = new Button();
+            addButton = new Button();
             tabMain.SuspendLayout();
             InteractionRecordsTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
@@ -115,6 +115,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            splitContainer1.Panel1.Controls.Add(addButton);
             splitContainer1.Panel1.Controls.Add(dataGridView1);
             splitContainer1.Panel1.Controls.Add(label1);
             // 
@@ -130,10 +131,13 @@
             // 
             dataGridView1.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(5, 26);
+            dataGridView1.Location = new Point(5, 54);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(363, 662);
+            dataGridView1.ReadOnly = true;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.Size = new Size(363, 634);
             dataGridView1.TabIndex = 1;
+            dataGridView1.CellClick += dataGridView1_CellClick;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // label1
@@ -469,15 +473,6 @@
             pictureBox1.TabIndex = 64;
             pictureBox1.TabStop = false;
             // 
-            // ExportToExcelButton
-            // 
-            ExportToExcelButton.Location = new Point(1033, 114);
-            ExportToExcelButton.Name = "ExportToExcelButton";
-            ExportToExcelButton.Size = new Size(108, 25);
-            ExportToExcelButton.TabIndex = 69;
-            ExportToExcelButton.Text = "Export to Excel";
-            ExportToExcelButton.UseVisualStyleBackColor = true;
-            // 
             // RaDUserPrifileButton
             // 
             RaDUserPrifileButton.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
@@ -517,6 +512,16 @@
             btnLogout.UseVisualStyleBackColor = true;
             btnLogout.Click += btnLogout_Click;
             // 
+            // addButton
+            // 
+            addButton.Location = new Point(5, 21);
+            addButton.Name = "addButton";
+            addButton.Size = new Size(81, 27);
+            addButton.TabIndex = 2;
+            addButton.Text = "Add";
+            addButton.UseVisualStyleBackColor = true;
+            addButton.Click += addButton_Click;
+            // 
             // CustomerServiceForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -527,7 +532,6 @@
             Controls.Add(label31);
             Controls.Add(label30);
             Controls.Add(RaDUserPrifileButton);
-            Controls.Add(ExportToExcelButton);
             Controls.Add(label2);
             Controls.Add(Department);
             Controls.Add(UserName);
@@ -565,7 +569,6 @@
         private Label UserName;
         private Label UserNamelabel;
         private PictureBox pictureBox1;
-        private Button ExportToExcelButton;
         private Button RaDUserPrifileButton;
         private SplitContainer splitContainer1;
         private DataGridView dataGridView1;
@@ -601,5 +604,6 @@
         private Button btn_Add;
         private Button btn_Save;
         private TextBox timeText;
+        private Button addButton;
     }
 }

@@ -1005,7 +1005,7 @@ namespace C_Project
             }
             else
             {
-                MessageBox.Show("请先选择一行数据。");
+                MessageBox.Show("Please select a row of data first.");
             }
         }
 
@@ -1018,13 +1018,13 @@ namespace C_Project
             SaveFileDialog savePdfDialog = new SaveFileDialog
             {
                 Filter = "PDF Files|*.pdf",
-                Title = "选择 PDF 文件保存路径",
+                Title = "Select the PDF file save path.",
                 FileName = "ExportedQuotation.pdf"
             };
 
             if (savePdfDialog.ShowDialog() != DialogResult.OK)
             {
-                MessageBox.Show("用户取消了文件保存操作。");
+                //MessageBox.Show("User cancel");
                 return;
             }
 
@@ -1035,11 +1035,11 @@ namespace C_Project
             {
                 FileInfo templateFile = new FileInfo(templatePath);
                 string currentDirectory = Directory.GetCurrentDirectory();
-                MessageBox.Show($"当前目录: {currentDirectory}\n模板文件: {templatePath}");
+                //MessageBox.Show($"当前目录: {currentDirectory}\n模板文件: {templatePath}");
 
                 if (!File.Exists(templatePath))
                 {
-                    MessageBox.Show($"模板文件 {templatePath} 不存在。");
+                    MessageBox.Show($"template file {templatePath} does not exist.");
                     return;
                 }
 
@@ -1047,7 +1047,7 @@ namespace C_Project
                 {
                     if (package.Workbook.Worksheets.Count == 0)
                     {
-                        MessageBox.Show("模板文件没有工作表，请检查文件。");
+                        MessageBox.Show("No worksheet found.");
                         return;
                     }
 
@@ -1066,6 +1066,15 @@ namespace C_Project
                     worksheet.Cells["F32"].Value = selectedRow.Cells["Shipping"].Value;
                     worksheet.Cells["C12"].Value = selectedRow.Cells["Address"].Value;
 
+                    int startRow = 17; 
+                    for (int i = 0; i < quotationDetailDataTable.Rows.Count; i++)
+                    {
+                        worksheet.Cells[startRow + i, 2].Value = quotationDetailDataTable.Rows[i][1]; // Product Name
+                        worksheet.Cells[startRow + i, 4].Value = quotationDetailDataTable.Rows[i][2]; // Quantity
+                        worksheet.Cells[startRow + i, 5].Value = quotationDetailDataTable.Rows[i][3]; // Unit Price
+                        worksheet.Cells[startRow + i, 6].Value = quotationDetailDataTable.Rows[i][4]; // Amount
+                    }
+
                     // 设置日期格式
                     worksheet.Cells["F10"].Style.Numberformat.Format = "yyyy-mm-dd"; // 根据需要调整格式
 
@@ -1076,17 +1085,17 @@ namespace C_Project
                 // 确保临时文件已创建
                 if (!File.Exists(tempExcelPath))
                 {
-                    MessageBox.Show($"临时文件 {tempExcelPath} 创建失败。");
+                    MessageBox.Show($"temp file create error {tempExcelPath} create fail.");
                     return;
                 }
 
                 // 转换为 PDF
                 ConvertExcelToPDF(tempExcelPath, outputPdfPath);
-                MessageBox.Show("数据已成功转换为 PDF!");
+                MessageBox.Show("Convert to PDF success!");
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"发生错误: {ex.Message}");
+                MessageBox.Show($"Error occur. {ex.Message}");
             }
             finally
             {
@@ -1099,7 +1108,7 @@ namespace C_Project
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"删除临时文件失败: {ex.Message}");
+                        MessageBox.Show($"Error delete temp file {ex.Message}");
                     }
                 }
             }
@@ -1112,13 +1121,13 @@ namespace C_Project
 
             try
             {
-                MessageBox.Show(excelFilePath);
+                //MessageBox.Show(excelFilePath);
                 workbook = excelApp.Workbooks.Open(excelFilePath);
                 workbook.ExportAsFixedFormat(Excel.XlFixedFormatType.xlTypePDF, pdfFilePath);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"转换失败: {ex.Message}");
+                MessageBox.Show($"convert fail {ex.Message}");
             }
             finally
             {

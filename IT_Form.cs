@@ -86,6 +86,7 @@ namespace C_Project
                                 dataGridView1.Columns[5].HeaderText = "Active";
                                 dataGridView1.Columns[5].Width = 100;
                                 dataGridView1.Columns["UserID"].ReadOnly = true;
+                                dataGridView1.Columns["Password"].ReadOnly = true;
                             }
                             else
                             {
@@ -533,7 +534,6 @@ namespace C_Project
                 return;
             }
 
-            MessageBox.Show(repairTicketNo + repairSubject + repairSub + repairStatus);
             try
             {
                 using (OleDbConnection conn = new OleDbConnection(connStr))

@@ -81,7 +81,7 @@ namespace C_Project
                                     departmentName = cmd2.ExecuteScalar()?.ToString() ?? "";
                                     DepartmentName = departmentName;
                                 }
-                                MessageBox.Show($"Login successful! Department Name: {departmentName}, User: {fullname}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                //MessageBox.Show($"Login successful! Department Name: {departmentName}, User: {fullname}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 SetDepartmentForm(department);
                                 this.Hide();
                                 OpenDepartmentForm(this);

@@ -500,7 +500,7 @@ namespace C_Project
                             orderDataTable = new System.Data.DataTable();
                             adapter.Fill(orderDataTable);
                             poList.DataSource = orderDataTable;
-                            MessageBox.Show(poList.Columns["ProductID"].ToString());
+                            //MessageBox.Show(poList.Columns["ProductID"].ToString());
                             poList.Columns["ProductID"].HeaderText = "Product ID";
                             poList.Columns["RefQuotation"].HeaderText = "Quotation Ref";
                             poList.Columns["Qty"].HeaderText = "Quantity";
@@ -591,11 +591,11 @@ namespace C_Project
                 System.Runtime.InteropServices.Marshal.ReleaseComObject(workbook);
                 System.Runtime.InteropServices.Marshal.ReleaseComObject(excelApp);
 
-                MessageBox.Show($"Excel 檔案已轉換為 PDF: {pdfPath}", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Excel to PDF: {pdfPath}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Excel 轉換錯誤: {ex.Message}", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Excel to PDF error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -892,7 +892,7 @@ namespace C_Project
                     catch (Exception ex)
                     {
                         transaction?.Rollback();
-                        throw new Exception("保存报价或明细时出错：" + ex.Message);
+                        throw new Exception("Error occur due to save quotation" + ex.Message);
                     }
                 }
             }
@@ -912,12 +912,12 @@ namespace C_Project
                 string productName = addForm.productName;
                 int unitPrice = addForm.unitPrice;
 
-                MessageBox.Show(productName, unitPrice.ToString());
+                //MessageBox.Show(productName, unitPrice.ToString());
                 addDataIntoQuotationDetail(productID, qty, productName, unitPrice);
             }
             else
             {
-                MessageBox.Show("Cancel");
+                //MessageBox.Show("Cancel");
             }
             addForm.Dispose();
         }
@@ -940,7 +940,7 @@ namespace C_Project
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"添加記錄時出錯：{ex.Message}");
+                MessageBox.Show($"Error adding record. {ex.Message}");
             }
         }
 
@@ -1101,7 +1101,7 @@ namespace C_Project
                     catch (Exception ex)
                     {
                         transaction?.Rollback();
-                        throw new Exception("保存报价或明细时出错：" + ex.Message);
+                        throw new Exception("Error occur." + ex.Message);
                     }
                 }
             }
@@ -1148,7 +1148,7 @@ namespace C_Project
                     }
 
                     conn.Close();
-                    MessageBox.Show("數據已成功保存到資料庫！");
+                    MessageBox.Show("Save success");
 
                     // 可選：重新加載數據以刷新 DataGridView
                     LoadOrderFileTable();
@@ -1156,7 +1156,7 @@ namespace C_Project
             }
             catch (Exception ex)
             {
-                MessageBox.Show("保存數據時發生錯誤！\n" + ex.Message);
+                MessageBox.Show("Error occur\n" + ex.Message);
             }
         }
 
@@ -1274,7 +1274,7 @@ namespace C_Project
         {
             if (orderFileDataTable == null)
             {
-                MessageBox.Show("請先加載數據表！");
+                MessageBox.Show("Please load the data table first!");
                 return;
             }
 
@@ -1286,7 +1286,7 @@ namespace C_Project
                 string selectedName = materialChoose.Text;
 
                 // 顯示選中的值（或根據需求進行其他操作）
-                MessageBox.Show($"選中的 ID: {selectedId}, 名稱: {selectedName}");
+                //MessageBox.Show($"選中的 ID: {selectedId}, 名稱: {selectedName}");
 
                 //// 添加新行
                 DataRow newRow = orderFileDataTable.NewRow();
@@ -1304,7 +1304,7 @@ namespace C_Project
             }
             else
             {
-                MessageBox.Show("請先選擇一個材料！");
+                MessageBox.Show("Please select a material first!");
             }
         }
     }

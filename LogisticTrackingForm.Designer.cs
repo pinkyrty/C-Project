@@ -37,7 +37,6 @@
             label5 = new Label();
             label6 = new Label();
             textBox1 = new TextBox();
-            textBox2 = new TextBox();
             comboBox1 = new ComboBox();
             textBox3 = new TextBox();
             label7 = new Label();
@@ -54,8 +53,9 @@
             btn_Add = new Button();
             btn_Save = new Button();
             textBox4 = new TextBox();
-            textBox5 = new TextBox();
             button2 = new Button();
+            comboBox2 = new ComboBox();
+            comboBox3 = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -83,7 +83,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(312, 124);
+            label2.Location = new Point(312, 125);
             label2.Name = "label2";
             label2.Size = new Size(67, 15);
             label2.TabIndex = 3;
@@ -110,7 +110,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(529, 155);
+            label5.Location = new Point(454, 155);
             label5.Name = "label5";
             label5.Size = new Size(39, 15);
             label5.TabIndex = 6;
@@ -132,18 +132,11 @@
             textBox1.Size = new Size(149, 23);
             textBox1.TabIndex = 8;
             // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(303, 152);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(220, 23);
-            textBox2.TabIndex = 9;
-            // 
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "Awaiting Shipment", "In Transit", "Delivered", "Abnormal Situation" });
-            comboBox1.Location = new Point(574, 152);
+            comboBox1.Location = new Point(499, 152);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(141, 23);
             comboBox1.TabIndex = 10;
@@ -289,21 +282,33 @@
             textBox4.Size = new Size(149, 23);
             textBox4.TabIndex = 29;
             // 
-            // textBox5
-            // 
-            textBox5.Location = new Point(390, 122);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(149, 23);
-            textBox5.TabIndex = 30;
-            // 
             // button2
             // 
-            button2.Location = new Point(256, 122);
+            button2.Location = new Point(250, 122);
             button2.Name = "button2";
             button2.Size = new Size(60, 20);
             button2.TabIndex = 31;
             button2.Text = "New";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click_1;
+            // 
+            // comboBox2
+            // 
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Items.AddRange(new object[] { "Own Company", "Other Company" });
+            comboBox2.Location = new Point(312, 151);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(121, 23);
+            comboBox2.TabIndex = 32;
+            // 
+            // comboBox3
+            // 
+            comboBox3.FormattingEnabled = true;
+            comboBox3.Location = new Point(385, 122);
+            comboBox3.Name = "comboBox3";
+            comboBox3.Size = new Size(121, 23);
+            comboBox3.TabIndex = 33;
+            comboBox3.SelectedIndexChanged += comboBox3_SelectedIndexChanged;
             // 
             // LogisticTrackingForm
             // 
@@ -311,8 +316,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightBlue;
             ClientSize = new Size(1153, 858);
+            Controls.Add(comboBox3);
+            Controls.Add(comboBox2);
             Controls.Add(button2);
-            Controls.Add(textBox5);
             Controls.Add(textBox4);
             Controls.Add(btn_Add);
             Controls.Add(btn_Save);
@@ -329,7 +335,6 @@
             Controls.Add(label7);
             Controls.Add(textBox3);
             Controls.Add(comboBox1);
-            Controls.Add(textBox2);
             Controls.Add(textBox1);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -357,7 +362,6 @@
         private Label label5;
         private Label label6;
         private TextBox textBox1;
-        private TextBox textBox2;
         private ComboBox comboBox1;
         private TextBox textBox3;
         private Label label7;
@@ -374,7 +378,8 @@
         private Button btn_Add;
         private Button btn_Save;
         private TextBox textBox4;
-        private TextBox textBox5;
         private Button button2;
+        private ComboBox comboBox2;
+        private ComboBox comboBox3;
     }
 }

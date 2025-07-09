@@ -130,11 +130,10 @@ namespace C_Project
             // 
             dataGridView4.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView4.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView4.Location = new Point(16, 258);
-            dataGridView4.Margin = new Padding(6, 6, 6, 6);
+            dataGridView4.Location = new Point(8, 125);
             dataGridView4.Name = "dataGridView4";
             dataGridView4.RowHeadersWidth = 82;
-            dataGridView4.Size = new Size(2074, 595);
+            dataGridView4.Size = new Size(1037, 288);
             dataGridView4.TabIndex = 6;
             // 
             // btn_Add6
@@ -144,11 +143,10 @@ namespace C_Project
             btn_Add6.Controls.Add(InternalTransferOrder);
             btn_Add6.Controls.Add(DemandForecast);
             btn_Add6.Controls.Add(Supplier);
-            btn_Add6.Location = new Point(24, 223);
-            btn_Add6.Margin = new Padding(6, 6, 6, 6);
+            btn_Add6.Location = new Point(12, 108);
             btn_Add6.Name = "btn_Add6";
             btn_Add6.SelectedIndex = 0;
-            btn_Add6.Size = new Size(2258, 1525);
+            btn_Add6.Size = new Size(1129, 738);
             btn_Add6.TabIndex = 7;
             btn_Add6.Tag = "";
             // 
@@ -168,11 +166,10 @@ namespace C_Project
             Inventory.Controls.Add(btn_Save7);
             Inventory.Controls.Add(lblRecord);
             Inventory.Controls.Add(dataGridView4);
-            Inventory.Location = new Point(8, 45);
-            Inventory.Margin = new Padding(6, 6, 6, 6);
+            Inventory.Location = new Point(4, 24);
             Inventory.Name = "Inventory";
-            Inventory.Padding = new Padding(6, 6, 6, 6);
-            Inventory.Size = new Size(2242, 1472);
+            Inventory.Padding = new Padding(3, 3, 3, 3);
+            Inventory.Size = new Size(1121, 710);
             Inventory.TabIndex = 0;
             Inventory.Text = "Inventory";
             Inventory.UseVisualStyleBackColor = true;
@@ -182,67 +179,60 @@ namespace C_Project
             // 
             MaterialBox.FormattingEnabled = true;
             MaterialBox.Items.AddRange(new object[] { "M001", "M002", "M003", "M004" });
-            MaterialBox.Location = new Point(270, 58);
-            MaterialBox.Margin = new Padding(6, 6, 6, 6);
+            MaterialBox.Location = new Point(135, 28);
             MaterialBox.Name = "MaterialBox";
-            MaterialBox.Size = new Size(238, 39);
+            MaterialBox.Size = new Size(121, 23);
             MaterialBox.TabIndex = 45;
             // 
             // RemarkBox
             // 
-            RemarkBox.Location = new Point(998, 58);
-            RemarkBox.Margin = new Padding(6, 6, 6, 6);
+            RemarkBox.Location = new Point(499, 28);
             RemarkBox.Name = "RemarkBox";
-            RemarkBox.Size = new Size(714, 38);
+            RemarkBox.Size = new Size(359, 23);
             RemarkBox.TabIndex = 44;
             // 
             // label29
             // 
             label29.AutoSize = true;
-            label29.Location = new Point(998, 21);
-            label29.Margin = new Padding(6, 0, 6, 0);
+            label29.Location = new Point(499, 10);
             label29.Name = "label29";
-            label29.Size = new Size(101, 31);
+            label29.Size = new Size(50, 15);
             label29.TabIndex = 43;
             label29.Text = "Remark";
             // 
             // label28
             // 
             label28.AutoSize = true;
-            label28.Location = new Point(736, 21);
-            label28.Margin = new Padding(6, 0, 6, 0);
+            label28.Location = new Point(368, 10);
             label28.Name = "label28";
-            label28.Size = new Size(144, 31);
+            label28.Size = new Size(71, 15);
             label28.TabIndex = 40;
             label28.Text = "Warehouse";
             // 
             // label27
             // 
             label27.AutoSize = true;
-            label27.Location = new Point(524, 21);
-            label27.Margin = new Padding(6, 0, 6, 0);
+            label27.Location = new Point(262, 10);
             label27.Name = "label27";
-            label27.Size = new Size(114, 31);
+            label27.Size = new Size(55, 15);
             label27.TabIndex = 39;
             label27.Text = "Quantity";
             // 
             // label25
             // 
             label25.AutoSize = true;
-            label25.Location = new Point(270, 21);
-            label25.Margin = new Padding(6, 0, 6, 0);
+            label25.Location = new Point(135, 10);
             label25.Name = "label25";
-            label25.Size = new Size(107, 31);
+            label25.Size = new Size(54, 15);
             label25.TabIndex = 37;
             label25.Text = "Material";
             // 
             // label24
             // 
             label24.AutoSize = true;
-            label24.Location = new Point(16, 21);
-            label24.Margin = new Padding(6, 0, 6, 0);
+            label24.Location = new Point(8, 10);
             label24.Name = "label24";
-            label24.Size = new Size(118, 31);
+            label24.Size = new Size(56, 15);
             label24.TabIndex = 36;
             label24.Text = "In or Out";
             // 
@@ -250,36 +240,32 @@ namespace C_Project
             // 
             WarehouseBox.FormattingEnabled = true;
             WarehouseBox.Items.AddRange(new object[] { "Thailand ", "Hong Kong", "Vietnam", "Mainland China" });
-            WarehouseBox.Location = new Point(736, 58);
-            WarehouseBox.Margin = new Padding(6, 6, 6, 6);
+            WarehouseBox.Location = new Point(368, 28);
             WarehouseBox.Name = "WarehouseBox";
-            WarehouseBox.Size = new Size(238, 39);
+            WarehouseBox.Size = new Size(121, 23);
             WarehouseBox.TabIndex = 35;
             // 
             // InOutCombo
             // 
             InOutCombo.FormattingEnabled = true;
             InOutCombo.Items.AddRange(new object[] { "In", "Out" });
-            InOutCombo.Location = new Point(16, 58);
-            InOutCombo.Margin = new Padding(6, 6, 6, 6);
+            InOutCombo.Location = new Point(8, 28);
             InOutCombo.Name = "InOutCombo";
-            InOutCombo.Size = new Size(238, 39);
+            InOutCombo.Size = new Size(121, 23);
             InOutCombo.TabIndex = 34;
             // 
             // QuantityBox
             // 
-            QuantityBox.Location = new Point(524, 58);
-            QuantityBox.Margin = new Padding(6, 6, 6, 6);
+            QuantityBox.Location = new Point(262, 28);
             QuantityBox.Name = "QuantityBox";
-            QuantityBox.Size = new Size(196, 38);
+            QuantityBox.Size = new Size(100, 23);
             QuantityBox.TabIndex = 33;
             // 
             // btn_Add4
             // 
-            btn_Add4.Location = new Point(1728, 58);
-            btn_Add4.Margin = new Padding(6, 6, 6, 6);
+            btn_Add4.Location = new Point(864, 28);
             btn_Add4.Name = "btn_Add4";
-            btn_Add4.Size = new Size(150, 48);
+            btn_Add4.Size = new Size(75, 23);
             btn_Add4.TabIndex = 29;
             btn_Add4.Text = "Add";
             btn_Add4.UseVisualStyleBackColor = true;
@@ -287,10 +273,9 @@ namespace C_Project
             // 
             // btn_Save7
             // 
-            btn_Save7.Location = new Point(2092, 258);
-            btn_Save7.Margin = new Padding(6, 6, 6, 6);
+            btn_Save7.Location = new Point(1046, 125);
             btn_Save7.Name = "btn_Save7";
-            btn_Save7.Size = new Size(150, 48);
+            btn_Save7.Size = new Size(75, 23);
             btn_Save7.TabIndex = 30;
             btn_Save7.Text = "Save";
             btn_Save7.UseVisualStyleBackColor = true;
@@ -299,10 +284,9 @@ namespace C_Project
             // lblRecord
             // 
             lblRecord.AutoSize = true;
-            lblRecord.Location = new Point(16, 221);
-            lblRecord.Margin = new Padding(6, 0, 6, 0);
+            lblRecord.Location = new Point(8, 107);
             lblRecord.Name = "lblRecord";
-            lblRecord.Size = new Size(192, 31);
+            lblRecord.Size = new Size(93, 15);
             lblRecord.TabIndex = 7;
             lblRecord.Text = "In / Out Record";
             // 
@@ -324,11 +308,10 @@ namespace C_Project
             Procurement.Controls.Add(btn_Add5);
             Procurement.Controls.Add(btn_Save3);
             Procurement.Controls.Add(dataGridView5);
-            Procurement.Location = new Point(8, 45);
-            Procurement.Margin = new Padding(6, 6, 6, 6);
+            Procurement.Location = new Point(4, 24);
             Procurement.Name = "Procurement";
-            Procurement.Padding = new Padding(6, 6, 6, 6);
-            Procurement.Size = new Size(2242, 1472);
+            Procurement.Padding = new Padding(3, 3, 3, 3);
+            Procurement.Size = new Size(1121, 710);
             Procurement.TabIndex = 1;
             Procurement.Text = "Procurement";
             Procurement.UseVisualStyleBackColor = true;
@@ -338,40 +321,36 @@ namespace C_Project
             // 
             dataGridView1.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(1546, 64);
-            dataGridView1.Margin = new Padding(6, 6, 6, 6);
+            dataGridView1.Location = new Point(773, 31);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 82;
-            dataGridView1.Size = new Size(344, 335);
+            dataGridView1.Size = new Size(172, 162);
             dataGridView1.TabIndex = 41;
             dataGridView1.SelectionChanged += OnDataGridView1_SelectionChanged;
             // 
             // comboBox3
             // 
             comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(270, 143);
-            comboBox3.Margin = new Padding(6, 6, 6, 6);
+            comboBox3.Location = new Point(135, 69);
             comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(238, 39);
+            comboBox3.Size = new Size(121, 23);
             comboBox3.TabIndex = 40;
             comboBox3.SelectedIndexChanged += comboBox3_SelectedIndexChanged;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(54, 358);
-            label6.Margin = new Padding(6, 0, 6, 0);
+            label6.Location = new Point(27, 173);
             label6.Name = "label6";
-            label6.Size = new Size(85, 31);
+            label6.Size = new Size(41, 15);
             label6.TabIndex = 39;
             label6.Text = "Status";
             // 
             // button2
             // 
-            button2.Location = new Point(634, 74);
-            button2.Margin = new Padding(6, 6, 6, 6);
+            button2.Location = new Point(317, 36);
             button2.Name = "button2";
-            button2.Size = new Size(196, 48);
+            button2.Size = new Size(98, 23);
             button2.TabIndex = 38;
             button2.Text = "New Order";
             button2.UseVisualStyleBackColor = true;
@@ -380,40 +359,36 @@ namespace C_Project
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(54, 296);
-            label5.Margin = new Padding(6, 0, 6, 0);
+            label5.Location = new Point(27, 143);
             label5.Name = "label5";
-            label5.Size = new Size(187, 31);
+            label5.Size = new Size(93, 15);
             label5.TabIndex = 37;
             label5.Text = "Estimated Date";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(54, 223);
-            label4.Margin = new Padding(6, 0, 6, 0);
+            label4.Location = new Point(27, 108);
             label4.Name = "label4";
-            label4.Size = new Size(148, 31);
+            label4.Size = new Size(73, 15);
             label4.TabIndex = 36;
             label4.Text = "Order Date:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(54, 149);
-            label3.Margin = new Padding(6, 0, 6, 0);
+            label3.Location = new Point(27, 72);
             label3.Name = "label3";
-            label3.Size = new Size(108, 31);
+            label3.Size = new Size(54, 15);
             label3.TabIndex = 35;
             label3.Text = "Supplier";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(54, 81);
-            label2.Margin = new Padding(6, 0, 6, 0);
+            label2.Location = new Point(27, 39);
             label2.Name = "label2";
-            label2.Size = new Size(142, 31);
+            label2.Size = new Size(70, 15);
             label2.TabIndex = 34;
             label2.Text = "Order No. :";
             // 
@@ -421,52 +396,46 @@ namespace C_Project
             // 
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "Ordered", "Shipping", "Complete" });
-            comboBox1.Location = new Point(270, 351);
-            comboBox1.Margin = new Padding(6, 6, 6, 6);
+            comboBox1.Location = new Point(135, 170);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(238, 39);
+            comboBox1.Size = new Size(121, 23);
             comboBox1.TabIndex = 33;
             // 
             // dateTimePicker2
             // 
-            dateTimePicker2.Location = new Point(270, 283);
-            dateTimePicker2.Margin = new Padding(6, 6, 6, 6);
+            dateTimePicker2.Location = new Point(135, 137);
             dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(396, 38);
+            dateTimePicker2.Size = new Size(200, 23);
             dateTimePicker2.TabIndex = 32;
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(270, 211);
-            dateTimePicker1.Margin = new Padding(6, 6, 6, 6);
+            dateTimePicker1.Location = new Point(135, 102);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(396, 38);
+            dateTimePicker1.Size = new Size(200, 23);
             dateTimePicker1.TabIndex = 31;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(270, 74);
-            textBox2.Margin = new Padding(6, 6, 6, 6);
+            textBox2.Location = new Point(135, 36);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(348, 38);
+            textBox2.Size = new Size(176, 23);
             textBox2.TabIndex = 30;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(1642, 27);
-            label1.Margin = new Padding(6, 0, 6, 0);
+            label1.Location = new Point(821, 13);
             label1.Name = "label1";
-            label1.Size = new Size(170, 31);
+            label1.Size = new Size(82, 15);
             label1.TabIndex = 29;
             label1.Text = "Order History";
             // 
             // btn_Add5
             // 
-            btn_Add5.Location = new Point(736, 349);
-            btn_Add5.Margin = new Padding(6, 6, 6, 6);
+            btn_Add5.Location = new Point(368, 169);
             btn_Add5.Name = "btn_Add5";
-            btn_Add5.Size = new Size(150, 48);
+            btn_Add5.Size = new Size(75, 23);
             btn_Add5.TabIndex = 27;
             btn_Add5.Text = "Add";
             btn_Add5.UseVisualStyleBackColor = true;
@@ -474,10 +443,9 @@ namespace C_Project
             // 
             // btn_Save3
             // 
-            btn_Save3.Location = new Point(2080, 490);
-            btn_Save3.Margin = new Padding(6, 6, 6, 6);
+            btn_Save3.Location = new Point(1040, 237);
             btn_Save3.Name = "btn_Save3";
-            btn_Save3.Size = new Size(150, 48);
+            btn_Save3.Size = new Size(75, 23);
             btn_Save3.TabIndex = 28;
             btn_Save3.Text = "Save";
             btn_Save3.UseVisualStyleBackColor = true;
@@ -487,11 +455,10 @@ namespace C_Project
             // 
             dataGridView5.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView5.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView5.Location = new Point(12, 490);
-            dataGridView5.Margin = new Padding(6, 6, 6, 6);
+            dataGridView5.Location = new Point(6, 237);
             dataGridView5.Name = "dataGridView5";
             dataGridView5.RowHeadersWidth = 82;
-            dataGridView5.Size = new Size(2056, 465);
+            dataGridView5.Size = new Size(1028, 225);
             dataGridView5.TabIndex = 2;
             dataGridView5.CellContentClick += dataGridView5_CellContentClick;
             // 
@@ -519,11 +486,10 @@ namespace C_Project
             InternalTransferOrder.Controls.Add(label8);
             InternalTransferOrder.Controls.Add(dataGridView6);
             InternalTransferOrder.Controls.Add(label7);
-            InternalTransferOrder.Location = new Point(8, 45);
-            InternalTransferOrder.Margin = new Padding(6, 6, 6, 6);
+            InternalTransferOrder.Location = new Point(4, 24);
             InternalTransferOrder.Name = "InternalTransferOrder";
-            InternalTransferOrder.Padding = new Padding(6, 6, 6, 6);
-            InternalTransferOrder.Size = new Size(2242, 1472);
+            InternalTransferOrder.Padding = new Padding(3, 3, 3, 3);
+            InternalTransferOrder.Size = new Size(1121, 710);
             InternalTransferOrder.TabIndex = 2;
             InternalTransferOrder.Text = "Internal Transfer Order";
             InternalTransferOrder.UseVisualStyleBackColor = true;
@@ -533,28 +499,25 @@ namespace C_Project
             // 
             dataGridView2.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(1570, 74);
-            dataGridView2.Margin = new Padding(6, 6, 6, 6);
+            dataGridView2.Location = new Point(785, 36);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersWidth = 82;
-            dataGridView2.Size = new Size(480, 492);
+            dataGridView2.Size = new Size(240, 238);
             dataGridView2.TabIndex = 53;
             dataGridView2.SelectionChanged += dataGridView2_SelectionChanged;
             // 
             // textBox6
             // 
-            textBox6.Location = new Point(264, 31);
-            textBox6.Margin = new Padding(6, 6, 6, 6);
+            textBox6.Location = new Point(132, 15);
             textBox6.Name = "textBox6";
-            textBox6.Size = new Size(288, 38);
+            textBox6.Size = new Size(146, 23);
             textBox6.TabIndex = 52;
             // 
             // button1
             // 
-            button1.Location = new Point(814, 395);
-            button1.Margin = new Padding(6, 6, 6, 6);
+            button1.Location = new Point(407, 191);
             button1.Name = "button1";
-            button1.Size = new Size(150, 48);
+            button1.Size = new Size(75, 23);
             button1.TabIndex = 51;
             button1.Text = "Save";
             button1.UseVisualStyleBackColor = true;
@@ -562,20 +525,18 @@ namespace C_Project
             // 
             // btn_Add7
             // 
-            btn_Add7.Location = new Point(2062, 608);
-            btn_Add7.Margin = new Padding(6, 6, 6, 6);
+            btn_Add7.Location = new Point(1031, 294);
             btn_Add7.Name = "btn_Add7";
-            btn_Add7.Size = new Size(150, 48);
+            btn_Add7.Size = new Size(75, 23);
             btn_Add7.TabIndex = 49;
             btn_Add7.Text = "Add";
             btn_Add7.UseVisualStyleBackColor = true;
             // 
             // btn_Save2
             // 
-            btn_Save2.Location = new Point(2062, 668);
-            btn_Save2.Margin = new Padding(6, 6, 6, 6);
+            btn_Save2.Location = new Point(1031, 323);
             btn_Save2.Name = "btn_Save2";
-            btn_Save2.Size = new Size(150, 48);
+            btn_Save2.Size = new Size(75, 23);
             btn_Save2.TabIndex = 50;
             btn_Save2.Text = "Save";
             btn_Save2.UseVisualStyleBackColor = true;
@@ -583,10 +544,9 @@ namespace C_Project
             // 
             // button10
             // 
-            button10.Location = new Point(568, 29);
-            button10.Margin = new Padding(6, 6, 6, 6);
+            button10.Location = new Point(284, 14);
             button10.Name = "button10";
-            button10.Size = new Size(252, 48);
+            button10.Size = new Size(126, 23);
             button10.TabIndex = 47;
             button10.Text = "New Transfer No.";
             button10.UseVisualStyleBackColor = true;
@@ -594,121 +554,108 @@ namespace C_Project
             // 
             // dateTimePicker3
             // 
-            dateTimePicker3.Location = new Point(264, 114);
-            dateTimePicker3.Margin = new Padding(6, 6, 6, 6);
+            dateTimePicker3.Location = new Point(132, 55);
             dateTimePicker3.Name = "dateTimePicker3";
-            dateTimePicker3.Size = new Size(446, 38);
+            dateTimePicker3.Size = new Size(225, 23);
             dateTimePicker3.TabIndex = 45;
             // 
             // comboBox4
             // 
             comboBox4.FormattingEnabled = true;
-            comboBox4.Location = new Point(1002, 209);
-            comboBox4.Margin = new Padding(6, 6, 6, 6);
+            comboBox4.Location = new Point(501, 101);
             comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(426, 39);
+            comboBox4.Size = new Size(215, 23);
             comboBox4.TabIndex = 44;
             // 
             // comboBox2
             // 
             comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(264, 209);
-            comboBox2.Margin = new Padding(6, 6, 6, 6);
+            comboBox2.Location = new Point(132, 101);
             comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(508, 39);
+            comboBox2.Size = new Size(256, 23);
             comboBox2.TabIndex = 43;
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(228, 389);
-            textBox5.Margin = new Padding(6, 6, 6, 6);
+            textBox5.Location = new Point(114, 188);
             textBox5.Name = "textBox5";
-            textBox5.Size = new Size(426, 38);
+            textBox5.Size = new Size(215, 23);
             textBox5.TabIndex = 42;
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(1002, 296);
-            textBox4.Margin = new Padding(6, 6, 6, 6);
+            textBox4.Location = new Point(501, 143);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(426, 38);
+            textBox4.Size = new Size(215, 23);
             textBox4.TabIndex = 41;
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(388, 296);
-            textBox3.Margin = new Padding(6, 6, 6, 6);
+            textBox3.Location = new Point(194, 143);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(290, 38);
+            textBox3.Size = new Size(147, 23);
             textBox3.TabIndex = 40;
             // 
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(30, 395);
-            label17.Margin = new Padding(6, 0, 6, 0);
+            label17.Location = new Point(15, 191);
             label17.Name = "label17";
-            label17.Size = new Size(186, 31);
+            label17.Size = new Size(93, 15);
             label17.TabIndex = 39;
             label17.Text = "Manager Sign :";
             // 
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new Point(784, 302);
-            label16.Margin = new Padding(6, 0, 6, 0);
+            label16.Location = new Point(392, 146);
             label16.Name = "label16";
-            label16.Size = new Size(211, 31);
+            label16.Size = new Size(103, 15);
             label16.TabIndex = 38;
             label16.Text = "Transfer Reason :";
             // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(836, 215);
-            label12.Margin = new Padding(6, 0, 6, 0);
+            label12.Location = new Point(418, 104);
             label12.Name = "label12";
-            label12.Size = new Size(158, 31);
+            label12.Size = new Size(77, 15);
             label12.TabIndex = 37;
             label12.Text = "Destination :";
             // 
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(30, 302);
-            label11.Margin = new Padding(6, 0, 6, 0);
+            label11.Location = new Point(15, 146);
             label11.Name = "label11";
-            label11.Size = new Size(329, 31);
+            label11.Size = new Size(161, 15);
             label11.TabIndex = 36;
             label11.Text = "Production Order Number :";
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(30, 215);
-            label10.Margin = new Padding(6, 0, 6, 0);
+            label10.Location = new Point(15, 104);
             label10.Name = "label10";
-            label10.Size = new Size(106, 31);
+            label10.Size = new Size(52, 15);
             label10.TabIndex = 35;
             label10.Text = "Source :";
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(30, 126);
-            label9.Margin = new Padding(6, 0, 6, 0);
+            label9.Location = new Point(15, 61);
             label9.Name = "label9";
-            label9.Size = new Size(170, 31);
+            label9.Size = new Size(83, 15);
             label9.TabIndex = 34;
             label9.Text = "Launch Date :";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(30, 37);
-            label8.Margin = new Padding(6, 0, 6, 0);
+            label8.Location = new Point(15, 18);
             label8.Name = "label8";
-            label8.Size = new Size(229, 31);
+            label8.Size = new Size(111, 15);
             label8.TabIndex = 33;
             label8.Text = "Transfer Number : ";
             // 
@@ -716,21 +663,19 @@ namespace C_Project
             // 
             dataGridView6.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView6.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView6.Location = new Point(30, 608);
-            dataGridView6.Margin = new Padding(6, 6, 6, 6);
+            dataGridView6.Location = new Point(15, 294);
             dataGridView6.Name = "dataGridView6";
             dataGridView6.RowHeadersWidth = 82;
-            dataGridView6.Size = new Size(2020, 347);
+            dataGridView6.Size = new Size(1010, 168);
             dataGridView6.TabIndex = 27;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
-            label7.Location = new Point(1668, 37);
-            label7.Margin = new Padding(6, 0, 6, 0);
+            label7.Location = new Point(834, 18);
             label7.Name = "label7";
-            label7.Size = new Size(291, 30);
+            label7.Size = new Size(152, 15);
             label7.TabIndex = 2;
             label7.Text = "Internal Transfer History";
             // 
@@ -742,31 +687,28 @@ namespace C_Project
             DemandForecast.Controls.Add(label14);
             DemandForecast.Controls.Add(button12);
             DemandForecast.Controls.Add(dataGridView7);
-            DemandForecast.Location = new Point(8, 45);
-            DemandForecast.Margin = new Padding(6, 6, 6, 6);
+            DemandForecast.Location = new Point(4, 24);
             DemandForecast.Name = "DemandForecast";
-            DemandForecast.Padding = new Padding(6, 6, 6, 6);
-            DemandForecast.Size = new Size(2242, 1472);
+            DemandForecast.Padding = new Padding(3, 3, 3, 3);
+            DemandForecast.Size = new Size(1121, 710);
             DemandForecast.TabIndex = 3;
             DemandForecast.Text = "Demand Forecast";
             DemandForecast.UseVisualStyleBackColor = true;
             // 
             // btn_Add8
             // 
-            btn_Add8.Location = new Point(2092, 60);
-            btn_Add8.Margin = new Padding(6, 6, 6, 6);
+            btn_Add8.Location = new Point(1046, 29);
             btn_Add8.Name = "btn_Add8";
-            btn_Add8.Size = new Size(150, 48);
+            btn_Add8.Size = new Size(75, 23);
             btn_Add8.TabIndex = 27;
             btn_Add8.Text = "Add";
             btn_Add8.UseVisualStyleBackColor = true;
             // 
             // btn_Save1
             // 
-            btn_Save1.Location = new Point(2092, 120);
-            btn_Save1.Margin = new Padding(6, 6, 6, 6);
+            btn_Save1.Location = new Point(1046, 58);
             btn_Save1.Name = "btn_Save1";
-            btn_Save1.Size = new Size(150, 48);
+            btn_Save1.Size = new Size(75, 23);
             btn_Save1.TabIndex = 28;
             btn_Save1.Text = "Save";
             btn_Save1.UseVisualStyleBackColor = true;
@@ -776,19 +718,17 @@ namespace C_Project
             // 
             label14.AutoSize = true;
             label14.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
-            label14.Location = new Point(34, 23);
-            label14.Margin = new Padding(6, 0, 6, 0);
+            label14.Location = new Point(17, 11);
             label14.Name = "label14";
-            label14.Size = new Size(304, 30);
+            label14.Size = new Size(156, 15);
             label14.TabIndex = 3;
             label14.Text = "Demand Forecast History";
             // 
             // button12
             // 
-            button12.Location = new Point(2036, 1381);
-            button12.Margin = new Padding(6, 6, 6, 6);
+            button12.Location = new Point(1018, 668);
             button12.Name = "button12";
-            button12.Size = new Size(194, 74);
+            button12.Size = new Size(97, 36);
             button12.TabIndex = 1;
             button12.Text = "Save";
             button12.UseVisualStyleBackColor = true;
@@ -797,11 +737,10 @@ namespace C_Project
             // 
             dataGridView7.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView7.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView7.Location = new Point(34, 60);
-            dataGridView7.Margin = new Padding(6, 6, 6, 6);
+            dataGridView7.Location = new Point(17, 29);
             dataGridView7.Name = "dataGridView7";
             dataGridView7.RowHeadersWidth = 82;
-            dataGridView7.Size = new Size(2054, 1300);
+            dataGridView7.Size = new Size(1027, 629);
             dataGridView7.TabIndex = 0;
             // 
             // Supplier
@@ -811,31 +750,28 @@ namespace C_Project
             Supplier.Controls.Add(button15);
             Supplier.Controls.Add(dataGridView8);
             Supplier.Controls.Add(label15);
-            Supplier.Location = new Point(8, 45);
-            Supplier.Margin = new Padding(6, 6, 6, 6);
+            Supplier.Location = new Point(4, 24);
             Supplier.Name = "Supplier";
-            Supplier.Padding = new Padding(6, 6, 6, 6);
-            Supplier.Size = new Size(2242, 1472);
+            Supplier.Padding = new Padding(3, 3, 3, 3);
+            Supplier.Size = new Size(1121, 710);
             Supplier.TabIndex = 4;
             Supplier.Text = "Supplier";
             Supplier.UseVisualStyleBackColor = true;
             // 
             // btn_Add
             // 
-            btn_Add.Location = new Point(2086, 60);
-            btn_Add.Margin = new Padding(6, 6, 6, 6);
+            btn_Add.Location = new Point(1043, 29);
             btn_Add.Name = "btn_Add";
-            btn_Add.Size = new Size(150, 48);
+            btn_Add.Size = new Size(75, 23);
             btn_Add.TabIndex = 27;
             btn_Add.Text = "Add";
             btn_Add.UseVisualStyleBackColor = true;
             // 
             // btn_Save
             // 
-            btn_Save.Location = new Point(2086, 120);
-            btn_Save.Margin = new Padding(6, 6, 6, 6);
+            btn_Save.Location = new Point(1043, 58);
             btn_Save.Name = "btn_Save";
-            btn_Save.Size = new Size(150, 48);
+            btn_Save.Size = new Size(75, 23);
             btn_Save.TabIndex = 28;
             btn_Save.Text = "Save";
             btn_Save.UseVisualStyleBackColor = true;
@@ -843,10 +779,9 @@ namespace C_Project
             // 
             // button15
             // 
-            button15.Location = new Point(2036, 1381);
-            button15.Margin = new Padding(6, 6, 6, 6);
+            button15.Location = new Point(1018, 668);
             button15.Name = "button15";
-            button15.Size = new Size(194, 74);
+            button15.Size = new Size(97, 36);
             button15.TabIndex = 3;
             button15.Text = "Save";
             button15.UseVisualStyleBackColor = true;
@@ -855,21 +790,19 @@ namespace C_Project
             // 
             dataGridView8.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridView8.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView8.Location = new Point(34, 60);
-            dataGridView8.Margin = new Padding(6, 6, 6, 6);
+            dataGridView8.Location = new Point(17, 29);
             dataGridView8.Name = "dataGridView8";
             dataGridView8.RowHeadersWidth = 82;
-            dataGridView8.Size = new Size(2048, 1308);
+            dataGridView8.Size = new Size(1024, 633);
             dataGridView8.TabIndex = 1;
             // 
             // label15
             // 
             label15.AutoSize = true;
             label15.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
-            label15.Location = new Point(34, 23);
-            label15.Margin = new Padding(6, 0, 6, 0);
+            label15.Location = new Point(17, 11);
             label15.Name = "label15";
-            label15.Size = new Size(226, 30);
+            label15.Size = new Size(115, 15);
             label15.TabIndex = 0;
             label15.Text = "Supplier Overview";
             // 
@@ -877,10 +810,9 @@ namespace C_Project
             // 
             label18.AutoSize = true;
             label18.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
-            label18.Location = new Point(222, 25);
-            label18.Margin = new Padding(6, 0, 6, 0);
+            label18.Location = new Point(111, 12);
             label18.Name = "label18";
-            label18.Size = new Size(153, 30);
+            label18.Size = new Size(78, 15);
             label18.TabIndex = 8;
             label18.Text = "User Name :";
             // 
@@ -888,19 +820,17 @@ namespace C_Project
             // 
             label19.AutoSize = true;
             label19.Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 136);
-            label19.Location = new Point(222, 81);
-            label19.Margin = new Padding(6, 0, 6, 0);
+            label19.Location = new Point(111, 39);
             label19.Name = "label19";
-            label19.Size = new Size(166, 30);
+            label19.Size = new Size(85, 15);
             label19.TabIndex = 9;
             label19.Text = "Department :";
             // 
             // button8
             // 
-            button8.Location = new Point(2182, 25);
-            button8.Margin = new Padding(6, 6, 6, 6);
+            button8.Location = new Point(1091, 12);
             button8.Name = "button8";
-            button8.Size = new Size(118, 79);
+            button8.Size = new Size(59, 38);
             button8.TabIndex = 12;
             button8.Text = "User Profile";
             button8.UseVisualStyleBackColor = true;
@@ -909,29 +839,26 @@ namespace C_Project
             // label20
             // 
             label20.AutoSize = true;
-            label20.Location = new Point(420, 52);
-            label20.Margin = new Padding(6, 0, 6, 0);
+            label20.Location = new Point(210, 25);
             label20.Name = "label20";
-            label20.Size = new Size(0, 31);
+            label20.Size = new Size(0, 15);
             label20.TabIndex = 13;
             // 
             // label21
             // 
             label21.AutoSize = true;
-            label21.Location = new Point(420, 122);
-            label21.Margin = new Padding(6, 0, 6, 0);
+            label21.Location = new Point(210, 59);
             label21.Name = "label21";
-            label21.Size = new Size(0, 31);
+            label21.Size = new Size(0, 15);
             label21.TabIndex = 14;
             // 
             // pictureBox2
             // 
             pictureBox2.BorderStyle = BorderStyle.Fixed3D;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(30, 25);
-            pictureBox2.Margin = new Padding(6, 6, 6, 6);
+            pictureBox2.Location = new Point(15, 12);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(176, 182);
+            pictureBox2.Size = new Size(90, 90);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 15;
             pictureBox2.TabStop = false;
@@ -939,29 +866,26 @@ namespace C_Project
             // label30
             // 
             label30.AutoSize = true;
-            label30.Location = new Point(390, 25);
-            label30.Margin = new Padding(6, 0, 6, 0);
+            label30.Location = new Point(195, 12);
             label30.Name = "label30";
-            label30.Size = new Size(96, 31);
+            label30.Size = new Size(49, 15);
             label30.TabIndex = 26;
             label30.Text = "label30";
             // 
             // label31
             // 
             label31.AutoSize = true;
-            label31.Location = new Point(390, 81);
-            label31.Margin = new Padding(6, 0, 6, 0);
+            label31.Location = new Point(195, 39);
             label31.Name = "label31";
-            label31.Size = new Size(96, 31);
+            label31.Size = new Size(49, 15);
             label31.TabIndex = 27;
             label31.Text = "label31";
             // 
             // btnLogout
             // 
-            btnLogout.Location = new Point(2056, 25);
-            btnLogout.Margin = new Padding(6, 6, 6, 6);
+            btnLogout.Location = new Point(1028, 12);
             btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(114, 79);
+            btnLogout.Size = new Size(57, 38);
             btnLogout.TabIndex = 24;
             btnLogout.Text = "Logout";
             btnLogout.UseVisualStyleBackColor = true;
@@ -969,10 +893,10 @@ namespace C_Project
             // 
             // LogisticForm
             // 
-            AutoScaleDimensions = new SizeF(14F, 31F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightBlue;
-            ClientSize = new Size(2306, 1773);
+            ClientSize = new Size(1153, 671);
             Controls.Add(btnLogout);
             Controls.Add(label31);
             Controls.Add(label30);
@@ -983,7 +907,6 @@ namespace C_Project
             Controls.Add(label19);
             Controls.Add(label18);
             Controls.Add(btn_Add6);
-            Margin = new Padding(6, 6, 6, 6);
             Name = "LogisticForm";
             Text = "LogisticForm";
             Load += LogisticForm_Load;

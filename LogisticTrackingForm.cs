@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace C_Project
 {
@@ -83,7 +84,33 @@ namespace C_Project
 
         private void LogisticTrackingForm_Load(object sender, EventArgs e)
         {
+            // 刷新
+            try
+            {
+                comboBox3.Items.Clear();
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+                    conn.Open();
+                    string _sql = "SELECT QuotationNumber FROM SMD_Quotation";
+                    using (OleDbCommand cmd = new OleDbCommand(_sql, conn))
+                    {
+                        using (OleDbDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                if (!reader.IsDBNull(0))
+                                {
+                                    comboBox3.Items.Add(reader["QuotationNumber"].ToString());
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
 
+            }
         }
 
         private void label30_Click(object sender, EventArgs e)
@@ -91,6 +118,34 @@ namespace C_Project
 
         }
 
+        private static readonly Random random = new Random();
+
+
+        public static string GenerateShortTextKey()
+        {
+            return Guid.NewGuid().ToString("N").Substring(0, 8);
+        }
+
+        public static string GenerateRandomString(int length = 8)
+        {
+            if (length > 255) length = 255;
+            if (length <= 0) length = 8;
+
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            char[] result = new char[length];
+
+            for (int i = 0; i < length; i++)
+            {
+                result[i] = chars[random.Next(chars.Length)];
+            }
+
+            return new string(result);
+        }
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            string key = GenerateShortTextKey();
+            textBox4.Text = key;
+        }
         private void btn_Save_Click(object sender, EventArgs e)
         {
 
@@ -193,19 +248,24 @@ namespace C_Project
                 MessageBox.Show("Please Select on state");
                 return;
             }
+            if(textBox4.Text == string.Empty)
+            {
+                return;
+            }
             try
             {
                 using (OleDbConnection conn = new OleDbConnection(connStr))
                 {
                     conn.Open();
-                    string _sql = "INSERT INTO DT_Logistics(RefOrder,Carrier,Status,Receiver,Phone,Address) VALUES (@RefOrder,@Carrier,@Status,@Receiver,@Phone,@Address)";
+                    string _sql = "INSERT INTO DT_Logistics(TrackID,RefOrder,Carrier,Status,Receiver,Phone,Address) VALUES (@TrackID,@RefOrder,@Carrier,@Status,@Receiver,@Phone,@Address)";
 
                     using (OleDbCommand cmd = new OleDbCommand(_sql, conn))
                     {
+                        cmd.Parameters.AddWithValue("@TrackID",textBox4.Text);
                         cmd.Parameters.AddWithValue("@RefOrder", textBox1.Text);
-                        cmd.Parameters.AddWithValue("@Carrier", textBox2.Text);
-                        cmd.Parameters.AddWithValue("@Status", comboBox1.SelectedText);
-                        cmd.Parameters.AddWithValue("@Receiver", "");
+                        cmd.Parameters.AddWithValue("@Carrier", comboBox2.Text);
+                        cmd.Parameters.AddWithValue("@Status", comboBox1.Text);
+                        cmd.Parameters.AddWithValue("@Receiver", textBox1.Text);
                         cmd.Parameters.AddWithValue("@Phone", "");
                         cmd.Parameters.AddWithValue("@Address", textBox3.Text);
 
@@ -226,6 +286,38 @@ namespace C_Project
                 MessageBox.Show(ex.ToString());
             }
 
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox3.SelectedIndex < 0) return;
+
+            using (OleDbConnection connn = new OleDbConnection(connStr))
+            {
+                try
+                {
+                    connn.Open();
+                    string _sql = "SELECT * FROM SMD_Quotation WHERE QuotationNumber = ?";
+                    using (OleDbCommand cmd = new OleDbCommand(_sql, connn))
+                    {
+                        cmd.Parameters.AddWithValue("@QuotationNumber", comboBox3.Text);
+                        using (OleDbDataAdapter da = new OleDbDataAdapter(cmd))
+                        {
+                            DataTable table = new DataTable();
+                            da.Fill(table);
+                            if (table.Rows.Count > 0)
+                            {
+                                DataRow row = table.Rows[0];
+                                textBox1.Text = row["ClientName"].ToString();
+                                textBox3.Text = row["Address"].ToString();
+
+                            }
+                        }
+                    }
+                }
+                catch { }
+
+            }
         }
     }
 }

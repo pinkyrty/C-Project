@@ -112,7 +112,7 @@ namespace C_Project
                         }
                     }
 
-                    sql = "SELECT DISTINCT SupplierID FROM SCM_PO";
+                    sql = "SELECT DISTINCT Name FROM SCM_Supplier";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
                         using (OleDbDataReader reader = cmd.ExecuteReader())
@@ -460,7 +460,7 @@ namespace C_Project
                     {
                         if (row.RowState == DataRowState.Added)
                         {
-                            string query = "INSERT INTO SCM_Supplier (SupplierID, Name, Contact, Phone, Email, Rating) VALUES (?, ?, ?, ?, ?, ?)";
+                            string query = "INSERT INTO SCM_Supplier (SupplierID, Name, Contact, Phone, Email, Rating, Enabled) VALUES (?, ?, ?, ?, ?, ?, ?)";
                             using (OleDbCommand cmd = new OleDbCommand(query, conn))
                             {
                                 string supplierID = Guid.NewGuid().ToString();
@@ -470,12 +470,13 @@ namespace C_Project
                                 cmd.Parameters.AddWithValue("?", row["Phone"] != DBNull.Value ? row["Phone"] : "");
                                 cmd.Parameters.AddWithValue("?", row["Email"] != DBNull.Value ? row["Email"] : "");
                                 cmd.Parameters.AddWithValue("?", row["Rating"] != DBNull.Value ? row["Rating"] : "");
+                                cmd.Parameters.Add("?", OleDbType.Boolean).Value = row["Enabled"] != DBNull.Value ? Convert.ToBoolean(row["Enabled"]) : false;
                                 cmd.ExecuteNonQuery();
                             }
                         }
                         else if (row.RowState == DataRowState.Modified)
                         {
-                            string query = "UPDATE SCM_Supplier SET Name = ?, Contact = ?, Phone = ?, Email = ?, Rating = ? WHERE SupplierID = ?";
+                            string query = "UPDATE SCM_Supplier SET Name = ?, Contact = ?, Phone = ?, Email = ?, Rating = ?, Enabled = ? WHERE SupplierID = ?";
                             using (OleDbCommand cmd = new OleDbCommand(query, conn))
                             {
                                 cmd.Parameters.AddWithValue("?", row["Name"] != DBNull.Value ? row["Name"] : "");
@@ -483,6 +484,7 @@ namespace C_Project
                                 cmd.Parameters.AddWithValue("?", row["Phone"] != DBNull.Value ? row["Phone"] : "");
                                 cmd.Parameters.AddWithValue("?", row["Email"] != DBNull.Value ? row["Email"] : "");
                                 cmd.Parameters.AddWithValue("?", row["Rating"] != DBNull.Value ? row["Rating"] : "");
+                                cmd.Parameters.Add("?", OleDbType.Boolean).Value = row["Enabled"] != DBNull.Value ? Convert.ToBoolean(row["Enabled"]) : false;
                                 cmd.Parameters.AddWithValue("?", row["SupplierID"]);
 
                                 cmd.ExecuteNonQuery();
@@ -679,7 +681,7 @@ namespace C_Project
                     {
                         if (row.RowState == DataRowState.Added)
                         {
-                            string query = "INSERT INTO SCM_PODetail (POID, MaterialID, Spec, Qty, Price, SupplierID, PODate, ETA, Status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                            string query = "INSERT INTO SCM_PODetail (POID, MaterialID, Spec, Qty, Price) VALUES (?, ?, ?, ?, ?)";
                             using (OleDbCommand cmd = new OleDbCommand(query, conn))
                             {
                                 cmd.Parameters.AddWithValue("?", row["POID"] != DBNull.Value ? row["POID"] : "");
@@ -687,16 +689,13 @@ namespace C_Project
                                 cmd.Parameters.AddWithValue("?", row["Spec"] != DBNull.Value ? row["Spec"] : "");
                                 cmd.Parameters.AddWithValue("?", row["Qty"] != DBNull.Value ? row["Qty"] : "");
                                 cmd.Parameters.AddWithValue("?", row["Price"] != DBNull.Value ? row["Price"] : "");
-                                cmd.Parameters.AddWithValue("?", row["SupplierID"] != DBNull.Value ? row["SupplierID"] : "");
-                                cmd.Parameters.AddWithValue("?", row["PODate"] != DBNull.Value ? row["PODate"] : "");
-                                cmd.Parameters.AddWithValue("?", row["ETA"] != DBNull.Value ? row["ETA"] : "");
-                                cmd.Parameters.AddWithValue("?", row["Status"] != DBNull.Value ? row["Status"] : "");
+                  
                                 cmd.ExecuteNonQuery();
                             }
                         }
                         else if (row.RowState == DataRowState.Modified)
                         {
-                            string query = "UPDATE SCM_PODetail SET POID = ?, MaterialID = ?, Spec = ?, Qty = ?, Price = ?, SupplierID = ?, PODate = ?, ETA = ?, Status = ? WHERE PODetailID = ?";
+                            string query = "UPDATE SCM_PODetail SET POID = ?, MaterialID = ?, Spec = ?, Qty = ?, Price = ? WHERE PODetailID = ?";
                             using (OleDbCommand cmd = new OleDbCommand(query, conn))
                             {
                                 cmd.Parameters.AddWithValue("?", row["POID"] != DBNull.Value ? row["POID"] : "");
@@ -704,17 +703,14 @@ namespace C_Project
                                 cmd.Parameters.AddWithValue("?", row["Spec"] != DBNull.Value ? row["Spec"] : "");
                                 cmd.Parameters.AddWithValue("?", row["Qty"] != DBNull.Value ? row["Qty"] : "");
                                 cmd.Parameters.AddWithValue("?", row["Price"] != DBNull.Value ? row["Price"] : "");
-                                cmd.Parameters.AddWithValue("?", row["SupplierID"] != DBNull.Value ? row["SupplierID"] : "");
-                                cmd.Parameters.AddWithValue("?", row["PODate"] != DBNull.Value ? row["PODate"] : "");
-                                cmd.Parameters.AddWithValue("?", row["ETA"] != DBNull.Value ? row["ETA"] : "");
-                                cmd.Parameters.AddWithValue("?", row["Status"] != DBNull.Value ? row["Status"] : "");
                                 cmd.Parameters.AddWithValue("?", row["PODetailID"]);
 
-                                cmd.ExecuteNonQuery();
+                                int r = cmd.ExecuteNonQuery();
                             }
                         }
                     }
                     dt.AcceptChanges();
+
                 }
 
                 MessageBox.Show("Data saved to database successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -724,6 +720,8 @@ namespace C_Project
             {
                 MessageBox.Show($"Error saving data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            //刷新
+            LoadLogisticProcurementTable();
         }
 
         private void btn_Add5_Click(object sender, EventArgs e)
@@ -942,16 +940,26 @@ namespace C_Project
                 try
                 {
                     conn.Open();
-                    string _sql = "INSERT INTO SCM_Transfer([Date],[FromDept],[ToDept],[OrderNo],[Reason],[Manager],[Remark]) VALUES (@Date,@FromDept,@ToDept,@OrderNo,@Reason,@Manager,@Remark)";
+                    string _sql = "INSERT INTO SCM_Transfer([TransferID],[Date],[FromDept],[ToDept],[OrderNo],[Reason],[Manager],[Remark]) VALUES (?,?,?,?,?,?,?,?)";
                     using (OleDbCommand cmd = new OleDbCommand(_sql, conn))
                     {
+                        cmd.Parameters.Add("@TransferID", OleDbType.VarChar).Value = textBox6.Text;
                         cmd.Parameters.Add("@Date", OleDbType.DBDate).Value = dateTimePicker3.Value;
-                        cmd.Parameters.AddWithValue("@FromDept", comboBox2.Text);
-                        cmd.Parameters.AddWithValue("@ToDept", comboBox4.Text);
-                        cmd.Parameters.AddWithValue("@OrderNo", textBox3.Text);
-                        cmd.Parameters.AddWithValue("@Reason", textBox4.Text);
-                        cmd.Parameters.AddWithValue("@Manager", textBox5.Text);
-                        cmd.Parameters.AddWithValue("@Remark", "");
+                        cmd.Parameters.Add("@FromDept", OleDbType.VarChar).Value = comboBox2.Text;
+                        cmd.Parameters.Add("@ToDept", OleDbType.VarChar).Value = comboBox4.Text;
+                        cmd.Parameters.Add("@OrderNo", OleDbType.VarChar).Value = textBox3.Text;
+                        cmd.Parameters.Add("@Reason", OleDbType.VarChar).Value = textBox4.Text;
+                        cmd.Parameters.Add("@Manager", OleDbType.VarChar).Value = textBox5.Text;
+                        cmd.Parameters.Add("@Remark", OleDbType.VarChar).Value = "";
+
+
+                        //cmd.Parameters.AddWithValue("@TransferID", textBox6.Text);
+                        //cmd.Parameters.AddWithValue("@FromDept", comboBox2.Text);
+                        //cmd.Parameters.AddWithValue("@ToDept", comboBox4.Text);
+                        //cmd.Parameters.AddWithValue("@OrderNo", textBox3.Text);
+                        //cmd.Parameters.AddWithValue("@Reason", textBox4.Text);
+                        //cmd.Parameters.AddWithValue("@Manager", textBox5.Text);
+                        //cmd.Parameters.AddWithValue("@Remark", "");
                         int r = cmd.ExecuteNonQuery();
                         if (r == 0)
                         {

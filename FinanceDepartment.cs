@@ -30,6 +30,7 @@ namespace C_Project
         private static System.Data.DataTable riskMgmtDataTable;
         private static System.Data.DataTable investmentDataTable;
         private static System.Data.DataTable invoiceDataTable;
+        private static System.Data.DataTable quotationDetailDataTable;
 
         public FinanceDepartment()
         {
@@ -57,6 +58,7 @@ namespace C_Project
             this.riskMgmtTable();
             this.investmentTable();
             this.LoadQuotationlTable();
+            dataGridView6.CellClick += new DataGridViewCellEventHandler(dataGridView6_CellClick);
         }
 
         //First Tab
@@ -313,6 +315,13 @@ namespace C_Project
                             dataGridView6.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                             dataGridView6.AllowUserToResizeColumns = false;
                             dataGridView6.Columns["QuotationID"].Visible = false;
+
+                            DataRow selectedRow = invoiceDataTable.Rows[0];
+                            if (selectedRow != null && selectedRow["QuotationID"] != null)
+                            {
+                                LoadQuotationDetailTable(selectedRow["QuotationID"].ToString());
+                            }
+
                         }
                     }
 
@@ -322,6 +331,100 @@ namespace C_Project
             catch (Exception ex)
             {
                 MessageBox.Show("Error connecting to database!\n" + ex.Message);
+            }
+        }
+
+        private void ConfigureQuotationDetailColumns()
+        {
+            // 确保列名与查询结果匹配，并设置显示名称
+            dataGridView7.AutoGenerateColumns = false; // 禁用自动生成列
+            dataGridView7.Columns.Clear();
+
+            dataGridView7.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "ProductID",
+                HeaderText = "Product ID",
+                Name = "ProductID"
+            });
+            // 添加列并设置属性
+            dataGridView7.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "ProductName",
+                HeaderText = "Product Name",
+                Name = "ProductName"
+            });
+            dataGridView7.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Qty",
+                HeaderText = "Quantity",
+                Name = "Qty"
+            });
+            dataGridView7.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "UnitPrice",
+                HeaderText = "Unit Price",
+                Name = "UnitPrice",
+                DefaultCellStyle = new DataGridViewCellStyle { Format = "C2" } // 货币格式
+            });
+            dataGridView7.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Amount",
+                HeaderText = "Amount",
+                Name = "Amount",
+                DefaultCellStyle = new DataGridViewCellStyle { Format = "C2" } // 货币格式
+            });
+            dataGridView7.Columns["ProductID"].Visible = false;
+            dataGridView7.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView7.AllowUserToResizeColumns = false;
+        }
+
+        private void LoadQuotationDetailTable(string quotationID)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(quotationID))
+                {
+                    MessageBox.Show("No valid Quotation ID selected.");
+                    dataGridView7.DataSource = null;
+                    return;
+                }
+
+                using (OleDbConnection conn = new OleDbConnection(connStr))
+                {
+                    conn.Open();
+
+                    // Updated SQL query to properly reference tables and aliases
+                    string sql = @"
+                        SELECT 
+                            SMD_QuotationDetail.ProductID,
+                            RND_Product.Name AS ProductName,
+                            SMD_QuotationDetail.Qty,
+                            SMD_QuotationDetail.UnitPrice,
+                            SMD_QuotationDetail.Amount
+                        FROM SMD_QuotationDetail
+                        INNER JOIN RND_Product ON (SMD_QuotationDetail.ProductID = RND_Product.ProductID)
+                        WHERE SMD_QuotationDetail.QuotationID = ?";
+
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                    {
+                        cmd.Parameters.Add("QuotationID", OleDbType.Integer).Value = Convert.ToInt32(quotationID);
+
+                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
+                        {
+                            quotationDetailDataTable = new System.Data.DataTable();
+                            adapter.Fill(quotationDetailDataTable);
+                            dataGridView7.DataSource = quotationDetailDataTable;
+                            ConfigureQuotationDetailColumns();
+                            dataGridView7.Refresh();
+                        }
+                    }
+
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading quotation details!\nMessage: {ex.Message}\nStack Trace: {ex.StackTrace}");
             }
         }
 
@@ -886,34 +989,12 @@ namespace C_Project
                 dataGridView6.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 dataGridView6.Rows[e.RowIndex].Selected = true;
                 DataGridViewRow row = dataGridView6.Rows[e.RowIndex];
+                DataRow selectedRow = invoiceDataTable.Rows[e.RowIndex];
+                if (selectedRow != null)
+                {
+                    LoadQuotationDetailTable(selectedRow["QuotationID"].ToString());
+                }
             }
-        }
-
-        private void ExportToExcel()
-        {
-            var selectedRow = dataGridView6.SelectedRows[0];
-            string templatePath = Path.Combine(Environment.CurrentDirectory, "QuotationTemplate.xlsx");
-            string outputPath = "ExportedQuotation.xlsx";
-
-            using (var package = new ExcelPackage(new FileInfo(templatePath)))
-            {
-                var worksheet = package.Workbook.Worksheets[0];
-
-                // 假设你想将以下数据放入特定单元格
-                worksheet.Cells["A1"].Value = selectedRow.Cells["Quotation Number"].Value; // 例如，Quotation Number
-                worksheet.Cells["A2"].Value = selectedRow.Cells["Quotation Date"].Value;   // 例如，Quotation Date
-                worksheet.Cells["A3"].Value = selectedRow.Cells["Client Name"].Value;      // 例如，Client Name
-                worksheet.Cells["A4"].Value = selectedRow.Cells["Contact"].Value;          // 例如，Contact
-                worksheet.Cells["A5"].Value = selectedRow.Cells["Delivery"].Value;         // 例如，Delivery
-
-                // 继续为其他列设置单元格
-                // worksheet.Cells["X1"].Value = selectedRow.Cells["ColumnName"].Value;
-
-                // 保存到新文件
-                package.SaveAs(new FileInfo(outputPath));
-            }
-
-            MessageBox.Show("数据已成功导出到 Excel!");
         }
 
         private void GenPDFButton_Click(object sender, EventArgs e)
@@ -931,38 +1012,97 @@ namespace C_Project
         private void ExportToExcelAndConvertToPDF()
         {
             var selectedRow = dataGridView6.SelectedRows[0];
-            string templatePath = "QuotationTemplate.xlsx"; // 确保文件路径正确
-            string outputExcelPath = "ExportedQuotation.xlsx";
-            string outputPdfPath = "ExportedQuotation.pdf";
+            string templatePath = "InvoiceTemplate.xlsx"; // 确保文件路径正确
 
-
-            // 导出到 Excel
-            FileInfo templateFile = new FileInfo(templatePath);
-            using (var package = new ExcelPackage(templateFile))
+            // 使用 SaveFileDialog 让用户选择 PDF 文件保存路径
+            SaveFileDialog savePdfDialog = new SaveFileDialog
             {
-                // 检查工作表数量
-                if (package.Workbook.Worksheets.Count == 0)
+                Filter = "PDF Files|*.pdf",
+                Title = "选择 PDF 文件保存路径",
+                FileName = "ExportedQuotation.pdf"
+            };
+
+            if (savePdfDialog.ShowDialog() != DialogResult.OK)
+            {
+                MessageBox.Show("用户取消了文件保存操作。");
+                return;
+            }
+
+            string outputPdfPath = savePdfDialog.FileName;
+            string tempExcelPath = Path.GetTempFileName() + ".xlsx"; // 创建临时 Excel 文件路径
+
+            try
+            {
+                FileInfo templateFile = new FileInfo(templatePath);
+                string currentDirectory = Directory.GetCurrentDirectory();
+                MessageBox.Show($"当前目录: {currentDirectory}\n模板文件: {templatePath}");
+
+                if (!File.Exists(templatePath))
                 {
-                    MessageBox.Show("模板文件没有工作表。");
+                    MessageBox.Show($"模板文件 {templatePath} 不存在。");
                     return;
                 }
 
-                var worksheet = package.Workbook.Worksheets[0];
+                using (var package = new ExcelPackage(templateFile))
+                {
+                    if (package.Workbook.Worksheets.Count == 0)
+                    {
+                        MessageBox.Show("模板文件没有工作表，请检查文件。");
+                        return;
+                    }
 
-                // 将数据放入特定单元格
-                worksheet.Cells["A1"].Value = selectedRow.Cells["Quotation Number"].Value;
-                worksheet.Cells["A2"].Value = selectedRow.Cells["Quotation Date"].Value;
-                worksheet.Cells["A3"].Value = selectedRow.Cells["Client Name"].Value;
-                worksheet.Cells["A4"].Value = selectedRow.Cells["Contact"].Value;
-                worksheet.Cells["A5"].Value = selectedRow.Cells["Delivery"].Value;
+                    var worksheet = package.Workbook.Worksheets[0];
 
-                // 保存到新 Excel 文件
-                package.SaveAs(new FileInfo(outputExcelPath));
+                    // 填充数据
+                    worksheet.Cells["F8"].Value = selectedRow.Cells["QuotationNumber"].Value;
+                    worksheet.Cells["F10"].Value = selectedRow.Cells["QDate"].Value;
+                    worksheet.Cells["C8"].Value = selectedRow.Cells["ClientName"].Value;
+                    worksheet.Cells["C10"].Value = selectedRow.Cells["Contact"].Value;
+                    worksheet.Cells["C32"].Value = selectedRow.Cells["Delivery"].Value;
+                    worksheet.Cells["F12"].Value = selectedRow.Cells["Phone"].Value;
+                    worksheet.Cells["C34"].Value = selectedRow.Cells["Payment"].Value;
+                    worksheet.Cells["F28"].Value = selectedRow.Cells["Discount"].Value;
+                    worksheet.Cells["D30"].Value = selectedRow.Cells["Remark"].Value;
+                    worksheet.Cells["F32"].Value = selectedRow.Cells["Shipping"].Value;
+                    worksheet.Cells["C12"].Value = selectedRow.Cells["Address"].Value;
+
+                    // 设置日期格式
+                    worksheet.Cells["F10"].Style.Numberformat.Format = "yyyy-mm-dd"; // 根据需要调整格式
+
+                    // 保存到临时 Excel 文件
+                    package.SaveAs(new FileInfo(tempExcelPath));
+                }
+
+                // 确保临时文件已创建
+                if (!File.Exists(tempExcelPath))
+                {
+                    MessageBox.Show($"临时文件 {tempExcelPath} 创建失败。");
+                    return;
+                }
+
+                // 转换为 PDF
+                ConvertExcelToPDF(tempExcelPath, outputPdfPath);
+                MessageBox.Show("数据已成功转换为 PDF!");
             }
-
-            // 转换 Excel 为 PDF
-            ConvertExcelToPDF(outputExcelPath, outputPdfPath);
-            MessageBox.Show("数据已成功导出到 Excel 并转换为 PDF!");
+            catch (Exception ex)
+            {
+                MessageBox.Show($"发生错误: {ex.Message}");
+            }
+            finally
+            {
+                // 删除临时文件
+                if (File.Exists(tempExcelPath))
+                {
+                    try
+                    {
+                        File.Delete(tempExcelPath);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"删除临时文件失败: {ex.Message}");
+                    }
+                }
+            }
         }
 
         private void ConvertExcelToPDF(string excelFilePath, string pdfFilePath)
@@ -972,6 +1112,7 @@ namespace C_Project
 
             try
             {
+                MessageBox.Show(excelFilePath);
                 workbook = excelApp.Workbooks.Open(excelFilePath);
                 workbook.ExportAsFixedFormat(Excel.XlFixedFormatType.xlTypePDF, pdfFilePath);
             }

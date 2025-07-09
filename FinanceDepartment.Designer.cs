@@ -97,6 +97,7 @@
             label30 = new Label();
             label31 = new Label();
             btnLogout = new Button();
+            dataGridView7 = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ad.SuspendLayout();
             tabPage6.SuspendLayout();
@@ -114,6 +115,7 @@
             ((System.ComponentModel.ISupportInitialize)financeDepartmentBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)financeDepartmentBindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)financeDepartmentBindingSource2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView7).BeginInit();
             SuspendLayout();
             // 
             // btnUserProfile
@@ -174,6 +176,7 @@
             // tabPage6
             // 
             tabPage6.BackColor = Color.Transparent;
+            tabPage6.Controls.Add(dataGridView7);
             tabPage6.Controls.Add(GenPDFButton);
             tabPage6.Controls.Add(label2);
             tabPage6.Controls.Add(dataGridView6);
@@ -212,7 +215,7 @@
             dataGridView6.Name = "dataGridView6";
             dataGridView6.ReadOnly = true;
             dataGridView6.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView6.Size = new Size(1010, 675);
+            dataGridView6.Size = new Size(1010, 551);
             dataGridView6.TabIndex = 0;
             // 
             // tabPage1
@@ -767,6 +770,15 @@
             btnLogout.UseVisualStyleBackColor = true;
             btnLogout.Click += btnLogout_Click;
             // 
+            // dataGridView7
+            // 
+            dataGridView7.BackgroundColor = SystemColors.GradientInactiveCaption;
+            dataGridView7.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView7.Location = new Point(6, 586);
+            dataGridView7.Name = "dataGridView7";
+            dataGridView7.Size = new Size(1010, 112);
+            dataGridView7.TabIndex = 23;
+            // 
             // FinanceDepartment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -811,6 +823,7 @@
             ((System.ComponentModel.ISupportInitialize)financeDepartmentBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)financeDepartmentBindingSource1).EndInit();
             ((System.ComponentModel.ISupportInitialize)financeDepartmentBindingSource2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView7).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -886,5 +899,6 @@
         private Label label2;
         private DataGridView dataGridView6;
         private Button GenPDFButton;
+        private DataGridView dataGridView7;
     }
 }

@@ -36,15 +36,16 @@
             label1 = new Label();
             SaveButton = new Button();
             groupBox1 = new GroupBox();
-            textBox6 = new TextBox();
-            textBox5 = new TextBox();
-            textBox4 = new TextBox();
-            comboBox3 = new ComboBox();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
-            comboBox2 = new ComboBox();
-            comboBox1 = new ComboBox();
-            textBox1 = new TextBox();
+            timeText = new TextBox();
+            customerFeedbackText = new TextBox();
+            followUpText = new TextBox();
+            solText = new TextBox();
+            statusCombo = new ComboBox();
+            contentSumText = new TextBox();
+            resPersonText = new TextBox();
+            inquiryTypeCombo = new ComboBox();
+            contactInfoCombo = new ComboBox();
+            customerNameText = new TextBox();
             dateTimePicker1 = new DateTimePicker();
             label13 = new Label();
             label12 = new Label();
@@ -58,6 +59,8 @@
             label4 = new Label();
             label3 = new Label();
             ReturnAndExchangeAreaTabPage = new TabPage();
+            btn_Add = new Button();
+            btn_Save = new Button();
             dataGridView2 = new DataGridView();
             label14 = new Label();
             label2 = new Label();
@@ -70,8 +73,6 @@
             label31 = new Label();
             label30 = new Label();
             btnLogout = new Button();
-            btn_Add = new Button();
-            btn_Save = new Button();
             tabMain.SuspendLayout();
             InteractionRecordsTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
@@ -155,15 +156,16 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(textBox6);
-            groupBox1.Controls.Add(textBox5);
-            groupBox1.Controls.Add(textBox4);
-            groupBox1.Controls.Add(comboBox3);
-            groupBox1.Controls.Add(textBox3);
-            groupBox1.Controls.Add(textBox2);
-            groupBox1.Controls.Add(comboBox2);
-            groupBox1.Controls.Add(comboBox1);
-            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(timeText);
+            groupBox1.Controls.Add(customerFeedbackText);
+            groupBox1.Controls.Add(followUpText);
+            groupBox1.Controls.Add(solText);
+            groupBox1.Controls.Add(statusCombo);
+            groupBox1.Controls.Add(contentSumText);
+            groupBox1.Controls.Add(resPersonText);
+            groupBox1.Controls.Add(inquiryTypeCombo);
+            groupBox1.Controls.Add(contactInfoCombo);
+            groupBox1.Controls.Add(customerNameText);
             groupBox1.Controls.Add(dateTimePicker1);
             groupBox1.Controls.Add(label13);
             groupBox1.Controls.Add(label12);
@@ -182,82 +184,89 @@
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             // 
-            // textBox6
+            // timeText
             // 
-            textBox6.Location = new Point(471, 312);
-            textBox6.Multiline = true;
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(245, 311);
-            textBox6.TabIndex = 20;
+            timeText.Location = new Point(276, 47);
+            timeText.Name = "timeText";
+            timeText.Size = new Size(100, 23);
+            timeText.TabIndex = 21;
             // 
-            // textBox5
+            // customerFeedbackText
             // 
-            textBox5.Location = new Point(97, 312);
-            textBox5.Multiline = true;
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(245, 311);
-            textBox5.TabIndex = 19;
+            customerFeedbackText.Location = new Point(471, 312);
+            customerFeedbackText.Multiline = true;
+            customerFeedbackText.Name = "customerFeedbackText";
+            customerFeedbackText.Size = new Size(245, 311);
+            customerFeedbackText.TabIndex = 20;
             // 
-            // textBox4
+            // followUpText
             // 
-            textBox4.Location = new Point(408, 257);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(302, 23);
-            textBox4.TabIndex = 18;
+            followUpText.Location = new Point(97, 312);
+            followUpText.Multiline = true;
+            followUpText.Name = "followUpText";
+            followUpText.Size = new Size(245, 311);
+            followUpText.TabIndex = 19;
             // 
-            // comboBox3
+            // solText
             // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Items.AddRange(new object[] { "Pending", "Following up", "Completed" });
-            comboBox3.Location = new Point(137, 257);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(171, 23);
-            comboBox3.TabIndex = 17;
+            solText.Location = new Point(408, 257);
+            solText.Name = "solText";
+            solText.Size = new Size(302, 23);
+            solText.TabIndex = 18;
             // 
-            // textBox3
+            // statusCombo
             // 
-            textBox3.Location = new Point(141, 204);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(372, 23);
-            textBox3.TabIndex = 16;
+            statusCombo.FormattingEnabled = true;
+            statusCombo.Items.AddRange(new object[] { "Pending", "Following up", "Completed" });
+            statusCombo.Location = new Point(137, 257);
+            statusCombo.Name = "statusCombo";
+            statusCombo.Size = new Size(171, 23);
+            statusCombo.TabIndex = 17;
             // 
-            // textBox2
+            // contentSumText
             // 
-            textBox2.Location = new Point(471, 152);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(239, 23);
-            textBox2.TabIndex = 15;
+            contentSumText.Location = new Point(141, 204);
+            contentSumText.Name = "contentSumText";
+            contentSumText.Size = new Size(372, 23);
+            contentSumText.TabIndex = 16;
             // 
-            // comboBox2
+            // resPersonText
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "Product Consultation", "Technical Support", "Complaint", "Return or Exchange", "Other" });
-            comboBox2.Location = new Point(109, 152);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(183, 23);
-            comboBox2.TabIndex = 14;
+            resPersonText.Location = new Point(471, 152);
+            resPersonText.Name = "resPersonText";
+            resPersonText.Size = new Size(239, 23);
+            resPersonText.TabIndex = 15;
             // 
-            // comboBox1
+            // inquiryTypeCombo
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Phone", "Email", "Live Chat", "Other" });
-            comboBox1.Location = new Point(545, 101);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 13;
+            inquiryTypeCombo.FormattingEnabled = true;
+            inquiryTypeCombo.Items.AddRange(new object[] { "Product Consultation", "Technical Support", "Complaint", "Return or Exchange", "Other" });
+            inquiryTypeCombo.Location = new Point(109, 152);
+            inquiryTypeCombo.Name = "inquiryTypeCombo";
+            inquiryTypeCombo.Size = new Size(183, 23);
+            inquiryTypeCombo.TabIndex = 14;
             // 
-            // textBox1
+            // contactInfoCombo
             // 
-            textBox1.Location = new Point(132, 101);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(244, 23);
-            textBox1.TabIndex = 12;
+            contactInfoCombo.FormattingEnabled = true;
+            contactInfoCombo.Items.AddRange(new object[] { "Phone", "Email", "Live Chat", "Other" });
+            contactInfoCombo.Location = new Point(545, 101);
+            contactInfoCombo.Name = "contactInfoCombo";
+            contactInfoCombo.Size = new Size(121, 23);
+            contactInfoCombo.TabIndex = 13;
+            // 
+            // customerNameText
+            // 
+            customerNameText.Location = new Point(132, 101);
+            customerNameText.Name = "customerNameText";
+            customerNameText.Size = new Size(244, 23);
+            customerNameText.TabIndex = 12;
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(67, 47);
+            dateTimePicker1.Location = new Point(73, 47);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(111, 23);
+            dateTimePicker1.Size = new Size(122, 23);
             dateTimePicker1.TabIndex = 11;
             // 
             // label13
@@ -345,7 +354,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(223, 53);
+            label4.Location = new Point(229, 53);
             label4.Name = "label4";
             label4.Size = new Size(41, 15);
             label4.TabIndex = 1;
@@ -373,6 +382,26 @@
             ReturnAndExchangeAreaTabPage.TabIndex = 1;
             ReturnAndExchangeAreaTabPage.Text = "Return and Exchange Area";
             ReturnAndExchangeAreaTabPage.UseVisualStyleBackColor = true;
+            // 
+            // btn_Add
+            // 
+            btn_Add.Location = new Point(6, 668);
+            btn_Add.Name = "btn_Add";
+            btn_Add.Size = new Size(75, 23);
+            btn_Add.TabIndex = 27;
+            btn_Add.Text = "Add";
+            btn_Add.UseVisualStyleBackColor = true;
+            btn_Add.Click += btn_Add_Click;
+            // 
+            // btn_Save
+            // 
+            btn_Save.Location = new Point(87, 668);
+            btn_Save.Name = "btn_Save";
+            btn_Save.Size = new Size(75, 23);
+            btn_Save.TabIndex = 28;
+            btn_Save.Text = "Save";
+            btn_Save.UseVisualStyleBackColor = true;
+            btn_Save.Click += btn_Save_Click;
             // 
             // dataGridView2
             // 
@@ -487,26 +516,6 @@
             btnLogout.UseVisualStyleBackColor = true;
             btnLogout.Click += btnLogout_Click;
             // 
-            // btn_Add
-            // 
-            btn_Add.Location = new Point(6, 668);
-            btn_Add.Name = "btn_Add";
-            btn_Add.Size = new Size(75, 23);
-            btn_Add.TabIndex = 27;
-            btn_Add.Text = "Add";
-            btn_Add.UseVisualStyleBackColor = true;
-            btn_Add.Click += btn_Add_Click;
-            // 
-            // btn_Save
-            // 
-            btn_Save.Location = new Point(87, 668);
-            btn_Save.Name = "btn_Save";
-            btn_Save.Size = new Size(75, 23);
-            btn_Save.TabIndex = 28;
-            btn_Save.Text = "Save";
-            btn_Save.UseVisualStyleBackColor = true;
-            btn_Save.Click += btn_Save_Click;
-            // 
             // CustomerServiceForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -574,15 +583,15 @@
         private Label label13;
         private Label label12;
         private DateTimePicker dateTimePicker1;
-        private TextBox textBox3;
-        private TextBox textBox2;
-        private ComboBox comboBox2;
-        private ComboBox comboBox1;
-        private TextBox textBox1;
-        private TextBox textBox6;
-        private TextBox textBox5;
-        private TextBox textBox4;
-        private ComboBox comboBox3;
+        private TextBox contentSumText;
+        private TextBox resPersonText;
+        private ComboBox inquiryTypeCombo;
+        private ComboBox contactInfoCombo;
+        private TextBox customerNameText;
+        private TextBox customerFeedbackText;
+        private TextBox followUpText;
+        private TextBox solText;
+        private ComboBox statusCombo;
         private DataGridView dataGridView2;
         private Label label14;
         private Label label31;
@@ -590,5 +599,6 @@
         private Button btnLogout;
         private Button btn_Add;
         private Button btn_Save;
+        private TextBox timeText;
     }
 }

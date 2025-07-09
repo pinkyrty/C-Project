@@ -49,7 +49,7 @@ namespace C_Project
 
                     conn.Open();
 
-                    string sql = "SELECT ID, Date, CustomerName, Channel FROM CSD_InteractionLog";
+                    string sql = "SELECT ID, Date, CustomerName FROM CSD_InteractionLog";
                     using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                     {
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
@@ -58,7 +58,7 @@ namespace C_Project
                             adapter.Fill(interactionLogDataTable);
                             dataGridView1.DataSource = interactionLogDataTable;
                             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                            dataGridView1.Columns["ID"].ReadOnly = true;
+                            dataGridView1.ReadOnly = true;
                         }
                     }
 
@@ -227,5 +227,44 @@ namespace C_Project
             changePasswordForm.ShowDialog();
 
         }
+
+        //private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    // Check if a valid row is clicked (ignore header clicks)
+        //    if (e.RowIndex >= 0)
+        //    {
+        //        // Get the selected row
+        //        dataGridView1.Rows[e.RowIndex].Selected = true;
+        //        DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+
+        //        // Populate textboxes with data from the selected row
+        //        dateTimePicker1.Value = row.Cells["Date"].Value != null && row.Cells["Date"].Value != DBNull.Value? Convert.ToDateTime(row.Cells["Date"].Value;
+        //        timeText.Text = row.Cells["Time"].Value?.ToString() ?? "";
+        //        customerNameText.Text = row.Cells["CustomerName"].Value?.ToString() ?? "";
+        //        contactInfoCombo.Text = row.Cells["Channel"].Value?.ToString() ?? "";
+        //        inquiryTypeCombo.Text = row.Cells["InquiryType"].Value?.ToString() ?? "";
+        //        resPersonText.Text = row.Cells["Staff"].Value?.ToString() ?? "";
+        //        contentSumText.Text = row.Cells["Summary"].Value?.ToString() ?? "";
+        //        statusCombo.Text = row.Cells["Status"].Value?.ToString() ?? "";
+        //        solText.Text = row.Cells["Solution"].Value?.ToString() ?? "";
+        //        followUpText.Text = row.Cells["FollowUp"].Value?.ToString() ?? "";
+        //        customerFeedbackText.Text = row.Cells["Feedback"].Value?.ToString() ?? "";
+
+        //        // Populate ESD and EED DateTimePickers
+        //        try
+        //        {
+        //            dateTimePicker1.Value = row.Cells["Date"].Value != null && row.Cells["Date"].Value != DBNull.Value
+        //                ? Convert.ToDateTime(row.Cells["Date"].Value)
+        //                : DateTime.Now;
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MessageBox.Show($"Error setting ESD or EED dates: {ex.Message}");
+        //            dateTimePicker1.Value = DateTime.Now;
+        //        }
+        //    }
+        //}
+
+
     }
 }

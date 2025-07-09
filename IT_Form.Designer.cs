@@ -604,7 +604,7 @@ namespace C_Project
             // 
             mainDate.Location = new Point(59, 9);
             mainDate.Name = "mainDate";
-            mainDate.Size = new Size(141, 23);
+            mainDate.Size = new Size(137, 23);
             mainDate.TabIndex = 5;
             // 
             // label23

@@ -32,6 +32,7 @@
             tabMain = new TabControl();
             InteractionRecordsTabPage = new TabPage();
             splitContainer1 = new SplitContainer();
+            addButton = new Button();
             dataGridView1 = new DataGridView();
             label1 = new Label();
             SaveButton = new Button();
@@ -58,11 +59,6 @@
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
-            ReturnAndExchangeAreaTabPage = new TabPage();
-            btn_Add = new Button();
-            btn_Save = new Button();
-            dataGridView2 = new DataGridView();
-            label14 = new Label();
             label2 = new Label();
             Department = new Label();
             UserName = new Label();
@@ -72,7 +68,6 @@
             label31 = new Label();
             label30 = new Label();
             btnLogout = new Button();
-            addButton = new Button();
             tabMain.SuspendLayout();
             InteractionRecordsTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
@@ -81,15 +76,12 @@
             splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
-            ReturnAndExchangeAreaTabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // tabMain
             // 
             tabMain.Controls.Add(InteractionRecordsTabPage);
-            tabMain.Controls.Add(ReturnAndExchangeAreaTabPage);
             tabMain.Location = new Point(12, 121);
             tabMain.Name = "tabMain";
             tabMain.SelectedIndex = 0;
@@ -126,6 +118,16 @@
             splitContainer1.Size = new Size(1115, 691);
             splitContainer1.SplitterDistance = 371;
             splitContainer1.TabIndex = 0;
+            // 
+            // addButton
+            // 
+            addButton.Location = new Point(5, 21);
+            addButton.Name = "addButton";
+            addButton.Size = new Size(81, 27);
+            addButton.TabIndex = 2;
+            addButton.Text = "Add";
+            addButton.UseVisualStyleBackColor = true;
+            addButton.Click += addButton_Click;
             // 
             // dataGridView1
             // 
@@ -374,58 +376,6 @@
             label3.TabIndex = 0;
             label3.Text = "Date: ";
             // 
-            // ReturnAndExchangeAreaTabPage
-            // 
-            ReturnAndExchangeAreaTabPage.Controls.Add(btn_Add);
-            ReturnAndExchangeAreaTabPage.Controls.Add(btn_Save);
-            ReturnAndExchangeAreaTabPage.Controls.Add(dataGridView2);
-            ReturnAndExchangeAreaTabPage.Controls.Add(label14);
-            ReturnAndExchangeAreaTabPage.Location = new Point(4, 24);
-            ReturnAndExchangeAreaTabPage.Name = "ReturnAndExchangeAreaTabPage";
-            ReturnAndExchangeAreaTabPage.Padding = new Padding(3);
-            ReturnAndExchangeAreaTabPage.Size = new Size(1121, 697);
-            ReturnAndExchangeAreaTabPage.TabIndex = 1;
-            ReturnAndExchangeAreaTabPage.Text = "Return and Exchange Area";
-            ReturnAndExchangeAreaTabPage.UseVisualStyleBackColor = true;
-            // 
-            // btn_Add
-            // 
-            btn_Add.Location = new Point(6, 668);
-            btn_Add.Name = "btn_Add";
-            btn_Add.Size = new Size(75, 23);
-            btn_Add.TabIndex = 27;
-            btn_Add.Text = "Add";
-            btn_Add.UseVisualStyleBackColor = true;
-            btn_Add.Click += btn_Add_Click;
-            // 
-            // btn_Save
-            // 
-            btn_Save.Location = new Point(87, 668);
-            btn_Save.Name = "btn_Save";
-            btn_Save.Size = new Size(75, 23);
-            btn_Save.TabIndex = 28;
-            btn_Save.Text = "Save";
-            btn_Save.UseVisualStyleBackColor = true;
-            btn_Save.Click += btn_Save_Click;
-            // 
-            // dataGridView2
-            // 
-            dataGridView2.BackgroundColor = SystemColors.GradientInactiveCaption;
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(3, 21);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(1121, 644);
-            dataGridView2.TabIndex = 1;
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Location = new Point(3, 3);
-            label14.Name = "label14";
-            label14.Size = new Size(156, 15);
-            label14.TabIndex = 0;
-            label14.Text = "Return and Exchange Area";
-            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -512,16 +462,6 @@
             btnLogout.UseVisualStyleBackColor = true;
             btnLogout.Click += btnLogout_Click;
             // 
-            // addButton
-            // 
-            addButton.Location = new Point(5, 21);
-            addButton.Name = "addButton";
-            addButton.Size = new Size(81, 27);
-            addButton.TabIndex = 2;
-            addButton.Text = "Add";
-            addButton.UseVisualStyleBackColor = true;
-            addButton.Click += addButton_Click;
-            // 
             // CustomerServiceForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -551,9 +491,6 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            ReturnAndExchangeAreaTabPage.ResumeLayout(false);
-            ReturnAndExchangeAreaTabPage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -563,7 +500,6 @@
 
         private TabControl tabMain;
         private TabPage InteractionRecordsTabPage;
-        private TabPage ReturnAndExchangeAreaTabPage;
         private Label label2;
         private Label Department;
         private Label UserName;
@@ -596,13 +532,9 @@
         private TextBox followUpText;
         private TextBox solText;
         private ComboBox statusCombo;
-        private DataGridView dataGridView2;
-        private Label label14;
         private Label label31;
         private Label label30;
         private Button btnLogout;
-        private Button btn_Add;
-        private Button btn_Save;
         private TextBox timeText;
         private Button addButton;
     }
